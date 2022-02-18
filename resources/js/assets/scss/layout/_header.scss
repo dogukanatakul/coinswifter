@@ -1,0 +1,133 @@
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        width: 7px;
+        height: 7px;
+        left: 0;
+        top: 0;
+    }
+    95% {
+        opacity: 0.1;
+        left: -10.5px;
+        top: -10.5px;
+        width: 28px;
+        height: 28px;
+    }
+    100% {
+        opacity: 0;
+        width: 7px;
+        height: 7px;
+        left: 0;
+        top: 0;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+    0% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+}
+
+header .navbar-brand {
+    margin-top: -7px;
+}
+
+header .navbar-brand img {
+    height: 17px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+header nav .nav-item.active a {
+    color: #007bff;
+}
+
+header .nav-link.btn {
+    padding: 5px 0;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar {
+    padding: 0.5rem 1rem;
+}
+
+.circle-pulse {
+    background: #0089ff;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    position: absolute;
+    right: 14px;
+    top: 10px;
+}
+
+.circle-pulse:after {
+    background-color: #0089ff;
+    content: '';
+    display: table;
+    border-radius: 50%;
+    position: absolute;
+    animation-name: pulse;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+.header-custom-icon .nav-link {
+    line-height: 0;
+}
+
+.header-custom-icon a:after,
+.header-img-icon a:after {
+    display: none;
+}
+
+.header-custom-icon i {
+    font-size: 20px;
+    color: #758696;
+}
+
+.header-img-icon .profile-nav .nav-item .nav-link {
+    font-size: 14px;
+    padding: 5px 20px;
+}
+
+.header-img-icon .profile-nav {
+    padding-bottom: 11px;
+}
+
+.header-img-icon .profile-nav .nav-item .nav-link:hover {
+    color: #18214d;
+    background-color: #f8f9fa;
+}
+
+.header-img-icon .profile-nav .nav-item .nav-link.red {
+    color: #f74745;
+}
+
+.header-img-icon .profile-nav .nav-item .nav-link.red:hover {
+    color: #f74745 !important;
+}
+
+.header-img-icon .profile-nav .nav-item .nav-link i {
+    margin-right: 15px;
+}
+
+.header-avatar-image {
+    width: 30px;
+}

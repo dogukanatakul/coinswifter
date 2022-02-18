@@ -1,0 +1,37 @@
+@media only screen and (max-width: 600px) {
+    .wallet {
+
+        .vs--single .vs__selected {
+            font-size: 11px;
+
+        }
+
+        .scroll-pages {
+            scroll-snap-type: x mandatory;
+            display: flex;
+            -webkit-overflow-scrolling: touch;
+            overflow-x: scroll;
+            width: 200%;
+
+            .page:first-child {
+                overflow-y: auto;
+            }
+
+            .page {
+                border-right: 1px solid white;
+                padding: 1rem;
+                min-width: 85vw;
+                height: 85vh;
+                scroll-snap-align: start;
+                text-align: center;
+                position: relative;
+                display: inline-block;
+                width: 50%;
+
+                thead, tbody, tfoot, tr, td, th {
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+}

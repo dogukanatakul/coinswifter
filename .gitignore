@@ -1,0 +1,13 @@
+/node_modules
+/public/hot
+/public/storage
+/public/assets
+/storage/*.key
+/vendor
+npm-debug.log
+/.idea
+/.vscode
+composer.lock
+yarn-error.log
+package-backup.json
+*.decode
