@@ -353,8 +353,8 @@ class Exchange extends Controller
 //        dd(json_encode($wallets));
 
 
-//        $bot = new \App\Jobs\NodeTransaction();
-        $bot = new \App\Jobs\TransferBSC();
+        $bot = new \App\Jobs\NodeTransaction();
+//        $bot = new \App\Jobs\TransferBSC();
         dd($bot->handle());
     }
 

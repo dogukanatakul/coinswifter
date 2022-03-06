@@ -21,9 +21,12 @@ class NodeTransaction extends Model
         'progress',
         'network',
         'status',
+        'processed',
     ];
 
     protected $casts = [
         'value' => 'float',
+        'processed' => 'integer',
+        'status' => 'integer',
     ];
 }

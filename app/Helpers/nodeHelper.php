@@ -15,8 +15,8 @@ if (!function_exists('nodeIPS')) {
                 "get_fee" => "/getFee/{amount}&{contract}",
                 "get_transaction_by_dex_hash" => "/getTransactionByDexHash/{dexhash}",
             ],
-            "bsc" => "http://127.0.0.1:2525//BSC_TESTNET",
-            "eth" => "http://127.0.0.1:2525//ETH_TESTNET",
+            "bsc" => "http://127.0.0.1:2525/BSC_TESTNET",
+            "eth" => "http://127.0.0.1:2525/ETH_TESTNET",
         ];
         return $list[$node];
     }

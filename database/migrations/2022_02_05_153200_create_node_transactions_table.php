@@ -24,7 +24,8 @@ class CreateNodeTransactionsTable extends Migration
             $table->decimal('value', 38, 22)->default(0);
             $table->string('progress'); // in - out
             $table->string('network'); // BSC - ETH
-            $table->tinyInteger('status')->default(0); // 0: bekliyor 1:okundu
+            $table->tinyInteger('status')->default(0); // 0: başarılı 1:başarısız
+            $table->tinyInteger('processed')->default(0); // 0: bekliyor 1:okundu
             $table->unique(['block_number', 'txh', 'from', 'to', 'value', 'network'], 'transaction_unique');
             $table->softDeletes();
             $table->timestamps();

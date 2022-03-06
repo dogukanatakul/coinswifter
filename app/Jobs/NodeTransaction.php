@@ -31,10 +31,9 @@ class NodeTransaction implements ShouldQueue
      */
     public function handle(): string
     {
-        if (empty($transaction = \App\Models\NodeTransaction::where('status', 0)->first())) {
+        if (empty($transaction = \App\Models\NodeTransaction::where('processed', 0)->first())) {
             return 'null';
         }
-
         $userCoin = \App\Models\UserCoin::with(['coin', 'user_wallet'])
             ->whereHas('coin', function ($q) use ($transaction) {
                 $q->whereHas('network', function ($q) use ($transaction) {
@@ -50,42 +49,74 @@ class NodeTransaction implements ShouldQueue
                 $q->whereIn('wallet', [$transaction->from, $transaction->to]);
             })
             ->first();
-        if (!empty($userCoin)) {
-            if ($transaction->progress === 'in') {
-                $userCoin->balance = $userCoin->balance + $transaction->value;
-                $userCoin->balance_pure = $userCoin->balance_pure + $transaction->value;
+        if (empty($userCoin)) {
+            $transaction->processed = 3;
+            $transaction->save();
+            return "no_action";
+        }
+
+        $baseCoin = false;
+        if (!empty($transaction->contract)) {
+            $baseCoin = \App\Models\UserCoin::with(['coin'])
+                ->whereHas('coin', function ($q) {
+                    $q->whereNull('contract');
+                })
+                ->where('user_wallets_id', $userCoin->user_wallets_id)
+                ->first();
+        }
+
+
+        if ($transaction->status == 0 && $transaction->progress === 'out') {
+            if ($baseCoin) {
+                $baseCoin->balance_pure = $baseCoin->balance_pure - $transaction->fee;
+                $baseCoin->save();
             } else {
-                $userCoin->balance_pure = $userCoin->balance_pure - $transaction->value;
-                $userWithdrawalWalletChild = UserWithdrawalWalletChild::with(['user_coin' => function ($q) use ($userWallet) {
-                    $q->with(['user_wallet' => function ($q) use ($userWallet) {
-                        $q->where('id', $userWallet->id);
-                    }]);
-                }, 'user_withdrawal_wallet' => function ($q) use ($transaction) {
-                    $q->where('to', $transaction->to);
-                }])
-                    ->whereHas('user_coin.user_wallet')
-                    ->whereHas('user_withdrawal_wallet')
-                    ->where('amount', $transaction->value)
-                    ->where('status', 0)
-                    ->whereNotNull('txh')
-                    ->first();
-                if (!empty($userWithdrawalWalletChild)) {
-                    $userWithdrawalWalletChild->status = 1;
-                    $userWithdrawalWalletChild->save();
-                    $userWithdrawalWallet = UserWithdrawalWallet::with(['user_withdrawal_wallet_child' => function ($q) {
-                        $q->where('status', 0);
-                    }])
-                        ->where('id', $userWithdrawalWalletChild->user_withdrawal_wallets_id)
-                        ->first();
-                    if ($userWithdrawalWallet->user_withdrawal_wallet_child->count() == 0) {
+                $userCoin->balance_pure = $userCoin->balance_pure - $transaction->fee;
+                $userCoin->save();
+            }
+            if (!empty($userWithdrawalWalletChild = UserWithdrawalWalletChild::where('txh', $transaction->txh)->first())) {
+                $userWithdrawalWalletChild->status = 3;
+                $userWithdrawalWalletChild->multiply = 1;
+                $userWithdrawalWalletChild->save();
+            }
+        } else if ($transaction->status == 1 && $transaction->progress === 'out') {
+            if ($baseCoin) {
+                $baseCoin->balance_pure = $baseCoin->balance_pure - $transaction->fee;
+                $baseCoin->save();
+            } else {
+                $userCoin->balance_pure = $userCoin->balance_pure - $transaction->fee;
+                $userCoin->save();
+            }
+            $userCoin->balance_pure = $userCoin->balance_pure - $transaction->value;
+            $userCoin->save();
+            if (!empty($userWithdrawalWalletChild = UserWithdrawalWalletChild::where('txh', $transaction->txh)->first())) {
+                $userWithdrawalWalletChild->status = 1;
+                $userWithdrawalWalletChild->save();
+                $userWithdrawalWalletChilds = UserWithdrawalWalletChild::where('user_withdrawal_wallets_id', $userWithdrawalWalletChild->user_withdrawal_wallets_id)
+                    ->whereIn('status', [0, 2, 3])
+                    ->get();
+                if ($userWithdrawalWalletChilds->count() == 0) {
+                    if (!empty($userWithdrawalWallet = UserWithdrawalWallet::where('id', $userWithdrawalWalletChild->user_withdrawal_wallets_id)->first())) {
+                        $userCoin->balance = $userCoin->balance - $userWithdrawalWallet->amount;
+                        $userCoin->save();
                         $userWithdrawalWallet->status = 1;
                         $userWithdrawalWallet->save();
                     }
                 }
             }
+        } else if ($transaction->status == 1 && $transaction->progress === 'in') {
+            $userCoin->balance_pure = $userCoin->balance_pure + $transaction->value;
+            $userCoin->balance = $userCoin->balance + $transaction->value;
             $userCoin->save();
         }
-        $transaction->status = 1;
+        if (!empty($userCoin)) {
+            if ($transaction->progress === 'in') {
+                $userCoin->balance = $userCoin->balance + $transaction->value;
+                $userCoin->balance_pure = $userCoin->balance_pure + $transaction->value;
+            }
+            $userCoin->save();
+        }
+        $transaction->processed = 1;
         $transaction->save();
         return "success";
     }

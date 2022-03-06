@@ -74,6 +74,13 @@ sudo /etc/init.d/nginx restart
 - 3: Değişim Eski
 - 4: Değişim Yeni
 
+## Transfer Durumu Yönetimi
+
+- 0: Bekliyor
+- 1: Onaylandı [Gönderildi]
+- 2: Transfer Başarılı
+- 3: Transfer Hatası
+
 ### Plugins
 
 

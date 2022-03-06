@@ -46,9 +46,19 @@ class TransferBSC implements ShouldQueue, ShouldBeUnique
      */
     public function handle(): bool
     {
-        $userWithdrawalWalletChild = UserWithdrawalWalletChild::with(['user_coin' => function ($q) {
-            $q->with(['user_wallet', 'coin']);
-        }, 'user_withdrawal_wallet'])
+        $userWithdrawalWalletChild = UserWithdrawalWalletChild::with([
+            'user_coin' => function ($q) {
+                $q->with([
+                    'user_wallet',
+                    'coin' => function ($q) {
+                        $q->with('network');
+                    }]);
+            },
+            'user_withdrawal_wallet'
+        ])
+            ->whereHas('user_coin.coin.network', function ($q) {
+                $q->where('short_name', 'BSC');
+            })
             ->whereIn('status', [0, 3])
             ->whereNull('txh')
             ->first();
@@ -64,7 +74,8 @@ class TransferBSC implements ShouldQueue, ShouldBeUnique
             'to_address' => $userWithdrawalWalletChild->user_withdrawal_wallet->to,
             'value' => $amount,
         ];
-        $transConf['multiply'] = intval($userWithdrawalWalletChild->multiply) + 1;
+        $transConf['multiply'] = $userWithdrawalWalletChild->multiply > 3 ? 1 : $userWithdrawalWalletChild->multiply + 1;
+        // eğer gas miktarı 3 katını geçmiş ise yeniden 1 katından başla.
         if (!empty($userWithdrawalWalletChild->user_coin->coin->contract)) {
             $transConf['contract_address'] = $userWithdrawalWalletChild->user_coin->coin->contract;
             $transConf['token_type'] = "bep20";
@@ -76,12 +87,10 @@ class TransferBSC implements ShouldQueue, ShouldBeUnique
             $userWithdrawalWalletChild->error_answer = $trans->content->message;
         } else {
             $userWithdrawalWalletChild->txh = $trans->content->txh;
-            $userWithdrawalWalletChild->status = 1;
+            $userWithdrawalWalletChild->status = 2;
         }
         $userWithdrawalWalletChild->multiply = $transConf['multiply'];
         $userWithdrawalWalletChild->save();
-
-        dd($userWithdrawalWalletChild, $transConf, $trans);
         return true;
     }
 }
