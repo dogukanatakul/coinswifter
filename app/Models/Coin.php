@@ -30,7 +30,6 @@ class Coin extends Model
 
     protected $hidden = [
         'networks_id',
-        'contract',
         'id',
         'created_at',
         'deleted_at',

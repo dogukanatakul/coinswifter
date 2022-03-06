@@ -17,6 +17,11 @@ class UserWithdrawalWalletChild extends Model
         'status',
         'txh',
         'error_answer',
+        'multiply'
+    ];
+
+    protected $casts = [
+        'multiply' => 'integer'
     ];
 
     public function user_coin(): \Illuminate\Database\Eloquent\Relations\HasOne

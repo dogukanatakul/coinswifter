@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Api\CoinActions;
 use App\Http\Controllers\Controller;
 use App\Jobs\WalletCreate;
 use App\Models\Coin;
+use App\Models\NodeTransaction;
 use App\Models\OrderTransaction;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\UserFavoritePairs;
 use App\Models\Parity;
 use App\Models\ParityPrice;
+use App\Models\UserWallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -344,62 +346,15 @@ class Exchange extends Controller
         }
     }
 
-    public function estimateGas($parity)
-    {
-        $orders = DB::select("SELECT t.id,t.miktar,c.cuzdan_kodu,pk.komisyon from emirler AS t
-    LEFT JOIN parite_ciftleri AS p ON p.id = t.parite_ciftleri_id
-    LEFT JOIN parite_komisyonlar AS pk ON p.id = pk.parite_ciftleri_id
-    LEFT JOIN cuzdan_tanim AS c ON c.coin_id = p.coin_id AND c.kullanici_id=t.kullanici_id
-    WHERE EXISTS (SELECT * FROM kullanici_tanim AS k WHERE t.kullanici_id = k.id AND k.islem_kilidi is null AND k.deleted_at is NULL)
-    AND t.parite_ciftleri_id = 2 AND t.miktar > 0
-    AND t.islem = 'sell'
-    AND t.miktar+coalesce((select SUM(t.miktar) from emirler
-                            WHERE t.miktar<t.miktar
-                            AND (t.miktar=t.miktar AND t.id < t.id)),0) <= 300
-                                    AND t.deleted_at is NULL
-    order BY t.fiyat ASC, t.microTime ASC");
-        $gasBnb = 0;
-        foreach ($orders as $order) {
-            $comission = floatval(($order->miktar / 100) * floatval($order->komisyon));
-            $amount = floatval($order->miktar - $comission);
-            if (($query = bscActions('fee_calculator', [
-                    'from_address' => $order->cuzdan_kodu,
-                    'to_address' => $order->cuzdan_kodu,
-                    'value' => $amount,
-
-                ])) && $query->status) {
-                $gasBnb += floatval($query->content->bnb);
-            } else {
-                return "ok";
-            }
-            if (($query = bscActions('fee_calculator', [
-                    'from_address' => $order->cuzdan_kodu,
-                    'to_address' => $order->cuzdan_kodu,
-                    'value' => $comission,
-
-                ])) && $query->status) {
-                $gasBnb += floatval($query->content->bnb);
-            } else {
-                return "ok";
-            }
-        }
-
-        dd($gasBnb);
-    }
-
 
     public function test()
     {
+//        $wallets = NodeTransaction::get()->toArray();
+//        dd(json_encode($wallets));
 
 
-//        $users = User::get()->makeVisible(['id']);
-//        foreach ($users as $user) {
-//            WalletCreate::dispatch($user->toArray(), 0);
-//        }
-//        dd("ok");
-
-        $bot = new \App\Jobs\NodeTransaction();
-//        $bot = new \App\Jobs\FakeOrder();
+//        $bot = new \App\Jobs\NodeTransaction();
+        $bot = new \App\Jobs\TransferBSC();
         dd($bot->handle());
     }
 

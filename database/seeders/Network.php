@@ -19,7 +19,7 @@ class Network extends Seeder
                 'name' => 'Binance Smart Chain',
                 'short_name' => 'BSC',
                 'connection' => '',
-                'fee' => 0.0003,
+                'fee' => 0.002,
             ],
             [
                 'name' => 'Ethereum',

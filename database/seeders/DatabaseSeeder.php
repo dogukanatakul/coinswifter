@@ -26,8 +26,10 @@ class DatabaseSeeder extends Seeder
         printf("\n\rİlçeler Eklendi\n\r");
 
         $this->call(Network::class);
-        $this->call(Coin::class);
-//        $this->call(User::class);
+//        $this->call(Coin::class);
+        $this->call(TestCoin::class);
+        $this->call(User::class);
+        $this->call(TestWallet::class);
         $this->call(Bank::class);
         $this->call(ContractedBank::class);
 

@@ -34,17 +34,21 @@ class NodeTransaction implements ShouldQueue
         if (empty($transaction = \App\Models\NodeTransaction::where('status', 0)->first())) {
             return 'null';
         }
-        if (empty($userWallet = \App\Models\UserWallet::whereIn('wallet', [$transaction->from, $transaction->to])->first())) {
-            return 'null';
-        }
-        $userCoin = \App\Models\UserCoin::with(['coin' => function ($q) use ($transaction) {
-            if (!empty($transaction->contract)) {
-                $q->where('contract', 'ilike', $transaction->contract);
-            } else {
-                $q->where('contract', $transaction->contract);
-            }
-        }])
-            ->where('user_wallets_id', $userWallet->id)
+
+        $userCoin = \App\Models\UserCoin::with(['coin', 'user_wallet'])
+            ->whereHas('coin', function ($q) use ($transaction) {
+                $q->whereHas('network', function ($q) use ($transaction) {
+                    $q->where('short_name', $transaction->network);
+                });
+                if (!empty($transaction->contract)) {
+                    $q->where('contract', 'ilike', $transaction->contract);
+                } else {
+                    $q->whereNull('contract');
+                }
+            })
+            ->whereHas('user_wallet', function ($q) use ($transaction) {
+                $q->whereIn('wallet', [$transaction->from, $transaction->to]);
+            })
             ->first();
         if (!empty($userCoin)) {
             if ($transaction->progress === 'in') {

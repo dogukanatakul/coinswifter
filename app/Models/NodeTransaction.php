@@ -16,6 +16,7 @@ class NodeTransaction extends Model
         'to',
         'contract',
         'txh',
+        'fee',
         'value',
         'progress',
         'network',

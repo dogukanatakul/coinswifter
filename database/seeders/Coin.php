@@ -328,9 +328,6 @@ class Coin extends Seeder
                 'commission' => $alterCoin['commission_out'],
                 'type' => 0,
             ]);
-
-
-
         }
 
     }

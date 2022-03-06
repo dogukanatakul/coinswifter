@@ -20,9 +20,10 @@ class CreateUserWithdrawalWalletChildren extends Migration
             $table->bigInteger('user_coins_id')->unsigned();
             $table->foreign('user_coins_id')->references('id')->on('user_coins');
             $table->decimal('amount', 38, 22);
+            $table->tinyInteger('multiply')->default(0);
             $table->tinyInteger('status')->default(0); // 0: bekliyor | 1: Gönderildi | 3: Hata
             $table->string('txh')->default(null)->nullable();
-            $table->json('error_answer')->default(null)->nullable();
+            $table->text('error_answer')->default(null)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

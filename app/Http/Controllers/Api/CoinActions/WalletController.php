@@ -68,7 +68,7 @@ class WalletController extends Controller
         }
         $transferAmount = $transferAmount - $transferCommission;
 
-//        DB::beginTransaction();
+        DB::beginTransaction();
         try {
             if (!empty($checkWallet = UserWallet::where('wallet', trim($request->wallet))->first())) {
                 $checkWallet = $checkWallet->users_id;
@@ -88,7 +88,6 @@ class WalletController extends Controller
             ]);
 
             if (empty($checkWallet)) {
-
                 // Fee Coin ID
                 $coinID = Coin::whereNull('contract')->where('networks_id', $coin['networks_id'])->first()->id;
                 $network = Network::where('id', $coin['networks_id'])->first();
@@ -169,34 +168,32 @@ class WalletController extends Controller
                         }
                     }
                 }
-                if ($transferAmount === 0) {
-                    foreach ($transferList as $item) {
-                        $userWithdrawalWalletChild = UserWithdrawalWalletChild::create([
-                            'user_withdrawal_wallets_id' => $insertUserWithdrawalWallet->id,
-                            'user_coins_id' => $item['id'],
-                            'amount' => $item['amount']
-                        ]);
-                        UserWithdrawalWalletFee::create([
-                            'user_withdrawal_wallets_id' => $insertUserWithdrawalWallet->id,
-                            'user_withdrawal_wallet_children_id' => $userWithdrawalWalletChild->id,
-                            'amount' => $network->fee,
-                        ]);
-                    }
-                }
-                if ($transferAmount > 0 && count($transferList) > 5) {
-                    $insertUserWithdrawalWallet->status = 3;
-                    $insertUserWithdrawalWallet->save();
+
+                foreach ($transferList as $item) {
+                    $userWithdrawalWalletChild = UserWithdrawalWalletChild::create([
+                        'user_withdrawal_wallets_id' => $insertUserWithdrawalWallet->id,
+                        'user_coins_id' => $item['id'],
+                        'amount' => $item['amount']
+                    ]);
+                    UserWithdrawalWalletFee::create([
+                        'user_withdrawal_wallets_id' => $insertUserWithdrawalWallet->id,
+                        'user_withdrawal_wallet_children_id' => $userWithdrawalWalletChild->id,
+                        'amount' => $network->fee,
+                    ]);
                 }
             }
 
-
-//            DB::commit();
+            if ($transferAmount > 0 && count($transferList) > 5) {
+                $insertUserWithdrawalWallet->status = 3;
+                $insertUserWithdrawalWallet->save();
+            }
+            DB::commit();
             return response()->json([
                 'status' => 'success',
                 'message' => __('api_messages.transfer_success_message')
             ]);
         } catch (\Throwable $e) {
-//            DB::rollBack();
+            DB::rollBack();
             report($e);
             return response()->json([
                 'status' => 'fail',

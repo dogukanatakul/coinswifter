@@ -110,7 +110,6 @@ export default {
                     required,
                 },
             }
-
         }
         if (this.code) {
             localRules.form.password = {
@@ -130,7 +129,7 @@ export default {
                 password: null,
             },
             code: false,
-            sendBtnMessage: $t('Sıfırlama Kodu Gönder'),
+            sendBtnMessage: this.$t('Sıfırlama Kodu Gönder'),
         };
     },
     methods: {
@@ -143,7 +142,7 @@ export default {
                     if (this.code) {
                         this.$router.push({name: 'wallets'})
                     }
-                    this.sendBtnMessage = $t('Tamamla')
+                    this.sendBtnMessage = this.$t('Tamamla')
                     this.code = true
                 } else if (response.status === 'fail') {
                     this.$notify({text: response.message, type: 'error'})

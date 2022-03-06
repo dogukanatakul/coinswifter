@@ -14,7 +14,7 @@
                                 {{ $t("Güvenilir kripto para alım-satım deneyimi") }}
                             </h5>
                             <h1 class="text-white">{{ $t("CoinSwifter.com'da!") }}</h1>
-                            <a class="text-decoration-none" href="https://broovs.io/IndexPage/file/Broovs_Whitepaper.pdf" title="Broovs White Paper" rel="noreferrer" target="_blank">
+                            <a class="text-decoration-none" href="https://broovs.io/whitepaper_tr.pdf" title="Broovs White Paper" rel="noreferrer" target="_blank">
                                 <p class="text-white">
                                     <b-icon icon="box-arrow-up-right" font-scale="0.5"></b-icon>
                                     {{ $t("CoinSwifter Borsası Broovs (BRS) Ekosistemi Projesidir.") }}

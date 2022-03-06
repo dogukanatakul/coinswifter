@@ -14,6 +14,7 @@ class UserWallet extends Model
         'users_id',
         'networks_id',
         'wallet',
+        'wallet_hex',
         'password',
     ];
 }

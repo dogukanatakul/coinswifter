@@ -20,6 +20,7 @@ class CreateNodeTransactionsTable extends Migration
             $table->string('to');
             $table->string('contract')->default(null)->nullable();
             $table->string('txh');
+            $table->decimal('fee', 38, 22)->default(0);
             $table->decimal('value', 38, 22)->default(0);
             $table->string('progress'); // in - out
             $table->string('network'); // BSC - ETH

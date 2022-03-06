@@ -20,6 +20,7 @@ class CreateUserWalletsTable extends Migration
             $table->bigInteger('networks_id')->unsigned();
             $table->foreign('networks_id')->references('id')->on('networks');
             $table->text('wallet')->nullable();
+            $table->text('wallet_hex')->nullable()->default(null);
             $table->unique(['users_id', 'networks_id'], 'wallet_unique');
             $table->text('password')->nullable();
             $table->softDeletes();
