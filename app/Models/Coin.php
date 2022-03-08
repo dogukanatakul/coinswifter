@@ -39,6 +39,10 @@ class Coin extends Model
     protected $casts = [
         'settings' => 'array',
         'promotion' => 'array',
+        'transfer_min' => 'string',
+        'transfer_max' => 'string',
+        'commission_in' => 'string',
+        'commission_out' => 'string',
     ];
 
     public function user_coin(): \Illuminate\Database\Eloquent\Relations\HasOne

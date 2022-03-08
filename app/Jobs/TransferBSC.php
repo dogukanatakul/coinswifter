@@ -5,13 +5,12 @@ namespace App\Jobs;
 use App\Models\UserWithdrawalWalletChild;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Ramsey\Uuid\Uuid;
 
-class TransferBSC implements ShouldQueue, ShouldBeUnique
+class TransferBSC implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -58,6 +57,9 @@ class TransferBSC implements ShouldQueue, ShouldBeUnique
         ])
             ->whereHas('user_coin.coin.network', function ($q) {
                 $q->where('short_name', 'BSC');
+            })
+            ->whereHas('user_withdrawal_wallet', function ($q) {
+                $q->whereNull('to_user_id');
             })
             ->whereIn('status', [0, 3])
             ->whereNull('txh')

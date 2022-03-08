@@ -24,6 +24,10 @@ class UserWithdrawal extends Model
         'deleted_at',
     ];
 
+    protected $casts = [
+        'amount' => 'string'
+    ];
+
     public function user_bank(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(UserBank::class, 'id', 'user_banks_id');

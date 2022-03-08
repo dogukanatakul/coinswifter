@@ -31,7 +31,7 @@ class NodeTransaction implements ShouldQueue
      */
     public function handle(): string
     {
-        if (empty($transaction = \App\Models\NodeTransaction::where('processed', 0)->first())) {
+        if (empty($transaction = \App\Models\NodeTransaction::where('processed', 0)->orderBy('id', 'DESC')->first())) {
             return 'null';
         }
         $userCoin = \App\Models\UserCoin::with(['coin', 'user_wallet'])
@@ -64,14 +64,12 @@ class NodeTransaction implements ShouldQueue
                 ->where('user_wallets_id', $userCoin->user_wallets_id)
                 ->first();
         }
-
-
         if ($transaction->status == 0 && $transaction->progress === 'out') {
             if ($baseCoin) {
-                $baseCoin->balance_pure = $baseCoin->balance_pure - $transaction->fee;
+                $baseCoin->balance_pure = \Litipk\BigNumbers\Decimal::fromString($baseCoin->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString($transaction->fee), null)->innerValue();
                 $baseCoin->save();
             } else {
-                $userCoin->balance_pure = $userCoin->balance_pure - $transaction->fee;
+                $userCoin->balance_pure = \Litipk\BigNumbers\Decimal::fromString($userCoin->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString($transaction->fee), null)->innerValue();
                 $userCoin->save();
             }
             if (!empty($userWithdrawalWalletChild = UserWithdrawalWalletChild::where('txh', $transaction->txh)->first())) {
@@ -80,14 +78,14 @@ class NodeTransaction implements ShouldQueue
                 $userWithdrawalWalletChild->save();
             }
         } else if ($transaction->status == 1 && $transaction->progress === 'out') {
+            // HATA OLABİLİR
             if ($baseCoin) {
-                $baseCoin->balance_pure = $baseCoin->balance_pure - $transaction->fee;
+                $baseCoin->balance_pure = \Litipk\BigNumbers\Decimal::fromString($baseCoin->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString($transaction->fee), null)->innerValue();
                 $baseCoin->save();
+                $userCoin->balance_pure = \Litipk\BigNumbers\Decimal::fromString($userCoin->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString($transaction->value), null)->innerValue();
             } else {
-                $userCoin->balance_pure = $userCoin->balance_pure - $transaction->fee;
-                $userCoin->save();
+                $userCoin->balance_pure = \Litipk\BigNumbers\Decimal::fromString($userCoin->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($transaction->value)->add(\Litipk\BigNumbers\Decimal::fromString($transaction->fee), null)->innerValue()), null)->innerValue();
             }
-            $userCoin->balance_pure = $userCoin->balance_pure - $transaction->value;
             $userCoin->save();
             if (!empty($userWithdrawalWalletChild = UserWithdrawalWalletChild::where('txh', $transaction->txh)->first())) {
                 $userWithdrawalWalletChild->status = 1;
@@ -97,7 +95,7 @@ class NodeTransaction implements ShouldQueue
                     ->get();
                 if ($userWithdrawalWalletChilds->count() == 0) {
                     if (!empty($userWithdrawalWallet = UserWithdrawalWallet::where('id', $userWithdrawalWalletChild->user_withdrawal_wallets_id)->first())) {
-                        $userCoin->balance = $userCoin->balance - $userWithdrawalWallet->amount;
+                        $userCoin->balance = \Litipk\BigNumbers\Decimal::fromString($userCoin->balance)->sub(\Litipk\BigNumbers\Decimal::fromString($userWithdrawalWallet->amount), null)->innerValue();
                         $userCoin->save();
                         $userWithdrawalWallet->status = 1;
                         $userWithdrawalWallet->save();
@@ -105,15 +103,8 @@ class NodeTransaction implements ShouldQueue
                 }
             }
         } else if ($transaction->status == 1 && $transaction->progress === 'in') {
-            $userCoin->balance_pure = $userCoin->balance_pure + $transaction->value;
-            $userCoin->balance = $userCoin->balance + $transaction->value;
-            $userCoin->save();
-        }
-        if (!empty($userCoin)) {
-            if ($transaction->progress === 'in') {
-                $userCoin->balance = $userCoin->balance + $transaction->value;
-                $userCoin->balance_pure = $userCoin->balance_pure + $transaction->value;
-            }
+            $userCoin->balance_pure = \Litipk\BigNumbers\Decimal::fromString($userCoin->balance_pure)->add(\Litipk\BigNumbers\Decimal::fromString($transaction->value), null)->innerValue();
+            $userCoin->balance = \Litipk\BigNumbers\Decimal::fromString($userCoin->balance)->add(\Litipk\BigNumbers\Decimal::fromString($transaction->value), null)->innerValue();
             $userCoin->save();
         }
         $transaction->processed = 1;

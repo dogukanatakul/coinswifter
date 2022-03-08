@@ -181,12 +181,12 @@ class WalletController extends Controller
                         'amount' => $network->fee,
                     ]);
                 }
+                if ($transferAmount > 0 && count($transferList) > 5) {
+                    $insertUserWithdrawalWallet->status = 3;
+                    $insertUserWithdrawalWallet->save();
+                }
             }
 
-            if ($transferAmount > 0 && count($transferList) > 5) {
-                $insertUserWithdrawalWallet->status = 3;
-                $insertUserWithdrawalWallet->save();
-            }
             DB::commit();
             return response()->json([
                 'status' => 'success',
@@ -279,10 +279,10 @@ class WalletController extends Controller
 
             return collect($list)->mapWithKeys(function ($data) use ($hidden, $user) {
                 $newData = [];
-                $newData['transfer_min'] = floatval($data->transfer_min);
-                $newData['transfer_max'] = floatval($data->transfer_max);
-                $newData['commission_in'] = floatval($data->commission_in);
-                $newData['commission_out'] = floatval($data->commission_out);
+                $newData['transfer_min'] = \Litipk\BigNumbers\Decimal::fromString($data->transfer_min)->innerValue();
+                $newData['transfer_max'] = \Litipk\BigNumbers\Decimal::fromString($data->transfer_max)->innerValue();
+                $newData['commission_in'] = \Litipk\BigNumbers\Decimal::fromString($data->commission_in)->innerValue();
+                $newData['commission_out'] = \Litipk\BigNumbers\Decimal::fromString($data->commission_out)->innerValue();
                 $newData['commission_type'] = $data->commission_type;
                 $newData['contract'] = empty($data->contract) ? false : $data->contract;
                 if ($hidden) {
@@ -291,7 +291,7 @@ class WalletController extends Controller
                     $newData['networks_id'] = $data->networks_id;
                 }
                 $newData['balance'] = $data->user_coin->balance;
-                $newData['locked'] = 0;
+                $newData['locked'] = '0';
                 $newData['symbol'] = $data->symbol;
                 $newData['name'] = $data->name;
                 $newData['price'] = 0;
@@ -300,11 +300,13 @@ class WalletController extends Controller
                 if (!empty($data->user_coin->user_withdrawal_wallet)) {
                     foreach ($data->user_coin->user_withdrawal_wallet as $user_withdrawal_wallet) {
                         if ($user_withdrawal_wallet->status === 0) {
-                            $newData['locked'] += $user_withdrawal_wallet->amount;
+                            $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal_wallet->amount), null)->innerValue();
                         }
                         $newData['user_withdrawal_wallet'][] = [
                             'uuid' => $user_withdrawal_wallet->uuid,
                             'amount' => $user_withdrawal_wallet->amount,
+                            'send_amount' => $user_withdrawal_wallet->send_amount,
+                            'commission' => $user_withdrawal_wallet->commission,
                             'to' => $user_withdrawal_wallet->to,
                             'status' => $user_withdrawal_wallet->status === 0 ? __('api_messages.waiting') : __('api_messages.approved'),
                             'created_at' => $user_withdrawal_wallet->created_at->format('Y-m-d H:i:s')
@@ -317,7 +319,7 @@ class WalletController extends Controller
                 if (!empty($data->user_coin->user_withdrawal)) {
                     foreach ($data->user_coin->user_withdrawal as $user_withdrawal) {
                         if ($user_withdrawal->status === 0) {
-                            $newData['locked'] += $user_withdrawal->amount;
+                            $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal->amount), null)->innerValue();
                         }
                         $newData['user_withdrawal'][] = [
                             'amount' => $user_withdrawal->amount,
@@ -342,7 +344,8 @@ class WalletController extends Controller
                             $newData['is_deleted'] = !empty($item->deleted_at);
                             return $newData;
                         })->toArray());
-                        $newData['locked'] += $parity->orders->sum('amount');
+                        $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString($parity->orders->sum('amount')), null)->innerValue();
+
                     }
                 }
 
@@ -358,7 +361,7 @@ class WalletController extends Controller
                             $newData['is_deleted'] = !empty($item->deleted_at);
                             return $newData;
                         })->toArray());
-                        $newData['locked'] += $parity->orders->sum('total');
+                        $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString($parity->orders->sum('total')), null)->innerValue();
                     }
                 }
 
@@ -379,7 +382,7 @@ class WalletController extends Controller
                         })->first()->value;
                     }
                 }
-                $newData['balance'] = $newData['balance'] - $newData['locked'];
+                $newData['balance'] = \Litipk\BigNumbers\Decimal::fromString($newData['balance'])->sub(\Litipk\BigNumbers\Decimal::fromString($newData['locked']), null)->innerValue();
                 return [$data->symbol => $newData];
             })->toArray();
         } catch (\Exception $e) {

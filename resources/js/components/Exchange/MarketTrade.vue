@@ -565,10 +565,21 @@ export default {
                     form.price = this.marketStatus.sell_price
                 }
             }
+
+            // Big Decimal Factor
+            let postForm = {}
+            for (const [key, value] of Object.entries(form)) {
+                if (key == 'price' || key == 'amount' || key == 'total') {
+                    postForm[key] = value.toString()
+                } else {
+                    postForm[key] = value
+                }
+            }
+            //\ Big Decimal Factor
             await restAPI.getData({Action: "order"}, {
                 type: type,
                 action: action,
-                form: form,
+                form: postForm,
                 selectedCoin: this.selectedCoin,
             }).then((response) => {
                 if (response.status === "success") {

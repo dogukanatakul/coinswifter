@@ -19,6 +19,7 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
+        "litipk/php-bignumbers": "^0.8.6",
         "monicahq/laravel-cloudflare": "^2.0",
         "nicmart/string-template": "^0.1.2",
         "predis/predis": "^1.1",

@@ -148,7 +148,7 @@ class Exchange implements ShouldQueue
 
         // alan kişi market fiyatından almak istiyorsa hesabından kesilen tutar kadar ücret öder.
         if ($buy->type === "market") {
-            $buyAmount = $buy->total / $lastPrice;
+            $buyAmount = \Litipk\BigNumbers\Decimal::fromString($buy->total)->div(\Litipk\BigNumbers\Decimal::fromString($lastPrice), null)->innerValue();
         } else {
             $buyAmount = $buy->amount;
         }
@@ -160,13 +160,13 @@ class Exchange implements ShouldQueue
         DB::beginTransaction();
         $this->logs[] = "beginTransaction";
         //\
-        if (($total = (floatval($buyAmount) - floatval($sell->amount))) > 0) {
+        if (($total = (\Litipk\BigNumbers\Decimal::fromString($buyAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($sell->amount), null)->innerValue())) > 0) {
             $this->logs[] = "Alanın emir miktarı satandan büyük";
-            $totalAmount = $sell->amount;
+            $totalAmount = \Litipk\BigNumbers\Decimal::fromString($sell->amount)->innerValue();
             try {
                 $buy->update([
-                    'amount' => $total,
-                    'total' => $total * $lastPrice
+                    'amount' => \Litipk\BigNumbers\Decimal::fromString($total)->innerValue(),
+                    'total' => \Litipk\BigNumbers\Decimal::fromString($total)->mul(\Litipk\BigNumbers\Decimal::fromString($lastPrice), null)->innerValue()
                 ]);
                 $this->logs[] = "Alanın emri " . $total . " olarak güncellendi";
                 $sell->update([
@@ -183,13 +183,13 @@ class Exchange implements ShouldQueue
             }
 
             $this->logs[] = "Satanın emri kapatıldı";
-        } else if (($total = (floatval($sell->amount) - floatval($buyAmount))) > 0) {
+        } else if (($total = (\Litipk\BigNumbers\Decimal::fromString($sell->amount)->sub(\Litipk\BigNumbers\Decimal::fromString($buyAmount), null)->innerValue())) > 0) {
             $this->logs[] = "Satanın emir amountı alandan büyük";
             $totalAmount = $buyAmount;
             try {
                 $sell->update([
-                    'amount' => $total,
-                    'total' => $total * $lastPrice
+                    'amount' => \Litipk\BigNumbers\Decimal::fromString($total)->innerValue(),
+                    'total' => \Litipk\BigNumbers\Decimal::fromString($total)->div(\Litipk\BigNumbers\Decimal::fromString($lastPrice), null)->innerValue(),
                 ]);
                 $buy->update([
                     'amount' => 0,
@@ -232,12 +232,12 @@ class Exchange implements ShouldQueue
 
 
         $lastCalc = [];
-        $lastCalc["buy_commission"] = floatval(($totalAmount / 100) * floatval($parityCommission->commission));
-        $lastCalc["buy"] = floatval($totalAmount - $lastCalc['buy_commission']);
-        $lastCalc['buy_total'] = floatval($lastCalc['buy_commission'] + $lastCalc['buy']);
-        $lastCalc['sell_commission'] = floatval((($totalAmount * $lastPrice) / 100) * floatval($parityCommission->commission));
-        $lastCalc['sell'] = floatval(($totalAmount * $lastPrice)) - $lastCalc['sell_commission'];
-        $lastCalc['sell_total'] = floatval($lastCalc['sell_commission'] + $lastCalc['sell']);
+        $lastCalc["buy_commission"] = \Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($totalAmount)->div(\Litipk\BigNumbers\Decimal::fromString("100"), null)->innerValue())->mul(\Litipk\BigNumbers\Decimal::fromString($parityCommission->commission), null)->innerValue();
+        $lastCalc["buy"] = \Litipk\BigNumbers\Decimal::fromString($totalAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($lastCalc['buy_commission']), null)->innerValue();
+        $lastCalc['buy_total'] = \Litipk\BigNumbers\Decimal::fromString($lastCalc['buy_commission'])->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['buy']), null)->innerValue();
+        $lastCalc['sell_commission'] = \Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($totalAmount)->mul(\Litipk\BigNumbers\Decimal::fromString($lastPrice), null)->innerValue())->div(\Litipk\BigNumbers\Decimal::fromString("100"), null)->innerValue())->mul(\Litipk\BigNumbers\Decimal::fromString($parityCommission->commission), null)->innerValue();
+        $lastCalc['sell'] = \Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($totalAmount)->mul(\Litipk\BigNumbers\Decimal::fromString($lastPrice), null)->innerValue())->sub(\Litipk\BigNumbers\Decimal::fromString($lastCalc['sell_commission']), null)->innerValue();
+        $lastCalc['sell_total'] = \Litipk\BigNumbers\Decimal::fromString($lastCalc['sell_commission'])->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['sell']), null)->innerValue();
 
 
         $this->logs[] = "Hesaplar: " . implode("|", $lastCalc);
@@ -270,16 +270,19 @@ class Exchange implements ShouldQueue
              *  wallet : istediği
              *  sourceWallet : karşılığında verdiği
              */
-            $buySourceWallet->balance = $buySourceWallet->balance - ($lastCalc['sell'] + $lastCalc['sell_commission']);
+
+
+            $buySourceWallet->balance = \Litipk\BigNumbers\Decimal::fromString($buySourceWallet->balance)->sub(\Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($lastCalc['sell'])->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['sell_commission']), null)->innerValue()), null)->innerValue();
             $buySourceWallet->save();
 
-            $buyWallet->balance = $buyWallet->balance + $lastCalc['buy'];
+            $buyWallet->balance = \Litipk\BigNumbers\Decimal::fromString($buyWallet->balance)->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['buy']), null)->innerValue();
             $buyWallet->save();
 
-            $sellSourceWallet->balance = $sellSourceWallet->balance - ($lastCalc['buy'] + $lastCalc['buy_commission']);
+
+            $sellSourceWallet->balance = \Litipk\BigNumbers\Decimal::fromString($sellSourceWallet->balance)->sub(\Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($lastCalc['buy'])->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['buy_commission']), null)->innerValue()), null)->innerValue();
             $sellSourceWallet->save();
 
-            $sellWallet->balance = $sellWallet->balance + $lastCalc['sell'];
+            $sellWallet->balance = \Litipk\BigNumbers\Decimal::fromString($sellWallet->balance)->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['sell']), null)->innerValue();
             $sellWallet->save();
 
             // Alıcıya gelen para birimi komisyonu
@@ -310,7 +313,7 @@ class Exchange implements ShouldQueue
                 'seller_user_id' => $sell->users_id,
                 'seller_order_id' => $sell->id,
                 'price' => $lastPrice,
-                'amount' => ($lastCalc['buy'] + $lastCalc['buy_commission']),
+                'amount' => \Litipk\BigNumbers\Decimal::fromString($lastCalc['buy'])->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['buy_commission']), null)->innerValue(),
                 'type' => $buy->type,
                 'microtime' => str_replace(".", "", microtime(true)),
             ]);

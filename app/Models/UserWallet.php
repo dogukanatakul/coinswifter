@@ -17,4 +17,15 @@ class UserWallet extends Model
         'wallet_hex',
         'password',
     ];
+
+    public function user_coin(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(UserCoin::class, 'user_wallets_id', 'id');
+    }
+
+    public function network(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Network::class, 'id', 'networks_id');
+    }
+
 }

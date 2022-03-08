@@ -19,8 +19,8 @@ class UserCoin extends Model
     ];
 
     protected $casts = [
-        'balance_pure' => 'float',
-        'balance' => 'float',
+        'balance_pure' => 'string',
+        'balance' => 'string',
     ];
 
     public function user_coin(): \Illuminate\Database\Eloquent\Relations\HasOne

@@ -9,12 +9,14 @@ use App\Models\NodeTransaction;
 use App\Models\OrderTransaction;
 use App\Models\Order;
 use App\Models\User;
+use App\Models\UserCoin;
 use App\Models\UserFavoritePairs;
 use App\Models\Parity;
 use App\Models\ParityPrice;
 use App\Models\UserWallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Litipk\BigNumbers\Decimal;
 
 
 class Exchange extends Controller
@@ -228,7 +230,6 @@ class Exchange extends Controller
                     ->orderBy('id', 'DESC')
                     ->get()
                     ->toArray();
-
                 if (count($lastOperations) === 0 && $status['price'] > 0) {
                     $lastOperations = [];
                     for ($i = 1; $i <= 13; $i++) {
@@ -255,24 +256,31 @@ class Exchange extends Controller
                             'locked' => $wallet[$coin]['locked'],
                         ],
                     ];
-                    $myOrders = Parity::with(['orders' => function ($query) {
-                        $query->with(['buying_trades', 'selling_trades'])
-                            ->where('users_id', $this->user->id)->orderBy('id', 'DESC')
-                            ->withTrashed();
-                    }, 'source', 'coin'])->find($checkParite->id);
+                    $myOrders = Parity::with([
+                        'orders' => function ($query) {
+                            $query->with([
+                                'buying_trades',
+                                'selling_trades'
+                            ])
+                                ->where('users_id', $this->user->id)->orderBy('id', 'DESC')
+                                ->withTrashed();
+                        },
+                        'source',
+                        'coin'
+                    ])->find($checkParite->id);
 
                     if (empty($myOrders) || $myOrders->orders->count() == 0) {
                         $myOrders = false;
                     } else {
                         $myOrders = $myOrders->orders->map(function ($data) {
                             $newData = $data->toArray();
-                            $newData['price'] = priceFormat($newData['price'], "float");
-                            $newData['amount'] = priceFormat($newData['amount'], "float");
-                            $newData['trigger'] = priceFormat($newData['trigger'], "float");
+                            $newData['price'] = rtrim(rtrim($newData['price'], 0), '.');
+                            $newData['amount'] = rtrim(rtrim($newData['amount'], 0), '.');
+                            $newData['trigger'] = rtrim(rtrim($newData['trigger'], 0), '.');
                             $newData['created_at'] = $data->created_at->format('Y-m-d H:i');
                             $newData['operation'] = __('api_messages.' . $data->process);
                             $newData['finished'] = $data->buying_trades->sum('amount') + $data->selling_trades->sum('amount');
-                            $newData['percent'] = priceFormat((1 - ($newData['amount'] / ($newData['finished'] + $newData['amount']))) * 100, "float", 2);
+                            $newData['percent'] = priceFormat((1 - (floatval($newData['amount']) / (floatval($newData['finished']) + floatval($newData['amount'])))) * 100, "float", 2);
                             $newData['is_deleted'] = !empty($data->deleted_at);
                             return $newData;
                         })->toArray();
@@ -349,13 +357,39 @@ class Exchange extends Controller
 
     public function test()
     {
+//        dd(Decimal::fromString("2.19994364799943648", null)->innerValue());
+
+        dd(\Litipk\BigNumbers\Decimal::fromString('2.19994364799943648')->div(\Litipk\BigNumbers\Decimal::fromString("1"), null)->innerValue());
+//
+//
+//        $randWalletControl = UserWallet::with([
+//            'user_coin' => function ($q) {
+//                $q->with([
+//                    'coin'
+//                ]);
+//            }
+//        ])
+//            ->inRandomOrder()
+//            ->first();
+//        dd($randWalletControl->toArray());
+
+
+        UserCoin::where('coins_id', 1)->update([
+            'balance' => 10000000,
+            'balance_pure' => 0,
+        ]);
+        dd("ok");
+//        NodeTransaction::where('value', '>', 0)->update([
+//            'processed' => 0,
+//        ]);
+//        dd("ok");
 //        $wallets = NodeTransaction::get()->toArray();
 //        dd(json_encode($wallets));
 
 
-        $bot = new \App\Jobs\NodeTransaction();
-//        $bot = new \App\Jobs\TransferBSC();
-        dd($bot->handle());
+//        $bot = new \App\Jobs\NodeTransaction();
+////        $bot = new \App\Jobs\TransferETH();
+//        dd($bot->handle());
     }
 
 }

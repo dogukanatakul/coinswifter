@@ -2,7 +2,7 @@
     <b-card v-if="is_bank!==null">
         <template #header>
             <div class="float-start">
-                <h5>{{ walletSelect.name }} {{ walletAction === 'deposit' ? $t("Yatırma") : $t("Çekim") }}</h5>
+                <h5>{{ walletSelect.name }} {{ walletAction === 'deposit' ? $t("Yatırma") : $t("Çekme") }}</h5>
                 <span>
                         <label>{{ $t("Toplam Varlık") }}</label>
                         <label class="mx-2">{{ parseFloat(walletSelect.total_balance) }} {{ walletSelect.symbol }}</label>

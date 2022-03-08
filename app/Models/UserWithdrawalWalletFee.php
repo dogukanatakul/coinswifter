@@ -18,6 +18,6 @@ class UserWithdrawalWalletFee extends Model
     ];
 
     protected $casts = [
-        'amount' => 'float',
+        'amount' => 'string',
     ];
 }

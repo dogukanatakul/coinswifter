@@ -151,6 +151,8 @@
             <thead>
             <tr>
                 <th scope="col">{{ $t('Miktar') }}</th>
+                <th scope="col">{{ $t('Gönderilen Miktar') }}</th>
+                <th scope="col">{{ $t('Kesilen Komisyon') }}</th>
                 <th scope="col">{{ $t('Alıcı Cüzdan') }}</th>
                 <th scope="col">{{ $t('Tarih') }}</th>
                 <th scope="col">{{ $t('Durum') }}</th>
@@ -160,6 +162,8 @@
             <tbody>
             <tr v-for="(item, key) in walletSelect.user_withdrawal_wallet" :key="key">
                 <th scope="row">{{ parseFloat(item.amount) }}</th>
+                <th scope="row">{{ parseFloat(item.send_amount) }}</th>
+                <th scope="row">{{ parseFloat(item.commission) }}</th>
                 <td>{{ item.to }}</td>
                 <td>{{ item.created_at }}</td>
                 <td>{{ item.status }}</td>

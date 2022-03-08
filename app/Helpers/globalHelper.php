@@ -91,5 +91,62 @@ if (!function_exists('kyc_keys')) {
     }
 }
 
+if (!function_exists('format_float')) {
+    function format_float(
+        $value
+    )
+    {
+        $phpPrecision = 32;
 
+        if ($value == 0.0)  return '0.0';
 
+        if (log10(abs($value)) < $phpPrecision) {
+
+            $decimalDigits = max(
+                ($phpPrecision - 1) - floor(log10(abs($value))),
+                0
+            );
+
+            $formatted = number_format($value, $decimalDigits);
+
+            // Trim excess 0's
+            $formatted = preg_replace('/(\.[0-9]+?)0*$/', '$1', $formatted);
+
+            return $formatted;
+
+        }
+
+        $formattedWithoutCommas = number_format($value, 0, '.', '');
+
+        $sign = (strpos($formattedWithoutCommas, '-') === 0) ? '-' : '';
+
+        // Extract the unsigned integer part of the number
+        preg_match('/^-?(\d+)(\.\d+)?$/', $formattedWithoutCommas, $components);
+        $integerPart = $components[1];
+
+        // Split into significant and insignificant digits
+        $significantDigits   = substr($integerPart, 0, $phpPrecision);
+        $insignificantDigits = substr($integerPart, $phpPrecision);
+
+        // Round the significant digits (using the insignificant digits)
+        $fractionForRounding = (float) ('0.' . $insignificantDigits);
+        $rounding            = (int) round($fractionForRounding);  // Either 0 or 1
+        $rounded             = $significantDigits + $rounding;
+
+        // Pad on the right with zeros
+        $formattingString = '%0-' . strlen($integerPart) . 's';
+        $formatted        = sprintf($formattingString, $rounded);
+
+        // Insert a comma between every group of thousands
+        $formattedWithCommas = strrev(
+            rtrim(
+                chunk_split(
+                    strrev($formatted), 3, ','
+                ),
+                ','
+            )
+        );
+
+        return $sign . $formattedWithCommas;
+    }
+}

@@ -23,6 +23,13 @@ class Order extends Model
         'microtime',
     ];
 
+    protected $casts = [
+        'trigger' => 'string',
+        'amount' => 'string',
+        'price' => 'string',
+        'total' => 'string',
+    ];
+
     protected $hidden = [
         'id',
         'parities_id',

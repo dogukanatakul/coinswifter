@@ -23,6 +23,11 @@ class UserWithdrawalWallet extends Model
         'status',
     ];
 
+    protected $casts = [
+        'amount' => 'string',
+        'send_amount' => 'string',
+    ];
+
     protected $hidden = [
         'users_id',
         'to_user_id',

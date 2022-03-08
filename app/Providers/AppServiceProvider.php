@@ -46,12 +46,14 @@ class AppServiceProvider extends ServiceProvider
         $param = json_decode(str_replace("\u0000", "", json_encode($param)), true);
         if ($jobName === 'App\Jobs\CurrentPrices') {
             \App\Jobs\CurrentPrices::dispatch()->delay(now()->addMinutes(($fail ? 5 * 2 : 5)));
-        } else if ($jobName === 'App\Jobs\TransferDexchain') {
-            \App\Jobs\TransferDexchain::dispatch()->delay(now()->addMinutes(($fail ? 5 * 2 : 5)));
         } else if ($jobName === 'App\Jobs\TransferBSC') {
-            \App\Jobs\TransferBSC::dispatch()->delay(now()->addMinutes(($fail ? 5 * 2 : 5)));
+            \App\Jobs\TransferBSC::dispatch()->delay(now()->addMinutes(($fail ? 1 : 0.7)));
         } else if ($jobName === 'App\Jobs\TransferETH') {
-            \App\Jobs\TransferETH::dispatch()->delay(now()->addMinutes(($fail ? 5 * 2 : 5)));
+            \App\Jobs\TransferETH::dispatch()->delay(now()->addMinutes(($fail ? 1 : 0.7)));
+        } else if ($jobName === 'App\Jobs\TransferDB') {
+            \App\Jobs\TransferDB::dispatch()->delay(now()->addMinutes(($fail ? 0.5 * 2 : 0.5)));
+        } else if ($jobName === 'App\Jobs\NodeTransaction') {
+            \App\Jobs\NodeTransaction::dispatch()->delay(now()->addMinutes(($fail ? 1 : 0.7)));
         } else if ($jobName === 'App\Jobs\Exchange') {
             \App\Jobs\Exchange::dispatch()->delay(now()->addMinutes(($fail ? 10 : 0)));
         } else if ($jobName === 'App\Jobs\CheckBanks') {

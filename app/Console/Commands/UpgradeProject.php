@@ -39,28 +39,33 @@ class UpgradeProject extends Command
      */
     public function handle(): int
     {
-        $returnVar = NULL;
-        $output = NULL;
-        exec("service supervisord stop", $output, $returnVar);
+        if (env('APP_ENV') === 'production') {
+            $returnVar = NULL;
+            $output = NULL;
+            exec("service supervisord stop", $output, $returnVar);
+        }
+        Artisan::call('queue:flush');
+        Artisan::call('queue:restart');
         Artisan::call('queue:clear', [
             '--force' => true,
         ]);
-        Artisan::call('queue:flush');
-        Artisan::call('queue:restart');
         Artisan::call('cache:clear');
         Artisan::call('config:clear');
         Artisan::call('route:clear');
         DB::table('jobs')->truncate();
         DB::table('failed_jobs')->truncate();
-        \App\Jobs\Exchange::dispatch();
         \App\Jobs\ParityPrice::dispatch();
         \App\Jobs\CurrentPrices::dispatch();
-        \App\Jobs\TransferDexchain::dispatch();
+        \App\Jobs\NodeTransaction::dispatch();
         \App\Jobs\TransferBSC::dispatch();
         \App\Jobs\TransferETH::dispatch();
-        \App\Jobs\CheckBanks::dispatch();
-        exec("service supervisord start", $output, $returnVar);
-        printf("Proje kaynakları yenilendi.\n\r");
+        \App\Jobs\TransferDB::dispatch();
+        \App\Jobs\Exchange::dispatch();
+//        \App\Jobs\CheckBanks::dispatch();
+        if (env('APP_ENV') === 'production') {
+            exec("service supervisord start", $output, $returnVar);
+            printf("Proje kaynakları yenilendi.\n\r");
+        }
         return Command::SUCCESS;
     }
 }

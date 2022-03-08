@@ -64,9 +64,9 @@ class CoinsController extends Controller
             'type' => 'required|filled|string',
             'action' => 'required|filled|string',
             'form' => 'required|filled',
-            'form.amount' => 'required|filled|numeric',
+            'form.amount' => 'required|filled|string',
             'form.percent' => 'required|filled|integer',
-            'form.total' => 'required|filled|numeric',
+            'form.total' => 'required|filled|string',
             'selectedCoin.source.symbol' => 'required|filled|string|exists:App\Models\Coin,symbol',
             'selectedCoin.coin.symbol' => 'required|filled|string|exists:App\Models\Coin,symbol',
         ]);
@@ -118,9 +118,9 @@ class CoinsController extends Controller
             }
             // Bakiye yeterlilik kontrolü
             if ($request->action === 'sell') {
-                $totalOrderAmount = floatval($request->form['amount']);
+                $totalOrderAmount = \Litipk\BigNumbers\Decimal::fromString($request->form['amount'])->innerValue();
             } else if ($request->action === 'buy') {
-                $totalOrderAmount = floatval(floatval($request->form['amount']) * floatval($request->form['price']));
+                $totalOrderAmount = \Litipk\BigNumbers\Decimal::fromString($request->form['amount'])->mul(\Litipk\BigNumbers\Decimal::fromString($request->form['price']), null)->innerValue();
             } else {
                 return response()->json([
                     'status' => 'fail',
@@ -138,10 +138,10 @@ class CoinsController extends Controller
                 Order::create([
                     'parities_id' => $parityControl->id,
                     'users_id' => $this->user->id,
-                    'price' => floatval($request->form['price']),
-                    'amount' => floatval($request->form['amount']),
-                    'percent' => floatval($request->form['percent']),
-                    'total' => floatval($request->form['total']),
+                    'price' => \Litipk\BigNumbers\Decimal::fromString($request->form['price'])->innerValue(),
+                    'amount' => \Litipk\BigNumbers\Decimal::fromString($request->form['amount'])->innerValue(),
+                    'percent' => \Litipk\BigNumbers\Decimal::fromString($request->form['percent'])->innerValue(),
+                    'total' => \Litipk\BigNumbers\Decimal::fromString($request->form['total'])->innerValue(),
                     'microtime' => str_replace(".", "", microtime(true)),
                     'type' => $request->type,
                     'process' => $request->action
@@ -161,12 +161,12 @@ class CoinsController extends Controller
         } else if ($request->type == "market") {
             // Bakiye yeterlilik kontrolü
             if ($request->action == 'sell') {
-                $totalOrderAmount = floatval($request->form['amount']);
+                $totalOrderAmount = \Litipk\BigNumbers\Decimal::fromString($request->form['amount'])->innerValue();
             } else {
-                $totalOrderAmount = floatval($request->form['total']);
+                $totalOrderAmount = \Litipk\BigNumbers\Decimal::fromString($request->form['total'])->innerValue();
             }
 
-            if (floatval($wallet['balance']) < $totalOrderAmount) {
+            if (\Litipk\BigNumbers\Decimal::fromString($wallet['balance'])->innerValue() < $totalOrderAmount) {
                 return response()->json([
                     'status' => 'fail',
                     'message' => __('api_messages.transfer_fail_balance_message')
@@ -176,9 +176,9 @@ class CoinsController extends Controller
                 Order::create([
                     'parities_id' => $parityControl->id,
                     'users_id' => $this->user->id,
-                    'amount' => floatval($request->form['amount']),
-                    'percent' => floatval($request->form['percent']),
-                    'total' => floatval($request->form['total']),
+                    'amount' => \Litipk\BigNumbers\Decimal::fromString($request->form['amount'])->innerValue(),
+                    'percent' => \Litipk\BigNumbers\Decimal::fromString($request->form['percent'])->innerValue(),
+                    'total' => \Litipk\BigNumbers\Decimal::fromString($request->form['total'])->innerValue(),
                     'microtime' => str_replace(".", "", microtime(true)),
                     'type' => $request->type,
                     'process' => $request->action

@@ -25,8 +25,9 @@ class NodeTransaction extends Model
     ];
 
     protected $casts = [
-        'value' => 'float',
         'processed' => 'integer',
         'status' => 'integer',
+        'fee' => 'string',
+        'value' => 'string',
     ];
 }
