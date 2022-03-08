@@ -25,6 +25,7 @@ class OrderTransaction extends Model
 
     protected $casts = [
         'amount' => 'string',
+        'price' => 'string',
     ];
 
     protected $hidden = [
