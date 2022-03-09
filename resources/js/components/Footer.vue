@@ -1,13 +1,13 @@
 <template>
-    <div class="home">
+    <div class="home mb-3 pb-2">
         <footer class="footer-container mt-2">
             <b-container>
                 <b-row class="pb-50 mb-pb-20 footer-top-content overflow-hidden">
                     <b-col
                         cols="12"
-                        md="6"
+                        md="12"
                         lg="4"
-                        class="footer-col wow fadeInUp"
+                        class="footer-col wow fadeInUp justify-content-md-center"
                         data-wow-duration="1s"
                         data-wow-delay=".2s"
                     >
@@ -36,21 +36,46 @@
                             </ul>
                             <ul class="d-flex flex-wrap social-link">
                                 <li>
-                                    <a href="https://www.facebook.com/coinswifter" target="_blank" rel="noreferrer">
+                                    <a href="https://www.facebook.com/broovscom" target="_blank" rel="noreferrer">
                                         <i class="fab fa-facebook-f"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://twitter.com/CoinSwifter" target="_blank" rel="noreferrer">
+                                    <a href="https://twitter.com/broovsprojects" target="_blank" rel="noreferrer">
                                         <i class="fab fa-twitter"></i></a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/coinswifter/" target="_blank" rel="noreferrer">
+                                    <a href="https://www.instagram.com/broovstoken/" target="_blank" rel="noreferrer">
                                         <i class="fab fa-instagram"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://t.me/CoinSwifter" target="_blank" rel="noreferrer">
+                                    <a href="https://t.me/broovsio" target="_blank" rel="noreferrer">
                                         <i class="fab fa-telegram"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.reddit.com/user/Broovs-BRS-Projects" target="_blank" rel="noreferrer">
+                                        <i class="fab fa-reddit"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.medium.com/@broovsprojects" target="_blank" rel="noreferrer">
+                                        <i class="fab fa-medium"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/broovs-brs-projects-912814231/" target="_blank" rel="noreferrer">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/channel/UCu0PPuTiwlaI8xaIF6w272Q" target="_blank" rel="noreferrer">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://discord.io/broovs" target="_blank" rel="noreferrer">
+                                        <i class="fab fa-discord"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -64,7 +89,7 @@
                         data-wow-duration="1s"
                         data-wow-delay=".4s"
                     >
-                        <h4>COINSWIFTER</h4>
+                        <h4 class="headings">COINSWIFTER</h4>
                         <ul>
                             <li>
                                 <router-link :to="{name:'AboutUs'}">{{ $t('Hakkımızda') }}</router-link>
@@ -79,7 +104,7 @@
                         data-wow-duration="1s"
                         data-wow-delay=".6s"
                     >
-                        <h4>{{ $t('Yasal Bilgiler') }}</h4>
+                        <h4 class="headings">{{ $t('Yasal Bilgiler') }}</h4>
                         <ul>
                             <li>
                                 <router-link :to="{ name: 'TermsOfUse' }">{{ $t('Kullanım Sözleşmesi') }}</router-link>
@@ -109,7 +134,7 @@
                         data-wow-duration="1s"
                         data-wow-delay=".8s"
                     >
-                        <h4>{{ $t('Bilgi Platformu') }}</h4>
+                        <h4 class="headings">{{ $t('Bilgi Platformu') }}</h4>
                         <ul>
                             <li>
                                 <router-link :to="{name:'HowBtc'}">{{ $t('Bitcoin(BTC) Nedir?') }}</router-link>
@@ -133,7 +158,7 @@
                         data-wow-duration="1s"
                         data-wow-delay=".8s"
                     >
-                        <h4>{{ $t('Yardım') }}</h4>
+                        <h4 class="headings">{{ $t('Yardım') }}</h4>
                         <ul>
                             <li>
                                 <router-link :to="{name:'Security'}">{{ $t('Güvenlik') }}</router-link>
@@ -174,6 +199,11 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped type="scss">
+@media screen and (max-width:1200px) and (min-width: 991px) {
+    .headings{
+        font-size:16px !important;
+        font-weight: bolder !important;
+    }
+}
 </style>

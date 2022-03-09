@@ -1,5 +1,5 @@
 <template>
-    <div class="settings-profile">
+    <div class="settings-profile table-responsive">
         <b-form @submit="uploadKYC" enctype="multipart/form-data">
             <b-row>
                 <b-col cols="12" md="6">

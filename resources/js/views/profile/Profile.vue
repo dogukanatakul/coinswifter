@@ -2,7 +2,7 @@
     <b-container>
         <b-card border-variant="white">
             <b-row>
-                <b-col cols="12" md="4">
+                <b-col cols="12" md="4" class="mb-2">
                     <b-card-group deck>
                         <b-card :header="$t('Profil & Ayarlar')">
                             <b-list-group>
@@ -37,8 +37,8 @@
                         </b-card>
                     </b-card-group>
                 </b-col>
-                <b-col cols="12" md="8">
-                    <b-card>
+                <b-col cols="12" md="8" class="mb-5">
+                    <b-card class="table-responsive">
                         <router-view></router-view>
                     </b-card>
                 </b-col>

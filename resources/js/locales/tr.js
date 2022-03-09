@@ -275,6 +275,8 @@ export default {
     "Doğum Tarihiniz (Gün-Ay-Yıl)": "Doğum Tarihiniz (Gün-Ay-Yıl)",
     "Lütfen doğum tarihinizi giriniz.": "Lütfen doğum tarihinizi giriniz.",
     "Uyruğunuz": "Uyruğunuz",
+    "Doğum Tarihiniz": "Doğum Tarihiniz",
+    "Gün-Ay-Yıl": "Gün-Ay-Yıl",
     "Lütfen uyruğunuzu giriniz.": "Lütfen uyruğunuzu giriniz.",
     "T.C. Kimlik Numaranız": "T.C. Kimlik Numaranız",
     "Lütfen T.C. Kimlik numaranızı doğru girdiğinizden emin olun!": "Lütfen T.C. Kimlik numaranızı doğru girdiğinizden emin olun!",

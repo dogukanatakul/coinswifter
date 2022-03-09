@@ -270,6 +270,8 @@ export default {
     "Soyadınız": "Your surname",
     "Lütfen soyadınızı giriniz.": "Please enter your last name.",
     "Doğum Tarihiniz (Gün-Ay-Yıl)": "Your Date of Birth (Day-Month-Year)",
+	"Doğum Tarihiniz": "Your Date of Birth",
+    "Gün-Ay-Yıl": "Day-Month-Year",
     "Lütfen doğum tarihinizi giriniz.": "Please enter your date of birth.",
     "Uyruğunuz": "your nationality",
     "Lütfen uyruğunuzu giriniz.": "Please enter your nationality.",

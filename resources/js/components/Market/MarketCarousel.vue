@@ -4,7 +4,7 @@
             <div class="market-carousel-item">
                 <div class="market-carousel-item-name">
                     <img :src="'../assets/img/coinicon/'+ value.coin.symbol +'.png'" alt=""/>
-                    <strong>{{ value.coin.name }}</strong></div>
+                    <strong class="small-text">{{ value.coin.name }}</strong></div>
                 <h2>{{ value.parity_price.price.value }}₺</h2>
                 <p>{{ value.parity_price.volume_last_24_hours_price.value }}₺</p>
             </div>
@@ -23,6 +23,7 @@ export default {
     ],
     data: () => ({
         data: [],
+        itemsToShow:3,
         breakpoints: {
             576: {
                 itemsToShow: 2,
@@ -44,3 +45,33 @@ export default {
     },
 };
 </script>
+
+<style scoped type="scss">
+    @media screen and (max-width:1300px) and (min-width:992px) {
+        .small-text{
+            font-size:12px;
+            font-weight: 500;
+        }
+    }
+
+    @media screen and (min-width:1300px) and (max-width:1600px) {
+        .small-text{
+            font-size: 12px;
+            font-weight: 500;
+        }
+    }
+
+    @media screen and (max-width:680px) {
+        .small-text{
+            font-size:16px;
+            font-weight: 500;
+        }
+    }
+
+    @media screen and (max-width:992px) and (min-width:768px) {
+        .small-text{
+            font-size:12px;
+            font-weight: 500;
+        }
+    }
+</style>

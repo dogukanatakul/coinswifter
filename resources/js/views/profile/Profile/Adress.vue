@@ -1,7 +1,7 @@
 <template>
     <b-form>
         <b-row>
-            <b-col cols="4">
+            <b-col cols="12" lg="4" class="mb-2">
                 <v-select
                     :placeholder="$t('Ülke')"
                     v-model.number="form.countries_id"
@@ -10,7 +10,7 @@
                     :reduce="data => data.value"
                 ></v-select>
             </b-col>
-            <b-col cols="4">
+            <b-col cols="12" lg="4" class="mb-2">
                 <v-select
                     v-model.number="form.provinces_id"
                     label="text"
@@ -18,7 +18,7 @@
                     :reduce="data => data.value"
                 ></v-select>
             </b-col>
-            <b-col cols="4">
+            <b-col cols="12" lg="4" class="mb-2">
                 <v-select
                     v-model.number="form.districts_id"
                     label="text"

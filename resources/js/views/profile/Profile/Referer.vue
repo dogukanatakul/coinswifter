@@ -37,7 +37,7 @@
             :header="$t('Referanslarım')"
             header-tag="header"
             nobody
-            class="mt-4"
+            class="mt-4 table-responsive"
             style="padding: 0px">
             <table class="table table-striped">
                 <thead>

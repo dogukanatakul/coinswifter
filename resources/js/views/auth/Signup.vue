@@ -46,13 +46,14 @@
                                         </b-col>
                                         <b-col cols="12" md="6">
                                             <b-form-group
-                                                :label="$t('Doğum Tarihiniz (Gün-Ay-Yıl)')"
+                                                :label="$t('Doğum Tarihiniz')"
                                             >
                                                 <v-date-picker v-model="form.birthday" :masks="dateInputMask" :model-config="dateModelMask" is-required>
                                                     <template v-slot="{ inputValue, inputEvents }">
                                                         <input
                                                             class="form-control w-100"
                                                             :value="inputValue"
+                                                            :placeholder="$t('Gün-Ay-Yıl')"
                                                             v-on="inputEvents"
                                                             v-maska="'##-##-####'"
                                                         />

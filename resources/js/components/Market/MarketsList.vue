@@ -1,5 +1,5 @@
 <template>
-    <div class="markets pb70">
+    <div class="markets pb70 mb-5 pb-3">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -33,13 +33,13 @@
                                             <td>
                                                 {{ parity.parity_price.price.value }}
                                             </td>
-                                            <td>
+                                            <td class="td1">
                                                 {{ parity.parity_price.percent_last_1_hours.value }}
                                             </td>
                                             <td class="td2">
                                                 {{ parity.parity_price.percent_last_24_hours.value }}
                                             </td>
-                                            <td class="td2">
+                                            <td>
                                                 {{ parity.parity_price.market_price.value }}
                                             </td>
                                         </tr>

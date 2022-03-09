@@ -4,7 +4,7 @@
         header-tag="header"
         class="mt-2">
         <b-card-text>
-            <div style="max-height: 30vh;overflow-y: auto;overflow-x: hidden;">
+            <div class="table-responsive" style="max-height: 30vh;overflow-y: auto;overflow-x: hidden;">
                 <table class="table table-sm order-table">
                     <thead>
                     <tr>

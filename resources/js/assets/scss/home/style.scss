@@ -4558,7 +4558,7 @@ button.timeline-nav-button:focus {
 }
 
 .footer-cryptu {
-    max-width: 370px;
+    // max-width: 370px;
     padding-right: 10px
 }
 
@@ -4831,3 +4831,26 @@ p.link-hover,
     text-align: right;
 }
 
+@media screen and (min-width:1200px) {
+    .banner-logo {
+        width: 38%;
+    }
+
+    .banner-cont-info {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .banner-logo {
+        width: 38%;
+    }
+
+    .banner-cont-info {
+        text-align: center;
+    }
+}
+
+.text-responsive {
+    font-size: calc(100% + 1vw + 1vh);
+}

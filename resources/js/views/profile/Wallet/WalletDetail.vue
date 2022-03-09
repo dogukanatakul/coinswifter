@@ -146,7 +146,7 @@
         </div>
     </b-card>
 
-    <b-card :header="$t('Çekim Talepleri')" header-tag="header" class="my-2">
+    <b-card :header="$t('Çekim Talepleri')" header-tag="header" class="my-2 table-responsive">
         <table class="table">
             <thead>
             <tr>
