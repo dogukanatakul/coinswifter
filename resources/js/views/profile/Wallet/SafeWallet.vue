@@ -138,7 +138,7 @@
         <b-row v-else>
             <b-card class="justify-content-center text-center py-4" no-body>
                 <p class="text-wrap lh-lg" v-html="$t('kasa_cuzdan_uyari_2')"></p>
-                <p class="text-decoration-underline text-white bg-danger text-wrap lh-lg">{{ $t("Gönderim yapacağınız banka hesabı sizin adınıza olmalıdır! Hesap ismi ve Hesap TC Kimlik numarası eşleşmeyen gönderimler gönderici hesaba iade edilir.") }}</p>
+                <p class="alert alert-danger fw-bolder bg-danger text-light lh-lg text-wrap">{{ $t("Gönderim yapacağınız banka hesabı sizin adınıza olmalıdır! Hesap ismi ve Hesap TC Kimlik numarası eşleşmeyen gönderimler gönderici hesaba iade edilir.") }}</p>
                 <b-button class="mx-1" @click="goBank" variant="success">{{ $t("Banka Hesabı Tanımla") }}</b-button>
             </b-card>
         </b-row>

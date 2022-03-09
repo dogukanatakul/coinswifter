@@ -113,6 +113,17 @@ export default [
         },
     },
     {
+        path: "/wallets_new",
+        name: "wallets_new",
+        component: () => import ("../views/profile/Wallet_New.vue"),
+        meta: {
+            middleware: [
+                auth
+            ],
+            title: 'Cüzdanlar',
+        },
+    },
+    {
         path: "/telephone-verification",
         name: "telephone_verification",
         component: () =>

@@ -4,7 +4,7 @@
         header-tag="header"
     >
         <b-row class="text-center justify-content-center align-items-center">
-            <b-col cols="12" md="7">
+            <b-col cols="12">
                 <apexchart type="donut" :options="chartOptions" :series="series"></apexchart>
             </b-col>
         </b-row>
