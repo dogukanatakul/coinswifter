@@ -16,8 +16,7 @@ $app = new Illuminate\Foundation\Application(
 );
 
 
-$userName = gethostname() ?? "development";
-if (strstr(realpath($_SERVER["DOCUMENT_ROOT"]), "test") || $userName === 'pcmint' || $userName === 'development') {
+if (file_exists(base_path("/.env.dev"))) {
     $app->loadEnvironmentFrom('.env.dev');
 } else {
     $app->loadEnvironmentFrom('.env');

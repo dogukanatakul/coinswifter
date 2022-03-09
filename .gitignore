@@ -11,3 +11,4 @@ composer.lock
 yarn-error.log
 package-backup.json
 *.decode
+.env.dev
