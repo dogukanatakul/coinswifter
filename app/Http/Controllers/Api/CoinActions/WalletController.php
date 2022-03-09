@@ -386,6 +386,7 @@ class WalletController extends Controller
                 return [$data->symbol => $newData];
             })->toArray();
         } catch (\Exception $e) {
+            dd($e);
             report($e);
             return false;
         }
