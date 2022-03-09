@@ -1,7 +1,7 @@
 <template>
   <header class="light-bb">
     <nav
-      class="navbar navbar-expand-md fixed-top bg-white my-border"
+      class="navbar navbar-expand-lg fixed-top bg-white my-border"
       role="navigation"
     >
       <router-link class="navbar-brand" to="/">
@@ -10,7 +10,7 @@
       <div class="navbar-header">
         <div
           id="menuToggle"
-          class="hamburger navbar-toggler collapsed d-md-none"
+          class="hamburger navbar-toggler collapsed d-lg-none"
         >
           <input
             type="checkbox"
@@ -324,14 +324,15 @@ export default {
   height: 120vh !important;
   margin: -100px 0 0 0;
   padding: 10px;
-  padding-top: 125px;
+  padding-top: 100px;
+  padding-bottom: 75px;
   right: -70px;
   background: #ededed;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   transform-origin: 0% 0%;
   transform: translate(100%, 0);
-
+  overflow-x:auto;
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
@@ -344,17 +345,18 @@ export default {
   opacity: 1;
 }
 
-@media screen and (max-width: 920px) and (min-width: 768px) {
-  .nav-link {
-    font-size: 7px;
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .my-border {
+    border-bottom: solid 1px lightgray;
   }
 }
 
-@media screen and (max-width: 1100px) and (min-width: 920px) {
+@media screen and (max-width: 1100px) and (min-width: 992px) {
   .nav-link {
-    font-size: 10px;
+    font-size: 1.3vw !important;
   }
-}
+} 
 
 @media screen and (max-width: 768px) {
   header .navbar-brand img {
