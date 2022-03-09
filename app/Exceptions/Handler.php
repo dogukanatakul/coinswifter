@@ -54,7 +54,7 @@ class Handler extends ExceptionHandler
             ];
             \App\Helpers\LogActivity::addToLog(['status_text' => implode(" | ", $err), 'status' => 'fail']);
 
-            dd($e);
+            dd(env('APP_DEBUG'));
             if (!env('APP_DEBUG')) {
                 return response()->json([
                     'status' => 'fail',
