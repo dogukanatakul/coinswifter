@@ -726,8 +726,8 @@ class AuthController extends Controller
     public function bankDelete(Request $request): \Illuminate\Http\JsonResponse
     {
         $validator = validator()->make(request()->all(), [
-            'iban' => 'required|filled|string|exists:App\Models\KullaniciBankaTanim,iban',
-            'birincil' => 'required|integer',
+            'iban' => 'required|filled|string|exists:App\Models\UserBank,iban',
+            'primary' => 'required|integer',
         ]);
         if ($validator->fails()) {
             return response()->json([

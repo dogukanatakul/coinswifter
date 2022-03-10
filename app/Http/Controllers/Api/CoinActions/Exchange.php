@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\CoinActions;
 use App\Http\Controllers\Controller;
 use App\Jobs\WalletCreate;
 use App\Models\Coin;
+use App\Models\Commission;
 use App\Models\NodeTransaction;
 use App\Models\OrderTransaction;
 use App\Models\Order;
@@ -358,7 +359,7 @@ class Exchange extends Controller
     public function test()
     {
 
-        dd(NodeTransaction::where('network', 'BSC')->orderBy('block_number', 'ASC')->first()->toArray());
+//        dd(NodeTransaction::where('network', 'BSC')->orderBy('block_number', 'ASC')->first()->toArray());
 
 //        $txh = NodeTransaction::where('txh', '0x536fbf1134583aa75967f6941c3d5138418df9fb5e56fe9872e2ed35f7e6cb51')->first();
 //        dd($txh->toArray());
@@ -381,14 +382,22 @@ class Exchange extends Controller
 //        dd($randWalletControl->toArray());
 
 
-//        UserCoin::where('coins_id', 1)->update([
-//            'balance' => 10000000,
-//            'balance_pure' => 0,
-//        ]);
-//        dd("ok");
-//        NodeTransaction::where('value', '>', 0)->update([
-//            'processed' => 0,
-//        ]);
+        UserCoin::where('coins_id', '!=', 1)->update([
+            'balance' => 0,
+            'balance_pure' => 0,
+        ]);
+
+        UserCoin::where('coins_id', 1)->update([
+            'balance' => 10000000,
+            'balance_pure' => 0,
+        ]);
+        NodeTransaction::where('value', '>', 0)->update([
+            'processed' => 0,
+        ]);
+        Commission::truncate();
+        OrderTransaction::truncate();
+        Order::truncate();
+        dd("ok");
 //        dd("ok");
 //        $wallets = NodeTransaction::get()->toArray();
 //        dd(json_encode($wallets));
