@@ -71,7 +71,8 @@
               </b-col> -->
               <b-col cols="12" class="rounded myBackground text-dark mx-auto" :class="{'smallest':parseInt(wallet.locked) === 0}">
                 <b-col cols="5" class="float-left">
-                  <span class="fw-bold small">{{ wallet.symbol }}</span>
+                  <img :src="'../assets/img/coinicon/'+ wallet.symbol +'.png'" alt="" width="16" height="16" class="rounded"/>
+                  <span class="fw-bold small mx-2">{{ wallet.symbol }}</span>
                 </b-col>
                 <b-col cols="3" class="float-left" v-if="(wallet.locked) !== 0">
                   <b-icon icon="lock-fill" font-scale="1" class="small p-0 myMargins" :class="{'smallest':parseInt(wallet.locked) === 0}"></b-icon>
@@ -94,7 +95,9 @@
               </b-col> -->
               <div class="rounded myBackground text-dark mx-auto">
                 <b-col cols="6" class="float-left">
-                  <span class="fw-bold small">{{ wallet.symbol }}</span>
+                                    <img :src="'../assets/img/coinicon/'+ wallet.symbol +'.png'" alt="" width="16" height="16" class="rounded"/>
+
+                  <span class="fw-bold small mx-2">{{ wallet.symbol }}</span>
                 </b-col>
                 <b-col cols="6" class="float-left">
                   <span class="small">{{ parseFloat(wallet.balance) }}</span>
@@ -252,11 +255,15 @@ export default {
   background-color: #dbdee6;
 }
 .rounded {
-  border-radius: 1.25rem !important;
+    border-radius: .35rem !important;
 }
 
 .smallest{
     font-size:1vw !important;
+}
+
+.apexcharts-legend{
+  text-align:left !important;
 }
 
 @media screen and (max-width: 576px) {
@@ -279,7 +286,7 @@ export default {
     background-color: #dbdee6;
   }
   .rounded {
-    border-radius: 1.25rem !important;
+    border-radius: .35rem !important;
   }
   .small {
     font-size: 2.3vw !important;
@@ -311,7 +318,7 @@ export default {
   }
 
   .rounded {
-    border-radius: 1.25rem !important;
+    border-radius: .35rem !important;
   }
   .small {
     font-size: 2vw !important;
@@ -345,7 +352,7 @@ export default {
   }
 
   .rounded {
-    border-radius: 1.25rem !important;
+    border-radius: .35rem !important;
   }
   .small {
     font-size: 1.7vw !important;

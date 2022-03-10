@@ -26,7 +26,7 @@ export default {
         itemsToShow:3,
         breakpoints: {
             576: {
-                itemsToShow: 2,
+                itemsToShow: 1,
             },
             768: {
                 itemsToShow: 3,
