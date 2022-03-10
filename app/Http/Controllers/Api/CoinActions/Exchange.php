@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\WalletCreate;
 use App\Models\Coin;
 use App\Models\Commission;
+use App\Models\LogActivity;
 use App\Models\NodeTransaction;
 use App\Models\OrderTransaction;
 use App\Models\Order;
@@ -397,6 +398,7 @@ class Exchange extends Controller
         Commission::truncate();
         OrderTransaction::truncate();
         Order::truncate();
+        LogActivity::truncate();
         dd("ok");
 //        dd("ok");
 //        $wallets = NodeTransaction::get()->toArray();
