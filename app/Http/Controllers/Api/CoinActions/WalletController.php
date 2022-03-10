@@ -218,11 +218,12 @@ class WalletController extends Controller
             ->where('users_id', $this->user->id)
             ->where('uuid', $request->uuid)
             ->where('status', 0)
+            ->where('created_at', '>', now()->subMinutes(1)->toDateTimeLocalString())
             ->first();
         if (empty($withdrawalWallet)) {
             return response()->json([
                 'status' => 'fail',
-                'message' => __('api_messages.form_parameter_fail_message')
+                'message' => __('api_messages.withdrawal_cancel_fail_message')
             ]);
         } else {
             $withdrawalWallet->delete();
@@ -261,12 +262,12 @@ class WalletController extends Controller
                             ]);
                         },
                         'user_withdrawal_wallet' => function ($q) {
-                            $q->where('users_id', $this->user->id);
+                            $q->where('users_id', $this->user->id)->orderBy('id', 'DESC');
                         },
                         'user_withdrawal' => function ($q) {
                             $q->with(['user_bank' => function ($q) {
                                 $q->with(['bank']);
-                            }])->where('users_id', $this->user->id);
+                            }])->where('users_id', $this->user->id)->orderBy('id', 'DESC');
                         },
                         'user_wallet'
                     ])->where('users_id', $this->user->id);
@@ -308,8 +309,9 @@ class WalletController extends Controller
                             'send_amount' => $user_withdrawal_wallet->send_amount,
                             'commission' => $user_withdrawal_wallet->commission,
                             'to' => $user_withdrawal_wallet->to,
-                            'status' => $user_withdrawal_wallet->status === 0 ? __('api_messages.waiting') : __('api_messages.approved'),
-                            'created_at' => $user_withdrawal_wallet->created_at->format('Y-m-d H:i:s')
+                            'status' => $user_withdrawal_wallet->status === 0 ? (\Carbon\Carbon::parse($user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'))->diffInMinutes(now()) > 1 ? __('api_messages.processing') : __('api_messages.waiting')) : __('api_messages.approved'),
+                            'created_at' => $user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'),
+                            'cancel' => !(\Carbon\Carbon::parse($user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'))->diffInMinutes(now()) > 1)
                         ];
                     }
                 }

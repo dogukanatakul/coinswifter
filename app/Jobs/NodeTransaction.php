@@ -52,7 +52,7 @@ class NodeTransaction implements ShouldQueue
         if (empty($userCoin)) {
             $transaction->processed = 3;
             $transaction->save();
-            return "no_action";
+            return "free_action";
         }
 
         $baseCoin = false;

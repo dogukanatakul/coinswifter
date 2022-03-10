@@ -357,9 +357,16 @@ class Exchange extends Controller
 
     public function test()
     {
+
+        dd(NodeTransaction::where('network', 'BSC')->orderBy('block_number', 'ASC')->first()->toArray());
+
+//        $txh = NodeTransaction::where('txh', '0x536fbf1134583aa75967f6941c3d5138418df9fb5e56fe9872e2ed35f7e6cb51')->first();
+//        dd($txh->toArray());
+
+
 //        dd(Decimal::fromString("2.19994364799943648", null)->innerValue());
 
-        dd(\Litipk\BigNumbers\Decimal::fromString('2.19994364799943648')->div(\Litipk\BigNumbers\Decimal::fromString("1"), null)->innerValue());
+//        dd(\Litipk\BigNumbers\Decimal::fromString('2.19994364799943648')->div(\Litipk\BigNumbers\Decimal::fromString("1"), null)->innerValue());
 //
 //
 //        $randWalletControl = UserWallet::with([
@@ -374,11 +381,11 @@ class Exchange extends Controller
 //        dd($randWalletControl->toArray());
 
 
-        UserCoin::where('coins_id', 1)->update([
-            'balance' => 10000000,
-            'balance_pure' => 0,
-        ]);
-        dd("ok");
+//        UserCoin::where('coins_id', 1)->update([
+//            'balance' => 10000000,
+//            'balance_pure' => 0,
+//        ]);
+//        dd("ok");
 //        NodeTransaction::where('value', '>', 0)->update([
 //            'processed' => 0,
 //        ]);
@@ -387,9 +394,9 @@ class Exchange extends Controller
 //        dd(json_encode($wallets));
 
 
-//        $bot = new \App\Jobs\NodeTransaction();
-////        $bot = new \App\Jobs\TransferETH();
-//        dd($bot->handle());
+        $bot = new \App\Jobs\NodeTransaction();
+//        $bot = new \App\Jobs\TransferETH();
+        dd($bot->handle());
     }
 
 }

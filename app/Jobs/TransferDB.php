@@ -27,11 +27,11 @@ class TransferDB implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @return void
+     * @return string
      */
-    public function handle()
+    public function handle(): string
     {
-        if (!empty($userWithdrawalWallet = UserWithdrawalWallet::whereNotNull('to_user_id')->where('status', 0)->first())) {
+        if (!empty($userWithdrawalWallet = UserWithdrawalWallet::whereNotNull('to_user_id')->where('created_at', '>', now()->subMinutes(1)->toDateTimeLocalString())->where('status', 0)->first())) {
             if (!empty($toUser = UserCoin::where('users_id', $userWithdrawalWallet->to_user_id)->where('coins_id', $userWithdrawalWallet->coins_id)->first())) {
                 $senderUser = UserCoin::where('id', $userWithdrawalWallet->user_coins_id)->first();
                 $senderUser->balance = $senderUser->balance - $userWithdrawalWallet->amount;

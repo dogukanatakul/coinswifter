@@ -101,7 +101,6 @@ class ToolsController extends Controller
                 report($e);
             }
         }
-
     }
 
 }
