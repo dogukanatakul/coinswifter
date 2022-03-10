@@ -28,12 +28,6 @@ class Network extends Seeder
                 'fee' => 0.004,
             ],
             [
-                'name' => 'Dexchain',
-                'short_name' => 'DXC',
-                'connection' => '',
-                'fee' => 0.003,
-            ],
-            [
                 'name' => 'Source',
                 'short_name' => 'SOURCE',
                 'connection' => '',

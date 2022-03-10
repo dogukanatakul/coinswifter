@@ -64,16 +64,16 @@ class TestCoin extends Seeder
                 'networks_id' => $network['BSC']->first()->id,
                 'contract' => '0x862f029d9398493206852f8Cac348Afb25737f19',
             ],
-            [
-                'name' => "BaklavamNerede",
-                'symbol' => 'SİK',
-                'commission_in' => 0.25,
-                'commission_out' => 0.25,
-                'commission_type' => 'percent',
-                'status' => 'normal',
-                'networks_id' => $network['BSC']->first()->id,
-                'contract' => '0xbed785cc782E64849bA24321128ad77c00c17447',
-            ],
+//            [
+//                'name' => "BaklavamNerede",
+//                'symbol' => 'SİK',
+//                'commission_in' => 0.25,
+//                'commission_out' => 0.25,
+//                'commission_type' => 'percent',
+//                'status' => 'normal',
+//                'networks_id' => $network['BSC']->first()->id,
+//                'contract' => '0xbed785cc782E64849bA24321128ad77c00c17447',
+//            ],
         ];
 
         foreach ($alterCoins as $alterCoin) {

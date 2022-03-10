@@ -66,6 +66,7 @@ class WalletCreate implements ShouldQueue
                         'password' => $wallet->content->private_key,
                     ]);
                 } else if (!$wallet->status) {
+                    dd("ok");
                     $problem = true;
                 }
             }
@@ -97,6 +98,7 @@ class WalletCreate implements ShouldQueue
                         'password' => $wallet->content->private_key,
                     ]);
                 } else if (!$wallet->status) {
+                    dd("ok2");
                     $problem = true;
                 }
             }
@@ -113,30 +115,6 @@ class WalletCreate implements ShouldQueue
             }
 
             // Create DXC Wallet and Coins
-            if (empty($dxcInsertWallet = UserWallet::where('users_id', $this->user->id)->where('networks_id', $network['DXC']->first()->id)->first())) {
-                if (($wallet = dxcActions("create_wallet", ['password' => Str::uuid()->toString()])) && $wallet->status) {
-                    $dxcInsertWallet = UserWallet::create([
-                        'users_id' => $this->user->id,
-                        'networks_id' => $network['DXC']->first()->id,
-                        'wallet' => $wallet->content->Address,
-                        'password' => $wallet->content->password,
-                    ]);
-                } else if (!$wallet->status) {
-                    $problem = true;
-                }
-            }
-            if (isset($coins[$network['DXC']->first()->id])) {
-                foreach ($coins[$network['DXC']->first()->id] as $coin) {
-                    UserCoin::create([
-                        'users_id' => $this->user->id,
-                        'user_wallets_id' => $dxcInsertWallet->id,
-                        'coins_id' => $coin->id,
-                        'balance_pure' => 0,
-                        'balance' => 0,
-                    ]);
-                }
-            }
-
             if (empty($sourceInsertWallet = UserWallet::where('users_id', $this->user->id)->where('networks_id', $network['SOURCE']->first()->id)->first())) {
                 $sourceInsertWallet = UserWallet::create([
                     'users_id' => $this->user->id,
@@ -157,6 +135,7 @@ class WalletCreate implements ShouldQueue
                 }
             }
         } catch (\Exception $e) {
+            dd($e);
             $problem = true;
         }
 
