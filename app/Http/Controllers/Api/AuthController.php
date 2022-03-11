@@ -412,7 +412,7 @@ class AuthController extends Controller
             $contact = $infos->filter(function ($data) {
                 return in_array($data->status, [0, 1]) && $data->type === "telephone";
             })->first();
-            $contact = "+" . Country::where('id', $contact->country_code)->first()->telefon_kodu . $contact->value;
+            $contact = "+" . Country::where('id', $contact->nationality)->first()->phone_code . $contact->value;
         } else if ($this->user->status === 1 || $this->user->status === 12) {
             $changeContact = true;
             $contact = $infos->filter(function ($data) {
