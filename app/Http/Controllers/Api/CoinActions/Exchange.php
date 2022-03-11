@@ -249,6 +249,13 @@ class Exchange extends Controller
                 if ($this->user) {
                     $wallet = new \App\Http\Controllers\Api\CoinActions\WalletController();
                     $wallet = $wallet->balanceAndOrders(false, $this->user);
+                    if (!$wallet) {
+                        return response()->json([
+                            'status' => 'fail',
+                            'error_key' => 'login',
+                            'message' => __('api_messages.user_check_fail_message')
+                        ]);
+                    }
                     $wallet = [
                         'source' => [
                             'symbol' => $wallet[$source]['symbol'],
@@ -362,6 +369,10 @@ class Exchange extends Controller
 
     public function test()
     {
+
+        $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();
+        $bot = new \App\Jobs\WalletCreate($user, 0);
+        dd($bot->handle());
 
 //        dd(NodeTransaction::where('network', 'BSC')->orderBy('block_number', 'ASC')->first()->toArray());
 

@@ -400,35 +400,41 @@ class WalletController extends Controller
     public function myWallets(): \Illuminate\Http\JsonResponse
     {
         $list = $this->balanceAndOrders();
-        $totalMount = [
-            'total' => priceFormat(collect($list)->map(function ($item) {
-                if ($item['symbol'] === 'TRY') {
-                    return $item['balance'];
-                } else {
-                    return isset($item['prices']['TRY']) ? $item['prices']['TRY'] * $item['balance'] : 0;
-                }
-            })->sum(), "float", 2),
-            'list' => collect($list)->filter(function ($item) {
-                if ($item['balance'] > 0) {
-                    return $item;
-                }
-                return false;
-            }),
-            'donut' => collect($list)->map(function ($item, $key) {
-                if ($item['symbol'] === 'TRY') {
-                    return $item['balance'];
-                } else {
-                    return isset($item['prices']['TRY']) ? $item['prices']['TRY'] * $item['balance'] : 0;
-                }
-            })
-        ];
-
-        $response = [
-            'status' => 'success',
-            'data' => $list,
-            'total' => $totalMount
-        ];
-        return response()->json($response);
+        if ($list) {
+            $totalMount = [
+                'total' => priceFormat(collect($list)->map(function ($item) {
+                    if ($item['symbol'] === 'TRY') {
+                        return $item['balance'];
+                    } else {
+                        return isset($item['prices']['TRY']) ? $item['prices']['TRY'] * $item['balance'] : 0;
+                    }
+                })->sum(), "float", 2),
+                'list' => collect($list)->filter(function ($item) {
+                    if ($item['balance'] > 0) {
+                        return $item;
+                    }
+                    return false;
+                }),
+                'donut' => collect($list)->map(function ($item, $key) {
+                    if ($item['symbol'] === 'TRY') {
+                        return $item['balance'];
+                    } else {
+                        return isset($item['prices']['TRY']) ? $item['prices']['TRY'] * $item['balance'] : 0;
+                    }
+                })
+            ];
+            return response()->json([
+                'status' => 'success',
+                'data' => $list,
+                'total' => $totalMount
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'fail',
+                'error_key' => 'login',
+                'message' => __('api_messages.user_check_fail_message')
+            ]);
+        }
     }
 
     public function withdrawal(Request $request): \Illuminate\Http\JsonResponse
