@@ -63,4 +63,5 @@ return [
     'withdrawal_request_bank_fail_message' => 'You must define a bank account to request a withdrawal!',
     'withdrawal_request_amount_fail_message' => 'Please enter valid balance!',
     'invalid_file_fail_message' => 'This file structure is not supported!',
+    'max_file_size_fail_message' => 'The size of the file you uploaded is too big! You can upload files with a maximum size of 2 megabytes.',
 ];

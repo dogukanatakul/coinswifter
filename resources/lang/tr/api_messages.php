@@ -63,4 +63,5 @@ return [
     'withdrawal_request_bank_fail_message' => 'Çekim talebinde bulunmak için banka hesabı tanımlamalısınız!',
     'withdrawal_request_amount_fail_message' => 'Lütfen geçerli bakiye girişi yapınız!',
     'invalid_file_fail_message' => 'Bu dosya yapısı desteklenmiyor!',
+    'max_file_size_fail_message' => 'Yüklediğiniz dosyanın boyutu çok büyük! Maximum 2 megabayt büyüklüğünde dosya yükleyebilirsiniz.',
 ];

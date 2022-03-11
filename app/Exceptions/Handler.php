@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\Validator;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -46,6 +47,12 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $e)
     {
+        if (intval($request->server('CONTENT_LENGTH')) > 2048) {
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.max_file_size_fail_message')
+            ], 200);
+        }
         if ($request->ajax() || $request->wantsJson()) {
             $err = [
                 $e->getFile(),

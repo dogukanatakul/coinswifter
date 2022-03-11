@@ -1019,7 +1019,7 @@ class AuthController extends Controller
     {
         $validator = validator()->make(request()->all(), [
             'type' => 'required|filled|string|in:' . implode(",", array_keys(kyc_keys())),
-            'file' => 'image|max:20000|mimes:png,jpg,jpeg,gif,svg,tiff',
+            'file' => 'required|mimes:png,jpg,jpeg|image|max:2048',
         ]);
         if ($validator->fails()) {
             return response()->json([

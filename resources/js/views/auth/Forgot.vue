@@ -28,22 +28,38 @@
                                             <p class="text-danger">{{ $t('Lütfen geçerli mail adresi giriniz!') }}</p>
                                         </b-form-text>
                                     </b-form-group>
-                                    <b-form-group
-                                        v-if="!code"
-                                        id="input-group-1"
-                                        label="Telefon Numaranız"
-                                        label-for="input-1"
-                                    >
-                                        <b-form-input
-                                            id="input-1"
-                                            v-model="form['telephone']"
-                                            type="text"
-                                            placeholder="53XXXXXXX"
-                                        ></b-form-input>
-                                        <b-form-text v-if="v$.form.telephone.$error">
-                                            <p class="text-danger">{{ $t('Lütfen geçerli telefon numarası giriniz!') }}</p>
-                                        </b-form-text>
-                                    </b-form-group>
+
+                                    <b-col cols="12" md="4">
+                                        <b-form-group
+                                            :label="$t('Telefon Kodunuz')"
+                                        >
+                                            <v-select
+                                                label="text"
+                                            ></v-select>
+                                        </b-form-group>
+                                    </b-col>
+                                    <b-col cols="12" md="8">
+                                        <b-form-group
+                                            v-if="!code"
+                                            id="input-group-1"
+                                            label="Telefon Numaranız"
+                                            label-for="input-1"
+                                        >
+                                            <b-form-input
+                                                id="input-1"
+                                                v-model="form['telephone']"
+                                                type="text"
+                                                placeholder="53XXXXXXX"
+                                            ></b-form-input>
+                                            <b-form-text v-if="v$.form.telephone.$error">
+                                                <p class="text-danger">{{ $t('Lütfen geçerli telefon numarası giriniz!') }}</p>
+                                            </b-form-text>
+                                        </b-form-group>
+                                    </b-col>
+
+
+
+
                                     <b-form-group
                                         v-if="code"
                                         id="input-group-1"
