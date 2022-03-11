@@ -34,14 +34,8 @@ Route::group([
     });
 
     Route::middleware([\App\Http\Middleware\CheckUser::class])->group(function () {
-        Route::post('/delete-withdrawal-wallet', [\App\Http\Controllers\Api\CoinActions\WalletController::class, 'deleteWithdrawalWallet'])
-            ->middleware([
-                \App\Http\Middleware\LockedUser::class
-            ]);;
-        Route::post('/withdrawal-wallet', [\App\Http\Controllers\Api\CoinActions\WalletController::class, 'withdrawalWallet'])
-            ->middleware([
-                \App\Http\Middleware\LockedUser::class
-            ]);;
+        Route::post('/delete-withdrawal-wallet', [\App\Http\Controllers\Api\CoinActions\WalletController::class, 'deleteWithdrawalWallet']);
+        Route::post('/withdrawal-wallet', [\App\Http\Controllers\Api\CoinActions\WalletController::class, 'withdrawalWallet']);
         Route::post('/get-adress', [\App\Http\Controllers\Api\AuthController::class, 'adress']);
         Route::post('/set-adress', [\App\Http\Controllers\Api\AuthController::class, 'adressUpdate']);
         Route::post('/banks', [\App\Http\Controllers\Api\AuthController::class, 'banks']);

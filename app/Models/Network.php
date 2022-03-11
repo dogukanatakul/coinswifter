@@ -16,4 +16,8 @@ class Network extends Model
         'connection',
         'fee'
     ];
+
+    protected $casts = [
+        'fee' => 'string',
+    ];
 }

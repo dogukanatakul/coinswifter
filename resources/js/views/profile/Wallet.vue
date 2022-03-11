@@ -31,7 +31,7 @@
                                 <span class="fw-bold ">{{ wallet.symbol }}</span>
                                 {{ wallet.name }}
                             </b-col>
-                            <b-col cols="6" md="3"  v-if="parseInt(wallet.locked)!==0">
+                            <b-col cols="6" md="3" v-if="parseInt(wallet.locked)!==0">
                                 <b-badge variant="warning" class="float-left mx-1 w-100">
                                     <b-icon icon="lock-fill" font-scale="1"></b-icon>
                                     {{ wallet.locked }} {{ wallet.symbol }}
@@ -144,6 +144,13 @@ export default {
         async withdrawalSend(form) {
             let setForm = form
             setForm['coin'] = this.walletSelect.symbol
+            for (const [key, value] of Object.entries(setForm)) {
+                if (key == 'amount') {
+                    setForm[key] = value.toString()
+                } else {
+                    setForm[key] = value
+                }
+            }
             await restAPI.getData({Action: "withdrawal-wallet"}, setForm).then((response) => {
                 if (response.status === "success") {
                     this.$notify({text: response.message, type: 'success'})

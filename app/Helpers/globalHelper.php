@@ -98,7 +98,7 @@ if (!function_exists('format_float')) {
     {
         $phpPrecision = 32;
 
-        if ($value == 0.0)  return '0.0';
+        if ($value == 0.0) return '0.0';
 
         if (log10(abs($value)) < $phpPrecision) {
 
@@ -125,17 +125,17 @@ if (!function_exists('format_float')) {
         $integerPart = $components[1];
 
         // Split into significant and insignificant digits
-        $significantDigits   = substr($integerPart, 0, $phpPrecision);
+        $significantDigits = substr($integerPart, 0, $phpPrecision);
         $insignificantDigits = substr($integerPart, $phpPrecision);
 
         // Round the significant digits (using the insignificant digits)
-        $fractionForRounding = (float) ('0.' . $insignificantDigits);
-        $rounding            = (int) round($fractionForRounding);  // Either 0 or 1
-        $rounded             = $significantDigits + $rounding;
+        $fractionForRounding = (float)('0.' . $insignificantDigits);
+        $rounding = (int)round($fractionForRounding);  // Either 0 or 1
+        $rounded = $significantDigits + $rounding;
 
         // Pad on the right with zeros
         $formattingString = '%0-' . strlen($integerPart) . 's';
-        $formatted        = sprintf($formattingString, $rounded);
+        $formatted = sprintf($formattingString, $rounded);
 
         // Insert a comma between every group of thousands
         $formattedWithCommas = strrev(
@@ -148,5 +148,16 @@ if (!function_exists('format_float')) {
         );
 
         return $sign . $formattedWithCommas;
+    }
+}
+
+if (!function_exists('decimal_sum')) {
+    function decimal_sum(array $arr = []): string
+    {
+        $total = "0";
+        foreach ($arr as $a) {
+            $total = \Litipk\BigNumbers\Decimal::fromString($a)->add(\Litipk\BigNumbers\Decimal::fromString($total), null)->innerValue();
+        }
+        return $total;
     }
 }

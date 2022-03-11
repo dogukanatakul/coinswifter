@@ -44,7 +44,7 @@ class WalletController extends Controller
         $validator = validator()->make(request()->all(), [
             'coin' => 'required|filled|string|exists:App\Models\Coin,symbol',
             'wallet' => 'required|filled|string',
-            'amount' => 'required|filled|numeric|min:0000000000000000.0000000000000000000001|max:9999999999999999.9999999999999999999999',
+            'amount' => 'required|filled|string',
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -53,20 +53,20 @@ class WalletController extends Controller
             ]);
         }
         $coin = $this->balanceAndOrders(true)[$request->coin] ?? false;
-        if (!($coin && $coin['balance'] >= $request->amount && $coin['transfer_max'] >= $request->amount && $coin['transfer_min'] <= $request->amount)) {
+        if (!($coin && \Litipk\BigNumbers\Decimal::fromString($coin['balance'])->comp(\Litipk\BigNumbers\Decimal::fromString($request->amount)) >= 0 && \Litipk\BigNumbers\Decimal::fromString($coin['transfer_max'])->comp(\Litipk\BigNumbers\Decimal::fromString($request->amount)) >= 0 && \Litipk\BigNumbers\Decimal::fromString($coin['transfer_min'])->comp(\Litipk\BigNumbers\Decimal::fromString($request->amount)) <= 0)) {
             return response()->json([
                 'status' => 'fail',
                 'message' => __('api_messages.transfer_fail_balance_message'),
             ]);
         }
 
-        $transferAmount = floatval($request->amount);
+        $transferAmount = $request->amount;
         if ($coin['commission_type'] === 'percent') {
-            $transferCommission = (($transferAmount * $coin['commission_out']) / 100);
+            $transferCommission = \Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($transferAmount)->mul(\Litipk\BigNumbers\Decimal::fromString($coin['commission_out']), null)->innerValue())->div(\Litipk\BigNumbers\Decimal::fromString("100"), null)->innerValue();
         } else {
             $transferCommission = $coin['commission_out'];
         }
-        $transferAmount = $transferAmount - $transferCommission;
+        $transferAmount = \Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($transferCommission), null)->innerValue();
 
         DB::beginTransaction();
         try {
@@ -102,7 +102,8 @@ class WalletController extends Controller
                     ->where('coins_id', $coin['coins_id'])
                     ->orderBy('balance_pure', 'ASC')
                     ->get();
-                if ($destinationTransferWallets->sum('balance_pure') < $transferAmount) {
+
+                if (\Litipk\BigNumbers\Decimal::fromString(decimal_sum($destinationTransferWallets->pluck('balance_pure')->toArray()))->comp(\Litipk\BigNumbers\Decimal::fromString($transferAmount)) < 0) {
                     $destinationTransferWallets = UserCoin::with(['user_coin' => function ($q) use ($coinID) {
                         $q->where('coins_id', $coinID);
                     }, 'user_withdrawal_wallet_child.user_withdrawal_wallet_fee'])
@@ -114,13 +115,13 @@ class WalletController extends Controller
                         ->orderBy('balance_pure', 'DESC')
                         ->get();
                     $destinationTransferWallets = collect($destinationTransferWallets)->filter(function ($item) use ($network) {
-                        $item->balance_pure = $item->balance_pure - $item->user_withdrawal_wallet_child->sum('amount');
-                        $feeAmount = 0;
+                        $item->balance_pure = \Litipk\BigNumbers\Decimal::fromString($item->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($item->user_withdrawal_wallet_child->pluck('amount')->toArray())), null)->innerValue();
+                        $feeAmount = "0";
                         if ($item->user_withdrawal_wallet_child->count() > 0) {
                             foreach ($item->user_withdrawal_wallet_child as $user_withdrawal_wallet_child) {
-                                $feeAmount += $user_withdrawal_wallet_child->user_withdrawal_wallet_fee->amount;
+                                $feeAmount = \Litipk\BigNumbers\Decimal::fromString($feeAmount)->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal_wallet_child->user_withdrawal_wallet_fee->amount), null)->innerValue();
                             }
-                            $feeAmount += $network->fee;
+                            $feeAmount = \Litipk\BigNumbers\Decimal::fromString($feeAmount)->add(\Litipk\BigNumbers\Decimal::fromString($network->fee), null)->innerValue();
                         }
                         if ($item->balance_pure > 0 && $item->user_coin->balance_pure >= $feeAmount) {
                             return $item;
@@ -129,42 +130,42 @@ class WalletController extends Controller
                     })->sortBy('balance_pure')->reverse();
                 } else {
                     $destinationTransferWallets = collect($destinationTransferWallets)->filter(function ($item) use ($network) {
-                        $item->balance_pure = $item->balance_pure - $item->user_withdrawal_wallet_child->sum('amount');
+                        $item->balance_pure = \Litipk\BigNumbers\Decimal::fromString($item->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($item->user_withdrawal_wallet_child->pluck('amount')->toArray())), null)->innerValue();
                         $feeAmount = 0;
                         if ($item->user_withdrawal_wallet_child->count() > 0) {
                             foreach ($item->user_withdrawal_wallet_child as $user_withdrawal_wallet_child) {
-                                $feeAmount += $user_withdrawal_wallet_child->user_withdrawal_wallet_fee->amount;
+                                $feeAmount = \Litipk\BigNumbers\Decimal::fromString($feeAmount)->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal_wallet_child->user_withdrawal_wallet_fee->amount), null)->innerValue();
                             }
-                            $feeAmount += $network->fee;
+                            $feeAmount = \Litipk\BigNumbers\Decimal::fromString($feeAmount)->add(\Litipk\BigNumbers\Decimal::fromString($network->fee), null)->innerValue();
                         }
-                        if ($item->balance_pure > 0 && $item->user_coin->balance_pure >= $feeAmount) {
+                        if (\Litipk\BigNumbers\Decimal::fromString($item->balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromInteger(0)) > 0 && \Litipk\BigNumbers\Decimal::fromString($item->user_coin->balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromString($feeAmount)) >= 0) {
                             return $item;
                         }
                         return false;
                     })->sortBy('balance_pure');
                 }
-                $transferNumber = 0;
                 $transferList = [];
                 foreach ($destinationTransferWallets as $destinationTransferWallet) {
                     if ($transferAmount > 0) {
                         if ($coin['contract']) {
                             $balance_pure = $destinationTransferWallet->balance_pure;
                         } else {
-                            $balance_pure = floatval($destinationTransferWallet->balance_pure - $network->fee);
+                            $balance_pure = \Litipk\BigNumbers\Decimal::fromString($destinationTransferWallet->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString($network->fee), null)->innerValue();
                         }
-                        $transferNumber += 1;
-                        if (($transferAmount - $balance_pure) > 0) {
+                        // devam
+                        if (\Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($balance_pure), null)->innerValue())->comp(\Litipk\BigNumbers\Decimal::fromInteger(0)) > 0) {
                             $transferList[] = [
                                 'id' => $destinationTransferWallet->id,
                                 'amount' => $balance_pure,
                             ];
-                            $transferAmount -= $balance_pure;
+
+                            $transferAmount = \Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($balance_pure), null)->innerValue();
                         } else {
                             $transferList[] = [
                                 'id' => $destinationTransferWallet->id,
                                 'amount' => $transferAmount,
                             ];
-                            $transferAmount -= $transferAmount;
+                            $transferAmount = \Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($transferAmount), null)->innerValue();
                         }
                     }
                 }
@@ -181,7 +182,8 @@ class WalletController extends Controller
                         'amount' => $network->fee,
                     ]);
                 }
-                if ($transferAmount > 0 && count($transferList) > 5) {
+
+                if (\Litipk\BigNumbers\Decimal::fromString($transferAmount)->comp(\Litipk\BigNumbers\Decimal::fromInteger(0)) > 0 || count($transferList) > 5) {
                     $insertUserWithdrawalWallet->status = 3;
                     $insertUserWithdrawalWallet->save();
                 }
@@ -341,12 +343,12 @@ class WalletController extends Controller
                             $newData['created_at'] = $item->created_at->format('Y-m-d');
                             $newData['parity'] = implode("/", [$parity->coin->symbol, $parity->source->symbol]);
                             $newData['operation'] = __('api_messages.' . $item->process);
-                            $newData['finished'] = $item->buying_trades->sum('amount') + $item->selling_trades->sum('amount');
-                            $newData['percent'] = priceFormat((1 - ($newData['amount'] / ($newData['finished'] + $newData['amount']))) * 100, "float", 2);
+                            $newData['finished'] = \Litipk\BigNumbers\Decimal::fromString(decimal_sum($item->buying_trades->pluck('amount')->toArray()))->add(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($item->selling_trades->pluck('amount')->toArray())), null)->innerValue();
+                            $newData['percent'] = priceFormat((1 - ($newData['amount'] / (floatval($newData['finished']) + floatval($newData['amount'])))) * 100, "float", 2);
                             $newData['is_deleted'] = !empty($item->deleted_at);
                             return $newData;
                         })->toArray());
-                        $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString($parity->orders->sum('amount')), null)->innerValue();
+                        $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($parity->orders->pluck('amount')->toArray())), null)->innerValue();
 
                     }
                 }
@@ -358,12 +360,12 @@ class WalletController extends Controller
                             $newData['created_at'] = $item->created_at->format('Y-m-d');
                             $newData['parity'] = implode("/", [$parity->coin->symbol, $parity->source->symbol]);
                             $newData['operation'] = __('api_messages.' . $item->process);
-                            $newData['finished'] = $item->buying_trades->sum('amount') + $item->selling_trades->sum('amount');
-                            $newData['percent'] = priceFormat((1 - ($newData['amount'] / ($newData['finished'] + $newData['amount']))) * 100, "float", 2);
+                            $newData['finished'] = \Litipk\BigNumbers\Decimal::fromString(decimal_sum($item->buying_trades->pluck('amount')->toArray()))->add(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($item->selling_trades->pluck('amount')->toArray())), null)->innerValue();
+                            $newData['percent'] = priceFormat((1 - ($newData['amount'] / (floatval($newData['finished']) + floatval($newData['amount'])))) * 100, "float", 2);
                             $newData['is_deleted'] = !empty($item->deleted_at);
                             return $newData;
                         })->toArray());
-                        $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString($parity->orders->sum('total')), null)->innerValue();
+                        $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($parity->orders->pluck('total')->toArray())), null)->innerValue();
                     }
                 }
 
@@ -388,7 +390,6 @@ class WalletController extends Controller
                 return [$data->symbol => $newData];
             })->toArray();
         } catch (\Exception $e) {
-            dd($e);
             report($e);
             return false;
         }

@@ -11,21 +11,21 @@
                                         <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['buy']['price']" :placeholder="marketStatus.sell_price" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['limit']['buy']['price']" :placeholder="marketStatus.sell_price" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['buy']['amount']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['limit']['buy']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['buy']['total']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['limit']['buy']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -61,21 +61,21 @@
                                         <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['sell']['price']" :placeholder="marketStatus.buy_price" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['limit']['sell']['price']" :placeholder="marketStatus.buy_price" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['sell']['amount']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['limit']['sell']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['sell']['total']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['limit']['sell']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -115,14 +115,14 @@
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['market']['buy']['amount']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['market']['buy']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['market']['buy']['total']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['market']['buy']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -158,14 +158,14 @@
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['market']['sell']['amount']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['market']['sell']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['market']['sell']['total']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['market']['sell']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -208,7 +208,7 @@
                                             </b-input-group-prepend>
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopMarket']['buy']['trigger_price']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopMarket']['buy']['trigger_price']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -218,7 +218,7 @@
                                             </b-input-group-prepend>
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopMarket']['buy']['total']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopMarket']['buy']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -254,14 +254,14 @@
                                         <b-input-group size="sm" :prepend="$t('Tetikleme Fiyatı')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopMarket']['sell']['trigger_price']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopMarket']['sell']['trigger_price']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopMarket']['sell']['total']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopMarket']['sell']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -301,28 +301,28 @@
                                         <b-input-group size="sm" :prepend="$t('Tetikleme Fiyatı')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['buy']['trigger_price']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['buy']['trigger_price']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['buy']['price']" :placeholder="marketStatus.price" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['buy']['price']" :placeholder="marketStatus.price" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['buy']['amount']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['buy']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['buy']['total']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['buy']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -358,28 +358,28 @@
                                         <b-input-group size="sm" :prepend="$t('Tetikleme Fiyatı')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['sell']['trigger_price']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['sell']['trigger_price']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['sell']['price']" :placeholder="marketStatus.price" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['sell']['price']" :placeholder="marketStatus.price" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['sell']['amount']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['sell']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['sell']['total']" type="number" step="0.000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['sell']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">

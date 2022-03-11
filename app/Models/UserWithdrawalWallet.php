@@ -26,6 +26,7 @@ class UserWithdrawalWallet extends Model
     protected $casts = [
         'amount' => 'string',
         'send_amount' => 'string',
+        'commission' => 'string',
     ];
 
     protected $hidden = [

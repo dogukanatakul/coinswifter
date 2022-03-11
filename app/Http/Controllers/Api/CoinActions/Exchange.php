@@ -16,6 +16,9 @@ use App\Models\UserFavoritePairs;
 use App\Models\Parity;
 use App\Models\ParityPrice;
 use App\Models\UserWallet;
+use App\Models\UserWithdrawalWallet;
+use App\Models\UserWithdrawalWalletChild;
+use App\Models\UserWithdrawalWalletFee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Litipk\BigNumbers\Decimal;
@@ -369,6 +372,7 @@ class Exchange extends Controller
 //        dd(Decimal::fromString("2.19994364799943648", null)->innerValue());
 
 //        dd(\Litipk\BigNumbers\Decimal::fromString('2.19994364799943648')->div(\Litipk\BigNumbers\Decimal::fromString("1"), null)->innerValue());
+//        dd(\Litipk\BigNumbers\Decimal::fromInteger(5)->comp(\Litipk\BigNumbers\Decimal::fromInteger(1)));
 //
 //
 //        $randWalletControl = UserWallet::with([
@@ -398,6 +402,9 @@ class Exchange extends Controller
         Commission::truncate();
         OrderTransaction::truncate();
         Order::truncate();
+        UserWithdrawalWalletFee::truncate();
+        UserWithdrawalWalletChild::truncate();
+        UserWithdrawalWallet::truncate();
         LogActivity::truncate();
         dd("ok");
 //        dd("ok");
