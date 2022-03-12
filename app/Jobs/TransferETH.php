@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\UserWithdrawalWallet;
 use App\Models\UserWithdrawalWalletChild;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -68,6 +69,13 @@ class TransferETH implements ShouldQueue
             ->first();
 
         if (empty($userWithdrawalWalletChild)) {
+            return false;
+        }
+        if ($userWithdrawalWalletChild->status == 3 && preg_match("/ENS name: '.*' is invalid./", $userWithdrawalWalletChild->error_answer) == 1) {
+            UserWithdrawalWallet::where('id', $userWithdrawalWalletChild->user_withdrawal_wallets_id)
+                ->update([
+                    'status' => 3
+                ]);
             return false;
         }
         $amount = $userWithdrawalWalletChild->amount;

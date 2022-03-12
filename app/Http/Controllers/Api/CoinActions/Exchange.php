@@ -370,6 +370,8 @@ class Exchange extends Controller
     public function test()
     {
 
+        dd();
+
         $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();
         $bot = new \App\Jobs\WalletCreate($user, 0);
         dd($bot->handle());
