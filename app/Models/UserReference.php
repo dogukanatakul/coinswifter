@@ -16,12 +16,12 @@ class UserReference extends Model
     ];
 
 
-    public function user()
+    public function user(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(User::class, 'id', 'users_id');
     }
 
-    public function referer_user()
+    public function referer_user(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(User::class, 'id', 'reference_user_id');
     }

@@ -777,18 +777,18 @@ class AuthController extends Controller
     public function referer(): \Illuminate\Http\JsonResponse
     {
         $user = User::find($this->user->id);
-        $referers = UserReference::with(['reference_user_id', 'users_id'])->where('users_id', $user->id)->get();
+        $referers = UserReference::with(['referer_user', 'users_id'])->where('users_id', $user->id)->get();
         $referers = collect($referers)->map(function ($data) {
             return [
-                "name" => substr($data->referer_user->adi, 0, 1) . "***** " . substr($data->referer_user->soyadi, 0, 1) . "****",
+                "name" => substr($data->referer_user->name, 0, 1) . "***** " . substr($data->referer_user->surname, 0, 1) . "****",
                 "date" => $data->referer_user->created_at->format('Y-m-d'),
             ];
         })->toArray();
         $referers = mb_convert_encoding($referers, 'UTF-8', 'UTF-8');
         return response()->json([
             'status' => 'success',
-            'referer' => $user->reference_code,
-            'referer_url' => url("?referer=" . $user->reference_code),
+            'referer' => $user->referance_code,
+            'referer_url' => url("?referer=" . $user->referance_code),
             'referers' => $referers,
         ]);
     }
