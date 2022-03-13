@@ -83,10 +83,13 @@ class Exchange extends Controller
     }
 
 
-    public function chart($parity, $chartTime = "4h"): bool|array
+    public function chart($parity, $chartTime = "15m"): bool|array
     {
         $totalGet = 0;
-        if ($chartTime === "1h") {
+        if ($chartTime === "15m") {
+            $subDate = now()->tz('Europe/Istanbul')->subHour(1)->format('Y-m-d H:i:s');
+            $interval = "PT15S";
+        } else if ($chartTime === "1h") {
             $subDate = now()->tz('Europe/Istanbul')->subHour(20)->format('Y-m-d H:i:s');
             $interval = "PT60M";
         } else if ($chartTime === "4h") {

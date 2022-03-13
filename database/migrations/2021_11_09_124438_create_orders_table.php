@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('trigger', 38, 22)->default(0);
             $table->decimal('price', 38, 22)->default(0);
             $table->decimal('amount', 38, 22);
+            $table->decimal('amount_pure', 38, 22);
             $table->integer('percent')->default(0);
             $table->decimal('total', 38, 22);
             $table->string('type');

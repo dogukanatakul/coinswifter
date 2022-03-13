@@ -16,6 +16,7 @@ class Order extends Model
         'trigger',
         'price',
         'amount',
+        'amount_pure',
         'percent',
         'total',
         'type',
@@ -37,6 +38,20 @@ class Order extends Model
         'deleted_at',
         'updated_at',
     ];
+
+    protected $attributes = [
+        'amount_pure' => '',
+    ];
+
+
+    protected static function boot()
+    {
+        parent::boot();
+        // auto-sets values on creation
+        static::creating(function ($query) {
+            $query->amount_pure = $query->amount;
+        });
+    }
 
     public function parity(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
