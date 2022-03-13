@@ -77,6 +77,7 @@ class TestCoin extends Seeder
         ];
 
         foreach ($alterCoins as $alterCoin) {
+            $alterCoin['transfer_min'] = 0;
             $coin = \App\Models\Coin::create($alterCoin);
             $parity = \App\Models\Parity::create([
                 'source_coin_id' => $try->id,

@@ -157,7 +157,7 @@ class Exchange implements ShouldQueue
         $this->logs[] = "Satmak istenen amount: " . $sell->amount;
 
 
-        DB::beginTransaction();
+        //DB::beginTransaction();
         $this->logs[] = "beginTransaction";
         //\
         if (($total = (\Litipk\BigNumbers\Decimal::fromString($buyAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($sell->amount), null)->innerValue())) > 0) {
@@ -177,7 +177,7 @@ class Exchange implements ShouldQueue
             } catch (\Exception $e) {
                 report($e);
                 $this->logs[] = "RollBack";
-                DB::rollBack();
+                //DB::rollBack();
                 $this->queueData(['status' => 'fail', 'message' => $e->getMessage()]);
                 throw new \Exception($e);
             }
@@ -199,7 +199,7 @@ class Exchange implements ShouldQueue
             } catch (\Exception $e) {
                 report($e);
                 $this->logs[] = "RollBack";
-                DB::rollBack();
+                //DB::rollBack();
                 $this->queueData(['status' => 'fail', 'message' => $e->getMessage()]);
                 throw new \Exception($e);
             }
@@ -224,7 +224,7 @@ class Exchange implements ShouldQueue
             } catch (\Exception $e) {
                 report($e);
                 $this->logs[] = "RollBack";
-                DB::rollBack();
+                //DB::rollBack();
                 $this->queueData(['status' => 'fail', 'message' => $e->getMessage()]);
                 throw new \Exception($e);
             }
@@ -318,12 +318,12 @@ class Exchange implements ShouldQueue
                 'microtime' => str_replace(".", "", microtime(true)),
             ]);
             $this->logs[] = "Commit.";
-            DB::commit();
+            //DB::commit();
             return true;
         } catch (\Exception $e) {
             report($e);
             $this->logs[] = "RollBack";
-            DB::rollBack();
+            //DB::rollBack();
             $this->queueData(['status' => 'fail', 'message' => $e->getMessage()]);
             throw new \Exception($e);
         }

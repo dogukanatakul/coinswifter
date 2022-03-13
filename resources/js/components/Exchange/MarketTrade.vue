@@ -11,21 +11,42 @@
                                         <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['buy']['price']" :placeholder="marketStatus.sell_price" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['limit']['buy']['price']" :placeholder="marketStatus.sell_price"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['buy']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['limit']['buy']['amount']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['buy']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['limit']['buy']['total']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -61,21 +82,42 @@
                                         <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['sell']['price']" :placeholder="marketStatus.buy_price" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['limit']['sell']['price']" :placeholder="marketStatus.buy_price"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['sell']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['limit']['sell']['amount']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['limit']['sell']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['limit']['sell']['total']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -115,14 +157,28 @@
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['market']['buy']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['market']['buy']['amount']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['market']['buy']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['market']['buy']['total']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -158,14 +214,28 @@
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['market']['sell']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['market']['sell']['amount']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['market']['sell']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['market']['sell']['total']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -208,7 +278,14 @@
                                             </b-input-group-prepend>
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopMarket']['buy']['trigger_price']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopMarket']['buy']['trigger_price']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
@@ -218,14 +295,20 @@
                                             </b-input-group-prepend>
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopMarket']['buy']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopMarket']['buy']['total']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-
                                                 v-model.number="form['stopMarket']['buy']['percent']"
                                                 type="range"
                                                 min="0"
@@ -254,21 +337,34 @@
                                         <b-input-group size="sm" :prepend="$t('Tetikleme Fiyatı')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopMarket']['sell']['trigger_price']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopMarket']['sell']['trigger_price']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopMarket']['sell']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopMarket']['sell']['total']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-
                                                 v-model.number="form['stopMarket']['sell']['percent']"
                                                 type="range"
                                                 min="0"
@@ -301,35 +397,62 @@
                                         <b-input-group size="sm" :prepend="$t('Tetikleme Fiyatı')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['buy']['trigger_price']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['buy']['trigger_price']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['buy']['price']" :placeholder="marketStatus.price" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['buy']['price']" :placeholder="marketStatus.price"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['buy']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['buy']['amount']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['buy']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['buy']['total']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-
                                                 v-model.number="form['stopLimit']['buy']['percent']"
                                                 type="range"
                                                 min="0"
@@ -358,35 +481,62 @@
                                         <b-input-group size="sm" :prepend="$t('Tetikleme Fiyatı')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['sell']['trigger_price']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['sell']['trigger_price']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['sell']['price']" :placeholder="marketStatus.price" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['sell']['price']" :placeholder="marketStatus.price"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['sell']['amount']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['sell']['amount']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-                                                v-model.number="form['stopLimit']['sell']['total']" type="number" step="0.0000000000000000000001"></b-form-input>
+                                                v-model.number="form['stopLimit']['sell']['total']"
+                                                step="0.00000001"
+                                                min="0.00000001"
+                                                @focus="dynamicFocus('in')"
+                                                @focusout="dynamicFocus('out')"
+                                                :type="dynamicInput"
+                                                style="appearance: textfield;"
+                                            ></b-form-input>
                                         </b-input-group>
                                     </b-col>
                                     <b-col cols="12" class="mt-2">
                                         <b-input-group size="sm">
                                             <b-form-input
                                                 :disabled="disabledTrade"
-
                                                 v-model.number="form['stopLimit']['sell']['percent']"
                                                 type="range"
                                                 min="0"
@@ -422,6 +572,7 @@ import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
 
 const initialData = () => ({
+    dynamicInput: 'number',
     tabindex: 0,
     percentOptions: [
         {text: '25%', value: 25},
@@ -549,6 +700,13 @@ export default {
         }
     },
     methods: {
+        dynamicFocus(method) {
+            if (method === 'in') {
+                this.dynamicInput = 'input'
+            } else {
+                this.dynamicInput = 'number'
+            }
+        },
         async sendOrder(type, action, form) {
             this.v$.form[type][action].$touch();
             if (this.v$.form[type][action].$error) {
@@ -605,63 +763,65 @@ export default {
         },
         'form.limit.buy.price'(value) {
             if (!(this.form.limit.buy.amount === null || this.form.limit.buy.total === null)) {
-                this.form.limit.buy.total = value * this.form.limit.buy.amount
+                this.form.limit.buy.total = isNaN(value * this.form.limit.buy.amount) ? 0 : value * this.form.limit.buy.amount
             }
         },
         'form.limit.buy.amount'(value) {
             if (this.form.limit.buy.price !== null) {
-                this.form.limit.buy.total = this.form.limit.buy.price * value
+                this.form.limit.buy.total = isNaN(this.form.limit.buy.price * value) ? 0 : this.form.limit.buy.price * value
             } else {
-                this.form.limit.buy.total = this.marketStatus.sell_price * value
+                this.form.limit.buy.total = isNaN(this.marketStatus.sell_price * value) ? 0 : this.marketStatus.sell_price * value
             }
         },
         'form.limit.buy.total'(value) {
             if (this.form.limit.buy.price !== null) {
-                this.form.limit.buy.amount = value / this.form.limit.buy.price
+                this.form.limit.buy.amount = isNaN(value / this.form.limit.buy.price) ? 0 : value / this.form.limit.buy.price
             } else {
-                this.form.limit.buy.amount = value / this.marketStatus.sell_price
+                if (this.marketStatus.sell_price != 0) {
+                    this.form.limit.buy.amount = isNaN(value / (this.marketStatus.sell_price == 0 ? 1 : this.marketStatus.sell_price)) ? 0 : value / (this.marketStatus.sell_price == 0 ? 1 : this.marketStatus.sell_price)
+                }
             }
         },
         'form.limit.buy.percent'(value) {
-            this.form.limit.buy.total = (parseFloat((this.wallet.source !== undefined ? this.wallet.source.balance : 0)) / 100) * value
+            this.form.limit.buy.total = isNaN((this.wallet.source !== undefined ? this.wallet.source.balance : 0) / value) ? 0 : (this.wallet.source !== undefined ? this.wallet.source.balance : 0) / value
         },
         'form.limit.sell.price'(value) {
             if (!(this.form.limit.sell.amount === null || this.form.limit.sell.total === null)) {
-                this.form.limit.sell.total = value * this.form.limit.sell.amount
+                this.form.limit.sell.total = isNaN(value * this.form.limit.sell.amount) ? 0 : value * this.form.limit.sell.amount
             }
         },
         'form.limit.sell.amount'(value) {
             if (this.form.limit.sell.price !== null) {
-                this.form.limit.sell.total = this.form.limit.sell.price * value
+                this.form.limit.sell.total = isNaN(this.form.limit.sell.price * value) ? 0 : this.form.limit.sell.price * value
             } else {
-                this.form.limit.sell.total = this.marketStatus.buy_price * value
+                this.form.limit.sell.total = isNaN(this.marketStatus.buy_price * value) ? 0 : this.marketStatus.buy_price * value
             }
         },
         'form.limit.sell.total'(value) {
             if (this.form.limit.sell.price !== null) {
-                this.form.limit.sell.amount = value / this.form.limit.sell.price
+                this.form.limit.sell.amount = isNaN(value / this.form.limit.sell.price) ? 0 : value / this.form.limit.sell.price
             }
         },
         'form.limit.sell.percent'(value) {
-            this.form.limit.sell.amount = (parseFloat((this.wallet.coin !== undefined ? this.wallet.coin.balance : 0)) / 100) * value
+            this.form.limit.sell.amount = isNaN(((this.wallet.coin !== undefined ? this.wallet.coin.balance : 0) / 100) * value) ? 0 : ((this.wallet.coin !== undefined ? this.wallet.coin.balance : 0) / 100) * value
         },
         'form.market.buy.amount'(value) {
-            this.form.market.buy.total = value * (this.marketStatus.sell_price === 0 ? 1 : this.marketStatus.sell_price)
+            this.form.market.buy.total = isNaN(value * (this.marketStatus.sell_price === 0 ? 1 : this.marketStatus.sell_price)) ? 0 : value * (this.marketStatus.sell_price === 0 ? 1 : this.marketStatus.sell_price)
         },
         'form.market.buy.total'(value) {
-            this.form.market.buy.amount = value / (this.marketStatus.sell_price === 0 ? 1 : this.marketStatus.sell_price)
+            this.form.market.buy.amount = isNaN(value / (this.marketStatus.sell_price === 0 ? 1 : this.marketStatus.sell_price)) ? 0 : value / (this.marketStatus.sell_price === 0 ? 1 : this.marketStatus.sell_price)
         },
         'form.market.buy.percent'(value) {
-            this.form.market.buy.total = (parseFloat((this.wallet.source !== undefined ? this.wallet.source.balance : 0)) / 100) * value
+            this.form.market.buy.total = isNaN(((this.wallet.source !== undefined ? this.wallet.source.balance : 0) / 100) * value) ? 0 : ((this.wallet.source !== undefined ? this.wallet.source.balance : 0) / 100) * value
         },
         'form.market.sell.amount'(value) {
-            this.form.market.sell.total = value * (this.marketStatus.buy_price === 0 ? 1 : this.marketStatus.buy_price)
+            this.form.market.sell.total = isNaN(value * (this.marketStatus.buy_price === 0 ? 1 : this.marketStatus.buy_price)) ? 0 : value * (this.marketStatus.buy_price === 0 ? 1 : this.marketStatus.buy_price)
         },
         'form.market.sell.total'(value) {
-            this.form.market.sell.amount = value / (this.marketStatus.buy_price === 0 ? 1 : this.marketStatus.buy_price)
+            this.form.market.sell.amount = isNaN(value / (this.marketStatus.buy_price === 0 ? 1 : this.marketStatus.buy_price)) ? 0 : value / (this.marketStatus.buy_price === 0 ? 1 : this.marketStatus.buy_price)
         },
         'form.market.sell.percent'(value) {
-            this.form.market.sell.amount = (parseFloat((this.wallet.coin !== undefined ? this.wallet.coin.balance : 0)) / 100) * value
+            this.form.market.sell.amount = isNaN(((this.wallet.coin !== undefined ? this.wallet.coin.balance : 0) / 100) * value) ? 0 : ((this.wallet.coin !== undefined ? this.wallet.coin.balance : 0) / 100) * value
         },
     },
     data: () => (initialData()),

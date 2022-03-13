@@ -10,8 +10,8 @@ import $ from 'jquery';
 import VueClipboard from 'vue3-clipboard'
 import Maska from 'maska'
 import VueProgressBar from "@aacassandra/vue3-progressbar";
-import VueLoading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+// import VueLoading from 'vue-loading-overlay';
+// import 'vue-loading-overlay/dist/vue-loading.css';
 
 
 import vSelect from 'vue-select'
@@ -104,7 +104,7 @@ app.use(VueProgressBar, options)
 app.use(BootstrapVue3)
 app.use(Notifications)
 app.component(VueCarousel.name, VueCarousel)
-app.use(VueLoading)
+// app.use(VueLoading)
 app.use(VueApexCharts)
 app.use(VCalendar, {})
 app.use(Maska)

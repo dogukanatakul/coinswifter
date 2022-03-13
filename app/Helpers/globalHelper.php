@@ -25,12 +25,9 @@ if (!function_exists('usdToTry')) {
 }
 
 if (!function_exists('priceFormat')) {
-    function priceFormat($number, $type = "decimal", $fraction = 8): float|string
+    function priceFormat($number, $type = "decimal", $fraction = 22): float|string
     {
-        if ($type == "float") {
-            return floatval(number_format(floatval($number), $fraction, '.', ''));
-        }
-        return number_format($number, $fraction, '.', ',');
+        return rtrim(rtrim($number, "0"), ".") === "" ? "0" : rtrim(rtrim($number, "0"), ".");
     }
 }
 

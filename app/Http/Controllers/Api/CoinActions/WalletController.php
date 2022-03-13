@@ -282,10 +282,10 @@ class WalletController extends Controller
 
             return collect($list)->mapWithKeys(function ($data) use ($hidden, $user) {
                 $newData = [];
-                $newData['transfer_min'] = \Litipk\BigNumbers\Decimal::fromString($data->transfer_min)->innerValue();
-                $newData['transfer_max'] = \Litipk\BigNumbers\Decimal::fromString($data->transfer_max)->innerValue();
-                $newData['commission_in'] = \Litipk\BigNumbers\Decimal::fromString($data->commission_in)->innerValue();
-                $newData['commission_out'] = \Litipk\BigNumbers\Decimal::fromString($data->commission_out)->innerValue();
+                $newData['transfer_min'] = priceFormat($data->transfer_min);
+                $newData['transfer_max'] = priceFormat($data->transfer_max);
+                $newData['commission_in'] = priceFormat($data->commission_in);
+                $newData['commission_out'] = priceFormat($data->commission_out);
                 $newData['commission_type'] = $data->commission_type;
                 $newData['contract'] = empty($data->contract) ? false : $data->contract;
                 if ($hidden) {
@@ -307,11 +307,11 @@ class WalletController extends Controller
                         }
                         $newData['user_withdrawal_wallet'][] = [
                             'uuid' => $user_withdrawal_wallet->uuid,
-                            'amount' => $user_withdrawal_wallet->amount,
-                            'send_amount' => $user_withdrawal_wallet->send_amount,
-                            'commission' => $user_withdrawal_wallet->commission,
+                            'amount' => priceFormat($user_withdrawal_wallet->amount),
+                            'send_amount' => priceFormat($user_withdrawal_wallet->send_amount),
+                            'commission' => priceFormat($user_withdrawal_wallet->commission),
                             'to' => $user_withdrawal_wallet->to,
-                            'status' => $user_withdrawal_wallet->status === 0 ? (\Carbon\Carbon::parse($user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'))->diffInMinutes(now()) > 1 ? __('api_messages.processing') : __('api_messages.waiting')) : __('api_messages.approved'),
+                            'status' => $user_withdrawal_wallet->status === 0 ? (\Carbon\Carbon::parse($user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'))->diffInMinutes(now()) > 1 ? __('api_messages.processing') : __('api_messages.waiting')) : ($user_withdrawal_wallet->status == 3 ? __('api_messages.denied') : __('api_messages.approved')),
                             'created_at' => $user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'),
                             'cancel' => !(\Carbon\Carbon::parse($user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'))->diffInMinutes(now()) > 1)
                         ];
@@ -376,7 +376,7 @@ class WalletController extends Controller
                     'short_name' => $data->network->short_name
                 ];
                 $newData['wallet_code'] = $data->user_coin->user_wallet->wallet ?? null;
-                $newData['total_balance'] = $newData['balance'];
+                $newData['total_balance'] = priceFormat($newData['balance']);
 
                 $newData['prices'] = [];
                 foreach ($data->parity_coin as $parity_coin) {
@@ -387,6 +387,8 @@ class WalletController extends Controller
                     }
                 }
                 $newData['balance'] = \Litipk\BigNumbers\Decimal::fromString($newData['balance'])->sub(\Litipk\BigNumbers\Decimal::fromString($newData['locked']), null)->innerValue();
+                $newData['balance'] = priceFormat($newData['balance']);
+                $newData['locked'] = priceFormat($newData['locked']);
                 return [$data->symbol => $newData];
             })->toArray();
         } catch (\Exception $e) {
@@ -408,7 +410,7 @@ class WalletController extends Controller
                     } else {
                         return isset($item['prices']['TRY']) ? $item['prices']['TRY'] * $item['balance'] : 0;
                     }
-                })->sum(), "float", 2),
+                })->sum()),
                 'list' => collect($list)->filter(function ($item) {
                     if ($item['balance'] > 0) {
                         return $item;

@@ -59,8 +59,6 @@ export function priceFormat(val) {
             (fractionDigits ? decimal + Math.abs(number - wholePart).toFixed(fractionDigits).slice(2) : "");
 
     };
-
-
     return Number(val).formatMoney(6, ',', '.')
 }
 

@@ -14,7 +14,7 @@
                 <span>
           <label>{{ $t("Toplam Varlık") }}</label>
           <label class="mx-2"
-          >{{ parseFloat(walletSelect.total_balance) }}
+          >{{ walletSelect.total_balance }}
             {{ walletSelect.symbol }}</label
           >
         </span>
@@ -79,29 +79,29 @@
                         <tr>
                             <th>{{ $t("Minimum:") }}</th>
                             <td class="text--right">
-                                {{ parseFloat(walletSelect.transfer_min) }}
+                                {{ walletSelect.transfer_min }}
                                 {{ walletSelect.symbol }}
                             </td>
                         </tr>
                         <tr>
                             <th>{{ $t("Maksimum:") }}</th>
                             <td class="text--right">
-                                {{ parseFloat(walletSelect.transfer_max) }}
+                                {{ walletSelect.transfer_max }}
                                 {{ walletSelect.symbol }}
                             </td>
                         </tr>
                         <tr>
                             <th>{{ $t("İşlem Bedeli Oranı:") }}</th>
                             <td class="text--right">
-                                {{ parseFloat(walletSelect.commission_out) }}%
+                                {{ walletSelect.commission_out }}%
                             </td>
                         </tr>
                         <tr>
                             <th>{{ $t("Transfer Bedeli:") }}</th>
                             <td class="text--right">
                                 {{
-                                    (parseFloat(form["amount"]) *
-                                        parseFloat(walletSelect.commission_out)) /
+                                    (form["amount"] *
+                                        walletSelect.commission_out) /
                                     100
                                 }}
                                 {{ walletSelect.symbol }}
@@ -112,8 +112,8 @@
                             <td class="text--right">
                                 {{
                                     form["amount"] -
-                                    (parseFloat(form["amount"]) *
-                                        parseFloat(walletSelect.commission_out)) /
+                                    (form["amount"] *
+                                        walletSelect.commission_out) /
                                     100
                                 }}
                                 {{ walletSelect.symbol }}
@@ -130,6 +130,8 @@
                                         type="number"
                                         :min="walletSelect.transfer_min"
                                         :max="walletSelect.balance"
+                                        step="0.00000001"
+                                        style="appearance: textfield;"
                                         v-model="form['amount']"
                                         autofocus
                                     ></b-form-input>
@@ -176,10 +178,7 @@
                             </b-col>
                             <b-col cols="12">
                                 <div class="d-grid gap-2">
-                                    <b-button block variant="primary" type="submit">{{
-                                            $t("Transfer İşlemini Başlat")
-                                        }}
-                                    </b-button>
+                                    <b-button block variant="primary" type="submit">{{ $t("Transfer İşlemini Başlat") }}</b-button>
                                 </div>
                             </b-col>
                         </b-row>
@@ -255,9 +254,9 @@
                     v-for="(item, key) in walletSelect.user_withdrawal_wallet"
                     :key="key"
                 >
-                    <th scope="row">{{ parseFloat(item.amount) }}</th>
-                    <th scope="row">{{ parseFloat(item.send_amount) }}</th>
-                    <th scope="row">{{ parseFloat(item.commission) }}</th>
+                    <th scope="row">{{ item.amount }}</th>
+                    <th scope="row">{{ item.send_amount }}</th>
+                    <th scope="row">{{ item.commission }}</th>
                     <td>{{ item.to }}</td>
                     <td>{{ item.created_at }}</td>
                     <td>{{ item.status }}</td>
@@ -272,7 +271,7 @@
                     </td>
                 </tr>
                 <tr v-for="(item, key) in walletSelect.user_withdrawal" :key="key">
-                    <th scope="row">{{ parseFloat(item.amount) }}</th>
+                    <th scope="row">{{ item.amount }}</th>
                     <td>{{ item.iban }}</td>
                     <td>{{ item.created_at }}</td>
                     <td>{{ item.status }}</td>
@@ -391,10 +390,10 @@ export default {
         copyWalletCode(code) {
             copyText(code, undefined, (error, event) => {
                 if (error) {
-                    this.$notify({text: $t("Başarısız kopyalama!"), type: "error"});
+                    this.$notify({text: this.$t("Başarısız kopyalama!"), type: "error"});
                 } else {
                     this.$notify({
-                        text: $t("Cüzdan kodu kopyalandı!"),
+                        text: this.$t("Cüzdan kodu kopyalandı!"),
                         type: "success",
                     });
                 }

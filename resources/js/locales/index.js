@@ -3,7 +3,7 @@ import en from './en'
 import {createI18n} from 'vue-i18n'
 
 let userLang = navigator.language || navigator.userLanguage;
-if (parseFloat(userLang.indexOf('tr')) >= 0) {
+if (userLang.indexOf('tr') >= 0) {
     userLang = 'tr'
 } else {
     userLang = 'en'

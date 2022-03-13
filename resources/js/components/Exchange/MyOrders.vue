@@ -11,9 +11,10 @@
             <tr>
                 <th>{{ $t('Parite') }}</th>
                 <th>{{ $t('Miktar') }}</th>
-                <th>{{ $t('Tamamlanan') }}</th>
+                <th>{{ $t('Kalan Miktar') }}</th>
                 <th>{{ $t('Fiyat') }}</th>
-                <th>{{ $t('Tetikleme') }}</th>
+                <th>{{ $t('Tamamlanan') }}</th>
+<!--                <th>{{ $t('Tetikleme') }}</th>-->
                 <th>{{ $t('Tipi') }}</th>
                 <th>{{ $t('İşlem') }}</th>
                 <th>{{ $t('Tarih') }}</th>
@@ -25,10 +26,11 @@
                 :style="bgColorOrder(order.percent, order.process)"
             >
                 <td>{{ selectedCoin.coin.symbol + "/" + selectedCoin.source.symbol }}</td>
+                <td>{{ order.amount_pure }} {{ selectedCoin.coin.symbol }}</td>
                 <td>{{ order.amount }} {{ selectedCoin.coin.symbol }}</td>
-                <td class="text-center">%{{ order.percent }}</td>
                 <td>{{ (order.price == '0' ? '-' : order.price) }} {{ (order.price == '0' ? '' : selectedCoin.source.symbol) }}</td>
-                <td>{{ (order.trigger == '0' ? '-' : order.trigger) }}</td>
+                <td class="text-center">%{{ order.percent }}</td>
+<!--                <td>{{ (order.trigger == '0' ? '-' : order.trigger) }}</td>-->
                 <td>{{ order.type }}</td>
                 <td>{{ order.operation }}</td>
                 <td>{{ order.created_at }}</td>

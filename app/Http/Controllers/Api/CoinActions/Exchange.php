@@ -73,7 +73,7 @@ class Exchange extends Controller
                     return [$item->last()->type => ["value" => $price, "status" => $status]];
                 });
             }
-            $newItem['commission'] = priceFormat($item['commission']['commission'], "float");
+            $newItem['commission'] = priceFormat($item['commission']['commission']);
             return [$item['source']['symbol'] . "-" . $item['coin']['symbol'] => $newItem];
         })->toArray();
         return response()->json([
@@ -85,6 +85,7 @@ class Exchange extends Controller
 
     public function chart($parity, $chartTime = "15m"): bool|array
     {
+        return false;
         $totalGet = 0;
         if ($chartTime === "15m") {
             $subDate = now()->tz('Europe/Istanbul')->subHour(1)->format('Y-m-d H:i:s');
@@ -194,15 +195,15 @@ class Exchange extends Controller
 
                 $sellOrders = collect($sellOrders)->map(function ($data, $key) {
                     return [
-                        'price' => priceFormat($key, "float"),
-                        'amount' => priceFormat($data->sum('amount'), "float")
+                        'price' => priceFormat($key),
+                        'amount' => priceFormat($data->sum('amount'))
                     ];
                 });
 
                 $buyOrders = collect($buyOrders)->map(function ($data, $key) {
                     return [
                         'price' => priceFormat($key, "float"),
-                        'amount' => priceFormat($data->sum('amount'), "float")
+                        'amount' => priceFormat($data->sum('amount'))
                     ];
                 });
                 if ($sellOrders->count() === 0 && $buyOrders->count() === 0 && $status['price'] > 0) {
@@ -210,7 +211,7 @@ class Exchange extends Controller
                         'buy' => [],
                         'sell' => [
                             [
-                                'price' => priceFormat(floatval($status['price'])),
+                                'price' => priceFormat($status['price']),
                                 'amount' => priceFormat(0 . "." . rand(111111, 999999999)),
                             ],
                         ],
@@ -289,9 +290,10 @@ class Exchange extends Controller
                     } else {
                         $myOrders = $myOrders->orders->map(function ($data) {
                             $newData = $data->toArray();
-                            $newData['price'] = rtrim(rtrim($newData['price'], 0), '.');
-                            $newData['amount'] = rtrim(rtrim($newData['amount'], 0), '.');
-                            $newData['trigger'] = rtrim(rtrim($newData['trigger'], 0), '.');
+                            $newData['price'] = priceFormat($newData['price']);
+                            $newData['amount'] = priceFormat($newData['amount']);
+                            $newData['amount_pure'] = priceFormat($newData['amount_pure']);
+                            $newData['trigger'] = priceFormat($newData['trigger']);
                             $newData['created_at'] = $data->created_at->format('Y-m-d H:i');
                             $newData['operation'] = __('api_messages.' . $data->process);
                             $newData['finished'] = $data->buying_trades->sum('amount') + $data->selling_trades->sum('amount');
@@ -373,11 +375,9 @@ class Exchange extends Controller
     public function test()
     {
 
-        dd();
-
-        $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();
-        $bot = new \App\Jobs\WalletCreate($user, 0);
-        dd($bot->handle());
+//        $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();
+//        $bot = new \App\Jobs\WalletCreate($user, 0);
+//        dd($bot->handle());
 
 //        dd(NodeTransaction::where('network', 'BSC')->orderBy('block_number', 'ASC')->first()->toArray());
 
@@ -403,33 +403,33 @@ class Exchange extends Controller
 //        dd($randWalletControl->toArray());
 
 
-        UserCoin::where('coins_id', '!=', 1)->update([
-            'balance' => 0,
-            'balance_pure' => 0,
-        ]);
-
-        UserCoin::where('coins_id', 1)->update([
-            'balance' => 10000000,
-            'balance_pure' => 0,
-        ]);
-        NodeTransaction::where('value', '>', 0)->update([
-            'processed' => 0,
-        ]);
-        Commission::truncate();
-        OrderTransaction::truncate();
-        Order::truncate();
-        UserWithdrawalWalletFee::truncate();
-        UserWithdrawalWalletChild::truncate();
-        UserWithdrawalWallet::truncate();
-        LogActivity::truncate();
-        dd("ok");
+//        UserCoin::where('coins_id', '!=', 1)->update([
+//            'balance' => 0,
+//            'balance_pure' => 0,
+//        ]);
+//
+//        UserCoin::where('coins_id', 1)->update([
+//            'balance' => 10000000,
+//            'balance_pure' => 0,
+//        ]);
+//        NodeTransaction::where('value', '>', 0)->update([
+//            'processed' => 0,
+//        ]);
+//        Commission::truncate();
+//        OrderTransaction::truncate();
+//        Order::truncate();
+//        UserWithdrawalWalletFee::truncate();
+//        UserWithdrawalWalletChild::truncate();
+//        UserWithdrawalWallet::truncate();
+//        LogActivity::truncate();
+//        dd("ok");
 //        dd("ok");
 //        $wallets = NodeTransaction::get()->toArray();
 //        dd(json_encode($wallets));
 
 
-        $bot = new \App\Jobs\NodeTransaction();
-//        $bot = new \App\Jobs\TransferETH();
+//        $bot = new \App\Jobs\NodeTransaction();
+        $bot = new \App\Jobs\TransferETH();
         dd($bot->handle());
     }
 

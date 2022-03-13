@@ -142,11 +142,11 @@ export default {
   components: { WalletDetail, WalletStatus },
 
   async created() {
-    this.loader = this.$loading.show({
-      container: null,
-      canCancel: false,
-      onCancel: this.onCancel,
-    });
+    // this.loader = this.$loading.show({
+    //   container: null,
+    //   canCancel: false,
+    //   onCancel: this.onCancel,
+    // });
     await this.getWallets().then(() => {
       this.walletSelect = Object.values(this.wallets)[0];
     });
@@ -208,7 +208,7 @@ export default {
             this.wallets = response.data;
             this.totalMount = response.total;
           }
-          this.loader.hide();
+          // this.loader.hide();
         });
       return "";
     },
@@ -295,7 +295,7 @@ export default {
     width: 200px !important;
     height: 200px !important;
   }
-  
+
   .myMargins{
       margin-top:-1.2vh !important;
   }
@@ -326,9 +326,9 @@ export default {
   .myDiv {
     width: 250px !important;
     height: 250px !important;
-    
+
   }
-  
+
   .myMargins{
       margin-top:-1.2vh !important;
   }

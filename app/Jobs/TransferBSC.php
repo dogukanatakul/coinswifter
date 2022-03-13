@@ -61,7 +61,7 @@ class TransferBSC implements ShouldQueue
             })
             ->whereHas('user_withdrawal_wallet', function ($q) {
                 $q->whereNull('to_user_id')
-                    ->where('created_at', '>', now()->subMinutes(1)->toDateTimeLocalString())
+                    ->where('created_at', '<', now()->subMinutes(1)->toDateTimeLocalString())
                     ->where('status', 0);
             })
             ->whereIn('status', [0, 3])
@@ -70,7 +70,7 @@ class TransferBSC implements ShouldQueue
         if (empty($userWithdrawalWalletChild)) {
             return false;
         }
-        if ($userWithdrawalWalletChild->status == 3 && preg_match("/ENS name: '.*' is invalid./", $userWithdrawalWalletChild->error_answer) == 1) {
+        if ($userWithdrawalWalletChild->status == 3 && (preg_match("/ENS name: '.*' is invalid./", $userWithdrawalWalletChild->error_answer) == 1) || preg_match("/Unknown format .*, attempted to normalize to 0xa/", $userWithdrawalWalletChild->error_answer) == 1) {
             UserWithdrawalWallet::where('id', $userWithdrawalWalletChild->user_withdrawal_wallets_id)
                 ->update([
                     'status' => 3

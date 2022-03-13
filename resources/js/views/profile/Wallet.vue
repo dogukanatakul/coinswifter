@@ -26,19 +26,19 @@
                         @click="walletSelected(wallet)"
                         :active="((walletSelect!==null && walletSelect!=='account_status' && wallet.symbol === walletSelect.symbol) ? true : false)"
                     >
-                        <b-row class="w-100" v-if="parseInt(wallet.locked)!==0">
+                        <b-row class="w-100" v-if="wallet.locked!=='0'">
                             <b-col cols="12" md="5" class="text-center text-md-start">
                                 <span class="fw-bold ">{{ wallet.symbol }}</span>
                                 {{ wallet.name }}
                             </b-col>
-                            <b-col cols="6" md="3" v-if="parseInt(wallet.locked)!==0">
+                            <b-col cols="6" md="3">
                                 <b-badge variant="warning" class="float-left mx-1 w-100">
                                     <b-icon icon="lock-fill" font-scale="1"></b-icon>
                                     {{ wallet.locked }} {{ wallet.symbol }}
                                 </b-badge>
                             </b-col>
                             <b-col cols="6" md="4">
-                                <b-badge variant="secondary" class="float-left mx-1 w-100">{{ parseFloat(wallet.balance) }} {{ wallet.symbol }}</b-badge>
+                                <b-badge variant="secondary" class="float-left mx-1 w-100">{{ wallet.balance }} {{ wallet.symbol }}</b-badge>
                             </b-col>
                         </b-row>
                         <b-row class="w-100" v-else>
@@ -47,7 +47,7 @@
                                 {{ wallet.name }}
                             </b-col>
                             <b-col cols="12" md="6">
-                                <b-badge variant="secondary" class="float-left mx-1 w-100">{{ parseFloat(wallet.balance) }} {{ wallet.symbol }}</b-badge>
+                                <b-badge variant="secondary" class="float-left mx-1 w-100">{{ wallet.balance }} {{ wallet.symbol }}</b-badge>
                             </b-col>
                         </b-row>
                     </b-list-group-item>
@@ -73,11 +73,11 @@ export default {
     components: {WalletDetail, WalletStatus},
 
     async created() {
-        this.loader = this.$loading.show({
-            container: null,
-            canCancel: false,
-            onCancel: this.onCancel,
-        });
+        // this.loader = this.$loading.show({
+        //     container: null,
+        //     canCancel: false,
+        //     onCancel: this.onCancel,
+        // });
         await this.getWallets().then(() => {
             this.walletSelect = Object.values(this.wallets)[0]
         })
@@ -133,7 +133,7 @@ export default {
                     this.wallets = response.data
                     this.totalMount = response.total
                 }
-                this.loader.hide()
+                // this.loader.hide()
             });
             return ""
         },
