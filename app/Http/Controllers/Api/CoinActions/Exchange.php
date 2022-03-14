@@ -196,16 +196,19 @@ class Exchange extends Controller
                 $sellOrders = collect($sellOrders)->map(function ($data, $key) {
                     return [
                         'price' => priceFormat($key),
-                        'amount' => priceFormat($data->sum('amount'))
+                        'amount' => priceFormat(decimal_sum($data->pluck('amount')->toArray())),
+                        'total' => priceFormat(\Litipk\BigNumbers\Decimal::fromString(priceFormat($key))->mul(\Litipk\BigNumbers\Decimal::fromString(priceFormat(decimal_sum($data->pluck('amount')->toArray()))), null)->innerValue())
                     ];
                 });
 
                 $buyOrders = collect($buyOrders)->map(function ($data, $key) {
                     return [
-                        'price' => priceFormat($key, "float"),
-                        'amount' => priceFormat($data->sum('amount'))
+                        'price' => priceFormat($key),
+                        'amount' => priceFormat(decimal_sum($data->pluck('amount')->toArray())),
+                        'total' => priceFormat(\Litipk\BigNumbers\Decimal::fromString(priceFormat($key))->mul(\Litipk\BigNumbers\Decimal::fromString(priceFormat(decimal_sum($data->pluck('amount')->toArray()))), null)->innerValue())
                     ];
                 });
+
                 if ($sellOrders->count() === 0 && $buyOrders->count() === 0 && $status['price'] > 0) {
                     $orders = [
                         'buy' => [],
@@ -402,9 +405,9 @@ class Exchange extends Controller
 //            ->first();
 //        dd($randWalletControl->toArray());
 
-//        $bot = new \App\Jobs\Exchange();
-////        $bot = new \App\Jobs\NodeTransaction();
-//        dd($bot->handle());
+        $bot = new \App\Jobs\ChartData();
+//        $bot = new \App\Jobs\NodeTransaction();
+        dd($bot->handle());
 
 
         UserCoin::where('coins_id', '!=', 1)->update([

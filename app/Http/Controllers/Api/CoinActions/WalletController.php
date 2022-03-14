@@ -220,7 +220,7 @@ class WalletController extends Controller
             ->where('users_id', $this->user->id)
             ->where('uuid', $request->uuid)
             ->where('status', 0)
-            ->where('created_at', '>', now()->subMinutes(1)->toDateTimeLocalString())
+            ->where('created_at', '>', now()->tz('Europe/Istanbul')->subMinutes(1)->toDateTimeLocalString())
             ->first();
         if (empty($withdrawalWallet)) {
             return response()->json([
@@ -311,9 +311,9 @@ class WalletController extends Controller
                             'send_amount' => priceFormat($user_withdrawal_wallet->send_amount),
                             'commission' => priceFormat($user_withdrawal_wallet->commission),
                             'to' => $user_withdrawal_wallet->to,
-                            'status' => $user_withdrawal_wallet->status === 0 ? (\Carbon\Carbon::parse($user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'))->diffInMinutes(now()) > 1 ? __('api_messages.processing') : __('api_messages.waiting')) : ($user_withdrawal_wallet->status == 3 ? __('api_messages.denied') : __('api_messages.approved')),
+                            'status' => $user_withdrawal_wallet->status === 0 ? (\Carbon\Carbon::parse($user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'))->diffInMinutes(now()->tz('Europe/Istanbul')) > 1 ? __('api_messages.processing') : __('api_messages.waiting')) : ($user_withdrawal_wallet->status == 3 ? __('api_messages.denied') : __('api_messages.approved')),
                             'created_at' => $user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'),
-                            'cancel' => !(\Carbon\Carbon::parse($user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'))->diffInMinutes(now()) > 1)
+                            'cancel' => !(\Carbon\Carbon::parse($user_withdrawal_wallet->created_at->format('Y-m-d H:i:s'))->diffInMinutes(now()->tz('Europe/Istanbul')) > 1)
                         ];
                     }
                 }

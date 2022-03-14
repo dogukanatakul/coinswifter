@@ -61,7 +61,7 @@ class TransferETH implements ShouldQueue
             })
             ->whereHas('user_withdrawal_wallet', function ($q) {
                 $q->whereNull('to_user_id')
-                    ->where('created_at', '<', now()->subMinutes(1)->toDateTimeLocalString())
+                    ->where('created_at', '<', now()->tz('Europe/Istanbul')->subMinutes(1)->toDateTimeLocalString())
                     ->where('status', 0);
             })
             ->whereIn('status', [0, 3])

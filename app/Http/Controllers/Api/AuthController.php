@@ -1080,10 +1080,10 @@ class AuthController extends Controller
 
     public function user(): \Illuminate\Http\JsonResponse
     {
-        $contract = Cache::remember('conract-' . $this->user->id, now()->addMinutes(5), function () {
+        $contract = Cache::remember('conract-' . $this->user->id, now()->tz('Europe/Istanbul')->addMinutes(5), function () {
             return UserAgreement::where('users_id', $this->user->id)->get()->count();
         });
-        $kyc = Cache::remember('kyc-' . $this->user->id, now()->addMinutes(5), function () {
+        $kyc = Cache::remember('kyc-' . $this->user->id, now()->tz('Europe/Istanbul')->addMinutes(5), function () {
             if (empty($adress = UserAddress::where('users_id', $this->user->id)->first())) {
                 return false;
             }

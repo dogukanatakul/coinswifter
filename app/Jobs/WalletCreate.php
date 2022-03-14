@@ -141,7 +141,7 @@ class WalletCreate implements ShouldQueue
 
 
         if ($problem) {
-            WalletCreate::dispatch((array)$this->user, ($this->try + 1))->delay(now()->addMinutes(15));
+            WalletCreate::dispatch((array)$this->user, ($this->try + 1))->delay(now()->tz('Europe/Istanbul')->addMinutes(15));
         }
         return true;
     }
