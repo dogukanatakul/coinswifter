@@ -161,7 +161,7 @@ export default {
       this.$emit("update:selectedCoin", value);
       this.$emit("changeParities",true);
       this.$router.push({
-        name: "exchange_new",
+        name: "exchange",
         params: { parity: value.source.symbol + "-" + value.coin.symbol },
       });
     },
@@ -169,7 +169,7 @@ export default {
       await restAPI
         .getData(
           {
-            Action: "exchange_new/favorite",
+            Action: "exchange/favorite",
           },
           parity
         )
