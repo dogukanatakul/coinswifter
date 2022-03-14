@@ -19,6 +19,14 @@ export default [
         component: () => import ("../views/Exchange.vue"),
     },
     {
+        path: "/exchange_new/:parity(.*)*",
+        name: "exchange_new",
+        // redirect: to => {
+        //     return {path: '/exchange', query: {q: to.params.source}}
+        // },
+        component: () => import ("../views/Exchange_New.vue"),
+    },
+    {
         path: "/markets",
         name: "markets",
         component: () =>

@@ -18,6 +18,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -32,6 +33,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -46,6 +48,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -89,6 +92,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -103,6 +107,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -117,6 +122,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -164,6 +170,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -178,6 +185,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -221,6 +229,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -235,6 +244,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -285,6 +295,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -302,6 +313,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -344,6 +356,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -358,6 +371,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -404,6 +418,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -418,6 +433,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -432,6 +448,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -446,6 +463,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -488,6 +506,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -502,6 +521,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -516,6 +536,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -530,6 +551,7 @@
                                                 @focusout="dynamicFocus('out')"
                                                 :type="dynamicInput"
                                                 style="appearance: textfield;"
+                                                inputmode="numeric"
                                             ></b-form-input>
                                         </b-input-group>
                                     </b-col>
@@ -888,6 +910,10 @@ export default {
             }
         }
     }
-
+    @media screen and (max-width:1080px) {
+        .input-group-text {
+            font-size:9px !important;
+        }
+    }
 }
 </style>

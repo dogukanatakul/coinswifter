@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body class="market-pairs mb-2">
+    <b-card no-body class="market-pairs mb-2">
     <b-card-text>
       <b-row>
         <b-col>
@@ -10,9 +10,9 @@
           ></b-form-input>
         </b-col>
       </b-row>
-      <TabView v-model:activeIndex="tabindex">
-        <TabPanel>
-          <template #header>
+      <b-tabs content-class="mt-3">
+        <b-tab>
+          <template #title>
             <i class="fas fa-star"></i> {{ $t("Favoriler") }}
           </template>
           <div class="table-responsive">
@@ -74,12 +74,14 @@
               </tbody>
             </table>
           </div>
-        </TabPanel>
-        <TabPanel
+        </b-tab>
+        <b-tab
           v-for="(coin_tables, coin_tables_key) in parities"
           :header="coin_tables_key"
           :key="coin_tables_key"
           :value="coin_tables_key"
+          :title="coin_tables_key"
+          active
         >
           <div class="table-responsive">
             <table class="table table-sm order-table" :key="search">
@@ -138,27 +140,28 @@
               </tbody>
             </table>
           </div>
-        </TabPanel>
-      </TabView>
+        </b-tab>
+      </b-tabs>
     </b-card-text>
   </b-card>
 </template>
+
 <script>
 import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
 import { convertDate } from "../../helpers/helpers";
 import restAPI from "../../api/restAPI";
-
 export default {
-  name: "MarketPairs",
+  name: "MarketPairs_New",
   components: { TabView, TabPanel },
   props: ["selectedCoin", "parities", "coins"],
-  emits: ["update:selectedCoin"],
+  emits: ["update:selectedCoin","changeParities"],
   methods: {
     selectCoin(value) {
       this.$emit("update:selectedCoin", value);
+      this.$emit("changeParities",true);
       this.$router.push({
-        name: "exchange",
+        name: "exchange_new",
         params: { parity: value.source.symbol + "-" + value.coin.symbol },
       });
     },
@@ -166,7 +169,7 @@ export default {
       await restAPI
         .getData(
           {
-            Action: "exchange/favorite",
+            Action: "exchange_new/favorite",
           },
           parity
         )
@@ -188,9 +191,10 @@ export default {
   data: () => ({
     search: "",
   }),
-};
+}
 </script>
-<style scoped lang="scss">
+
+<style lang="scss" scoped>
 @media screen and (max-width: 992px) {
   .market-pairs {
     max-height: 90vh !important;
