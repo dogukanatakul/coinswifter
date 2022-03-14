@@ -27,9 +27,11 @@ class ChartData implements ShouldQueue
      * Execute the job.
      *
      * @return void
+     * @throws \Exception
      */
     public function handle()
     {
+        return "";
         $parts = [
             '15m', // 15 saniyelik
             '1h', // 1 saatlik

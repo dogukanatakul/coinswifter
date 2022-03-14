@@ -4,15 +4,10 @@ namespace App\Http\Controllers\Api\CoinActions;
 
 use App\Http\Controllers\Controller;
 use App\Models\Coin;
-use App\Models\CuzdanTanim;
 use App\Models\Order;
-use App\Models\User;
 use App\Models\Parity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use Ixudra\Curl\Facades\Curl;
 
 class CoinsController extends Controller
 {

@@ -66,7 +66,6 @@ class WalletCreate implements ShouldQueue
                         'password' => $wallet->content->private_key,
                     ]);
                 } else if (!$wallet->status) {
-                    dd("ok");
                     $problem = true;
                 }
             }
@@ -98,7 +97,6 @@ class WalletCreate implements ShouldQueue
                         'password' => $wallet->content->private_key,
                     ]);
                 } else if (!$wallet->status) {
-                    dd("ok2");
                     $problem = true;
                 }
             }
@@ -135,13 +133,12 @@ class WalletCreate implements ShouldQueue
                 }
             }
         } catch (\Exception $e) {
-            dd($e);
+            report($e);
             $problem = true;
         }
 
-
         if ($problem) {
-            WalletCreate::dispatch((array)$this->user, ($this->try + 1))->delay(now()->tz('Europe/Istanbul')->addMinutes(15));
+            WalletCreate::dispatch((array)$this->user, ($this->try + 1))->onQueue('createwallet')->delay(now()->tz('Europe/Istanbul')->addMinutes(15));
         }
         return true;
     }

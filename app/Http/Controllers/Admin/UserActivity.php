@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\District;
 use App\Models\User;
 use App\Models\LogActivity;
 use Illuminate\Http\Request;
@@ -13,7 +12,7 @@ class UserActivity extends Controller
     public function log_activity(Request $request): \Illuminate\Http\JsonResponse
     {
         $validator = validator()->make(request()->all(), [
-            'username' => 'string', // |exists:App\Models\KullaniciTanim,kullaniciadi
+            'username' => 'string',
             'status' => 'string',
             'paginate' => 'filled|numeric',
             'page' => 'filled|numeric',

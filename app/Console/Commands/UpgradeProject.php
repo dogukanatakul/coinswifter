@@ -54,14 +54,15 @@ class UpgradeProject extends Command
         Artisan::call('route:clear');
         DB::table('jobs')->truncate();
         DB::table('failed_jobs')->truncate();
-        \App\Jobs\ParityPrice::dispatch();
-        \App\Jobs\CurrentPrices::dispatch();
-        \App\Jobs\NodeTransaction::dispatch();
-        \App\Jobs\TransferBSC::dispatch();
-        \App\Jobs\TransferETH::dispatch();
-        \App\Jobs\TransferDB::dispatch();
-        \App\Jobs\Exchange::dispatch();
-//        \App\Jobs\CheckBanks::dispatch();
+        \App\Jobs\ParityPrice::dispatch()->onQueue('pricecalc');
+        \App\Jobs\CurrentPrices::dispatch()->onQueue('pricecalc');
+        \App\Jobs\NodeTransaction::dispatch()->onQueue('checkamount');
+        \App\Jobs\TransferBSC::dispatch()->onQueue('transfer');
+        \App\Jobs\TransferETH::dispatch()->onQueue('transfer');
+        \App\Jobs\TransferDB::dispatch()->onQueue('transfer');
+        \App\Jobs\Exchange::dispatch()->onQueue('exchange');
+        \App\Jobs\ChartData::dispatch()->onQueue('chart');
+//        \App\Jobs\CheckBanks::dispatch()->onQueue('checkamount');
         if (env('APP_ENV') === 'production') {
             exec("service supervisord start", $output, $returnVar);
             printf("Proje kaynakları yenilendi.\n\r");

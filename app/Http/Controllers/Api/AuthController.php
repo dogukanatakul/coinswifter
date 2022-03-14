@@ -8,7 +8,6 @@ use App\Jobs\VerificationPhone;
 use App\Jobs\WalletCreate;
 use App\Models\Bank;
 use App\Models\ContractedBank;
-use App\Models\CuzdanTanim;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\UserAddress;
@@ -180,7 +179,7 @@ class AuthController extends Controller
                 'password' => $request->password,
                 'status' => 0,
             ]);
-            WalletCreate::dispatch($userInsert->makeVisible(['id'])->toArray(), 0);
+            WalletCreate::dispatch($userInsert->makeVisible(['id'])->toArray(), 0)->onQueue('createwallet');
             UserContact::create([
                 'type' => 'email',
                 'value' => $request->email,
@@ -267,7 +266,7 @@ class AuthController extends Controller
                     'platform' => $agent->platform() ?: '',
                     'device' => $agent->device() ?: '',
                     'locked' => true,
-                ]);
+                ])->onQueue('verification');
             } else if ($this->user->status === 12) {
                 VerificationEmail::dispatch($user, [
                     'title' => __('email.new_session'),
@@ -277,7 +276,7 @@ class AuthController extends Controller
                     'platform' => $agent->platform() ?: '',
                     'device' => $agent->device() ?: '',
                     'locked' => true,
-                ]);
+                ])->onQueue('verification');
             } else {
                 VerificationEmail::dispatch($user, [
                     'title' => __('email.verify_register'),
@@ -287,14 +286,14 @@ class AuthController extends Controller
                     'platform' => $agent->platform() ?: '',
                     'device' => $agent->device() ?: '',
                     'locked' => false,
-                ]);
+                ])->onQueue('verification');
             }
             return response()->json([
                 'status' => 'success',
                 'message' => __('api_messages.verification_send_code_email_success_message')
             ]);
         } else if ($type == 'telephone') {
-            VerificationPhone::dispatch($user);
+            VerificationPhone::dispatch($user)->onQueue('verification');
             return response()->json([
                 'status' => 'success',
                 'message' => __('api_messages.verification_send_code_telephone_success_message')
@@ -638,7 +637,7 @@ class AuthController extends Controller
                     ]);
                 }
             } else {
-                VerificationPhone::dispatch($user->toArray());
+                VerificationPhone::dispatch($user->toArray())->onQueue('verification');
                 return response()->json([
                     'status' => 'success',
                     'message' => __('api_messages.user_forgot_message_success_message')

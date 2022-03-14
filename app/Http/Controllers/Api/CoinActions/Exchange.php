@@ -3,25 +3,20 @@
 namespace App\Http\Controllers\Api\CoinActions;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\WalletCreate;
 use App\Models\Coin;
 use App\Models\Commission;
 use App\Models\LogActivity;
 use App\Models\NodeTransaction;
 use App\Models\OrderTransaction;
 use App\Models\Order;
-use App\Models\User;
 use App\Models\UserCoin;
 use App\Models\UserFavoritePairs;
 use App\Models\Parity;
 use App\Models\ParityPrice;
-use App\Models\UserWallet;
 use App\Models\UserWithdrawalWallet;
 use App\Models\UserWithdrawalWalletChild;
 use App\Models\UserWithdrawalWalletFee;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Litipk\BigNumbers\Decimal;
 
 
 class Exchange extends Controller
@@ -382,7 +377,7 @@ class Exchange extends Controller
 
     public function test()
     {
-
+        dd("ok");
 //        $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();
 //        $bot = new \App\Jobs\WalletCreate($user, 0);
 //        dd($bot->handle());

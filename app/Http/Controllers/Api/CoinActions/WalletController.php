@@ -4,23 +4,16 @@ namespace App\Http\Controllers\Api\CoinActions;
 
 use App\Http\Controllers\Controller;
 use App\Models\Coin;
-use App\Models\CuzdanTanim;
 use App\Models\Network;
-use App\Models\ParityPrice;
-use App\Models\UserAddress;
 use App\Models\UserBank;
 use App\Models\UserCoin;
 use App\Models\UserWallet;
 use App\Models\UserWithdrawal;
-use App\Models\User;
-use App\Models\Transferler;
 use App\Models\UserWithdrawalWallet;
 use App\Models\UserWithdrawalWalletChild;
 use App\Models\UserWithdrawalWalletFee;
-use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
 
 class WalletController extends Controller
