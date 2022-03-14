@@ -281,12 +281,16 @@ class Exchange extends Controller
                                 'buying_trades',
                                 'selling_trades'
                             ])
-                                ->where('users_id', $this->user->id)->orderBy('id', 'DESC')
+                                ->where('users_id', $this->user->id)
+                                ->orderBy('deleted_at', 'DESC')
+                                ->orderBy('amount', 'DESC')
+                                ->orderBy('id', 'DESC')
                                 ->withTrashed();
                         },
                         'source',
                         'coin'
-                    ])->find($checkParite->id);
+                    ])
+                        ->find($checkParite->id);
 
                     if (empty($myOrders) || $myOrders->orders->count() == 0) {
                         $myOrders = false;
