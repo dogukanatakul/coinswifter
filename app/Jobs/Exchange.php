@@ -133,7 +133,7 @@ class Exchange implements ShouldQueue
                 $this->logs[] = "Aktif son fiyat bulunamadı!";
                 return false; // son fiyat yok
             }
-            $lastPrice = floatval($lastPrice->price);
+            $lastPrice = $lastPrice->price;
 
         } else {
             $lastPrice = $sell->price;
@@ -157,77 +157,48 @@ class Exchange implements ShouldQueue
         $this->logs[] = "Satmak istenen amount: " . $sell->amount;
 
 
-        //DB::beginTransaction();
         $this->logs[] = "beginTransaction";
         //\
         if (($total = (\Litipk\BigNumbers\Decimal::fromString($buyAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($sell->amount), null)->innerValue())) > 0) {
             $this->logs[] = "Alanın emir miktarı satandan büyük";
             $totalAmount = \Litipk\BigNumbers\Decimal::fromString($sell->amount)->innerValue();
-            try {
-                $buy->update([
-                    'amount' => \Litipk\BigNumbers\Decimal::fromString($total)->innerValue(),
-                    'total' => \Litipk\BigNumbers\Decimal::fromString($total)->mul(\Litipk\BigNumbers\Decimal::fromString($lastPrice), null)->innerValue()
-                ]);
-                $this->logs[] = "Alanın emri " . $total . " olarak güncellendi";
-                $sell->update([
-                    'amount' => 0,
-                    'total' => 0
-                ]);
-                $sell->delete();
-            } catch (\Exception $e) {
-                report($e);
-                $this->logs[] = "RollBack";
-                //DB::rollBack();
-                $this->queueData(['status' => 'fail', 'message' => $e->getMessage()]);
-                throw new \Exception($e);
-            }
+            $buyUpdate = [
+                'amount' => \Litipk\BigNumbers\Decimal::fromString($total)->innerValue(),
+                'total' => \Litipk\BigNumbers\Decimal::fromString($total)->mul(\Litipk\BigNumbers\Decimal::fromString($lastPrice), null)->innerValue()
+            ];
+            $sellUpdate = [
+                'amount' => 0,
+                'total' => 0
+            ];
+            $this->logs[] = "Alanın emri " . $total . " olarak güncellendi";
 
             $this->logs[] = "Satanın emri kapatıldı";
         } else if (($total = (\Litipk\BigNumbers\Decimal::fromString($sell->amount)->sub(\Litipk\BigNumbers\Decimal::fromString($buyAmount), null)->innerValue())) > 0) {
             $this->logs[] = "Satanın emir amountı alandan büyük";
             $totalAmount = $buyAmount;
-            try {
-                $sell->update([
-                    'amount' => \Litipk\BigNumbers\Decimal::fromString($total)->innerValue(),
-                    'total' => \Litipk\BigNumbers\Decimal::fromString($total)->div(\Litipk\BigNumbers\Decimal::fromString($lastPrice), null)->innerValue(),
-                ]);
-                $buy->update([
-                    'amount' => 0,
-                    'total' => 0
-                ]);
-                $buy->delete();
-            } catch (\Exception $e) {
-                report($e);
-                $this->logs[] = "RollBack";
-                //DB::rollBack();
-                $this->queueData(['status' => 'fail', 'message' => $e->getMessage()]);
-                throw new \Exception($e);
-            }
+            $buyUpdate = [
+                'amount' => 0,
+                'total' => 0
+            ];
+            $sellUpdate = [
+                'amount' => \Litipk\BigNumbers\Decimal::fromString($total)->innerValue(),
+                'total' => \Litipk\BigNumbers\Decimal::fromString($total)->div(\Litipk\BigNumbers\Decimal::fromString($lastPrice), null)->innerValue(),
+            ];
             $this->logs[] = "Satanın emri " . $total . " olarak güncellendi";
             $this->logs[] = "Alanın emri kapatıldı";
         } else {
             $this->logs[] = "Emir amountları eşit";
             $totalAmount = $sell->amount;
-            try {
-                $sell->update([
-                    'amount' => 0,
-                    'total' => 0
-                ]);
-                $sell->delete();
-                $buy->update([
-                    'amount' => 0,
-                    'total' => 0
-                ]);
-                $buy->delete();
-                $this->logs[] = "Alanın emri kapatıldı.";
-                $this->logs[] = "Satanında emri kapatıldı.";
-            } catch (\Exception $e) {
-                report($e);
-                $this->logs[] = "RollBack";
-                //DB::rollBack();
-                $this->queueData(['status' => 'fail', 'message' => $e->getMessage()]);
-                throw new \Exception($e);
-            }
+            $buyUpdate = [
+                'amount' => 0,
+                'total' => 0
+            ];
+            $sellUpdate = [
+                'amount' => 0,
+                'total' => 0
+            ];
+            $this->logs[] = "Alanın emri kapatıldı.";
+            $this->logs[] = "Satanında emri kapatıldı.";
         }
 
 
@@ -242,48 +213,55 @@ class Exchange implements ShouldQueue
 
         $this->logs[] = "Hesaplar: " . implode("|", $lastCalc);
 
-
-        // Alıcıya Ödeme Gelecek Cüzdan
-        $buyWallet = UserCoin::with('coin')
-            ->where('users_id', $buy->users_id)
-            ->where('coins_id', $parity->coin_id)
-            ->first();
-        // Alıcının Ödeyeceği Cüzdan
-        $buySourceWallet = UserCoin::with('coin')
-            ->where('users_id', $buy->users_id)
-            ->where('coins_id', $parity->source_coin_id)
-            ->first();
-        // Satıcıya Ödeme Gelecek Cüzdan
-        $sellWallet = UserCoin::with('coin')
-            ->where('users_id', $sell->users_id)
-            ->where('coins_id', $parity->source_coin_id)
-            ->first();
-        // Satıcının Ödeme Göndereceği Cüzdan
-        $sellSourceWallet = UserCoin::with('coin')
-            ->where('users_id', $sell->users_id)
-            ->where('coins_id', $parity->coin_id)
-            ->first();
-
+        DB::beginTransaction();
         try {
-
             /*
              *  wallet : istediği
              *  sourceWallet : karşılığında verdiği
              */
-
-
+            // Alıcının Ödeyeceği Cüzdan
+            $buySourceWallet = UserCoin::with('coin')
+                ->where('users_id', $buy->users_id)
+                ->where('coins_id', $parity->source_coin_id)
+                ->first();
             $buySourceWallet->balance = \Litipk\BigNumbers\Decimal::fromString($buySourceWallet->balance)->sub(\Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($lastCalc['sell'])->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['sell_commission']), null)->innerValue()), null)->innerValue();
             $buySourceWallet->save();
-
+            //\
+            // Alıcıya Ödeme Gelecek Cüzdan
+            $buyWallet = UserCoin::with('coin')
+                ->where('users_id', $buy->users_id)
+                ->where('coins_id', $parity->coin_id)
+                ->first();
             $buyWallet->balance = \Litipk\BigNumbers\Decimal::fromString($buyWallet->balance)->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['buy']), null)->innerValue();
             $buyWallet->save();
+            //\
 
-
+            // Satıcının Ödeme Göndereceği Cüzdan
+            $sellSourceWallet = UserCoin::with('coin')
+                ->where('users_id', $sell->users_id)
+                ->where('coins_id', $parity->coin_id)
+                ->first();
             $sellSourceWallet->balance = \Litipk\BigNumbers\Decimal::fromString($sellSourceWallet->balance)->sub(\Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($lastCalc['buy'])->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['buy_commission']), null)->innerValue()), null)->innerValue();
             $sellSourceWallet->save();
+            //\
 
+            // Satıcıya Ödeme Gelecek Cüzdan
+            $sellWallet = UserCoin::with('coin')
+                ->where('users_id', $sell->users_id)
+                ->where('coins_id', $parity->source_coin_id)
+                ->first();
             $sellWallet->balance = \Litipk\BigNumbers\Decimal::fromString($sellWallet->balance)->add(\Litipk\BigNumbers\Decimal::fromString($lastCalc['sell']), null)->innerValue();
             $sellWallet->save();
+            //\
+
+            $buy->update($buyUpdate);
+            $sell->update($sellUpdate);
+            if ($buyUpdate['amount'] == 0) {
+                $buy->delete();
+            }
+            if ($sellUpdate['amount'] == 0) {
+                $sell->delete();
+            }
 
             // Alıcıya gelen para birimi komisyonu
             Commission::create([
@@ -318,12 +296,12 @@ class Exchange implements ShouldQueue
                 'microtime' => str_replace(".", "", microtime(true)),
             ]);
             $this->logs[] = "Commit.";
-            //DB::commit();
+            DB::commit();
             return true;
         } catch (\Exception $e) {
             report($e);
             $this->logs[] = "RollBack";
-            //DB::rollBack();
+            DB::rollBack();
             $this->queueData(['status' => 'fail', 'message' => $e->getMessage()]);
             throw new \Exception($e);
         }
@@ -333,7 +311,7 @@ class Exchange implements ShouldQueue
     /**
      * @throws \Exception
      */
-    public function handle()
+    public function handle(): bool|string
     {
         $types = ["market", "limit"];
         $buys = Order::with(['parity.source', 'parity.coin', 'user'])

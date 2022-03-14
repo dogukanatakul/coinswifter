@@ -297,7 +297,7 @@ class Exchange extends Controller
                             $newData['created_at'] = $data->created_at->format('Y-m-d H:i');
                             $newData['operation'] = __('api_messages.' . $data->process);
                             $newData['finished'] = $data->buying_trades->sum('amount') + $data->selling_trades->sum('amount');
-                            $newData['percent'] = priceFormat((1 - (floatval($newData['amount']) / (floatval($newData['finished']) + floatval($newData['amount'])))) * 100, "float", 2);
+                            $newData['percent'] = intval((1 - (floatval($newData['amount']) / (floatval($newData['finished']) + floatval($newData['amount'])))) * 100);
                             $newData['is_deleted'] = !empty($data->deleted_at);
                             return $newData;
                         })->toArray();
@@ -402,35 +402,36 @@ class Exchange extends Controller
 //            ->first();
 //        dd($randWalletControl->toArray());
 
+//        $bot = new \App\Jobs\Exchange();
+////        $bot = new \App\Jobs\NodeTransaction();
+//        dd($bot->handle());
 
-//        UserCoin::where('coins_id', '!=', 1)->update([
-//            'balance' => 0,
-//            'balance_pure' => 0,
-//        ]);
-//
-//        UserCoin::where('coins_id', 1)->update([
-//            'balance' => 10000000,
-//            'balance_pure' => 0,
-//        ]);
-//        NodeTransaction::where('value', '>', 0)->update([
-//            'processed' => 0,
-//        ]);
-//        Commission::truncate();
-//        OrderTransaction::truncate();
-//        Order::truncate();
-//        UserWithdrawalWalletFee::truncate();
-//        UserWithdrawalWalletChild::truncate();
-//        UserWithdrawalWallet::truncate();
-//        LogActivity::truncate();
-//        dd("ok");
+
+        UserCoin::where('coins_id', '!=', 1)->update([
+            'balance' => 0,
+            'balance_pure' => 0,
+        ]);
+
+        UserCoin::where('coins_id', 1)->update([
+            'balance' => 10000000,
+            'balance_pure' => 0,
+        ]);
+        NodeTransaction::where('value', '>', 0)->update([
+            'processed' => 0,
+        ]);
+        Commission::truncate();
+        OrderTransaction::truncate();
+        Order::truncate();
+        UserWithdrawalWalletFee::truncate();
+        UserWithdrawalWalletChild::truncate();
+        UserWithdrawalWallet::truncate();
+        LogActivity::truncate();
+        dd("ok");
 //        dd("ok");
 //        $wallets = NodeTransaction::get()->toArray();
 //        dd(json_encode($wallets));
 
 
-//        $bot = new \App\Jobs\NodeTransaction();
-        $bot = new \App\Jobs\TransferETH();
-        dd($bot->handle());
     }
 
 }
