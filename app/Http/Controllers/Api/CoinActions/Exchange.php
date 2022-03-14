@@ -240,9 +240,8 @@ class Exchange extends Controller
                     ->where('parities_id', $checkParite->id)
                     ->limit(25)
                     ->orderBy('id', 'DESC')
-                    ->get()
-                    ->toArray();
-                if (count($lastOperations) === 0 && $status['price'] > 0) {
+                    ->get();
+                if ($lastOperations->count() == 0 && $status['price'] > 0) {
                     $lastOperations = [];
                     for ($i = 1; $i <= 13; $i++) {
                         $lastOperations[] = [
@@ -251,7 +250,16 @@ class Exchange extends Controller
                             'created_at' => date('Y-m-d H:i:s'),
                         ];
                     }
+                } else {
+                    $lastOperations = collect($lastOperations)->map(function ($data, $key) {
+                        return [
+                            'price' => priceFormat($data->price),
+                            'amount' => priceFormat($data->amount),
+                            'created_at' => $data->created_at->format('Y-m-d H:i')
+                        ];
+                    })->toArray();
                 }
+
 
                 if ($this->user) {
                     $wallet = new \App\Http\Controllers\Api\CoinActions\WalletController();

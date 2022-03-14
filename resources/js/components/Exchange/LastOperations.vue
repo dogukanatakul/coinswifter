@@ -15,7 +15,7 @@
                     </thead>
                     <tbody>
                     <tr v-for="(operation,operation_key) in lastOperations" :key="operation_key">
-                        <td class="text-start">{{ convertDate(operation.created_at) }}</td>
+                        <td class="text-start">{{ operation.created_at }}</td>
                         <td class="text-end">{{ operation.price }}</td>
                         <td class="text-end">{{ operation.amount }}</td>
                         <td></td>
