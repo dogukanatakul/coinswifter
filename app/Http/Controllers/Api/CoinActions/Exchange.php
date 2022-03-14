@@ -212,20 +212,17 @@ class Exchange extends Controller
                 if ($sellOrders->count() === 0 && $buyOrders->count() === 0 && $status['price'] > 0) {
                     $orders = [
                         'buy' => [],
-                        'sell' => [
-                            [
-                                'price' => priceFormat($status['price']),
-                                'amount' => priceFormat(0 . "." . rand(111111, 999999999)),
-                            ],
-                        ],
+                        'sell' => [],
                     ];
                     for ($i = 1; $i <= 8; $i++) {
                         $orders['buy'][] = [
-                            'price' => priceFormat((floatval($status['price']) / 1000) * (1000 - rand($i, $i + 0.99))),
+                            'price' => priceFormat((floatval($status['price']) / 1000) * (1000 - rand($i, $i + 0. . rand(55, 99)))),
                             'amount' => priceFormat(0 . "." . rand(111111, 999999999)),
                         ];
+                    }
+                    for ($i = 8; $i >= 1; $i--) {
                         $orders['sell'][] = [
-                            'price' => priceFormat((floatval($status['price']) / 1000) * (1000 + rand($i, $i + 0.99))),
+                            'price' => priceFormat((floatval($status['price']) / 1000) * (1000 - rand($i, $i + 0. . rand(55, 99)))),
                             'amount' => priceFormat(0 . "." . rand(111111, 999999999)),
                         ];
                     }
