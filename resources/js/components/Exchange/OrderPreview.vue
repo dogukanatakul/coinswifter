@@ -131,47 +131,5 @@ export default {
 </script>
 
 <style scoped type="scss">
-.float-left {
-  float: left !important;
-}
 
-.bordered {
-  border: solid 1px lightgray;
-  border-radius: 2%;
-}
-
-.bordered-bottom:not(last) {
-  border-bottom: solid 1px lightgray;
-}
-
-@media screen and (min-width: 1200px) {
-  .text-small {
-  }
-  .text-aligned-left {
-    text-align: left !important;
-  }
-  .text-aligned-right {
-    text-align: right !important;
-  }
-  .text-small {
-    font-size: calc(1px + 6 * ((100vw - 280px) / 730));
-  }
-}
-@media screen and (max-width: 1199px) {
-  .text-aligned-left {
-    text-align: center !important;
-  }
-  .text-aligned-right {
-    text-align: center !important;
-  }
-      .text-small {
-    font-size: calc(1px + 6 * ((100vw - 320px) / 500));
-  }
-}
-
-@media screen and (max-width:979px) {
-    .text-small {
-    font-size: 12px !important;
-  }
-}
 </style>

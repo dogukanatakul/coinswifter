@@ -261,20 +261,20 @@
                     </div>
                   </div>
                 </div>
-                <div
-                  class="
-                    crp-inv-col
-                    display-2
-                    text-white
-                    bg-transparent
-                    opacity-75
-                  "
-                >
+                <div class="crp-inv-col">
                   <div class="crp-inv-col-row">
-                    <div class="crp-inv-col-icon">
+                    <div
+                      class="
+                        crp-inv-col-icon
+                        display-2
+                        text-white
+                        bg-transparent
+                        opacity-75
+                      "
+                    >
                       <i class="fas fa-envelope"></i>
                     </div>
-                    <div class="crp-inv-col-cont  mx-4">
+                    <div class="crp-inv-col-cont mx-4">
                       <h4>{{ $t("7/24 Destek") }}</h4>
                       <p>
                         {{
@@ -367,9 +367,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@media screen and (max-width: 620px) {
-  .text-responsive {
-    font-size: 16px !important;
-  }
-}
 </style>

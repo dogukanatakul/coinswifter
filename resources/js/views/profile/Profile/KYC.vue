@@ -1,5 +1,5 @@
 <template>
-    <div class="settings-profile table-responsive">
+    <div class="settings-profile">
         <b-form @submit="uploadKYC" enctype="multipart/form-data">
             <b-row>
                 <b-col cols="12" md="6">
@@ -37,7 +37,7 @@
         </b-form>
 
         <b-row>
-            <b-col cols="12">
+            <b-col cols="12" class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>

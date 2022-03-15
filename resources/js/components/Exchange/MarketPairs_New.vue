@@ -1,5 +1,5 @@
 <template>
-    <b-card no-body class="market-pairs mb-2">
+  <b-card no-body class="mymarket-pairs mb-2">
     <b-card-text>
       <b-row>
         <b-col>
@@ -10,7 +10,7 @@
           ></b-form-input>
         </b-col>
       </b-row>
-      <b-tabs content-class="mt-3">
+      <b-tabs content-class="mt-3" pills card justified>
         <b-tab>
           <template #title>
             <i class="fas fa-star"></i> {{ $t("Favoriler") }}
@@ -155,11 +155,12 @@ export default {
   name: "MarketPairs_New",
   components: { TabView, TabPanel },
   props: ["selectedCoin", "parities", "coins"],
-  emits: ["update:selectedCoin","changeParities"],
+  emits: ["update:selectedCoin", "changeParities", "paritiesShow"],
   methods: {
     selectCoin(value) {
       this.$emit("update:selectedCoin", value);
-      this.$emit("changeParities",true);
+      this.$emit("changeParities", true);
+      this.$emit("paritiesShow", false);
       this.$router.push({
         name: "exchange",
         params: { parity: value.source.symbol + "-" + value.coin.symbol },
@@ -191,14 +192,9 @@ export default {
   data: () => ({
     search: "",
   }),
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 992px) {
-  .market-pairs {
-    max-height: 90vh !important;
-    overflow-x:auto;
-  }
-}
+
 </style>

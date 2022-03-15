@@ -109,6 +109,62 @@
               :show="marketTradeLoader"
               rounded="sm"
             >
+              <div class="justify-content-between">
+                <b-col
+                  cols="12"
+                  md="2"
+                  class="float-left"
+                  v-for="(array, index) in timeArray"
+                  :key="array.key"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = array.key"
+                    class="chartLink mx-2"
+                    >{{ array.value }}</b-link
+                  ></b-col
+                >
+                <!-- <b-col cols="12" md="2" class="float-left"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = '1h'"
+                    class="chartLink mx-2"
+                    >{{ $t("1 hour") }}</b-link
+                  ></b-col
+                >
+                <b-col cols="12" md="2" class="float-left"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = '4h'"
+                    class="chartLink mx-2"
+                    >{{ $t("4 hour") }}</b-link
+                  ></b-col
+                >
+                <b-col cols="12" md="2" class="float-left"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = '1d'"
+                    class="chartLink mx-2"
+                    >{{ $t("1 day") }}</b-link
+                  ></b-col
+                >
+                <b-col cols="12" md="2" class="float-left"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = '1w'"
+                    class="chartLink mx-2"
+                    >{{ $t("1 week") }}</b-link
+                  ></b-col
+                >
+                <b-col cols="12" md="2" class="float-left"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = '1m'"
+                    class="chartLink mx-2"
+                    >{{ $t("1 month") }}</b-link
+                  ></b-col
+                > -->
+              </div>
+              <div style="clear: both"></div>
               <div>
                 <new-chart
                   v-if="chart"
@@ -188,7 +244,10 @@
       </b-col>
       <b-col cols="12" lg="3">
         <wallet
-          v-if="Object.values(selectedCoin).length > 0 && Object.values(wallet).length > 0"
+          v-if="
+            Object.values(selectedCoin).length > 0 &&
+            Object.values(wallet).length > 0
+          "
           :wallet.sync="wallet"
           :key="wallet"
           class="d-none d-lg-block"
@@ -224,7 +283,7 @@
                 text-md-center text-sm-center text-center text-small
                 my-2
               "
-              @click="paritiesShow = !paritiesShow"
+              @click="paritiesShowView = !paritiesShowView"
             >
               {{
                 [selectedCoin.coin.symbol, selectedCoin.source.symbol].join("/")
@@ -296,9 +355,68 @@
         ></wallet>
       </b-col>
       <b-col cols="12">
-        <TabView content-class="mt-3" :activeIndex="1" v-model:changeParitiesView="changeParitiesView">
+        <TabView
+          content-class="mt-3"
+          :activeIndex="1"
+          v-model:changeParitiesView="changeParitiesView"
+        >
           <TabPanel header="Grafik">
             <b-row>
+              <div class="justify-content-between">
+                <b-col
+                  cols="4"
+                  md="2"
+                  class="float-left"
+                  v-for="(array, index) in timeArray"
+                  :key="array.key"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = array.key"
+                    class="chartLink mx-2"
+                    >{{ array.value }}</b-link
+                  ></b-col
+                >
+                <!-- <b-col cols="4" md="2" class="float-left"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = '1h'"
+                    class="chartLink mx-2"
+                    >{{ $t("1 hour") }}</b-link
+                  ></b-col
+                >
+                <b-col cols="4" md="2" class="float-left"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = '4h'"
+                    class="chartLink mx-2"
+                    >{{ $t("4 hour") }}</b-link
+                  ></b-col
+                >
+                <b-col cols="4" md="2" class="float-left"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = '1d'"
+                    class="chartLink mx-2"
+                    >{{ $t("1 day") }}</b-link
+                  ></b-col
+                >
+                <b-col cols="4" md="2" class="float-left"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = '1w'"
+                    class="chartLink mx-2"
+                    >{{ $t("1 week") }}</b-link
+                  ></b-col
+                >
+                <b-col cols="4" md="2" class="float-left"
+                  ><b-link
+                    href="#"
+                    @click="chartTime = '1m'"
+                    class="chartLink mx-2"
+                    >{{ $t("1 month") }}</b-link
+                  ></b-col
+                > -->
+              </div>
               <b-col cols="12">
                 <div
                   v-if="
@@ -369,9 +487,12 @@
             </b-row>
           </TabPanel>
           <!-- <b-tab title="Pariteler">
-
+            
           </b-tab> -->
-          <TabPanel header="Alım - Satım" :class="{'active' : changeParitiesView === true}">
+          <TabPanel
+            header="Alım - Satım"
+            :class="{ active: changeParitiesView === true }"
+          >
             <b-overlay :show="marketTradeLoader" rounded="sm">
               <MarketTrade
                 v-if="Object.values(selectedCoin).length > 0"
@@ -447,7 +568,8 @@
           </TabPanel>
         </TabView>
         <b-modal
-          v-model="paritiesShow"
+          v-model="paritiesShowView"
+          ref="modal"
           id="modal-lg"
           size="lg"
           title="Parite Çiftleri"
@@ -463,6 +585,7 @@
               v-model:parities="parities"
               v-model:coins="coins"
               @changeParities="changeParities"
+              @paritiesShow="paritiesShow"
               @getTokens="getTokens"
             />
           </b-col>
@@ -470,7 +593,7 @@
             <b-button
               class="mr-sm-2 su-btn-link float-right"
               variant="primary"
-              @click="paritiesShow = false"
+              @click="paritiesShowView = false"
               >{{ $t("Kapat") }}</b-button
             >
           </div>
@@ -498,7 +621,7 @@ import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
 const initialData = () => ({
   modalShow: false,
-  paritiesShow: false,
+  paritiesShowView: false,
   coins: [],
   chart: false,
   wallet: {
@@ -525,11 +648,50 @@ const initialData = () => ({
   loadingParity: false,
   selectedTrade: {},
   setInterval: null,
-  changeParitiesView : true,
+  changeParitiesView: true,
+  chartTime: "15m",
+  timeArray: [
+    {
+      key: "1min",
+      value: "1 min",
+    },
+    {
+      key: "5min",
+      value: "5 min",
+    },
+    {
+      key: "15min",
+      value: "15 min",
+    },
+    {
+      key: "30min",
+      value: "30 min",
+    },
+    {
+      key: "1hours",
+      value: "1 hours",
+    },
+    {
+      key: "4hours",
+      value: "4 hours",
+    },
+    {
+      key: "1day",
+      value: "1 day",
+    },
+    {
+      key: "1week",
+      value: "1 week",
+    },
+    {
+      key: "1month",
+      value: "1 month",
+    },
+  ],
 });
 
 export default {
-  name: "exchange_new",
+  name: "exchange",
   components: {
     NewChart,
     TradingChart,
@@ -602,16 +764,23 @@ export default {
   },
   methods: {
     async getParity(loader = false) {
+      // console.log(selectedCoinValue);
+      // console.log(parts);
+      //Source = TRY
+      //Coin = CATE
       this.loadingParity = false;
       let selectedCoin = this.selectedCoin;
       await restAPI
-        .getData({
-          Action:
-            "exchange/parity/" +
-            selectedCoin.source.symbol +
-            "-" +
-            selectedCoin.coin.symbol,
-        })
+        .getData(
+          {
+            Action:
+              "exchange/parity/" +
+              selectedCoin.source.symbol +
+              "-" +
+              selectedCoin.coin.symbol,
+          },
+          { chartParts: this.chartTime }
+        )
         .then((response) => {
           if (response.status === "success") {
             this.marketTradeLoader = false;
@@ -628,6 +797,7 @@ export default {
           }
         });
     },
+
     async getTokens() {
       await restAPI
         .getData({
@@ -648,13 +818,16 @@ export default {
     sendTradeForm(params) {
       this.selectedTrade = params;
     },
-    sendTradeFormWallet(params){
-        this.selectedTrade = params;
+    sendTradeFormWallet(params) {
+      this.selectedTrade = params;
     },
-    changeParities(params){
-        this.changeParitiesView = params;
-        console.log(this.changeParitiesView);
-    }
+    changeParities(params) {
+      this.changeParitiesView = params;
+      console.log(this.changeParitiesView);
+    },
+    paritiesShow(params) {
+      this.paritiesShowView = params;
+    },
   },
   beforeUnmount: function () {
     clearInterval(this.setInterval);
@@ -706,5 +879,21 @@ export default {
 }
 .float-right {
   float: right !important;
+}
+.chartLink {
+  text-decoration: none;
+  color: darkgray;
+  font-size: 14px !important;
+}
+.chartLink:hover {
+  text-decoration: none;
+  color: darkgray;
+  font-size: 14px !important;
+}
+.chartLink:active,
+.chartLink:focus {
+  text-decoration: none;
+  color: #16b979;
+  font-size: 14px !important;
 }
 </style>

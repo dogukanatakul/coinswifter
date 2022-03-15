@@ -1,5 +1,5 @@
 <template>
-    <b-container>
+    <b-container class="my-2">
         <b-card>
             <b-card-text>
 

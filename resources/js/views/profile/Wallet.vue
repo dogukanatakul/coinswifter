@@ -94,7 +94,7 @@
                   <span class="small">{{ wallet.locked }}</span>
                 </b-col>
                 <b-col cols="4" class="float-left">
-                  <span class="small">{{ parseFloat(wallet.balance) }}</span>
+                  <span class="small">{{ wallet.balance }}</span>
                 </b-col>
               </b-col>
             </b-row>
@@ -121,7 +121,7 @@
                   <span class="fw-bold small mx-2">{{ wallet.symbol }}</span>
                 </b-col>
                 <b-col cols="6" class="float-left">
-                  <span class="small">{{ parseFloat(wallet.balance) }}</span>
+                  <span class="small">{{ wallet.balance }}</span>
                 </b-col>
               </div>
             </b-row>
@@ -263,130 +263,5 @@ export default {
 };
 </script>
 <style scoped type="scss">
-.myRounded {
-  border-radius: 100% !important;
-  border: solid 10px gainsboro;
-}
-.myDiv {
-  width: 300px !important;
-  height: 300px !important;
-}
 
-.myOverflow {
-  max-height: 900vh !important;
-  overflow-x: auto !important;
-}
-
-.float-left {
-  float: left;
-}
-.myBackground {
-  background-color: #dbdee6;
-}
-.rounded {
-  border-radius: 0.35rem !important;
-}
-
-.smallest {
-  font-size: 1vw !important;
-}
-
-.apexcharts-legend {
-  text-align: left !important;
-}
-
-@media screen and (max-width: 576px) {
-  .xs-center {
-    text-align: center;
-  }
-  /* .wallet-coins {
-    max-height: 5vh;
-    overflow-x: auto;
-  } */
-  .myOverflow {
-    max-height: 400px !important;
-    overflow-x: auto !important;
-  }
-
-  .float-left {
-    float: left;
-  }
-  .myBackground {
-    background-color: #dbdee6;
-  }
-  .rounded {
-    border-radius: 0.35rem !important;
-  }
-  .small {
-    font-size: 2.3vw !important;
-  }
-  .myDiv {
-    width: 200px !important;
-    height: 200px !important;
-  }
-
-  .myMargins {
-    margin-top: -1.2vh !important;
-  }
-}
-@media screen and (max-width: 768px) and (min-width: 576px) {
-  .myOverflow {
-    max-height: 400px !important;
-    overflow-x: auto !important;
-  }
-  .xs-center {
-    text-align: center;
-  }
-  .float-left {
-    float: left;
-  }
-
-  .myBackground {
-    background-color: #dee0e6;
-    opacity: 0.85;
-  }
-
-  .rounded {
-    border-radius: 0.35rem !important;
-  }
-  .small {
-    font-size: 2vw !important;
-  }
-  .myDiv {
-    width: 250px !important;
-    height: 250px !important;
-  }
-
-  .myMargins {
-    margin-top: -1.2vh !important;
-  }
-}
-
-@media screen and (max-width: 991px) and (min-width: 768px) {
-  .myOverflow {
-    max-height: 400px !important;
-    overflow-x: auto !important;
-  }
-  .xs-center {
-    text-align: center;
-  }
-  .float-left {
-    float: left;
-  }
-
-  .myBackground {
-    background-color: #dee0e6;
-    opacity: 0.85;
-  }
-
-  .rounded {
-    border-radius: 0.35rem !important;
-  }
-  .small {
-    font-size: 1.7vw !important;
-  }
-  .myMargins {
-    margin-top: -1.2vh !important;
-  }
-}
 </style>

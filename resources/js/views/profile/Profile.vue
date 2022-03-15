@@ -72,7 +72,7 @@
         </b-card-group>
       </b-col>
       <b-col cols="12" md="8" class="mb-5">
-        <b-card class="table-responsive">
+        <b-card>
           <router-view></router-view>
         </b-card>
       </b-col>
@@ -87,9 +87,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.router-link-active {
-  .list-group-item {
-    color: #2d71d6 !important;
-  }
-}
+
 </style>

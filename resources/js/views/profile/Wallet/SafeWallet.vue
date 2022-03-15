@@ -5,7 +5,7 @@
                 <h5>{{ walletSelect.name }} {{ walletAction === 'deposit' ? $t("Yatırma") : $t("Çekme") }}</h5>
                 <span>
                         <label>{{ $t("Toplam Varlık") }}</label>
-                        <label class="mx-2">{{ parseFloat(walletSelect.total_balance) }} {{ walletSelect.symbol }}</label>
+                        <label class="mx-2">{{ walletSelect.total_balance }} {{ walletSelect.symbol }}</label>
                     </span>
             </div>
             <div class="float-end">
@@ -62,20 +62,20 @@
                 <table class="table table-sm table-responsive">
                     <tr>
                         <th>Minimum:</th>
-                        <td class="text--right">{{ parseFloat(walletSelect.transfer_min) }} {{ walletSelect.symbol }}</td>
+                        <td class="text--right">{{ walletSelect.transfer_min }} {{ walletSelect.symbol }}</td>
                     </tr>
                     <tr>
                         <th>Maksimum:</th>
-                        <td class="text--right">{{ parseFloat(walletSelect.transfer_max) }} {{ walletSelect.symbol }}</td>
+                        <td class="text--right">{{ walletSelect.transfer_max }} {{ walletSelect.symbol }}</td>
                     </tr>
                     <tr>
                         <th>İşlem Bedeli Oranı:</th>
-                        <td class="text--right">{{ parseFloat(walletSelect.commission_out) }} {{ walletSelect.commission_type === 'percent' ? '%' : walletSelect.symbol }}</td>
+                        <td class="text--right">{{ walletSelect.commission_out }} {{ walletSelect.commission_type === 'percent' ? '%' : walletSelect.symbol }}</td>
                     </tr>
                     <tr>
                         <th>Çekim Bedeli:</th>
                         <td class="text--right" v-if="walletSelect.commission_type==='percent'">{{ (parseFloat(form['amount']) * parseFloat(walletSelect.commission_out)) / 100 }} {{ walletSelect.symbol }}</td>
-                        <td class="text--right" v-else>{{ parseFloat(walletSelect.commission_out) }} {{ walletSelect.symbol }}</td>
+                        <td class="text--right" v-else>{{ walletSelect.commission_out }} {{ walletSelect.symbol }}</td>
                     </tr>
                     <tr>
                         <th>Gidecek Tutar:</th>

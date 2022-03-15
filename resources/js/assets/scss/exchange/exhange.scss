@@ -244,3 +244,202 @@
 
 
 }
+@media screen and (max-width: 992px) {
+    .mymarket-pairs {
+        max-height: 90vh !important;
+        overflow-x: auto;
+    }
+}
+
+::v-deep {
+    tr {
+        max-height: 32px !important;
+    }
+
+    .mymarket-pairs tbody {
+        height: 100% !important;
+    }
+}
+@media screen and (max-width: 992px) {
+    .market-pairs {
+        max-height: 90vh !important;
+        overflow-x: auto;
+    }
+}
+
+.float-left {
+    float: left !important;
+}
+
+.bordered {
+    border: solid 1px lightgray;
+    border-radius: 2%;
+}
+
+.bordered-bottom:not(last) {
+    border-bottom: solid 1px lightgray;
+}
+
+@media screen and (min-width: 1200px) {
+    .text-small {}
+
+    .text-aligned-left {
+        text-align: left !important;
+    }
+
+    .text-aligned-right {
+        text-align: right !important;
+    }
+
+    .text-small {
+        font-size: calc(1px + 6 * ((100vw - 280px) / 730));
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .text-aligned-left {
+        text-align: center !important;
+    }
+
+    .text-aligned-right {
+        text-align: center !important;
+    }
+
+    .text-small {
+        font-size: calc(1px + 6 * ((100vw - 320px) / 500));
+    }
+}
+
+@media screen and (max-width:979px) {
+    .text-small {
+        font-size: 12px !important;
+    }
+}
+
+.my-wallet {
+    padding: 10px;
+    font-size: 14px;
+
+    p {
+        font-size: 12px;
+        margin: 0px;
+    }
+
+    .col {
+        padding: 10px;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+    @media screen and (min-width: 991px) {
+        .wallet-title {
+            -ms-transform: rotate(270deg);
+            -moz-transform: rotate(270deg);
+            -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+            letter-spacing: 0.1rem;
+            width: 62px;
+            height: 65px;
+            font-size: 8px;
+            margin-right: -24px;
+        }
+
+        .text-smaller {
+            font-size: calc(2px + 6 * ((100vw - 320px) / 720));
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        .wallet-title {
+            height: 65px;
+            margin-right: -24px;
+            font-weight: 600;
+            font-size: 9px;
+            width: 68px;
+            letter-spacing: 0.1rem;
+            -ms-transform: rotate(0);
+            -moz-transform: rotate(0);
+            -webkit-transform: rotate(0);
+            transform: rotate(0);
+            margin-top: 2vh !important;
+        }
+
+        .text-smaller {
+            font-size: calc(12px + 6 * ((100vw - 320px) / 720));
+        }
+    }
+
+    @media screen and (max-width: 575px) {
+        .wallet-title {
+            //   width: 69px;
+            height: 65px;
+            margin-right: -24px;
+            font-weight: 700;
+            font-size: 9px;
+            width: 68px;
+            letter-spacing: 0.03rem;
+            -ms-transform: rotate(0);
+            -moz-transform: rotate(0);
+            -webkit-transform: rotate(0);
+            transform: rotate(0);
+        }
+    }
+}
+
+.pariy-banner {
+    align-items: center;
+
+    img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+    }
+}
+
+.float-left {
+    float: left !important;
+}
+
+.text-small {
+    font-size: 12px;
+}
+
+@media screen and (max-width: 1690px) and(min-width:992px) {
+
+    .title,
+    .price,
+    .info {
+        font-size: 8px !important;
+        // text-align: center;
+    }
+
+    .d-xs-flex {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .d-xs-block {
+        display: block !important;
+    }
+
+    .d-xs-flex {
+        display: flex !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .d-xs-block {
+        display: none !important;
+    }
+
+    .d-xs-flex {
+        display: none !important;
+    }
+}
+
+.float-right {
+    float: right !important;
+}

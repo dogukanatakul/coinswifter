@@ -191,10 +191,5 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@media screen and (max-width: 992px) {
-  .market-pairs {
-    max-height: 90vh !important;
-    overflow-x:auto;
-  }
-}
+
 </style>

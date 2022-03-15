@@ -5,8 +5,8 @@
                 <div class="market-carousel-item-name">
                     <img :src="'../assets/img/coinicon/'+ value.coin.symbol +'.png'" alt=""/>
                     <strong class="small-text">{{ value.coin.name }}</strong></div>
-                <h2>{{ value.parity_price.price.value }}₺</h2>
-                <p>{{ value.parity_price.volume_last_24_hours_price.value }}₺</p>
+                <h2 class="heading2">{{ value.parity_price.price.value }}₺</h2>
+                <p class="heading2">{{ value.parity_price.volume_last_24_hours_price.value }}₺</p>
             </div>
         </slide>
     </carousel>
@@ -72,6 +72,11 @@ export default {
         .small-text{
             font-size:12px;
             font-weight: 500;
+        }
+    }
+    @media screen and (min-width:768px) {
+        .heading2{
+            font-size:13px !important;
         }
     }
 </style>
