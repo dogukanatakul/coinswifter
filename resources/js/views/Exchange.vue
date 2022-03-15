@@ -487,7 +487,7 @@
             </b-row>
           </TabPanel>
           <!-- <b-tab title="Pariteler">
-            
+
           </b-tab> -->
           <TabPanel
             header="Alım - Satım"
@@ -649,7 +649,7 @@ const initialData = () => ({
   selectedTrade: {},
   setInterval: null,
   changeParitiesView: true,
-  chartTime: "15m",
+  chartTime: "15min",
   timeArray: [
     {
       key: "1min",
