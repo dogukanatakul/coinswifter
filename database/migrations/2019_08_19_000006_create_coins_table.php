@@ -25,6 +25,12 @@ class CreateCoinsTable extends Migration
             $table->json('settings')->default('{}');
             $table->json('promotion')->default('{}');
             $table->integer('order')->default(99);
+            $table->text('info')->default(null)->nullable();
+            $table->json('urls')->default('{}');
+            $table->decimal('start_price', 38, 22)->default(0);
+            $table->dateTime('start_time')->default(null)->nullable();
+            $table->bigInteger('supply_max')->default(0);
+            $table->bigInteger('supply_total')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

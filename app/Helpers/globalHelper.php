@@ -76,17 +76,6 @@ if (!function_exists('mb_strtoupper_tr')) {
         return mb_convert_case(str_replace(["i", "I"], ["İ", "ı"], mb_strtolower($str)), MB_CASE_UPPER_SIMPLE, "UTF-8");
     }
 }
-if (!function_exists('kyc_keys')) {
-    #[ArrayShape(['identity_front' => "string", 'identity_back' => "string", 'invoice' => "string", 'selfie' => "string"])] function kyc_keys(): array
-    {
-        return [
-            'identity_front' => 'Kimlik Ön Yüzü',
-            'identity_back' => 'Kimlik Arka Yüzü',
-            'invoice' => 'Üzerinde Adres, Ad ve Soyad Olan Fatura',
-            'selfie' => 'Selfie: Günün tarihi - CoinSwifter.com yazılı kağıt ve Kimlik.'
-        ];
-    }
-}
 
 if (!function_exists('format_float')) {
     function format_float(

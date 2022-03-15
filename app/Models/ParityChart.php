@@ -14,9 +14,11 @@ class ParityChart extends Model
         'parities_id',
         'type',
         'data',
+        'uuid'
     ];
 
     protected $casts = [
-        'data' => 'array'
+        'data' => 'array',
+        'uuid' => 'string'
     ];
 }

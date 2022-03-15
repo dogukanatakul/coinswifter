@@ -9,6 +9,7 @@ use App\Models\LogActivity;
 use App\Models\NodeTransaction;
 use App\Models\OrderTransaction;
 use App\Models\Order;
+use App\Models\ParityChart;
 use App\Models\UserCoin;
 use App\Models\UserFavoritePairs;
 use App\Models\Parity;
@@ -17,6 +18,7 @@ use App\Models\UserWithdrawalWallet;
 use App\Models\UserWithdrawalWalletChild;
 use App\Models\UserWithdrawalWalletFee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 
 class Exchange extends Controller
@@ -80,83 +82,13 @@ class Exchange extends Controller
 
     public function chart($parity, $chartTime = "15m"): bool|array
     {
-        return false;
-        $totalGet = 0;
-        if ($chartTime === "15m") {
-            $subDate = now()->tz('Europe/Istanbul')->subHour(1)->format('Y-m-d H:i:s');
-            $interval = "PT15S";
-        } else if ($chartTime === "1h") {
-            $subDate = now()->tz('Europe/Istanbul')->subHour(20)->format('Y-m-d H:i:s');
-            $interval = "PT60M";
-        } else if ($chartTime === "4h") {
-            $subDate = now()->tz('Europe/Istanbul')->subHour(80)->format('Y-m-d H:i:s');
-            $interval = "PT240M";
-        } else if ($chartTime === "1d") {
-            $subDate = now()->tz('Europe/Istanbul')->subDay(20)->format('Y-m-d H:i:s');
-            $interval = "P1D";
-        } else if ($chartTime === "1w") {
-            $subDate = now()->tz('Europe/Istanbul')->subWeek(20)->format('Y-m-d H:i:s');
-            $interval = "P7D";
-        } else if ($chartTime === "1m") {
-            $subDate = now()->tz('Europe/Istanbul')->subMonth(20)->format('Y-m-d H:i:s');
-            $interval = "P1M";
-        }
-
-        // PT15M - PT60M - P4H - P1D - 1M
-
-        $periods = new \DatePeriod(
-            new \DateTime($subDate),
-            new \DateInterval($interval),
-            new \DateTime(now()->tz('Europe/Istanbul')->format('Y-m-d H:i:s'))
-        );
-
-        $list = [];
-        $lastDate = false;
-        foreach ($periods as $key => $value) {
-            if ($subDate !== $value->format('Y-m-d H:i:s')) {
-                $lastDate = $value->format('Y-m-d H:i:s');
-                $swap = OrderTransaction::where('created_at', '>=', $subDate)
-                    ->where('created_at', '<=', $value->format('Y-m-d H:i:s'))
-                    ->where('parities_id', $parity)
-                    ->get();
-                if ($swap->count()) {
-                    $totalGet += 1;
-                }
-                $subDate = $value->format('Y-m-d H:i:s');
-                $list[] = [
-                    'x' => $value->format('D M d Y H:i:s O'),
-                    'y' => [
-                        $swap->first()->price ?? 0,
-                        $swap->max('price') ?? 0,
-                        $swap->min('price') ?? 0,
-                        $swap->last()->price ?? 0,
-                    ]
-                ];
-            }
-        }
-        if ($lastDate) {
-            $swap = OrderTransaction::where('created_at', '>=', $lastDate)
-                ->where('parities_id', $parity)
-                ->get();
-            if ($swap->count()) {
-                $totalGet += 1;
-            }
-            $list[] = [
-                'x' => now()->tz('Europe/Istanbul')->format('D M d Y H:i:s') . " +0000",
-                'y' => [
-                    $swap->first()->price ?? 0,
-                    $swap->max('price') ?? 0,
-                    $swap->min('price') ?? 0,
-                    $swap->last()->price ?? 0,
-                ]
-            ];
-        }
-
-        return $totalGet > 0 ? array_reverse($list) : false;
+        $chart = Cache::remember('chart' . $parity . $chartTime, now()->addSeconds(15), function () use ($parity, $chartTime) {
+            return ParityChart::where('parities_id', $parity)->where('type', $chartTime)->orderBy('id', 'DESC')->first();
+        });
+        return empty($chart) ? false : $chart->data;
     }
 
-
-    public function setParity($source, $coin): \Illuminate\Http\JsonResponse
+    public function setParity(Request $request, $source, $coin): \Illuminate\Http\JsonResponse
     {
         if (count($checkCoin = Coin::whereIn('symbol', [$source, $coin])->get()->groupBy('symbol')) == 2) {
             if (!empty($checkParite = Parity::where('source_coin_id', $checkCoin[$source]->first()->id)->where('coin_id', $checkCoin[$coin]->first()->id)->first())) {
@@ -316,7 +248,7 @@ class Exchange extends Controller
                 return response()->json([
                     'status' => 'success',
                     'data' => $orders,
-                    'chart' => $this->chart($checkParite->id),
+                    'chart' => $this->chart($checkParite->id, $request->chartParts),
                     'marketStatus' => $status,
                     'wallet' => $wallet,
                     'myOrders' => $myOrders,
@@ -381,7 +313,7 @@ class Exchange extends Controller
 
     public function test()
     {
-        dd("ok");
+//        dd("ok");
 //        $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();
 //        $bot = new \App\Jobs\WalletCreate($user, 0);
 //        dd($bot->handle());

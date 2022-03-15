@@ -2,12 +2,16 @@
 
 namespace App\Jobs;
 
+use App\Models\OrderTransaction;
+use App\Models\Parity;
+use App\Models\ParityChart;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Cache;
 
 class ChartData implements ShouldQueue
 {
@@ -29,55 +33,122 @@ class ChartData implements ShouldQueue
      * @return void
      * @throws \Exception
      */
-    public function handle()
+    public function handle(): bool
     {
-        return "";
         $parts = [
-            '15m', // 15 saniyelik
-            '1h', // 1 saatlik
-            '4h', // 4 saatlik
-            '1d', // 1 günlük
-            '1w', // 1 haftalık
-            '1m', // 1 aylık
+            '1min', // 1 dakikalık
+            '5min', // 5 dakikalık
+            '15min', // 15 dakikalık
+            '30min', // 30 dakikalık
+            '1hours', // 1 saatlik
+            '4hours', // 4 saatlik
+            '1day', // 1 günlük
+            '1week', // 1 haftalık
+            '1month', // 1 aylık
         ];
-        foreach ($parts as $part) {
-            dd($this->intervalCalc($part));
+        $parities = Cache::remember('parity', now()->addDays(1), function () {
+            return Parity::all();
+        });
+        foreach ($parities as $parity) {
+            $findChart = ParityChart::whereIn('type', $parts)
+                ->where('created_at', '>=', now()->tz('Europe/Istanbul')->subSeconds(15)->toDateTimeLocalString())
+                ->where('parities_id', $parity->id)
+                ->get();
+            $filterParts = array_diff($parts, $findChart->pluck('type')->toArray());
+            foreach ($filterParts as $part) {
+                $a = $this->intervalCalc($part);
+                $b = $this->transactionCalc($a['periods'], $a['subDate'], $parity->id);
+                ParityChart::create([
+                    'parities_id' => $parity->id,
+                    'type' => $part,
+                    'data' => $b
+                ]);
+                return true;
+            }
         }
+    }
 
+    public function transactionCalc($periods, $subDate, $parity): array
+    {
+        $list = [];
+        $lastDate = false;
+        foreach ($periods as $key => $value) {
+            if ($subDate !== $value->format('Y-m-d H:i:s')) {
+                $lastDate = $value->format('Y-m-d H:i:s');
+                $swap = OrderTransaction::where('created_at', '>=', $subDate)
+                    ->where('created_at', '<=', $value->format('Y-m-d H:i:s'))
+                    ->where('parities_id', $parity)
+                    ->get();
+                $subDate = $value->format('Y-m-d H:i:s');
+                $list[] = [
+                    'x' => $value->format('D M d Y H:i:s O'),
+                    'y' => [
+                        $swap->first()->price ?? 0,
+                        $swap->max('price') ?? 0,
+                        $swap->min('price') ?? 0,
+                        $swap->last()->price ?? 0,
+                    ]
+                ];
+            }
+        }
+        if ($lastDate) {
+            $swap = OrderTransaction::where('created_at', '>=', $lastDate)
+                ->where('parities_id', $parity)
+                ->get();
+            $list[] = [
+                'x' => now()->tz('Europe/Istanbul')->format('D M d Y H:i:s') . " +0000",
+                'y' => [
+                    $swap->first()->price ?? 0,
+                    $swap->max('price') ?? 0,
+                    $swap->min('price') ?? 0,
+                    $swap->last()->price ?? 0,
+                ]
+            ];
+        }
+        return $list;
     }
 
 
     /**
      * @throws \Exception
      */
-    public function intervalCalc($part): \DatePeriod|bool
+    public function intervalCalc($part): array|bool
     {
-        if ($part === "15m") {
-            $subDate = now()->tz('Europe/Istanbul')->subHour(1)->format('Y-m-d H:i:s');
-            $interval = "PT15S";
-        } else if ($part === "1h") {
-            $subDate = now()->tz('Europe/Istanbul')->subHour(20)->format('Y-m-d H:i:s');
-            $interval = "PT60M";
-        } else if ($part === "4h") {
-            $subDate = now()->tz('Europe/Istanbul')->subHour(80)->format('Y-m-d H:i:s');
-            $interval = "PT240M";
-        } else if ($part === "1d") {
-            $subDate = now()->tz('Europe/Istanbul')->subDay(20)->format('Y-m-d H:i:s');
+        if ($part === "1min") {
+            $subDate = now()->tz('Europe/Istanbul')->subHours(1)->format('Y-m-d H:i:s');
+            $interval = "PT1M";
+        } else if ($part === "5min") {
+            $subDate = now()->tz('Europe/Istanbul')->subMinutes(300)->format('Y-m-d H:i:s');
+            $interval = "PT5M";
+        } else if ($part === "15min") {
+            $subDate = now()->tz('Europe/Istanbul')->subMinutes(900)->format('Y-m-d H:i:s');
+            $interval = "PT15M";
+        } else if ($part === "1hours") {
+            $subDate = now()->tz('Europe/Istanbul')->subHour(60)->format('Y-m-d H:i:s');
+            $interval = "PT1H";
+        } else if ($part === "4hours") {
+            $subDate = now()->tz('Europe/Istanbul')->subHour(240)->format('Y-m-d H:i:s');
+            $interval = "PT4H";
+        } else if ($part === "1day") {
+            $subDate = now()->tz('Europe/Istanbul')->subDay(60)->format('Y-m-d H:i:s');
             $interval = "P1D";
-        } else if ($part === "1w") {
-            $subDate = now()->tz('Europe/Istanbul')->subWeek(20)->format('Y-m-d H:i:s');
+        } else if ($part === "1week") {
+            $subDate = now()->tz('Europe/Istanbul')->subWeek(60)->format('Y-m-d H:i:s');
             $interval = "P7D";
-        } else if ($part === "1m") {
-            $subDate = now()->tz('Europe/Istanbul')->subMonth(20)->format('Y-m-d H:i:s');
+        } else if ($part === "1month") {
+            $subDate = now()->tz('Europe/Istanbul')->subMonth(60)->format('Y-m-d H:i:s');
             $interval = "P1M";
         }
         if (isset($subDate) and isset($interval)) {
             // PT15M - PT60M - P4H - P1D - 1M
-            return new \DatePeriod(
-                new \DateTime($subDate),
-                new \DateInterval($interval),
-                new \DateTime(now()->tz('Europe/Istanbul')->format('Y-m-d H:i:s'))
-            );
+            return [
+                'periods' => new \DatePeriod(
+                    new \DateTime($subDate),
+                    new \DateInterval($interval),
+                    new \DateTime(now()->tz('Europe/Istanbul')->format('Y-m-d H:i:s'))
+                ),
+                'subDate' => $subDate
+            ];
         } else {
             return false;
         }

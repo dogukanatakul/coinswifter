@@ -188,10 +188,7 @@
       </b-col>
       <b-col cols="12" lg="3">
         <wallet
-          v-if="
-            Object.values(selectedCoin).length > 0 &&
-            Object.values(wallet).length > 0
-          "
+          v-if="Object.values(selectedCoin).length > 0 && Object.values(wallet).length > 0"
           :wallet.sync="wallet"
           :key="wallet"
           class="d-none d-lg-block"
@@ -372,7 +369,7 @@
             </b-row>
           </TabPanel>
           <!-- <b-tab title="Pariteler">
-            
+
           </b-tab> -->
           <TabPanel header="Alım - Satım" :class="{'active' : changeParitiesView === true}">
             <b-overlay :show="marketTradeLoader" rounded="sm">

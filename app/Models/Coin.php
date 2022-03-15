@@ -25,7 +25,13 @@ class Coin extends Model
         'commission_type',
         'settings',
         'promotion',
-        'order'
+        'order',
+        'info',
+        'urls',
+        'start_price',
+        'start_time',
+        'supply_max',
+        'supply_total',
     ];
 
     protected $hidden = [
@@ -43,6 +49,8 @@ class Coin extends Model
         'transfer_max' => 'string',
         'commission_in' => 'string',
         'commission_out' => 'string',
+        'urls' => 'array',
+        'start_price' => 'string',
     ];
 
     public function user_coin(): \Illuminate\Database\Eloquent\Relations\HasOne
