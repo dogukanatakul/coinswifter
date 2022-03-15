@@ -60,6 +60,8 @@ class AppServiceProvider extends ServiceProvider
             \App\Jobs\CheckBanks::dispatch()->onQueue('checkamount')->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 3 * 2 : 3)));
         } else if ($jobName === 'App\Jobs\ParityPrice') {
             \App\Jobs\ParityPrice::dispatch()->onQueue('pricecalc')->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 10 * 2 : 10)));
+        } else if ($jobName === 'App\Jobs\ChartData') {
+            \App\Jobs\ChartData::dispatch()->onQueue('chart')->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 0.5 * 2 : 0.5)));
         } else if ($jobName === 'App\Jobs\TestJob') {
             \App\Jobs\TestJob::dispatch()->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 10 : 0)));
         }
