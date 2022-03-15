@@ -19,6 +19,7 @@ class CreateParityChartsTable extends Migration
             $table->foreign('parities_id')->references('id')->on('parities');
             $table->string('type');
             $table->json('data')->default('{}');
+            $table->string('uuid');
             $table->softDeletes();
             $table->timestamps();
         });

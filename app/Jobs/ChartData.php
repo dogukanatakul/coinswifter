@@ -6,7 +6,6 @@ use App\Models\OrderTransaction;
 use App\Models\Parity;
 use App\Models\ParityChart;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -49,19 +48,31 @@ class ChartData implements ShouldQueue
         $parities = Cache::remember('parity', now()->addDays(1), function () {
             return Parity::all();
         });
+        $findChart = ParityChart::whereIn('type', $parts)
+            ->orderBy('parities_id', 'ASC')
+            ->orderBy('id', 'DESC')
+            ->get()
+            ->groupBy(['uuid', 'parities_id']);
         foreach ($parities as $parity) {
-            $findChart = ParityChart::whereIn('type', $parts)
-                ->where('created_at', '>=', now()->tz('Europe/Istanbul')->subSeconds(15)->toDateTimeLocalString())
-                ->where('parities_id', $parity->id)
-                ->get();
-            $filterParts = array_diff($parts, $findChart->pluck('type')->toArray());
+            if (empty($findChart->first()) || ($parity->id === $parities->first()->id && $findChart->first()->count() === $parities->count() && $findChart->first()->last()->count() === count($parts))) {
+                $filterParts = $parts;
+                $uuid = \Ramsey\Uuid\Uuid::uuid4();
+            } else {
+                if (isset($findChart->first()[$parity->id])) {
+                    $filterParts = array_diff($parts, $findChart->first()[$parity->id]->pluck('type')->toArray());
+                } else {
+                    $filterParts = $parts;
+                }
+                $uuid = $findChart->first()->first()->first()->uuid;
+            }
             foreach ($filterParts as $part) {
                 $a = $this->intervalCalc($part);
                 $b = $this->transactionCalc($a['periods'], $a['subDate'], $parity->id);
                 ParityChart::create([
                     'parities_id' => $parity->id,
                     'type' => $part,
-                    'data' => $b
+                    'data' => $b,
+                    'uuid' => $uuid
                 ]);
                 return true;
             }
@@ -122,6 +133,9 @@ class ChartData implements ShouldQueue
             $interval = "PT5M";
         } else if ($part === "15min") {
             $subDate = now()->tz('Europe/Istanbul')->subMinutes(900)->format('Y-m-d H:i:s');
+            $interval = "PT15M";
+        } else if ($part === "30min") {
+            $subDate = now()->tz('Europe/Istanbul')->subMinutes(1800)->format('Y-m-d H:i:s');
             $interval = "PT15M";
         } else if ($part === "1hours") {
             $subDate = now()->tz('Europe/Istanbul')->subHour(60)->format('Y-m-d H:i:s');
