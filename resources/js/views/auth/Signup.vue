@@ -17,6 +17,7 @@
                         v-model="form['name']"
                         type="text"
                         :placeholder="$t('Adınız')"
+                        inputmode="text"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.name.$error"
@@ -34,6 +35,7 @@
                         v-model="form['surname']"
                         type="text"
                         :placeholder="$t('Soyadınız')"
+                        inputmode="text"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.surname.$error"
@@ -98,6 +100,7 @@
                         v-model="form['tck_no']"
                         type="number"
                         :placeholder="$t('T.C. Kimlik Numaranız')"
+                        inputmode="number"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.tck_no.$error"
@@ -125,6 +128,7 @@
                         v-model="form['pasaport_no']"
                         type="text"
                         :placeholder="$t('Pasaport Numaranız')"
+                        inputmode="number"
                       ></b-form-input>
                       <b-form-text v-if="v$.form.pasaport_no.$error">
                         <p class="text-danger">
@@ -139,6 +143,7 @@
                         v-model="form['email']"
                         type="email"
                         :placeholder="$t('E-Posta Adresiniz')"
+                        inputmode="email"
                       ></b-form-input>
                       <b-form-text v-if="v$.form.email.$error">
                         <p class="text-danger">
@@ -164,6 +169,7 @@
                         :key="formInputKey"
                         type="text"
                         placeholder="53XXXXX"
+                        inputmodde="tel"
                       ></b-form-input>
                       <b-form-text v-if="v$.form.telephone.$error">
                         <p class="text-danger">
@@ -178,6 +184,7 @@
                         v-model="form['username']"
                         type="text"
                         :placeholder="$t('Kullanıcı Adınız')"
+                        inputmode="text"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.username.$error"
@@ -214,6 +221,7 @@
                         v-model="form['password']"
                         type="password"
                         :placeholder="$t('Şifreniz')"
+                        inputmode="text"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.password.$error"
@@ -235,6 +243,7 @@
                         v-model="form.password_repeat"
                         :placeholder="$t('Şifreniz Tekrar')"
                         type="password"
+                        inputmode="text"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.password_repeat.$error"

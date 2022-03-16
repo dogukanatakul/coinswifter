@@ -21,6 +21,7 @@
                     v-model="form['email']"
                     type="email"
                     :placeholder="$t('E-Posta Adresiniz')"
+                    inputmode="email"
                   ></b-form-input>
                   <b-form-text v-if="v$.form.email.$error">
                     <p class="text-danger">
@@ -38,6 +39,7 @@
                     v-model="form['password']"
                     type="password"
                     :placeholder="$t('Şifreniz')"
+                    inputmode="text"
                   ></b-form-input>
                   <b-form-text
                     v-if="v$.form.password.$error"

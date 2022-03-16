@@ -109,20 +109,22 @@
               :show="marketTradeLoader"
               rounded="sm"
             >
-              <div class="justify-content-between">
-                <b-col
-                  cols="12"
-                  md="2"
-                  class="float-left"
+              <div class="justify-content-between no-wrap">
+                <div
+                  class="float-left text-center"
+                  style="
+                    width: calc(4.6vw + 1 * ((1.4vw * 280) / 730)) !important;
+                  "
                   v-for="(array, index) in timeArray"
                   :key="array.key"
-                  ><b-link
+                >
+                  <b-link
                     href="#"
                     @click="chartTime = array.key"
-                    class="chartLink mx-2"
+                    class="chartLink text-small"
                     >{{ array.value }}</b-link
-                  ></b-col
-                >
+                  >
+                </div>
                 <!-- <b-col cols="12" md="2" class="float-left"
                   ><b-link
                     href="#"
@@ -270,7 +272,7 @@
     </b-row>
 
     <b-row class="d-none d-md-flex d-sm-flex d-xs-flex">
-      <b-col cols="12">
+      <b-col cols="12" class="d-none d-600-big-block">
         <b-col
           class="coin-prices"
           cols="12"
@@ -343,6 +345,144 @@
           </b-col>
         </b-col>
       </b-col>
+
+      <b-col cols="12" class="d-none d-600-small-block">
+        <b-col
+          class="coin-prices"
+          cols="12"
+          v-if="Object.values(selectedCoin).length > 0"
+        >
+          <b-row>
+            <div class="d-grid gap-2">
+              <b-row>
+                <div class="col-5 my-auto" style="grid-column:1/2; grid-row:1/2;">
+                  <div
+                    class="fw-bold mt-2 mx-2"
+                    @click="paritiesShowView = !paritiesShowView"
+                  >
+                    {{
+                      [
+                        selectedCoin.coin.symbol,
+                        selectedCoin.source.symbol,
+                      ].join("/")
+                    }}
+                    <i class="fas fa-caret-down"></i>
+                  </div>
+                  <div class="coin-detail mx-2">
+                    <div class="coin-info border-0">
+                      <div class="row">
+                        <div class="col">
+                          <div
+                            class="text-start"
+                            :class="
+                              'price ' + selectedCoin.parity_price.price.status
+                            "
+                          >
+                            <h3>{{ selectedCoin.parity_price.price.value }}</h3>
+                          </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                          <div class="info text-start">
+                            {{ selectedCoin.parity_price.price.value }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-7 no-wrap text-start my-auto" style="grid-column:2/3; grid-row:2-3;">
+                  <div class="coin-detail">
+                    <div class="coin-info border-0 p-0">
+                      <div class="row">
+                        <div class="col-5">
+                          <div class="title text-start">{{ $t("Değişim (24S)") }}</div>
+                        </div>
+                        <div class="col-7">
+                          <div
+                           class="text-start"
+                            :class="
+                              'info ' +
+                              selectedCoin.parity_price.percent_last_24_hours
+                                .status
+                            "
+                          >
+                            {{
+                              selectedCoin.parity_price.percent_last_24_hours
+                                .value
+                            }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="coin-info border-0 p-0">
+                      <div class="row">
+                        <div class="col-5">
+                          <div class="title text-start">{{ $t("En Yüksek (24S)") }}</div>
+                        </div>
+                        <div class="col-7">
+                          <div
+                          class="text-start"
+                            :class="
+                              'info ' + selectedCoin.parity_price.highest.status
+                            "
+                          >
+                            {{ selectedCoin.parity_price.highest.value }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="coin-info border-0 p-0">
+                      <div class="row">
+                        <div class="col-5">
+                          <div class="title text-start">{{ $t("En Düşük (24S)") }}</div>
+                        </div>
+                        <div class="col-7">
+                          <div
+                          class="text-start"
+                            :class="
+                              'info ' + selectedCoin.parity_price.lowest.status
+                            "
+                          >
+                            {{ selectedCoin.parity_price.lowest.value }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="coin-info border-0 p-0">
+                      <div class="row">
+                        <div class="col-5">
+                          <div class="title text-start">{{ $t("Hacim (24S)") }}</div>
+                        </div>
+                        <div class="col-7">
+                          <div
+                          class="text-start"
+                            :class="
+                              'info ' +
+                              selectedCoin.parity_price
+                                .volume_last_24_hours_price.status
+                            "
+                          >
+                            {{
+                              selectedCoin.parity_price
+                                .volume_last_24_hours_price.value
+                            }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </b-row>
+            </div>
+            <!-- <div class="w-100"></div>
+            <div class="col-6">
+              
+            </div> -->
+          </b-row>
+        </b-col>
+      </b-col>
+
       <b-col cols="12">
         <wallet
           v-if="
@@ -362,11 +502,27 @@
         >
           <TabPanel header="Grafik">
             <b-row>
-              <div class="justify-content-between">
-                <b-col
+              <div class="justify-content-between no-wrap">
+                <div
+                  class="float-left d-none d-md-block d-sm-block text-center"
+                  style="
+                    width: calc(10.3vw - 1 * ((1.4vw * 280) / 730)) !important;
+                  "
+                  v-for="(array, index) in timeArray"
+                  :key="array.key"
+                >
+                  <b-link
+                    href="#"
+                    @click="chartTime = array.key"
+                    class="chartLink mx-2 text-small"
+                    >{{ array.value }}</b-link
+                  >
+                </div>
+
+                <!-- <b-col
                   cols="4"
                   md="2"
-                  class="float-left"
+                  class="float-left d-none d-small-block"
                   v-for="(array, index) in timeArray"
                   :key="array.key"
                   ><b-link
@@ -375,7 +531,16 @@
                     class="chartLink mx-2"
                     >{{ array.value }}</b-link
                   ></b-col
-                >
+                > -->
+
+                <v-select
+                  v-model="chartTime"
+                  :options="timeArray"
+                  label="value"
+                  :reduce="(array) => array.key"
+                  class="float-left d-none d-small-block col-12 my-2"
+                  :clearable="false"
+                ></v-select>
                 <!-- <b-col cols="4" md="2" class="float-left"
                   ><b-link
                     href="#"
@@ -851,22 +1016,26 @@ export default {
   font-size: 12px;
 }
 @media screen and (max-width: 1690px) and(min-width:992px) {
-  .title,
-  .price,
-  .info {
-    font-size: 8px !important;
-    // text-align: center;
-  }
+  // .title,
+  // .price,
+  // .info {
+  //   font-size: 8px !important;
+  //   // text-align: center;
+  // }
   .d-xs-flex {
     display: none !important;
   }
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
   .d-xs-block {
     display: block !important;
   }
   .d-xs-flex {
     display: flex !important;
+  }
+
+  .d-small-block {
+    display: block !important;
   }
 }
 @media screen and (min-width: 992px) {
@@ -895,5 +1064,24 @@ export default {
   text-decoration: none;
   color: #16b979;
   font-size: 14px !important;
+}
+.no-wrap {
+  white-space: nowrap;
+}
+@media screen and (max-width: 600px) {
+  .d-600-big-block {
+    display: none !important;
+  }
+  .d-600-small-block {
+    display: block !important;
+  }
+}
+@media screen and(min-width:600px) {
+  .d-600-big-block {
+    display: block !important;
+  }
+  .d-600-small-block {
+    display: none !important;
+  }
 }
 </style>

@@ -11,6 +11,7 @@
                         class="mt-3"
                         placeholder="*****"
                         type="password"
+                        inputmode="text"
                     ></b-form-input>
                     <b-form-text v-if="v$.form.current_password.$error" class="text-danger">
                         <p class="text-danger">
@@ -29,6 +30,7 @@
                         class="mt-3"
                         placeholder="*****"
                         type="password"
+                        inputmode="text"
                     ></b-form-input>
                     <b-form-text v-if="v$.form.new_password.$error" class="text-danger">
                         <p class="text-danger">
@@ -47,6 +49,7 @@
                         class="mt-3"
                         placeholder="*****"
                         type="password"
+                        inputmode="text"
                     ></b-form-input>
                     <b-form-text v-if="v$.form.new_password_confirm.$error" class="text-danger">
                         <p class="text-danger">

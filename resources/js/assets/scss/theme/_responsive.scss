@@ -19,24 +19,24 @@ body {
 
 
 @media only screen and (max-width: 1434px) {
-    .market-pairs tbody {
-        height: 760px;
-    }
-    .no-fluid .market-pairs tbody {
-        height: 815px;
-    }
+    // .market-pairs tbody {
+    //     height: 760px;
+    // }
+    // .no-fluid .market-pairs tbody {
+    //     height: 815px;
+    // }
     .settings-profile .custom-file {
         width: 25%;
     }
 }
 
 @media only screen and (max-width: 1300px) {
-    .market-pairs tbody {
-        height: 740px;
-    }
-    .no-fluid .market-pairs tbody {
-        height: 755px;
-    }
+    // .market-pairs tbody {
+    //     height: 740px;
+    // }
+    // .no-fluid .market-pairs tbody {
+    //     height: 755px;
+    // }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -70,11 +70,11 @@ body {
     }
 }
 
-@media only screen and (max-width: 792px) {
-    .market-pairs tbody {
-        height: 699px;
-    }
-}
+// @media only screen and (max-width: 792px) {
+//     .market-pairs tbody {
+//         height: 699px;
+//     }
+// }
 
 @media only screen and (max-width: 768px) {
     .dropdown.header-custom-icon {

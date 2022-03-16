@@ -23,6 +23,7 @@
                         v-model="form['coin_name']"
                         type="text"
                         :placeholder="$t('Coin adını giriniz')"
+                        inputmode="text"
                       >
                       </b-form-input>
                       <b-form-text
@@ -39,6 +40,7 @@
                         v-model="form['network_info']"
                         type="text"
                         :placeholder="$t('Ağ bilgisini giriniz')"
+                        inputmode="text"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.network_info.$error"
@@ -54,6 +56,7 @@
                         v-model="form['contract_adress']"
                         type="text"
                         :placeholder="$t('Kontrat adresini giriniz')"
+                        inputmode="text"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.contract_adress.$error"
@@ -69,6 +72,7 @@
                         v-model="form['coin_site']"
                         type="text"
                         :placeholder="$t('İnternet sitesini giriniz')"
+                        inputmode="url"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.coin_site.$error"
@@ -84,6 +88,7 @@
                         v-model="form['whitepaper_url']"
                         type="text"
                         :placeholder="$t('Beyaz Kağıt adresini giriniz')"
+                        inputmode="url"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.whitepaper_url.$error"
@@ -99,6 +104,7 @@
                         v-model="form['roadmap_url']"
                         type="text"
                         :placeholder="$t('Yol Haritası adresini giriniz')"
+                        inputmode="url"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.roadmap_url.$error"
@@ -148,6 +154,7 @@
                         v-model="form['listing_exchanges']"
                         type="text"
                         :placeholder="$t('Listelenen borsaları yazınız')"
+                        inputmode="text"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.listing_exchanges.$error"
@@ -163,6 +170,7 @@
                         v-model="form['github_url']"
                         type="text"
                         :placeholder="$t('Github adresini giriniz')"
+                        inputmode="url"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.github_url.$error"
@@ -178,6 +186,7 @@
                         v-model="form['coinmarketcap_url']"
                         type="text"
                         :placeholder="$t('CoinMarketCap Adresini giriniz')"
+                        inputmode="url"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.coinmarketcap_url.$error"
@@ -193,6 +202,7 @@
                         v-model="form['coingecko_url']"
                         type="text"
                         :placeholder="$t('CoinGecko adresini giriniz')"
+                        inputmode="url"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.coingecko_url.$error"
@@ -208,6 +218,7 @@
                         v-model="form['twitter_url']"
                         type="text"
                         :placeholder="$t('Twitter adresini giriniz')"
+                        inputmode="url"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.twitter_url.$error"
@@ -223,6 +234,7 @@
                         v-model="form['telegram_url']"
                         type="text"
                         :placeholder="$t('Telegram adresini giriniz')"
+                        inputmode="url"
                       ></b-form-input>
                       <b-form-text
                         v-if="v$.form.telegram_url.$error"

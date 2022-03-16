@@ -13,6 +13,7 @@
                                 class="mt-3"
                                 placeholder="XXXXXXXXX"
                                 disabled
+                                inputmode="url"
                             ></b-form-input>
                             <b-form-text v-if="v$.form.referer.$error" class="text-danger">
                                 <p class="text-danger">

@@ -63,6 +63,7 @@
                   style="text-align: center"
                   autofocus
                   :model-value="walletSelect.wallet_code"
+                  inputmode="text"
                   readonly
                 ></b-form-input>
                 <b-button variant="primary" @click="copyWalletCode(walletSelect.wallet_code)">
@@ -153,6 +154,7 @@
                       type="text"
                       v-model="form['wallet']"
                       :placeholder="$t('Gidecek cüzdan adresini giriniz')"
+                      inputmode="text"
                     ></b-form-input>
                     <b-form-invalid-feedback :state="!v$.form.wallet.$error">
                       <p class="text-danger">
@@ -191,6 +193,7 @@
               text-light
               lh-lg
               text-wrap
+              text-center
             "
           >
             {{

@@ -109,16 +109,22 @@
               :show="marketTradeLoader"
               rounded="sm"
             >
-              <div class="justify-content-between">
-                <b-col cols="12" md="2" class="float-left"
-                v-for="(array,index) in timeArray" :key="array.key"
-                  ><b-link
+              <div class="justify-content-between no-wrap">
+                <div
+                  class="float-left text-center"
+                  style="
+                    width: calc(4.6vw + 1 * ((1.4vw * 280) / 730)) !important;
+                  "
+                  v-for="(array, index) in timeArray"
+                  :key="array.key"
+                >
+                  <b-link
                     href="#"
                     @click="chartTime = array.key"
-                    class="chartLink mx-2"
+                    class="chartLink text-small"
                     >{{ array.value }}</b-link
-                  ></b-col
-                >
+                  >
+                </div>
                 <!-- <b-col cols="12" md="2" class="float-left"
                   ><b-link
                     href="#"
@@ -160,7 +166,7 @@
                   ></b-col
                 > -->
               </div>
-              <div style="clear:both"></div>
+              <div style="clear: both"></div>
               <div>
                 <new-chart
                   v-if="chart"
@@ -358,15 +364,38 @@
         >
           <TabPanel header="Grafik">
             <b-row>
-              <div class="justify-content-between">
-                <b-col cols="4" md="2" class="float-left"
-                   v-for="(array,index) in timeArray" :key="array.key"><b-link
+              <div class="justify-content-between no-wrap">
+                <div
+                  class="float-left d-none d-md-block d-sm-block text-center"
+                  style="
+                    width: calc(10.3vw - 1 * ((1.4vw * 280) / 730)) !important;
+                  "
+                  v-for="(array, index) in timeArray"
+                  :key="array.key"
+                >
+                  <b-link
+                    href="#"
+                    @click="chartTime = array.key"
+                    class="chartLink mx-2 text-small"
+                    >{{ array.value }}</b-link
+                  >
+                </div>
+                
+                <!-- <b-col
+                  cols="4"
+                  md="2"
+                  class="float-left d-none d-small-block"
+                  v-for="(array, index) in timeArray"
+                  :key="array.key"
+                  ><b-link
                     href="#"
                     @click="chartTime = array.key"
                     class="chartLink mx-2"
                     >{{ array.value }}</b-link
                   ></b-col
-                >
+                > -->
+
+                <v-select v-model="chartTime" :options="timeArray" label="value" :reduce="array => array.key" class="float-left d-none d-small-block col-12 my-2" :clearable="false"></v-select>
                 <!-- <b-col cols="4" md="2" class="float-left"
                   ><b-link
                     href="#"
@@ -478,7 +507,7 @@
             </b-row>
           </TabPanel>
           <!-- <b-tab title="Pariteler">
-            
+
           </b-tab> -->
           <TabPanel
             header="Alım - Satım"
@@ -640,45 +669,44 @@ const initialData = () => ({
   selectedTrade: {},
   setInterval: null,
   changeParitiesView: true,
-  chartTime: '15m',
+  chartTime: "15min",
   timeArray: [
     {
-      key :"1min",
-      value : "1 min"
+      key: "1min",
+      value: "1 min",
     },
     {
-      key :"5min",
-      value: "5 min"
+      key: "5min",
+      value: "5 min",
     },
     {
-      key:"15min",
-      value: "15 min"
+      key: "15min",
+      value: "15 min",
     },
     {
-      key:"30min",
-      value: "30 min"
+      key: "30min",
+      value: "30 min",
     },
     {
-      key:"1hours",
-      value: "1 hours"
+      key: "1hours",
+      value: "1 hours",
     },
     {
-      key:"4hours",
-      value: "4 hours"
+      key: "4hours",
+      value: "4 hours",
     },
     {
-      key:"1day",
-      value: "1 day"
+      key: "1day",
+      value: "1 day",
     },
     {
-      key:"1week",
-      value: "1 week"
+      key: "1week",
+      value: "1 week",
     },
     {
-      key:"1month",
-      value: "1 month"
+      key: "1month",
+      value: "1 month",
     },
-    
   ],
 });
 
@@ -852,13 +880,18 @@ export default {
   .d-xs-flex {
     display: none !important;
   }
+
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
   .d-xs-block {
     display: block !important;
   }
   .d-xs-flex {
     display: flex !important;
+  }
+
+  .d-small-block {
+    display: block !important;
   }
 }
 @media screen and (min-width: 992px) {
@@ -868,24 +901,28 @@ export default {
   .d-xs-flex {
     display: none !important;
   }
+  
 }
 .float-right {
   float: right !important;
 }
-.chartLink {
-  text-decoration: none;
-  color: darkgray;
-  font-size: 14px !important;
-}
-.chartLink:hover {
-  text-decoration: none;
-  color: darkgray;
-  font-size: 14px !important;
-}
-.chartLink:active,
-.chartLink:focus {
-  text-decoration: none;
-  color: #16b979;
-  font-size: 14px !important;
+  .chartLink {
+    text-decoration: none;
+    color: darkgray;
+    font-size: 14px !important;
+  }
+  .chartLink:hover {
+    text-decoration: none;
+    color: darkgray;
+    font-size: 14px !important;
+  }
+  .chartLink:active,
+  .chartLink:focus {
+    text-decoration: none;
+    color: #16b979;
+    font-size: 14px !important;
+  }
+.no-wrap{
+  white-space: nowrap;
 }
 </style>

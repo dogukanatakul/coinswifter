@@ -14,7 +14,7 @@
               <img
                 v-bind:src="'../assets/img/home/banner/home_slide_logo.png'"
                 alt="CoinSwifter"
-                class="banner-logo"
+                class="banner-logo fade-in-out margin-5"
               />
               <h5 class="text-white mt-2 text-responsive">
                 {{ $t("Güvenilir kripto para alım-satım deneyimi") }}
@@ -367,4 +367,19 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.fade-in-out {
+  animation: fadebackground 2s infinite;
+}
+@keyframes fadebackground {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.margin-5 {
+  margin-left: 5% !important;
+}
 </style>

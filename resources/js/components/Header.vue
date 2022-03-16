@@ -262,7 +262,7 @@ export default {
     display: block;
     position: absolute;
     top: 12px;
-    right: 30px;
+    right: 10px;
     z-index: 1;
     -webkit-user-select: none;
     user-select: none;
@@ -328,7 +328,7 @@ export default {
     padding-top: 100px;
     padding-bottom: 75px;
     right: -70px;
-    background: #ededed;
+    background: rgba(237,237,237,.75);
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;

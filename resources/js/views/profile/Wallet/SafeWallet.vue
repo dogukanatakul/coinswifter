@@ -91,7 +91,7 @@
                             <b-input-group :append="walletSelect.symbol" class="mt-3">
                                 <b-form-input type="number" :min="walletSelect.minimum" step="0.00000001"
                                               style="appearance: textfield;"
-                                              :max="walletSelect.balance" v-model="form['amount']" autofocus></b-form-input>
+                                              :max="walletSelect.balance" v-model="form['amount']" inputmode="number" autofocus></b-form-input>
                             </b-input-group>
                             <b-form-invalid-feedback :state="!v$.form.amount.$error">
                                 <p class="text-danger">

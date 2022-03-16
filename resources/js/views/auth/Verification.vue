@@ -41,6 +41,7 @@
                     v-model="form['code']"
                     type="text"
                     :placeholder="type + ' ' + $t('Doğrulama Kodunuz')"
+                    inputmode="text"
                   ></b-form-input>
                   <b-form-text v-if="v$.form.code.$error" class="text-danger">
                     <p class="text-danger">

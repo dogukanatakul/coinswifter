@@ -28,6 +28,7 @@
                         size="sm"
                         class="mt-3"
                         placeholder="TRXXXXXXXXXX"
+                        inputmode="text"
                     ></b-form-input>
                     <b-form-text v-if="v$.form.iban.$error" class="text-danger">
                         <p class="text-danger">

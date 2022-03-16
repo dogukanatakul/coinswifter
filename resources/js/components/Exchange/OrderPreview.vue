@@ -1,23 +1,23 @@
 <template>
-  <!-- <b-list-group class="order-watch">
+  <b-list-group class="order-watch">
         <b-list-group-item class="d-flex justify-content-between align-items-center">
-            {{ $t('Mevcut') }}
-            <b-badge pill>{{ getCurrent.price }} {{ getCurrent.symbol }}</b-badge>
+            <span class="threedot">{{ $t('Mevcut') }}</span>
+            <b-badge pill class="threedot">{{ getCurrent.price }} {{ getCurrent.symbol }}</b-badge>
         </b-list-group-item>
         <b-list-group-item class="d-flex justify-content-between align-items-center">
-            {{ $t('Miktar') }}
-            <b-badge pill>{{ getAmount.price }} {{ getAmount.symbol }}</b-badge>
+            <span class="threedot">{{ $t('Miktar') }}</span>
+            <b-badge pill class="threedot">{{ getAmount.price }} {{ getAmount.symbol }}</b-badge>
         </b-list-group-item>
         <b-list-group-item class="d-flex justify-content-between align-items-center">
-            {{ $t('Komisyon') }} ({{ commission }}%)
-            <b-badge pill>{{ getCommission.price }} {{ getCommission.symbol }}</b-badge>
+            <span class="threedot">{{ $t('Komisyon') }} ({{ commission }}%)</span>
+            <b-badge pill class="threedot">{{ getCommission.price }} {{ getCommission.symbol }}</b-badge>
         </b-list-group-item>
         <b-list-group-item class="d-flex justify-content-between align-items-center">
-            {{ $t('Toplam') }}
-            <b-badge pill>{{ getTotal.price }} {{ getTotal.symbol }}</b-badge>
+            <span class="threedot">{{ $t('Toplam') }}</span>
+            <b-badge pill class="threedot">{{ getTotal.price }} {{ getTotal.symbol }}</b-badge>
         </b-list-group-item>
-    </b-list-group> -->
-  <b-row class="order-watch bordered">
+    </b-list-group>
+  <!-- <b-row class="order-watch bordered">
     <b-col cols="12" class="px-auto bordered-bottom my-1">
       <b-col cols="12" xl="3" class="float-left text-small text-aligned-left">{{
         $t("Mevcut")
@@ -70,7 +70,7 @@
         ></b-col
       >
     </b-col>
-  </b-row>
+  </b-row> -->
 </template>
 
 <script>
@@ -131,5 +131,7 @@ export default {
 </script>
 
 <style scoped type="scss">
-
+.threedot{
+  overflow:hidden; white-space:nowrap; text-overflow:ellipsis; max-width:50% !important;
+}
 </style>

@@ -7,6 +7,7 @@
             v-model="search"
             class="search"
             :placeholder="$t('Parite Çifti Arayın')"
+            inputmode="text"
           ></b-form-input>
         </b-col>
       </b-row>

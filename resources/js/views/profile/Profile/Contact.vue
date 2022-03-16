@@ -23,6 +23,7 @@
                         type="text"
                         placeholder="53XXXXX"
                         :disabled="disabledInput==='telephone'"
+                        inputmode="text"
                     ></b-form-input>
                     <b-form-text v-if="v$.form.telephone.$error">
                         <p class="text-danger">{{ $t("Lütfen geçerli telefon numarası giriniz!") }}</p>
@@ -41,6 +42,7 @@
                         type="text"
                         placeholder="xxx@xxx.xx"
                         :disabled="disabledInput==='email'"
+                        inputmode="email"
                     ></b-form-input>
                     <b-form-text v-if="v$.form.email.$error">
                         <p class="text-danger">{{ $t("Lütfen geçerli E-posta adresi giriniz!") }}</p>
