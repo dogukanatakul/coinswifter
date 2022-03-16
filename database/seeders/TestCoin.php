@@ -14,18 +14,16 @@ class TestCoin extends Seeder
     public function run()
     {
         $network = \App\Models\Network::get()->groupBy('short_name');
-
-        $try = \App\Models\Coin::create([
-            'name' => 'Türk Lirası',
-            'symbol' => 'TRY',
-            'networks_id' => $network['SOURCE']->first()->id,
-            'contract' => null,
-            'commission_type' => 'static',
-            'commission_in' => 5,
-            'commission_out' => 5,
-        ]);
-
         $alterCoins = [
+            [
+                'name' => 'Türk Lirası',
+                'symbol' => 'TRY',
+                'networks_id' => $network['SOURCE']->first()->id,
+                'contract' => null,
+                'commission_type' => 'static',
+                'commission_in' => 5,
+                'commission_out' => 5,
+            ],
             [
                 'name' => 'Ethereum',
                 'symbol' => 'ETH',
@@ -45,6 +43,8 @@ class TestCoin extends Seeder
                 'networks_id' => $network['ETH']->first()->id,
                 'contract' => '0x6205BC98087fd43aEfA65336E1980868a3C7B87c',
             ],
+
+
             [
                 'name' => 'Binance Coin',
                 'symbol' => 'BNB',
@@ -64,35 +64,90 @@ class TestCoin extends Seeder
                 'networks_id' => $network['BSC']->first()->id,
                 'contract' => '0x862f029d9398493206852f8Cac348Afb25737f19',
             ],
-//            [
-//                'name' => "BaklavamNerede",
-//                'symbol' => 'SİK',
-//                'commission_in' => 0.25,
-//                'commission_out' => 0.25,
-//                'commission_type' => 'percent',
-//                'status' => 'normal',
-//                'networks_id' => $network['BSC']->first()->id,
-//                'contract' => '0xbed785cc782E64849bA24321128ad77c00c17447',
-//            ],
+
+
+            [
+                'name' => 'TRON',
+                'symbol' => 'TRX',
+                'commission_in' => 0.25,
+                'commission_out' => 0.25,
+                'commission_type' => 'percent',
+                'status' => 'normal',
+                'networks_id' => $network['TRX']->first()->id,
+            ],
+            [
+                'name' => "JUST GOV",
+                'symbol' => 'JST',
+                'commission_in' => 0.25,
+                'commission_out' => 0.25,
+                'commission_type' => 'percent',
+                'status' => 'normal',
+                'networks_id' => $network['TRX']->first()->id,
+                'contract' => 'TF17BgPaZYbz8oxbjhriubPDsA7ArKoLX3',
+            ],
+            [
+                'name' => "JUST Stablecoin",
+                'symbol' => 'USDJ',
+                'commission_in' => 0.25,
+                'commission_out' => 0.25,
+                'commission_type' => 'percent',
+                'status' => 'normal',
+                'networks_id' => $network['TRX']->first()->id,
+                'contract' => 'TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL',
+            ],
         ];
 
         foreach ($alterCoins as $alterCoin) {
             $alterCoin['transfer_min'] = 0;
-            $coin = \App\Models\Coin::create($alterCoin);
-            $parity = \App\Models\Parity::create([
-                'source_coin_id' => $try->id,
-                'coin_id' => $coin->id,
-                'status' => 'normal',
-                'settings' => [
-                    'trading_market' => false,
-                ],
-            ]);
+            \App\Models\Coin::create($alterCoin);
+        }
 
-            \App\Models\ParityCommission::create([
-                'parities_id' => $parity->id,
-                'commission' => $alterCoin['commission_out'],
-                'type' => 0,
-            ]);
+        $coins = \App\Models\Coin::all()->groupBy('symbol');
+
+        $parities = [
+            'TRY' => [
+                'ETH',
+                'BNB',
+                'TRX',
+                'AS',
+                'RoR',
+                'JST',
+                'USDJ',
+            ],
+            'ETH' => [
+                'BNB',
+                'AS',
+                'RoR',
+                'JST',
+                'USDJ'
+            ],
+            'USDJ' => [
+                'ETH',
+                'BNB',
+                'AS',
+                'RoR',
+                'TRX',
+                'JST',
+                'USDJ'
+            ],
+        ];
+
+        foreach ($parities as $index => $parity) {
+            foreach ($parity as $item) {
+                $parity = \App\Models\Parity::create([
+                    'source_coin_id' => $coins[$index]->first()->id,
+                    'coin_id' => $coins[$item]->first()->id,
+                    'status' => 'normal',
+                    'settings' => [
+                        'trading_market' => false,
+                    ],
+                ]);
+                \App\Models\ParityCommission::create([
+                    'parities_id' => $parity->id,
+                    'commission' => $alterCoin['commission_out'],
+                    'type' => 0,
+                ]);
+            }
         }
     }
 }

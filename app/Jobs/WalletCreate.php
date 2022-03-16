@@ -49,6 +49,7 @@ class WalletCreate implements ShouldQueue
         $userCoins = UserCoin::where('users_id', $this->user->id)->get()->pluck('coins_id');
         $coins = Coin::whereNotIn('id', $userCoins)->get()->groupBy('networks_id');
         try {
+
             // Create BSC Wallet and Coins
             if (empty($bscInsertWallet = UserWallet::where('users_id', $this->user->id)->where('networks_id', $network['BSC']->first()->id)->first())) {
                 if (!empty($ethCheckWallet = UserWallet::where('users_id', $this->user->id)->where('networks_id', $network['ETH']->first()->id)->first())) {
@@ -62,7 +63,7 @@ class WalletCreate implements ShouldQueue
                     $bscInsertWallet = UserWallet::create([
                         'users_id' => $this->user->id,
                         'networks_id' => $network['BSC']->first()->id,
-                        'wallet' => $wallet->content->adress,
+                        'wallet' => $wallet->content->address,
                         'password' => $wallet->content->private_key,
                     ]);
                 } else if (!$wallet->status) {
@@ -80,6 +81,8 @@ class WalletCreate implements ShouldQueue
                     ]);
                 }
             }
+
+
             // Create ETH Wallet and Coins
             if (empty($ethInsertWallet = UserWallet::where('users_id', $this->user->id)->where('networks_id', $network['ETH']->first()->id)->first())) {
                 if (!empty($bscCheckWallet = UserWallet::where('users_id', $this->user->id)->where('networks_id', $network['BSC']->first()->id)->first())) {
@@ -93,7 +96,7 @@ class WalletCreate implements ShouldQueue
                     $ethInsertWallet = UserWallet::create([
                         'users_id' => $this->user->id,
                         'networks_id' => $network['ETH']->first()->id,
-                        'wallet' => $wallet->content->adress,
+                        'wallet' => $wallet->content->address,
                         'password' => $wallet->content->private_key,
                     ]);
                 } else if (!$wallet->status) {
@@ -112,7 +115,35 @@ class WalletCreate implements ShouldQueue
                 }
             }
 
-            // Create DXC Wallet and Coins
+
+            // Create TRX Wallet and Coins
+            if (empty($dxcInsertWallet = UserWallet::where('users_id', $this->user->id)->where('networks_id', $network['TRX']->first()->id)->first())) {
+                if (($wallet = trxActions("create_wallet")) && $wallet->status) {
+                    $dxcInsertWallet = UserWallet::create([
+                        'users_id' => $this->user->id,
+                        'networks_id' => $network['TRX']->first()->id,
+                        'wallet' => $wallet->content->address,
+                        'wallet_hex' => $wallet->content->address_hex,
+                        'password' => $wallet->content->private_key,
+                    ]);
+                } else if (!$wallet->status) {
+                    $problem = true;
+                }
+            }
+            if (isset($coins[$network['TRX']->first()->id])) {
+                foreach ($coins[$network['TRX']->first()->id] as $coin) {
+                    UserCoin::create([
+                        'users_id' => $this->user->id,
+                        'user_wallets_id' => $dxcInsertWallet->id,
+                        'coins_id' => $coin->id,
+                        'balance_pure' => 0,
+                        'balance' => 0,
+                    ]);
+                }
+            }
+
+
+            // Create SOURCE Wallet and Coins
             if (empty($sourceInsertWallet = UserWallet::where('users_id', $this->user->id)->where('networks_id', $network['SOURCE']->first()->id)->first())) {
                 $sourceInsertWallet = UserWallet::create([
                     'users_id' => $this->user->id,

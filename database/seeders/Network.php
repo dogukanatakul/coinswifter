@@ -28,6 +28,12 @@ class Network extends Seeder
                 'fee' => 0.004,
             ],
             [
+                'name' => 'TRON',
+                'short_name' => 'TRX',
+                'connection' => '',
+                'fee' => 0.004,
+            ],
+            [
                 'name' => 'Source',
                 'short_name' => 'SOURCE',
                 'connection' => '',

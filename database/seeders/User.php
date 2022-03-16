@@ -26,7 +26,7 @@ class User extends Seeder
                 'password' => pssMngr("123"),
                 'status' => 2,
             ]);
-            WalletCreate::dispatch($user->makeVisible(['id'])->toArray(), 0);
+            WalletCreate::dispatch($user->makeVisible(['id'])->toArray(), 0)->onQueue('createwallet');
             \App\Models\UserContact::create([
                 'users_id' => $user->id,
                 'type' => 'email',

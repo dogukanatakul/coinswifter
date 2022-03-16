@@ -17,6 +17,7 @@ class Coin extends Model
         'symbol',
         'networks_id',
         'contract',
+        'token_type',
         'status',
         'transfer_min',
         'transfer_max',

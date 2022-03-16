@@ -15,8 +15,9 @@ if (!function_exists('nodeIPS')) {
                 "get_fee" => "/getFee/{amount}&{contract}",
                 "get_transaction_by_dex_hash" => "/getTransactionByDexHash/{dexhash}",
             ],
-            "bsc" => "http://185.254.94.202:1625/BSC_TESTNET",
-            "eth" => "http://185.254.94.202:1625/ETH_TESTNET",
+            "bsc" => env('PYTHON_SERVICE_URL') . "/BSC_TESTNET",
+            "eth" => env('PYTHON_SERVICE_URL') . "/ETH_TESTNET",
+            "trx" => env('PYTHON_SERVICE_URL') . "/TRX_TESTNET",
         ];
         return $list[$node];
     }
@@ -90,6 +91,34 @@ if (!function_exists('ethActions')) {
     function ethActions($action, $data = false): object
     {
         $response = \Ixudra\Curl\Facades\Curl::to(nodeIPS("eth") . "/" . $action)
+            ->withTimeout(15)
+            ->withConnectTimeout(15);
+        if ($data) {
+            $response = $response->withData($data);
+        }
+        $response = $response->asJson()
+            ->asJsonResponse()
+            ->returnResponseObject()
+            ->post();
+        if ($response->status === 200 & isset($response->content->status) && $response->content->status == "success") {
+            return (object)[
+                'status' => true,
+                'content' => $response->content
+            ];
+        } else {
+            return (object)[
+                'status' => false,
+                'content' => $response->content
+            ];
+        }
+    }
+}
+
+
+if (!function_exists('trxActions')) {
+    function trxActions($action, $data = false): object
+    {
+        $response = \Ixudra\Curl\Facades\Curl::to(nodeIPS("trx") . "/" . $action)
             ->withTimeout(15)
             ->withConnectTimeout(15);
         if ($data) {

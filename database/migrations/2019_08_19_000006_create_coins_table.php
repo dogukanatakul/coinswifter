@@ -16,6 +16,7 @@ class CreateCoinsTable extends Migration
             $table->foreign('networks_id')->references('id')->on('networks');
             $table->unique(['symbol', 'networks_id', 'name'], 'token_unique');
             $table->string('contract')->nullable();
+            $table->string('token_type')->nullable();
             $table->string('status')->default('normal'); // normal | ico | preview
             $table->decimal('transfer_min', 38, 22)->default(100);
             $table->decimal('transfer_max', 38, 22)->default(9999999999999999);
