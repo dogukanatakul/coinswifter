@@ -18,7 +18,7 @@
           >
         </span>
       </div>
-      <div class="float-end">
+      <div class="float-end  mt-2">
         <b-button-group>
           <b-button
             @click="walletAction = 'deposit'"

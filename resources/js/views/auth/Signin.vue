@@ -1,83 +1,87 @@
 <template>
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-6">
-      <div class="card o-hidden border-0 shadow-lg my-5 p-4">
-        <div class="card-body p-0">
-          <!-- Nested Row within Card Body -->
-          <div class="row">
-            <div class="col-12">
-              <div class="text-center">
-                <h5 class="h5 text-gray-900 mb-2">{{ $t("Giriş Yap") }}</h5>
-                <hr />
-              </div>
-              <b-form @submit="signin">
-                <b-form-group
-                  id="input-group-1"
-                  :label="$t('E-Posta')"
-                  label-for="input-1"
-                >
-                  <b-form-input
-                    id="input-1"
-                    v-model="form['email']"
-                    type="email"
-                    :placeholder="$t('E-Posta Adresiniz')"
-                    inputmode="email"
-                  ></b-form-input>
-                  <b-form-text v-if="v$.form.email.$error">
-                    <p class="text-danger">
-                      {{ $t("Lütfen geçerli mail adresi giriniz!") }}
-                    </p>
-                  </b-form-text>
-                </b-form-group>
-                <b-form-group
-                  id="input-group-2"
-                  label="Şifre"
-                  label-for="input-2"
-                >
-                  <b-form-input
-                    id="input-2"
-                    v-model="form['password']"
-                    type="password"
-                    :placeholder="$t('Şifreniz')"
-                    inputmode="text"
-                  ></b-form-input>
-                  <b-form-text
-                    v-if="v$.form.password.$error"
-                    class="text-danger"
-                  >
-                    <p class="text-danger">
-                      {{ $t("Lütfen şifrenizi giriniz.") }}
-                    </p>
-                  </b-form-text>
-                </b-form-group>
-                <div class="d-grid gap-2">
-                  <b-button block type="submit" variant="primary">{{
-                    $t("Giriş Yap")
-                  }}</b-button>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="card o-hidden border-0 shadow-lg my-5 p-4">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-12">
+                <div class="text-center">
+                  <h5 class="h5 text-gray-900 mb-2">{{ $t("Giriş Yap") }}</h5>
+                  <hr />
                 </div>
-              </b-form>
+                <b-form @submit="signin">
+                  <b-form-group
+                    id="input-group-1"
+                    :label="$t('E-Posta')"
+                    label-for="input-1"
+                  >
+                    <b-form-input
+                      id="input-1"
+                      v-model="form['email']"
+                      type="email"
+                      :placeholder="$t('E-Posta Adresiniz')"
+                      inputmode="email"
+                    ></b-form-input>
+                    <b-form-text v-if="v$.form.email.$error">
+                      <p class="text-danger">
+                        {{ $t("Lütfen geçerli mail adresi giriniz!") }}
+                      </p>
+                    </b-form-text>
+                  </b-form-group>
+                  <b-form-group
+                    id="input-group-2"
+                    label="Şifre"
+                    label-for="input-2"
+                  >
+                    <b-form-input
+                      id="input-2"
+                      v-model="form['password']"
+                      type="password"
+                      :placeholder="$t('Şifreniz')"
+                      inputmode="text"
+                    ></b-form-input>
+                    <b-form-text
+                      v-if="v$.form.password.$error"
+                      class="text-danger"
+                    >
+                      <p class="text-danger">
+                        {{ $t("Lütfen şifrenizi giriniz.") }}
+                      </p>
+                    </b-form-text>
+                  </b-form-group>
+                  <div class="d-grid gap-2">
+                    <b-button block type="submit" variant="primary">{{
+                      $t("Giriş Yap")
+                    }}</b-button>
+                  </div>
+                </b-form>
+              </div>
             </div>
-          </div>
-          <div class="row justify-content-between py-0 py-md-4">
-            <div
-              class="col-12 col-md-4 text-md-start d-grid gap-2 py-2 py-md-0"
-            >
-              <b-button
-                squared
-                block
-                variant="outline-secondary"
-                :to="{ name: 'forgot' }"
-                >{{ $t("Şifremi unuttum?") }}</b-button
+            <div class="row justify-content-between py-0 py-md-4">
+              <div
+                class="col-12 col-md-4 text-md-start d-grid gap-2 py-2 py-md-0"
               >
-            </div>
-            <div class="col-12 col-md-4 text-md-end d-grid gap-2 py-2 py-md-0">
-              <b-button
-                squared
-                block
-                variant="outline-secondary"
-                :to="{ name: 'signup' }"
-                >{{ $t("Yeni hesap oluştur!") }}</b-button
+                <b-button
+                  squared
+                  block
+                  variant="outline-secondary"
+                  :to="{ name: 'forgot' }"
+                  >{{ $t("Şifremi unuttum?") }}</b-button
+                >
+              </div>
+              <div
+                class="col-12 col-md-4 text-md-end d-grid gap-2 py-2 py-md-0"
               >
+                <b-button
+                  squared
+                  block
+                  variant="outline-secondary"
+                  :to="{ name: 'signup' }"
+                  >{{ $t("Yeni hesap oluştur!") }}</b-button
+                >
+              </div>
             </div>
           </div>
         </div>

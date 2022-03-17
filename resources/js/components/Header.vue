@@ -328,7 +328,7 @@ export default {
     padding-top: 100px;
     padding-bottom: 75px;
     right: -70px;
-    background: rgba(237,237,237,.75);
+    background: rgba(237,237,237,.90);
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;

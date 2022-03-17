@@ -1,7 +1,7 @@
 <template>
-  <div class="wallet">
+  <div class="container wallet">
     <b-row
-      class="mx-lg-2 my-lg-2 mx-md-2 my-md-2"
+      class=""
       v-on:scroll.passive="handleScroll"
       ref="handleScroll"
     >
@@ -53,7 +53,7 @@
                 : false
             "
           >
-            <b-row class="w-100 px-auto" v-if="parseInt(wallet.locked) !== 0">
+            <b-row class="w-100 px-auto mx-2" v-if="parseInt(wallet.locked) !== 0">
               <!-- <b-col cols="12" md="5" class="text-center text-md-start">
                 <span class="fw-bold">{{ wallet.symbol }}</span>
                 {{ wallet.name }}
@@ -98,7 +98,7 @@
                 </b-col>
               </b-col>
             </b-row>
-            <b-row class="w-100" v-else>
+            <b-row class="w-100 pl-2 mx-2" v-else>
               <!-- <b-col cols="12" md="5" class="text-center text-md-start">
                 <span class="fw-bold">{{ wallet.symbol }}</span>
                 {{ wallet.name }}

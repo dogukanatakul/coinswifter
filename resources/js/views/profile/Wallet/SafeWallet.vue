@@ -8,7 +8,7 @@
                         <label class="mx-2">{{ walletSelect.total_balance }} {{ walletSelect.symbol }}</label>
                     </span>
             </div>
-            <div class="float-end">
+            <div class="float-end mt-2">
                 <b-button-group>
                     <b-button @click="walletAction='deposit'" :variant="(walletAction!=='deposit'?'outline-':'') + 'success'">{{ $t("Yatırma") }}</b-button>
                     <b-button @click="walletAction='withdrawal'" :variant="(walletAction!=='withdrawal'?'outline-':'') +'danger'">{{ $t("Çekme") }}</b-button>

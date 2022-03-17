@@ -1,111 +1,118 @@
 <template>
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-6">
-      <div class="card o-hidden border-0 shadow-lg my-5 p-4">
-        <div class="card-body p-0">
-          <div class="row">
-            <div class="col-12">
-              <div class="text-center">
-                <h5 class="h5 text-gray-900 mb-2">
-                  {{ $t("Sözleşmeleri Onaylamanız Gerekli") }}
-                </h5>
-                <hr />
-              </div>
-
-              <b-form @submit="verify">
-                <v-row>
-                  <b-col cols="12" class="py-2">
-                    <b-form-checkbox v-model="form['user_agreement']" required>
-                      <a
-                        href="javascript:"
-                        @click="
-                          contract.visible = true;
-                          contract.key = 'lighting_text';
-                        "
-                        >{{ $t("sozlesme_1") }}</a
-                      >{{ $t("sozlesme_2") }}
-                      <a
-                        href="javascript:"
-                        @click="
-                          contract.visible = true;
-                          contract.key = 'usage_contract';
-                        "
-                        >{{ $t("sozlesme_3") }}</a
-                      >
-                      {{ $t("sozlesme_4") }}
-                      <a
-                        href="javascript:"
-                        @click="
-                          contract.visible = true;
-                          contract.key = 'business_conditions';
-                        "
-                        >{{ $t("sozlesme_5") }}</a
-                      >{{ $t("sozlesme_6") }}
-                    </b-form-checkbox>
-                    <b-form-text
-                      v-if="v$.form.user_agreement.$error"
-                      class="text-danger"
-                    >
-                      <p class="text-danger">
-                        {{
-                          $t(
-                            "Lütfen kullanıcı sözleşmesini okuyup onaylayınız."
-                          )
-                        }}
-                      </p>
-                    </b-form-text>
-                  </b-col>
-                  <b-col cols="12" class="py-2">
-                    <b-form-checkbox v-model="form['open_consent']" required>
-                      <a
-                        href="javascript:"
-                        @click="
-                          contract.visible = true;
-                          contract.key = 'open_consent';
-                        "
-                        >{{ $t("sozlesme_7") }}</a
-                      >{{ $t("sozlesme_8") }}
-                    </b-form-checkbox>
-                    <b-form-text
-                      v-if="v$.form.open_consent.$error"
-                      class="text-danger"
-                    >
-                      <p class="text-danger">
-                        {{ $t("Lütfen açık rıza metnini okuyup onaylayınız.") }}
-                      </p>
-                    </b-form-text>
-                  </b-col>
-                  <b-col cols="12" class="py-2">
-                    <b-form-checkbox v-model="form['lighting_text']" required>
-                      {{ $t("sozlesme_9") }}
-                      <a
-                        href="javascript:"
-                        @click="
-                          contract.visible = true;
-                          contract.key = 'lighting_text';
-                        "
-                        >{{ $t("sozlesme_10") }}</a
-                      >
-                      {{ $t("sozlesme_11") }}
-                    </b-form-checkbox>
-                    <b-form-text
-                      v-if="v$.form.lighting_text.$error"
-                      class="text-danger"
-                    >
-                      <p class="text-danger">
-                        {{
-                          $t("Lütfen aydınlatma metnini okuyup onaylayınız.")
-                        }}
-                      </p>
-                    </b-form-text>
-                  </b-col>
-                </v-row>
-                <div class="d-grid gap-2">
-                  <b-button block type="submit" variant="primary">{{
-                    $t("Okudum, Onaylıyorum")
-                  }}</b-button>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="card o-hidden border-0 shadow-lg my-5 p-4">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col-12">
+                <div class="text-center">
+                  <h5 class="h5 text-gray-900 mb-2">
+                    {{ $t("Sözleşmeleri Onaylamanız Gerekli") }}
+                  </h5>
+                  <hr />
                 </div>
-              </b-form>
+
+                <b-form @submit="verify">
+                  <v-row>
+                    <b-col cols="12" class="py-2">
+                      <b-form-checkbox
+                        v-model="form['user_agreement']"
+                        required
+                      >
+                        <a
+                          href="javascript:"
+                          @click="
+                            contract.visible = true;
+                            contract.key = 'lighting_text';
+                          "
+                          >{{ $t("sozlesme_1") }}</a
+                        >{{ $t("sozlesme_2") }}
+                        <a
+                          href="javascript:"
+                          @click="
+                            contract.visible = true;
+                            contract.key = 'usage_contract';
+                          "
+                          >{{ $t("sozlesme_3") }}</a
+                        >
+                        {{ $t("sozlesme_4") }}
+                        <a
+                          href="javascript:"
+                          @click="
+                            contract.visible = true;
+                            contract.key = 'business_conditions';
+                          "
+                          >{{ $t("sozlesme_5") }}</a
+                        >{{ $t("sozlesme_6") }}
+                      </b-form-checkbox>
+                      <b-form-text
+                        v-if="v$.form.user_agreement.$error"
+                        class="text-danger"
+                      >
+                        <p class="text-danger">
+                          {{
+                            $t(
+                              "Lütfen kullanıcı sözleşmesini okuyup onaylayınız."
+                            )
+                          }}
+                        </p>
+                      </b-form-text>
+                    </b-col>
+                    <b-col cols="12" class="py-2">
+                      <b-form-checkbox v-model="form['open_consent']" required>
+                        <a
+                          href="javascript:"
+                          @click="
+                            contract.visible = true;
+                            contract.key = 'open_consent';
+                          "
+                          >{{ $t("sozlesme_7") }}</a
+                        >{{ $t("sozlesme_8") }}
+                      </b-form-checkbox>
+                      <b-form-text
+                        v-if="v$.form.open_consent.$error"
+                        class="text-danger"
+                      >
+                        <p class="text-danger">
+                          {{
+                            $t("Lütfen açık rıza metnini okuyup onaylayınız.")
+                          }}
+                        </p>
+                      </b-form-text>
+                    </b-col>
+                    <b-col cols="12" class="py-2">
+                      <b-form-checkbox v-model="form['lighting_text']" required>
+                        {{ $t("sozlesme_9") }}
+                        <a
+                          href="javascript:"
+                          @click="
+                            contract.visible = true;
+                            contract.key = 'lighting_text';
+                          "
+                          >{{ $t("sozlesme_10") }}</a
+                        >
+                        {{ $t("sozlesme_11") }}
+                      </b-form-checkbox>
+                      <b-form-text
+                        v-if="v$.form.lighting_text.$error"
+                        class="text-danger"
+                      >
+                        <p class="text-danger">
+                          {{
+                            $t("Lütfen aydınlatma metnini okuyup onaylayınız.")
+                          }}
+                        </p>
+                      </b-form-text>
+                    </b-col>
+                  </v-row>
+                  <div class="d-grid gap-2">
+                    <b-button block type="submit" variant="primary">{{
+                      $t("Okudum, Onaylıyorum")
+                    }}</b-button>
+                  </div>
+                </b-form>
+              </div>
             </div>
           </div>
         </div>
