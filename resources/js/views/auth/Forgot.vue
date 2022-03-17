@@ -34,12 +34,12 @@
                   </b-form-text>
                 </b-form-group>
                 <b-row>
-                  <b-col cols="12" md="4" class="float-left">
+                  <b-col cols="12" md="6" class="float-left">
                     <b-form-group :label="$t('Telefon Kodunuz')">
                       <v-select label="text"></v-select>
                     </b-form-group>
                   </b-col>
-                  <b-col cols="12" md="8" class="float-left">
+                  <b-col cols="12" md="6" class="float-left">
                     <b-form-group
                       v-if="!code"
                       id="input-group-1"
