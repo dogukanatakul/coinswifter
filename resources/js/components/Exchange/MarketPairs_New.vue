@@ -11,8 +11,8 @@
           ></b-form-input>
         </b-col>
       </b-row>
-      <b-tabs content-class="mt-3" pills card justified>
-        <b-tab>
+      <b-tabs content-class="mt-3 no-wrap" pills card fill>
+        <b-tab @click="selectedKey = ''">
           <template #title>
             <i class="fas fa-star"></i> {{ $t("Favoriler") }}
           </template>
@@ -77,12 +77,14 @@
           </div>
         </b-tab>
         <b-tab
+        v-model="selectedKey"
           v-for="(coin_tables, coin_tables_key) in parities"
           :header="coin_tables_key"
           :key="coin_tables_key"
           :value="coin_tables_key"
           :title="coin_tables_key"
-          active
+          :active="selectedKey === coin_tables_key.toString()"
+          @click="selectedKey = coin_tables_key.toString()"
         >
           <div class="table-responsive">
             <table class="table table-sm order-table" :key="search">
@@ -192,10 +194,13 @@ export default {
   },
   data: () => ({
     search: "",
+    selectedKey: "TRY",
   }),
 };
 </script>
 
 <style lang="scss" scoped>
-
+.no-wrap{
+  white-space: nowrap;
+}
 </style>
