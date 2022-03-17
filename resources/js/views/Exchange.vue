@@ -818,39 +818,39 @@ const initialData = () => ({
   timeArray: [
     {
       key: "1min",
-      value: "1 min",
+      value: $t("1 min"),
     },
     {
       key: "5min",
-      value: "5 min",
+      value: $t("5 min"),
     },
     {
       key: "15min",
-      value: "15 min",
+      value: $t("15 min"),
     },
     {
       key: "30min",
-      value: "30 min",
+      value: $t("30 min"),
     },
     {
       key: "1hours",
-      value: "1 hours",
+      value: $t("1 hours"),
     },
     {
       key: "4hours",
-      value: "4 hours",
+      value: $t("4 hours"),
     },
     {
       key: "1day",
-      value: "1 day",
+      value: $t("1 day"),
     },
     {
       key: "1week",
-      value: "1 week",
+      value: $t("1 week"),
     },
     {
       key: "1month",
-      value: "1 month",
+      value: $t("1 month"),
     },
   ],
 });

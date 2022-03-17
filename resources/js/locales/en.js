@@ -371,5 +371,14 @@ export default {
     'İptal': 'Cancel',
     'Alıcı Cüzdan': 'Receiver Wallet',
     'Aktif Emirler': 'Active Orders',
+    "1 min": "1 min",
+    "5 min": "5 min",
+    "15 min": "15 min",
+    "30 min": "30 min",
+    "1 hours": "1 hours",
+    "4 hours": "4 hours",
+    "1 day": "1 day",
+    "1 week": "1 week",
+    "1 month": "1 month",
     //#endregion
 }
