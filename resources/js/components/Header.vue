@@ -368,4 +368,7 @@ export default {
         border-bottom: solid 1px lightgray;
     }
 }
+#menu svg{
+    width:1em !important;
+}
 </style>
