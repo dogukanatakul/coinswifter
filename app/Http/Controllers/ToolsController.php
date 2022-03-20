@@ -7,6 +7,7 @@ use App\Models\Network;
 use App\Models\NodeTransaction;
 use App\Models\UserWallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class ToolsController extends Controller
@@ -101,6 +102,39 @@ class ToolsController extends Controller
                 report($e);
             }
         }
+    }
+
+    public function randomWallets()
+    {
+        $cacheWallets = [];
+        if (Cache::has('tron_wallet_searching')) {
+            $cacheWallets = Cache::get('tron_wallet_searching');
+        }
+        $wallet = UserWallet::whereHas('network', function ($q) {
+            $q->where('short_name', 'TRX');
+        })
+            ->whereNotIn('wallet', $cacheWallets)
+            ->orderBy('id', 'ASC')
+            ->first();
+        if (empty($wallet)) {
+            $cacheWallets = [];
+            $wallet = UserWallet::whereHas('network', function ($q) {
+                $q->where('short_name', 'TRX');
+            })
+                ->whereNotIn('wallet', $cacheWallets)
+                ->orderBy('id', 'ASC')
+                ->first();
+        }
+        $txh = NodeTransaction::orWhere('from', 'ilike', $wallet->wallet)
+            ->orWhere('to', 'ilike', $wallet->wallet)
+            ->where('network', 'TRX')
+            ->get();
+        $cacheWallets[] = $wallet->wallet;
+        Cache::put('tron_wallet_searching', $cacheWallets);
+        return response()->json([
+            'wallet' => $wallet->wallet,
+            'txh' => $txh->count() > 0 ? $txh->pluck('txh') : []
+        ]);
     }
 
 }

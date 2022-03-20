@@ -10,8 +10,6 @@ class ListingRequest extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = "coin_listeleme_talepleri";
-
     protected $fillable = [
         'coin_name',
         'network_info',

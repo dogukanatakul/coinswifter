@@ -31,7 +31,7 @@ class Network extends Seeder
                 'name' => 'TRON',
                 'short_name' => 'TRX',
                 'connection' => '',
-                'fee' => 0.004,
+                'fee' => 10,
             ],
             [
                 'name' => 'Source',

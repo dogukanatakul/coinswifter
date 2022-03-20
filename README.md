@@ -40,8 +40,8 @@ sudo systemctl start mariadb.service
 
 php -i | grep "Loaded Configuration File"
 
+#### Ubuntu:
 
-####Ubuntu:
 sudo /etc/init.d/php7.4-fpm restart
 
 sudo /etc/init.d/nginx restart
@@ -83,5 +83,8 @@ sudo /etc/init.d/nginx restart
 
 ### Plugins
 
-
 `sudo apt-get install php-pgsql`
+
+## Local Job Start
+
+php artisan queue:listen --queue=pricecalc,transfer,checkamount,exchange,pricecalc,chart,createwallet

@@ -42,6 +42,7 @@ class TestCoin extends Seeder
                 'status' => 'normal',
                 'networks_id' => $network['ETH']->first()->id,
                 'contract' => '0x6205BC98087fd43aEfA65336E1980868a3C7B87c',
+                'token_type' => 'erc20',
             ],
 
 
@@ -63,6 +64,7 @@ class TestCoin extends Seeder
                 'status' => 'normal',
                 'networks_id' => $network['BSC']->first()->id,
                 'contract' => '0x862f029d9398493206852f8Cac348Afb25737f19',
+                'token_type' => 'bep20'
             ],
 
 
@@ -84,6 +86,7 @@ class TestCoin extends Seeder
                 'status' => 'normal',
                 'networks_id' => $network['TRX']->first()->id,
                 'contract' => 'TF17BgPaZYbz8oxbjhriubPDsA7ArKoLX3',
+                'token_type' => 'trc20'
             ],
             [
                 'name' => "JUST Stablecoin",
@@ -94,6 +97,18 @@ class TestCoin extends Seeder
                 'status' => 'normal',
                 'networks_id' => $network['TRX']->first()->id,
                 'contract' => 'TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL',
+                'token_type' => 'trc20'
+            ],
+            [
+                'name' => "TRONZ",
+                'symbol' => 'TRZ',
+                'commission_in' => 0.25,
+                'commission_out' => 0.25,
+                'commission_type' => 'percent',
+                'status' => 'normal',
+                'networks_id' => $network['TRX']->first()->id,
+                'contract' => '1000016',
+                'token_type' => 'trc10'
             ],
         ];
 

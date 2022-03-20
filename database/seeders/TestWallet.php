@@ -14,7 +14,7 @@ class TestWallet extends Seeder
      */
     public function run()
     {
-        $testWallets = [
+        $bscEthWallets = [
             [
                 "wallet" => "0x3d7B339CddddD67a189E4d16b51138B70cB6807F",
                 "password" => "0xee06b6340b5e66ab8bcb597a19cab724722c90d95517282fce7b89a9a6400e6f"
@@ -65,10 +65,75 @@ class TestWallet extends Seeder
                 UserWallet::create([
                     'users_id' => $user->id,
                     'networks_id' => $c,
-                    'wallet' => $testWallets[$i]['wallet'],
-                    'password' => $testWallets[$i]['password']
+                    'wallet' => $bscEthWallets[$i]['wallet'],
+                    'password' => $bscEthWallets[$i]['password']
                 ]);
             }
+            $i++;
+        }
+
+
+        $tronWallets = [
+            [
+                'wallet' => 'TM1YArX51J63sBPaqjtzD4kd5Pj2UoqMxw',
+                'wallet_hex' => '41791a37889a78cae08dfd89c3a6730a806b24032b',
+                'password' => 'af4cb04735ce593167c2c25b38cc09689950314f6b5fcefdbf088655c1104f54'
+            ],
+            [
+                'wallet' => 'THpu69T3iyZN84ews942wKWYEyiuQh9bBN',
+                'wallet_hex' => '41562eb9e53556a10630db079f96f9a0c0f35b7c98',
+                'password' => '6d4d1022880be850aa6a27c87070c6412aaf549ca38f0a509f1f9e942f6805f5'
+            ],
+            [
+                'wallet' => 'TEsZBknuN21tAEny4fDRtQm4E67gci8QQ2',
+                'wallet_hex' => '4135c6fb756ab61f67c1d157df700d6080c8247fe5',
+                'password' => '254b298cbe3eacb0ae0bafb7128f3c760848f16e9922a1604dc96193a1effea7'
+            ],
+            [
+                'wallet' => 'TXe8Piomsdq2AyCRsaWHJY8hbFJK8wy3LF',
+                'wallet_hex' => '41edb7042f66a6a5e5b4a97d8325b229e2d0baf882',
+                'password' => 'bbc37350f0b1b576372ab5360d77e12bc11c9d6b36cbad8d74d7a483d4d032f9'
+            ],
+            [
+                'wallet' => 'TPxkSGA64S7SgDpU48RtnehHRRQn7hxXso',
+                'wallet_hex' => '41997b95d25b546d7a09bd53588c25949780e80794',
+                'password' => '58b4bbba22fb80474a188e428dcd64655c1081cdcb2340060f35c3fe24d843bc'
+            ],
+            [
+                'wallet' => 'TWjTr2Cbn2baXjgTRmFnvziJwmQ4iXpSyJ',
+                'wallet_hex' => '41e3c135943491fbf365e1f318622a7786cb37f7b2',
+                'password' => 'd3d9fa5b171cb4db565bbfd2a04c8243e0b377cbc939851fdd9a6c63f9732dc2'
+            ],
+            [
+                'wallet' => 'TK7rpm3ehc9csiLP7LgHrFLSejVpBqHWJa',
+                'wallet_hex' => '41645c0846952535fcc52ae480b985918fcc94b701',
+                'password' => 'eecc0d1a293c33696fe2d8c1916c903589eecff94467cd1adf85c7d432e5851f'
+            ],
+            [
+                'wallet' => 'TBubfeLTKNMNfFc8JfL7oEzaTaQQung7bY',
+                'wallet_hex' => '41154181facc7b874b5c0ff4c6172ba07c182a3f17',
+                'password' => '55820c02162ffe4866d13e894feff0bcb8f9315d60c82685e8513189b94f19dd'
+            ],
+            [
+                'wallet' => 'TZ6ctkJ1RFUUY2UVBmHdSikfbFNtAW4r9N',
+                'wallet_hex' => '41fdb1bf841985840fd5044d95cd658856df78fd10',
+                'password' => '0261676416a574a4c38eebc493a461b32609161c836b7b85778038429c571859'
+            ],
+            [
+                'wallet' => 'TEvyQnSxTSoBNDD3hr62Zn1DrjmXMxRkxW',
+                'wallet_hex' => '41366c73ac5b7b0c823d543728ee0b0dc90c9f4b97',
+                'password' => 'c8c8d446c2a00ba7403d01dd082c8844067e4b03f4abfb4e42725f1f746603fb'
+            ],
+        ];
+        $i = 0;
+        foreach ($users as $user) {
+            UserWallet::create([
+                'users_id' => $user->id,
+                'networks_id' => 3,
+                'wallet' => $tronWallets[$i]['wallet'],
+                'wallet_hex' => $tronWallets[$i]['wallet_hex'],
+                'password' => $tronWallets[$i]['password']
+            ]);
             $i++;
         }
     }
