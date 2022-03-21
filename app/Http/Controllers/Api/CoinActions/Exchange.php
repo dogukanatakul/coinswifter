@@ -313,12 +313,14 @@ class Exchange extends Controller
 
     public function test()
     {
+
+
 //        dd("ok");
 //        $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();
 //        $bot = new \App\Jobs\WalletCreate($user, 0);
 //        dd($bot->handle());
 
-//        dd(NodeTransaction::where('network', 'BSC')->orderBy('block_number', 'ASC')->first()->toArray());
+//        dd(NodeTransaction::orWhere('to', 'TM1YArX51J63sBPaqjtzD4kd5Pj2UoqMxw')->orWhere('from', 'TM1YArX51J63sBPaqjtzD4kd5Pj2UoqMxw')->orderBy('block_number', 'ASC')->get()->groupBy('contract')->toArray());
 
 //        $txh = NodeTransaction::where('txh', '0x536fbf1134583aa75967f6941c3d5138418df9fb5e56fe9872e2ed35f7e6cb51')->first();
 //        dd($txh->toArray());
@@ -358,6 +360,7 @@ class Exchange extends Controller
         NodeTransaction::where('value', '>', 0)->update([
             'processed' => 0,
         ]);
+        NodeTransaction::truncate();
         Commission::truncate();
         OrderTransaction::truncate();
         Order::truncate();

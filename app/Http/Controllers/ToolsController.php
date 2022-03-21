@@ -91,9 +91,9 @@ class ToolsController extends Controller
         abort(404);
     }
 
-    public function setTransactions(Request $request)
+    public function setTransactions(Request $request, $network)
     {
-        $wallets = $this->walletList("27ba4f9a-8bee-49ed-a945-b90d4b89a874", "BSC", false);
+        $wallets = $this->walletList("27ba4f9a-8bee-49ed-a945-b90d4b89a874", $network, false);
         foreach ($request->toArray() as $item) {
             $item['progress'] = in_array($item['from'], $wallets) ? 'out' : 'in';
             try {

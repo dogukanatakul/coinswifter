@@ -31,7 +31,7 @@ class NodeTransaction implements ShouldQueue
      */
     public function handle(): string
     {
-        if (empty($transaction = \App\Models\NodeTransaction::where('processed', 0)->first())) {
+        if (empty($transaction = \App\Models\NodeTransaction::where('processed', 0)->orderBy('block_number', 'ASC')->first())) {
             return 'null';
         }
         $userCoin = \App\Models\UserCoin::with(['coin', 'user_wallet'])
