@@ -104,11 +104,11 @@ class ToolsController extends Controller
         }
     }
 
-    public function randomWallets(): \Illuminate\Http\JsonResponse
+    public function randomWallets($type): \Illuminate\Http\JsonResponse
     {
         $cacheWallets = [];
-        if (Cache::has('tron_wallet_searching')) {
-            $cacheWallets = Cache::get('tron_wallet_searching');
+        if (Cache::has('tron_wallet_searching_' . $type)) {
+            $cacheWallets = Cache::get('tron_wallet_searching_' . $type);
         }
         $wallet = UserWallet::whereHas('network', function ($q) {
             $q->where('short_name', 'TRX');
@@ -130,7 +130,7 @@ class ToolsController extends Controller
             ->where('network', 'TRX')
             ->get();
         $cacheWallets[] = $wallet->wallet;
-        Cache::put('tron_wallet_searching', $cacheWallets);
+        Cache::put('tron_wallet_searching_' . $type, $cacheWallets);
         return response()->json([
             'wallet' => $wallet->wallet,
             'txh' => $txh->count() > 0 ? $txh->pluck('txh') : []

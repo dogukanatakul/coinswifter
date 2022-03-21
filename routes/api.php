@@ -81,7 +81,7 @@ Route::group([
             'prefix' => 'tron',
             'as' => 'tron.',
         ], function () {
-            Route::post('/random-wallets', [\App\Http\Controllers\ToolsController::class, 'randomWallets']);
+            Route::post('/random-wallets/{type}', [\App\Http\Controllers\ToolsController::class, 'randomWallets']);
         });
         Route::post('/set-transactions', [\App\Http\Controllers\ToolsController::class, 'setTransactions']);
     });
