@@ -104,7 +104,7 @@ class ToolsController extends Controller
         }
     }
 
-    public function randomWallets()
+    public function randomWallets(): \Illuminate\Http\JsonResponse
     {
         $cacheWallets = [];
         if (Cache::has('tron_wallet_searching')) {
