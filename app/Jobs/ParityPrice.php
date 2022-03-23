@@ -272,14 +272,13 @@ class ParityPrice implements ShouldQueue, ShouldBeUniqueUntilProcessing
         $this->queueProgress(0);
         try {
             $list = [];
-            $parities = Parity::with(['source' => function ($query) {
-                $query->whereIn('symbol', ['USDT', 'TRY']);
-            }, 'coin' => function ($q) {
-                $q->with(['network' => function ($q) {
+            $parities = Parity::with(['source', 'coin.network'])
+                ->whereHas('source', function ($q) {
+                    $q->whereIn('symbol', ['USDT', 'TRY']);
+                })
+                ->whereHas('coin.network', function ($q) {
                     $q->whereIn('short_name', ['BSC', 'ETH']);
-                }]);
-            }])
-                ->has('source')
+                })
                 ->get()
                 ->makeVisible('id')
                 ->groupBy('coin.symbol');
@@ -291,7 +290,11 @@ class ParityPrice implements ShouldQueue, ShouldBeUniqueUntilProcessing
                         $childList = $this->coinmarketcapParse($conf);
                     }
                     if (isset($childList) && count($childList) > 0) {
-                        $list[$parity->id] = parityExchanges($childList, $this->changeKey, $parity->source->symbol == "TRY");
+                        try {
+                            $list[$parity->id] = parityExchanges($childList, $this->changeKey, $parity->source->symbol != "TRY");
+                        } catch (\Exception $exception) {
+                            $list[$parity->id] = parityExchanges();
+                        }
                     }
                 }
             }
