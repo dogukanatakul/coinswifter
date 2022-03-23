@@ -21,7 +21,6 @@ Route::group([
 
     Route::group([
         'prefix' => 'forgot',
-//        'as' => 'forgot.',
     ], function () {
         Route::post('/find', [\App\Http\Controllers\Api\AuthController::class, 'forgotFind']);
         Route::post('/verification', [\App\Http\Controllers\Api\AuthController::class, 'forgotVerification']);
