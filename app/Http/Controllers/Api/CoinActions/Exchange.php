@@ -320,7 +320,7 @@ class Exchange extends Controller
 //        $bot = new \App\Jobs\WalletCreate($user, 0);
 //        dd($bot->handle());
 
-//        dd(NodeTransaction::orWhere('to', 'TM1YArX51J63sBPaqjtzD4kd5Pj2UoqMxw')->orWhere('from', 'TM1YArX51J63sBPaqjtzD4kd5Pj2UoqMxw')->orderBy('block_number', 'ASC')->get()->groupBy('contract')->toArray());
+//        dd(NodeTransaction::where('txh', '796e8bfabd256ff31ffa4c0d49b960066e383f9d672a9599e5c7c2450ea3d118')->orderBy('block_number', 'ASC')->get()->toArray());
 
 //        $txh = NodeTransaction::where('txh', '0x536fbf1134583aa75967f6941c3d5138418df9fb5e56fe9872e2ed35f7e6cb51')->first();
 //        dd($txh->toArray());
@@ -360,7 +360,7 @@ class Exchange extends Controller
         NodeTransaction::where('value', '>', 0)->update([
             'processed' => 0,
         ]);
-        NodeTransaction::truncate();
+//        NodeTransaction::truncate();
         Commission::truncate();
         OrderTransaction::truncate();
         Order::truncate();

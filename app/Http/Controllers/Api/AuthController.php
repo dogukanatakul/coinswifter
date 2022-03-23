@@ -8,18 +8,18 @@ use App\Jobs\VerificationPhone;
 use App\Jobs\WalletCreate;
 use App\Models\Bank;
 use App\Models\ContractedBank;
+use App\Models\Country;
 use App\Models\District;
+use App\Models\LogActivity;
 use App\Models\Province;
+use App\Models\User;
 use App\Models\UserAddress;
+use App\Models\UserAgreement;
 use App\Models\UserBank;
-use App\Models\UserVerification;
 use App\Models\UserContact;
 use App\Models\UserKyc;
 use App\Models\UserReference;
-use App\Models\UserAgreement;
-use App\Models\User;
-use App\Models\LogActivity;
-use App\Models\Country;
+use App\Models\UserVerification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
@@ -588,61 +588,166 @@ class AuthController extends Controller
         }
     }
 
-    public function forgotPassword(Request $request)
+    public function forgotFind(Request $request): \Illuminate\Http\JsonResponse
     {
         $validator = validator()->make(request()->all(), [
-            'email' => 'required|filled|email|exists:App\Models\KullaniciIletisim,deger',
-            'telephone' => 'required|filled|string|exists:App\Models\KullaniciIletisim,deger',
-            'code' => 'nullable|numeric|exists:App\Models\KullaniciDogrulama,kod',
-            'password' => 'nullable|string'
+            'email' => 'required|filled|email|exists:App\Models\UserContact,value',
+            'telephone' => 'required|filled|string|exists:App\Models\UserContact,value',
+            'country_code' => 'required|filled|numeric|exists:App\Models\Country,id',
+            'birthday' => 'required|filled|date|exists:App\Models\User,birthday',
         ]);
-        $checkUser = UserContact::whereIn('value', [$request->email, $request->telephone])->get()->groupBy('users_id');
-        if ($validator->fails() || $checkUser->first()->count() < 2) {
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.user_forgot_password_fail_message')
+            ]);
+        }
+        $user = User::with('contacts')
+            ->where('birthday', $request->birthday)
+            ->whereHas('contacts', function ($q) use ($request) {
+                $q->where('value', $request->telephone)
+                    ->where('nationality', $request->country_code);
+            })
+            ->whereHas('contacts', function ($q) use ($request) {
+                $q->where('value', $request->email);
+            })
+            ->first()->makeVisible('id');
+        if (empty($user)) {
             return response()->json([
                 'status' => 'fail',
                 'message' => __('api_messages.user_forgot_password_fail_message')
             ]);
         } else {
-            $user = User::with('contacts')->where('id', $checkUser->first()->first()->users_id)->first()->makeVisible('id');
+            session(['forgot' => (object)[
+                'user' => (object)$user->toArray(),
+                'step' => 1
+            ]]);
+            return response()->json([
+                'status' => 'success',
+                'info' => [
+                    'name_surname' => $user->name[0] . $user->name[1] . ".. " . $user->surname[0] . $user->surname[1] . "...",
+                ],
+            ]);
+        }
+    }
+
+    public function forgotVerification(Request $request): \Illuminate\Http\JsonResponse
+    {
+        if (session()->has('forgot') && ($forgot = session()->get('forgot'))->step > 0) {
             if ($request->filled('code')) {
-                if (!empty(UserVerification::where('users_id', $checkUser->first()->first()->users_id)->where('code', $request->code)->first())) {
-                    $request->merge(['password' => pssMngr($request->password)]);
-                    try {
-                        User::where('id', $checkUser->first()->first()->kullanici_id)
-                            ->update([
-                                'password' => $request->password
-                            ]);
-                        $setUser = (object)[
-                            'id' => $user->id,
-                            'username' => $user->username,
-                            'name' => $user->name . " " . $user->surname,
-                            'status' => $user->status
-                        ];
-                        session(['user' => $setUser]);
+                if ($forgot->step === 1) {
+                    if (!empty($verification = UserVerification::where('code', $request->code)->where('type', 'telephone')->where('users_id', $forgot->user->id)->first())) {
+                        $verification->delete();
+                        session(['forgot' => (object)[
+                            'user' => $forgot->user,
+                            'step' => 2
+                        ]]);
                         return response()->json([
-                            'status' => 'success',
-                            'message' => __('api_messages.user_forgot_password_success_message')
+                            'status' => 'success'
                         ]);
-                    } catch (\Throwable $e) {
-                        report($e);
+                    } else {
                         return response()->json([
                             'status' => 'fail',
-                            'message' => __('api_messages.system_fail_message')
+                            'message' => __('api_messages.verification_telephone_fail_message')
+                        ]);
+                    }
+                } else if ($forgot->step === 2) {
+                    if (!empty($verification = UserVerification::where('code', $request->code)->where('type', 'email')->where('users_id', $forgot->user->id)->first())) {
+                        $verification->delete();
+                        session(['forgot' => (object)[
+                            'user' => $forgot->user,
+                            'step' => 3
+                        ]]);
+                        return response()->json([
+                            'status' => 'success'
+                        ]);
+                    } else {
+                        return response()->json([
+                            'status' => 'fail',
+                            'message' => __('api_messages.verification_email_fail_message')
                         ]);
                     }
                 } else {
                     return response()->json([
                         'status' => 'fail',
-                        'message' => __('api_messages.verification_telefon_fail_message')
+                        'message' => __('api_messages.system_fail_message')
                     ]);
                 }
             } else {
-                VerificationPhone::dispatch($user->toArray())->onQueue('verification');
-                return response()->json([
-                    'status' => 'success',
-                    'message' => __('api_messages.user_forgot_message_success_message')
-                ]);
+                if ($forgot->step === 1) {
+                    $value = collect($forgot->user->contacts)->filter(function ($q) {
+                        return $q['type'] === "telephone";
+                    })->first()['value'];
+                    VerificationPhone::dispatch((array)$forgot->user)->onQueue('verification');
+                    return response()->json([
+                        'status' => 'success',
+                        'type' => 'telephone_verification',
+                        'info' => Str::mask($value, '*', 2, -2),
+                        'message' => __('api_messages.verification_send_code_telephone_success_message')
+                    ]);
+                } else if ($forgot->step === 2) {
+                    $value = collect($forgot->user->contacts)->filter(function ($q) {
+                        return $q['type'] === "email";
+                    })->first()['value'];
+                    $agent = new Agent();
+                    $agent->setUserAgent(request()->header('user-agent'));
+                    VerificationEmail::dispatch((array)$forgot->user, [
+                        'title' => __('email.reset_password'),
+                        'description' => __('email.reset_password_description'),
+                        'ip' => request()->ip(),
+                        'browser' => $agent->browser() ?: '',
+                        'platform' => $agent->platform() ?: '',
+                        'device' => $agent->device() ?: '',
+                        'locked' => true,
+                    ])->onQueue('verification');
+                    return response()->json([
+                        'status' => 'success',
+                        'type' => 'email_verification',
+                        'info' => Str::mask($value, '*', 2, -2),
+                        'message' => __('api_messages.verification_send_code_email_success_message')
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 'fail',
+                        'message' => __('api_messages.system_fail_message')
+                    ]);
+                }
             }
+        } else {
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.system_fail_message')
+            ]);
+        }
+    }
+
+    public function forgotChange(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $validator = validator()->make(request()->all(), [
+            'password' => 'required|filled|string|min:8|max:50|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/',
+            'password_confirm' => 'required|filled|string|same:password',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.form_parameter_fail_message')
+            ]);
+        }
+        if (session()->has('forgot') && ($forgot = session()->get('forgot'))->step === 3) {
+            User::where('id', $forgot->user->id)->update([
+                'password' => pssMngr($request->password)
+            ]);
+            session()->forget('forgot');
+            return response()->json([
+                'status' => 'success',
+                'message' => __('api_messages.password_reset_success_message')
+            ]);
+        } else {
+            session()->forget('forgot');
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.system_fail_message')
+            ]);
         }
     }
 
@@ -748,7 +853,7 @@ class AuthController extends Controller
     {
         $validator = validator()->make(request()->all(), [
             'current_password' => 'required|filled|string',
-            'new_password' => 'required|filled|string',
+            'new_password' => 'required|filled|string|min:8|max:50|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/',
             'new_password_confirm' => 'required|filled|string|same:new_password',
         ]);
         if ($validator->fails()) {
@@ -839,7 +944,7 @@ class AuthController extends Controller
         }
     }
 
-    public function updateContact(Request $request)
+    public function updateContact(Request $request): \Illuminate\Http\JsonResponse
     {
         $contact = $this->getContact(false);
         $validator = validator()->make(request()->all(), [

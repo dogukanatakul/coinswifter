@@ -5,6 +5,10 @@ import router from '../../../router/index'
 const state = {
     user: false,
     darkMode: false,
+    forgot: {
+        info: {},
+        step: 0
+    },
 }
 
 const getters = {
@@ -13,6 +17,9 @@ const getters = {
     },
     darkMode: state => {
         return state.darkMode
+    },
+    forgot: state => {
+        return state.forgot
     },
 }
 
@@ -23,6 +30,9 @@ const mutations = {
     },
     DARK_MODE(state, payload) {
         state.darkMode = payload
+    },
+    FORGOT(state, payload) {
+        state.forgot = payload
     },
 }
 

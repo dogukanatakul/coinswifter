@@ -3,12 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::group([
-    'prefix' => 'admin',
-    'as' => 'admin.',
-], function () {
-    Route::post('/user-activity', [\App\Http\Controllers\Admin\UserActivity::class, 'log_activity']);
-});
 
 
 try {

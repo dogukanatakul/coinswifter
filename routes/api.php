@@ -18,7 +18,16 @@ Route::group([
     Route::get('/file/{uuid}', [\App\Http\Controllers\MediaController::class, 'getMedia'])->name('get_media');
     Route::post('/signup', [\App\Http\Controllers\Api\AuthController::class, 'signup']);
     Route::post('/signin', [\App\Http\Controllers\Api\AuthController::class, 'signin']);
-    Route::post('/forgot-password', [\App\Http\Controllers\Api\AuthController::class, 'forgotPassword']);
+
+    Route::group([
+        'prefix' => 'forgot',
+//        'as' => 'forgot.',
+    ], function () {
+        Route::post('/find', [\App\Http\Controllers\Api\AuthController::class, 'forgotFind']);
+        Route::post('/verification', [\App\Http\Controllers\Api\AuthController::class, 'forgotVerification']);
+        Route::post('/change', [\App\Http\Controllers\Api\AuthController::class, 'forgotChange']);
+    });
+
     Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
     Route::post('/phone-codes', [\App\Http\Controllers\Api\AuthController::class, 'phone_codes']);
     Route::post('/nationalities', [\App\Http\Controllers\Api\AuthController::class, 'nationalities']);

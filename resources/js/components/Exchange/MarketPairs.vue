@@ -147,7 +147,6 @@
 <script>
 import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
-import { convertDate } from "../../helpers/helpers";
 import restAPI from "../../api/restAPI";
 
 export default {

@@ -291,7 +291,7 @@ class ParityPrice implements ShouldQueue, ShouldBeUniqueUntilProcessing
                         $childList = $this->coinmarketcapParse($conf);
                     }
                     if (isset($childList) && count($childList) > 0) {
-                        $list[$parity->id] = parityExchanges($childList, $this->changeKey, $parity->source->sembol == "TRY");
+                        $list[$parity->id] = parityExchanges($childList, $this->changeKey, $parity->source->symbol == "TRY");
                     }
                 }
             }

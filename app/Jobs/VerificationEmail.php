@@ -72,6 +72,7 @@ class VerificationEmail implements ShouldQueue
                 $this->settings['url'] = url("?code=" . $setCode->code);
                 $this->settings['unsubscribe'] = url("?unsubscribe=" . $contact['value']);
                 $this->settings['locked'] = !$this->settings['locked'] ?? url("?locked=" . $contact['value']);
+
                 Mail::send('mails.verification', ["template" => $this->settings], function ($message) use ($contact) {
                     $message->from(env('MAIL_FROM_ADDRESS'), config('app.name'));
                     $message->to($contact['value']);
