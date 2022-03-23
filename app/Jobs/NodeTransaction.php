@@ -101,6 +101,16 @@ class NodeTransaction implements ShouldQueue
                         $userWithdrawalWallet->save();
                     }
                 }
+            } else {
+                $userCoin->balance = \Litipk\BigNumbers\Decimal::fromString($userCoin->balance)->sub(\Litipk\BigNumbers\Decimal::fromString($transaction->value), null)->innerValue();
+                $userCoin->save();
+                if ($baseCoin) {
+                    $baseCoin->balance = \Litipk\BigNumbers\Decimal::fromString($baseCoin->balance)->sub(\Litipk\BigNumbers\Decimal::fromString($transaction->fee), null)->innerValue();
+                    $baseCoin->save();
+                } else {
+                    $userCoin->balance = \Litipk\BigNumbers\Decimal::fromString($userCoin->balance)->sub(\Litipk\BigNumbers\Decimal::fromString($transaction->fee), null)->innerValue();
+                    $userCoin->save();
+                }
             }
         } else if ($transaction->status == 1 && $transaction->progress === 'in') {
             $userCoin->balance_pure = \Litipk\BigNumbers\Decimal::fromString($userCoin->balance_pure)->add(\Litipk\BigNumbers\Decimal::fromString($transaction->value), null)->innerValue();
