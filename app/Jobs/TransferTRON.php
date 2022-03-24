@@ -79,9 +79,7 @@ class TransferTRON implements ShouldQueue
             $transConf['fee_limit'] = 10000000;
             $transConf['contract_address'] = $userWithdrawalWalletChild->user_coin->coin->contract;
         }
-        dd(json_encode($transConf));
         $trans = trxActions("set_transaction", $transConf);
-        dd($trans);
         //\+
         if (!$trans->status) {
             $userWithdrawalWalletChild->status = 3;

@@ -328,7 +328,7 @@ class Exchange extends Controller
 
 //        dd(Decimal::fromString("2.19994364799943648", null)->innerValue());
 
-        dd(\Litipk\BigNumbers\Decimal::fromString('0')->comp(\Litipk\BigNumbers\Decimal::fromInteger(0), null));
+//        dd(\Litipk\BigNumbers\Decimal::fromString('0')->comp(\Litipk\BigNumbers\Decimal::fromInteger(0), null));
 //        dd(\Litipk\BigNumbers\Decimal::fromInteger(5)->comp(\Litipk\BigNumbers\Decimal::fromInteger(1)));
 //
 //
@@ -343,9 +343,9 @@ class Exchange extends Controller
 //            ->first();
 //        dd($randWalletControl->toArray());
 
-//        $bot = new \App\Jobs\TransferTRON();
-////        $bot = new \App\Jobs\NodeTransaction();
-//        dd($bot->handle());
+        $bot = new \App\Jobs\TransferTRON();
+//        $bot = new \App\Jobs\NodeTransaction();
+        dd($bot->handle());
 
 
         UserCoin::where('coins_id', '!=', 1)->update([
