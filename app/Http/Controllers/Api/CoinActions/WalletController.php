@@ -130,13 +130,12 @@ class WalletController extends Controller
 
                 // tek seferde gönderim yapabilecek cüzdanlar varsa ayıkla yoksa bakiyesi yüksekten düşüğe doğru sırala
                 if (\Litipk\BigNumbers\Decimal::fromString($destinationTransferWallets->last()->balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromString($transferAmount)) == 1) {
-                    $destinationTransferWallets = collect($destinationTransferWallets)->filter(function ($q) use ($transferAmount) {
-                        return \Litipk\BigNumbers\Decimal::fromString($q->balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromString($transferAmount)) >= 0;
+                    $destinationTransferWallets = collect($destinationTransferWallets)->filter(function ($q) use ($transferAmount, $network) {
+                        return \Litipk\BigNumbers\Decimal::fromString($q->balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($transferAmount)->add(\Litipk\BigNumbers\Decimal::fromString($network->fee), null)->innerValue())) >= 0;
                     });
                 } else {
                     $destinationTransferWallets = $destinationTransferWallets->reverse();
                 }
-
                 $transferList = [];
                 foreach ($destinationTransferWallets as $destinationTransferWallet) {
                     if (\Litipk\BigNumbers\Decimal::fromString($transferAmount)->comp(\Litipk\BigNumbers\Decimal::fromInteger(0)) > 0) {
@@ -145,19 +144,21 @@ class WalletController extends Controller
                         } else {
                             $balance_pure = \Litipk\BigNumbers\Decimal::fromString($destinationTransferWallet->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString($network->fee), null)->innerValue();
                         }
-                        // devam
-                        if (\Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($balance_pure), null)->innerValue())->comp(\Litipk\BigNumbers\Decimal::fromInteger(0)) > 0) {
-                            $transferList[] = [
-                                'id' => $destinationTransferWallet->id,
-                                'amount' => $balance_pure,
-                            ];
-                            $transferAmount = \Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($balance_pure), null)->innerValue();
-                        } else {
-                            $transferList[] = [
-                                'id' => $destinationTransferWallet->id,
-                                'amount' => $transferAmount,
-                            ];
-                            $transferAmount = \Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($transferAmount), null)->innerValue();
+                        if (\Litipk\BigNumbers\Decimal::fromString($balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromInteger(0), null) >= 0) {
+                            // devam
+                            if (\Litipk\BigNumbers\Decimal::fromString(\Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($balance_pure), null)->innerValue())->comp(\Litipk\BigNumbers\Decimal::fromInteger(0)) > 0) {
+                                $transferList[] = [
+                                    'id' => $destinationTransferWallet->id,
+                                    'amount' => $balance_pure,
+                                ];
+                                $transferAmount = \Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($balance_pure), null)->innerValue();
+                            } else {
+                                $transferList[] = [
+                                    'id' => $destinationTransferWallet->id,
+                                    'amount' => $transferAmount,
+                                ];
+                                $transferAmount = \Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($transferAmount), null)->innerValue();
+                            }
                         }
                     }
                 }

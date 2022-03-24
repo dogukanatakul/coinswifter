@@ -328,7 +328,7 @@ class Exchange extends Controller
 
 //        dd(Decimal::fromString("2.19994364799943648", null)->innerValue());
 
-        dd(\Litipk\BigNumbers\Decimal::fromString('2.19994364799943648')->add(\Litipk\BigNumbers\Decimal::fromString("1"), null)->innerValue());
+        dd(\Litipk\BigNumbers\Decimal::fromString('0')->comp(\Litipk\BigNumbers\Decimal::fromInteger(0), null));
 //        dd(\Litipk\BigNumbers\Decimal::fromInteger(5)->comp(\Litipk\BigNumbers\Decimal::fromInteger(1)));
 //
 //
