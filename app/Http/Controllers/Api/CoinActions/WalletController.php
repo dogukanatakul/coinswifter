@@ -85,58 +85,58 @@ class WalletController extends Controller
                 $coinID = Coin::whereNull('contract')->where('networks_id', $coin['networks_id'])->first()->id;
                 $network = Network::where('id', $coin['networks_id'])->first();
                 //\
-                $destinationTransferWallets = UserCoin::with(['user_coin' => function ($q) use ($coinID) {
-                    $q->where('coins_id', $coinID);
-                }, 'user_withdrawal_wallet_child.user_withdrawal_wallet_fee'])
+
+                // TRANSFER YAPABİLECEK CÜZDANLAR
+                $destinationTransferWallets = UserCoin::with([
+                    'user_coin' => function ($q) use ($coinID) {
+                        $q->where('coins_id', $coinID);
+                    },
+                    'user_withdrawal_wallet_child.user_withdrawal_wallet_fee'
+                ])
                     ->whereHas('user_coin', function ($q) use ($coinID, $network) {
                         $q->where('coins_id', $coinID)->where('balance_pure', '>=', $network->fee);
-                    })
-                    ->where('balance_pure', '>=', $transferAmount)
-                    ->where('coins_id', $coin['coins_id'])
+                    });
+                $destinationTransferWallets = $destinationTransferWallets->where('coins_id', $coin['coins_id'])
                     ->orderBy('balance_pure', 'ASC')
                     ->get();
+                //\
 
-                if (\Litipk\BigNumbers\Decimal::fromString(decimal_sum($destinationTransferWallets->pluck('balance_pure')->toArray()))->comp(\Litipk\BigNumbers\Decimal::fromString($transferAmount)) < 0) {
-                    $destinationTransferWallets = UserCoin::with(['user_coin' => function ($q) use ($coinID) {
-                        $q->where('coins_id', $coinID);
-                    }, 'user_withdrawal_wallet_child.user_withdrawal_wallet_fee'])
-                        ->whereHas('user_coin', function ($q) use ($coinID, $network) {
-                            $q->where('coins_id', $coinID)->where('balance_pure', '>=', $network->fee);
-                        })
-                        ->where('balance_pure', '<=', $transferAmount)
-                        ->where('coins_id', $coin['coins_id'])
-                        ->orderBy('balance_pure', 'DESC')
-                        ->get();
-                    $destinationTransferWallets = collect($destinationTransferWallets)->filter(function ($item) use ($network) {
-                        $item->balance_pure = \Litipk\BigNumbers\Decimal::fromString($item->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($item->user_withdrawal_wallet_child->pluck('amount')->toArray())), null)->innerValue();
-                        $feeAmount = "0";
-                        if ($item->user_withdrawal_wallet_child->count() > 0) {
-                            foreach ($item->user_withdrawal_wallet_child as $user_withdrawal_wallet_child) {
-                                $feeAmount = \Litipk\BigNumbers\Decimal::fromString($feeAmount)->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal_wallet_child->user_withdrawal_wallet_fee->amount), null)->innerValue();
+                $destinationTransferWallets = collect($destinationTransferWallets)->map(function ($item) use ($network, $coinID, $coin) {
+                    // Mevcut emirleri bakiyeden düşür
+                    $item->balance_pure = \Litipk\BigNumbers\Decimal::fromString($item->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($item->user_withdrawal_wallet_child->pluck('amount')->toArray())), null)->innerValue();
+                    //\
+                    $feeAmount = "0";
+                    if ($item->user_withdrawal_wallet_child->count() > 0) {
+                        foreach ($item->user_withdrawal_wallet_child as $user_withdrawal_wallet_child) {
+                            // Eğer ana coinse fee'leride bakiyeden düşür
+                            if ($coinID == $coin['coins_id']) {
+                                $item->balance_pure = \Litipk\BigNumbers\Decimal::fromString($item->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal_wallet_child->user_withdrawal_wallet_fee->amount), null)->innerValue();
                             }
-                            $feeAmount = \Litipk\BigNumbers\Decimal::fromString($feeAmount)->add(\Litipk\BigNumbers\Decimal::fromString($network->fee), null)->innerValue();
+                            //\
+                            $feeAmount = \Litipk\BigNumbers\Decimal::fromString($feeAmount)->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal_wallet_child->user_withdrawal_wallet_fee->amount), null)->innerValue();
                         }
-                        if ($item->balance_pure > 0 && $item->user_coin->balance_pure >= $feeAmount) {
-                            return $item;
-                        }
+                        $feeAmount = \Litipk\BigNumbers\Decimal::fromString($feeAmount)->add(\Litipk\BigNumbers\Decimal::fromString($network->fee), null)->innerValue();
+                    }
+                    // TOKEN'sa ve fee ödeyemiyorsa false döndür
+                    if ($coinID != $coin['coins_id'] && \Litipk\BigNumbers\Decimal::fromString($item->user_coin->balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromString($feeAmount)) < 0) {
                         return false;
-                    })->sortBy('balance_pure')->reverse();
+                    }
+                    //\
+                    return $item;
+                })->filter(function ($q) {
+                    // bakiyesi 0 olanları sil
+                    return $q->balance_pure !== "0";
+                })->sortBy('balance_pure');
+
+                // tek seferde gönderim yapabilecek cüzdanlar varsa ayıkla yoksa bakiyesi yüksekten düşüğe doğru sırala
+                if (\Litipk\BigNumbers\Decimal::fromString($destinationTransferWallets->last()->balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromString($transferAmount)) == 1) {
+                    $destinationTransferWallets = collect($destinationTransferWallets)->filter(function ($q) use ($transferAmount) {
+                        return \Litipk\BigNumbers\Decimal::fromString($q->balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromString($transferAmount)) >= 0;
+                    });
                 } else {
-                    $destinationTransferWallets = collect($destinationTransferWallets)->filter(function ($item) use ($network) {
-                        $item->balance_pure = \Litipk\BigNumbers\Decimal::fromString($item->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($item->user_withdrawal_wallet_child->pluck('amount')->toArray())), null)->innerValue();
-                        $feeAmount = 0;
-                        if ($item->user_withdrawal_wallet_child->count() > 0) {
-                            foreach ($item->user_withdrawal_wallet_child as $user_withdrawal_wallet_child) {
-                                $feeAmount = \Litipk\BigNumbers\Decimal::fromString($feeAmount)->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal_wallet_child->user_withdrawal_wallet_fee->amount), null)->innerValue();
-                            }
-                            $feeAmount = \Litipk\BigNumbers\Decimal::fromString($feeAmount)->add(\Litipk\BigNumbers\Decimal::fromString($network->fee), null)->innerValue();
-                        }
-                        if (\Litipk\BigNumbers\Decimal::fromString($item->balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromInteger(0)) > 0 && \Litipk\BigNumbers\Decimal::fromString($item->user_coin->balance_pure)->comp(\Litipk\BigNumbers\Decimal::fromString($feeAmount)) >= 0) {
-                            return $item;
-                        }
-                        return false;
-                    })->sortBy('balance_pure');
+                    $destinationTransferWallets = $destinationTransferWallets->reverse();
                 }
+
                 $transferList = [];
                 foreach ($destinationTransferWallets as $destinationTransferWallet) {
                     if (\Litipk\BigNumbers\Decimal::fromString($transferAmount)->comp(\Litipk\BigNumbers\Decimal::fromInteger(0)) > 0) {
@@ -151,7 +151,6 @@ class WalletController extends Controller
                                 'id' => $destinationTransferWallet->id,
                                 'amount' => $balance_pure,
                             ];
-
                             $transferAmount = \Litipk\BigNumbers\Decimal::fromString($transferAmount)->sub(\Litipk\BigNumbers\Decimal::fromString($balance_pure), null)->innerValue();
                         } else {
                             $transferList[] = [
@@ -162,7 +161,6 @@ class WalletController extends Controller
                         }
                     }
                 }
-
                 foreach ($transferList as $item) {
                     $userWithdrawalWalletChild = UserWithdrawalWalletChild::create([
                         'user_withdrawal_wallets_id' => $insertUserWithdrawalWallet->id,
@@ -176,7 +174,7 @@ class WalletController extends Controller
                     ]);
                 }
 
-                if (\Litipk\BigNumbers\Decimal::fromString($transferAmount)->comp(\Litipk\BigNumbers\Decimal::fromInteger(0)) > 0 || count($transferList) > 5) {
+                if (\Litipk\BigNumbers\Decimal::fromString(priceFormat(decimal_sum(collect($transferList)->pluck('amount')->toArray())))->equals(\Litipk\BigNumbers\Decimal::fromString($transferAmount)) === false || count($transferList) > 5) {
                     $insertUserWithdrawalWallet->status = 3;
                     $insertUserWithdrawalWallet->save();
                 }
