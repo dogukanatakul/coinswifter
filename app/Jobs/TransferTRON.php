@@ -78,6 +78,7 @@ class TransferTRON implements ShouldQueue
         } elseif ($userWithdrawalWalletChild->user_coin->coin->token_type === 'trc20') {
             $transConf['fee_limit'] = 10000000;
             $transConf['contract_address'] = $userWithdrawalWalletChild->user_coin->coin->contract;
+            $transConf['token_type'] = "trc20";
         }
         $trans = trxActions("set_transaction", $transConf);
         //\+
