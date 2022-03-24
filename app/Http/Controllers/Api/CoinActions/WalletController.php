@@ -162,6 +162,7 @@ class WalletController extends Controller
                         }
                     }
                 }
+
                 foreach ($transferList as $item) {
                     $userWithdrawalWalletChild = UserWithdrawalWalletChild::create([
                         'user_withdrawal_wallets_id' => $insertUserWithdrawalWallet->id,
@@ -175,7 +176,7 @@ class WalletController extends Controller
                     ]);
                 }
 
-                if (\Litipk\BigNumbers\Decimal::fromString(priceFormat(decimal_sum(collect($transferList)->pluck('amount')->toArray())))->equals(\Litipk\BigNumbers\Decimal::fromString($transferAmount)) === false || count($transferList) > 5) {
+                if (\Litipk\BigNumbers\Decimal::fromString($transferAmount)->comp(\Litipk\BigNumbers\Decimal::fromInteger(0), null) > 0 || count($transferList) > 5) {
                     $insertUserWithdrawalWallet->status = 3;
                     $insertUserWithdrawalWallet->save();
                 }
