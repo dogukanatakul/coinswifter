@@ -119,8 +119,8 @@ if (!function_exists('trxActions')) {
     function trxActions($action, $data = false): object
     {
         $response = \Ixudra\Curl\Facades\Curl::to(nodeIPS("trx") . "/" . $action)
-            ->withTimeout(15)
-            ->withConnectTimeout(15);
+            ->withTimeout(60)
+            ->withConnectTimeout(60);
         if ($data) {
             $response = $response->withData($data);
         }

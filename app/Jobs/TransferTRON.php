@@ -68,7 +68,7 @@ class TransferTRON implements ShouldQueue
             'from_address' => $userWithdrawalWalletChild->user_coin->user_wallet->wallet,
             'from_address_private' => $userWithdrawalWalletChild->user_coin->user_wallet->password,
             'to_address' => $userWithdrawalWalletChild->user_withdrawal_wallet->to,
-            'value' => $amount,
+            'value' => priceFormat($amount),
         ];
         $transConf['multiply'] = $userWithdrawalWalletChild->multiply + 1;
         // eğer gas miktarı 3 katını geçmiş ise yeniden 1 katından başla.

@@ -139,7 +139,7 @@ class WalletController extends Controller
                 }
                 $transferList = [];
                 foreach ($destinationTransferWallets as $destinationTransferWallet) {
-                    if ($transferAmount > 0) {
+                    if (\Litipk\BigNumbers\Decimal::fromString($transferAmount)->comp(\Litipk\BigNumbers\Decimal::fromInteger(0)) > 0) {
                         if ($coin['contract']) {
                             $balance_pure = $destinationTransferWallet->balance_pure;
                         } else {
