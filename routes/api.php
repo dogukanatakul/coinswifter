@@ -92,6 +92,7 @@ Route::group([
             Route::post('/random-wallets/{type}', [\App\Http\Controllers\ToolsController::class, 'randomWallets']);
         });
         Route::post('/set-transactions/{network}', [\App\Http\Controllers\ToolsController::class, 'setTransactions']);
+        Route::post('/get-transactions/{network}', [\App\Http\Controllers\ToolsController::class, 'getTransactions']);
     });
 });
 

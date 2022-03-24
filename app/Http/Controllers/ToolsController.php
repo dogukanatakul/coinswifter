@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Network;
 use App\Models\NodeTransaction;
 use App\Models\UserWallet;
+use App\Models\UserWithdrawalWalletChild;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
@@ -102,6 +103,18 @@ class ToolsController extends Controller
                 report($e);
             }
         }
+    }
+
+    public function getTransactions($network): \Illuminate\Http\JsonResponse
+    {
+        $txhs = UserWithdrawalWalletChild::with(['user_coin.coin.network'])
+            ->where('status', 1)
+            ->whereHas('user_coin.coin.network', function ($q) use ($network) {
+                $q->where('short_name', $network);
+            })
+            ->get()
+            ->pluck('txh');
+        return response()->json($txhs);
     }
 
     public function randomWallets($type): \Illuminate\Http\JsonResponse

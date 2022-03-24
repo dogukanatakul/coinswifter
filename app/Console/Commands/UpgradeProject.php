@@ -59,6 +59,7 @@ class UpgradeProject extends Command
         \App\Jobs\NodeTransaction::dispatch()->onQueue('checkamount');
         \App\Jobs\TransferBSC::dispatch()->onQueue('transfer');
         \App\Jobs\TransferETH::dispatch()->onQueue('transfer');
+        \App\Jobs\TransferTRON::dispatch()->onQueue('transfer');
         \App\Jobs\TransferDB::dispatch()->onQueue('transfer');
         \App\Jobs\Exchange::dispatch()->onQueue('exchange');
         \App\Jobs\ChartData::dispatch()->onQueue('chart');

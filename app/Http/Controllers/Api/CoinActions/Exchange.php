@@ -343,9 +343,9 @@ class Exchange extends Controller
 //            ->first();
 //        dd($randWalletControl->toArray());
 
-        $bot = new \App\Jobs\ParityPrice();
-//        $bot = new \App\Jobs\NodeTransaction();
-        dd($bot->handle());
+//        $bot = new \App\Jobs\ParityPrice();
+////        $bot = new \App\Jobs\NodeTransaction();
+//        dd($bot->handle());
 
 
         UserCoin::where('coins_id', '!=', 1)->update([
