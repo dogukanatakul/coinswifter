@@ -52,6 +52,8 @@ class AppServiceProvider extends ServiceProvider
             \App\Jobs\TransferETH::dispatch()->onQueue('transfer')->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 1 : 0.7)));
         } else if ($jobName === 'App\Jobs\TransferDB') {
             \App\Jobs\TransferDB::dispatch()->onQueue('transfer')->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 0.5 * 2 : 0.5)));
+        } else if ($jobName === 'App\Jobs\TransferTRON') {
+            \App\Jobs\TransferTRON::dispatch()->onQueue('transfer')->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 0.5 * 2 : 0.5)));
         } else if ($jobName === 'App\Jobs\NodeTransaction') {
             \App\Jobs\NodeTransaction::dispatch()->onQueue('checkamount')->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 1 : 0.7)));
         } else if ($jobName === 'App\Jobs\Exchange') {
