@@ -166,7 +166,7 @@ export default {
     "Adres Bilgilerini Güncelle": "Adres Bilgilerini Güncelle",
     "KYC Onayı": "KYC Onayı",
     "Referans Sistemi": "Referans Sistemi",
-    "Şifreni Değiştir": "Şifreni Değiştir",
+    "Şifremi Değiştir": "Şifremi Değiştir",
     Oturumlar: "Oturumlar",
     "Hesap güvenliğini korumak adına iletişim bilgilerini her zaman güncel tutmalısınız.":
         "Hesap güvenliğini korumak adına iletişim bilgilerini her zaman güncel tutmalısınız.",
@@ -422,4 +422,13 @@ export default {
     "1 day": "1 gün",
     "1 week": "1 hafta",
     "1 month": "1 ay",
+    //#region Salih AVCI Yeni eklenenler
+    Hesabım: "Hesabım",
+    "Hesap Bilgilerim": "Hesap Bilgilerim",
+    KYC: "KYC",
+    Güvenlik: "Güvenlik",
+    Destek: "Destek",
+    "Banka Hesap Bilgilerim": "Banka Hesap Bilgilerim"
+
+    //#endregion
 };

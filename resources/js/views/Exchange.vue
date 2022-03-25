@@ -381,12 +381,12 @@
                               'price ' + selectedCoin.parity_price.price.status
                             "
                           >
-                            <h3>{{ selectedCoin.parity_price.price.value }}</h3>
+                            <h3 class="overflowed">{{ selectedCoin.parity_price.price.value }}</h3>
                           </div>
                         </div>
                         <div class="w-100"></div>
                         <div class="col">
-                          <div class="info text-start">
+                          <div class="info text-start overflowed">
                             {{ selectedCoin.parity_price.price.value }}
                           </div>
                         </div>
@@ -402,7 +402,7 @@
                     <div class="coin-info border-0 p-0">
                       <div class="row">
                         <div class="col-5">
-                          <div class="title text-start">
+                          <div class="title text-start overflowed">
                             {{ $t("Değişim (24S)") }}
                           </div>
                         </div>
@@ -426,7 +426,7 @@
                     <div class="coin-info border-0 p-0">
                       <div class="row">
                         <div class="col-5">
-                          <div class="title text-start">
+                          <div class="title text-start overflowed">
                             {{ $t("En Yüksek (24S)") }}
                           </div>
                         </div>
@@ -445,7 +445,7 @@
                     <div class="coin-info border-0 p-0">
                       <div class="row">
                         <div class="col-5">
-                          <div class="title text-start">
+                          <div class="title text-start overflowed">
                             {{ $t("En Düşük (24S)") }}
                           </div>
                         </div>
@@ -464,7 +464,7 @@
                     <div class="coin-info border-0 p-0">
                       <div class="row">
                         <div class="col-5">
-                          <div class="title text-start">
+                          <div class="title text-start overflowed">
                             {{ $t("Hacim (24S)") }}
                           </div>
                         </div>
@@ -1116,5 +1116,11 @@ export default {
   .d-600-small-block {
     display: none !important;
   }
+}
+.overflowed{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 140px;
 }
 </style>
