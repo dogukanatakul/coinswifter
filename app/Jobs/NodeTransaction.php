@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\UserCoin;
 use App\Models\UserWithdrawalWallet;
 use App\Models\UserWithdrawalWalletChild;
 use Illuminate\Bus\Queueable;
@@ -54,7 +55,6 @@ class NodeTransaction implements ShouldQueue
             $transaction->save();
             return "free_action";
         }
-
         $baseCoin = false;
         if (!empty($transaction->contract)) {
             $baseCoin = \App\Models\UserCoin::with(['coin'])
@@ -95,8 +95,9 @@ class NodeTransaction implements ShouldQueue
                     ->get();
                 if ($userWithdrawalWalletChilds->count() == 0) {
                     if (!empty($userWithdrawalWallet = UserWithdrawalWallet::where('id', $userWithdrawalWalletChild->user_withdrawal_wallets_id)->first())) {
-                        $userCoin->balance = \Litipk\BigNumbers\Decimal::fromString($userCoin->balance)->sub(\Litipk\BigNumbers\Decimal::fromString($userWithdrawalWallet->amount), null)->innerValue();
-                        $userCoin->save();
+                        $withDrawalUser = UserCoin::where('id', $userWithdrawalWallet->user_coins_id)->first();
+                        $withDrawalUser->balance = \Litipk\BigNumbers\Decimal::fromString($withDrawalUser->balance)->sub(\Litipk\BigNumbers\Decimal::fromString($userWithdrawalWallet->amount), null)->innerValue();
+                        $withDrawalUser->save();
                         $userWithdrawalWallet->status = 1;
                         $userWithdrawalWallet->save();
                     }
