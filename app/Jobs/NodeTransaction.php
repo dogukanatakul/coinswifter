@@ -78,7 +78,6 @@ class NodeTransaction implements ShouldQueue
                 $userWithdrawalWalletChild->save();
             }
         } else if ($transaction->status == 1 && $transaction->progress === 'out') {
-            // HATA OLABİLİR
             if ($baseCoin) {
                 $baseCoin->balance_pure = \Litipk\BigNumbers\Decimal::fromString($baseCoin->balance_pure)->sub(\Litipk\BigNumbers\Decimal::fromString($transaction->fee), null)->innerValue();
                 $baseCoin->save();

@@ -10,6 +10,7 @@ use App\Models\NodeTransaction;
 use App\Models\OrderTransaction;
 use App\Models\Order;
 use App\Models\ParityChart;
+use App\Models\User;
 use App\Models\UserCoin;
 use App\Models\UserFavoritePairs;
 use App\Models\Parity;
@@ -344,9 +345,13 @@ class Exchange extends Controller
 //        dd($randWalletControl->toArray());
 
 //        $bot = new \App\Jobs\TransferTRON();
-        $bot = new \App\Jobs\NodeTransaction();
-        dd($bot->handle());
+//        $bot = new \App\Jobs\NodeTransaction();
+//        dd($bot->handle());
 
+
+//        dd(User::with(['wallet'])->whereHas('wallet', function ($q) {
+//            $q->whereIn('wallet', ['TTG8u8fUKqJwMtB59ppaWqgFVGDb5ojWPU', 'TPxkSGA64S7SgDpU48RtnehHRRQn7hxXso']);
+//        })->first()->toArray());
 
         UserCoin::where('coins_id', '!=', 1)->update([
             'balance' => 0,

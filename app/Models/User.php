@@ -58,4 +58,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany(UserContact::class, 'users_id', 'id');
     }
 
+    public function wallet(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(UserWallet::class, 'users_id', 'id');
+    }
+
 }
