@@ -428,7 +428,7 @@ export default {
     KYC: "KYC",
     Güvenlik: "Güvenlik",
     Destek: "Destek",
-    "Banka Hesap Bilgilerim": "Banka Hesap Bilgilerim"
-
+    "Banka Hesap Bilgilerim": "Banka Hesap Bilgilerim",
+    "Ticket": "Destek Bileti",
     //#endregion
 };

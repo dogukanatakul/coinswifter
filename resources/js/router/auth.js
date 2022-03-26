@@ -109,6 +109,16 @@ export default [
                     ]
                 },
             },
+            {
+                path: '/profile/ticketsss',
+                name: 'profile.ticketsss',
+                component: import ("../views/profile/Profile/TicketSSS.vue"),
+                meta: {
+                    middleware: [
+                        auth
+                    ]
+                },
+            },
         ]
     },
     {

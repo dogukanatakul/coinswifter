@@ -10,9 +10,7 @@
                   block
                   v-b-toggle.accordion-7
                   class="bg-transparent text-dark border-0 w-100 text-left"
-                  ><span
-                    > Nasıl Kullanılır<i class="fas fa-question"></i></span
-                  >
+                  ><span> Nasıl Kullanılır<i class="fas fa-question"></i></span>
                   <span class="float-right when-opened"
                     ><i class="fas fa-chevron-down"></i></span
                   ><span class="float-right when-closed"
@@ -24,20 +22,41 @@
                 id="accordion-7"
                 accordion="my-accordions"
                 role="tabpanel"
-                visible
               >
                 <b-card-body>
                   <b-card-text>
                     <b-row class="my-1">
-                      <b-col cols="12">
+                      <b-col cols="12" lg="6">
                         <div class="fw-bolder text-justify text-dark">
-                          Adım 1) Yükleyeceğiniz KYC'nin tipini "Tip" bölümünden seçiniz<br><br>
-                          Adım 2) Tip seçildikten sonra "Dosya" kısmından KYC'nizi yükleyiniz<br><br>
-                          Adım 3) KYC tipi seçildikten ve gerekli KYC yüklendikten sonra "Talep Oluştur" butonuna basınız.<br><br>
-                          Aşağıda bulunan tabloda oluşturulan talepleriniz görüntülenecektir.<hr>
+                          Adım 1) Yükleyeceğiniz KYC'nin tipini <span class="text-danger">"Tip"</span> bölümünden
+                          seçiniz<br /><br />
+                          Adım 2) Tip seçildikten sonra <span class="text-danger">"Dosya"</span> kısmından
+                          KYC'nizi yükleyiniz<br /><br />
+                          Adım 3) KYC tipi seçildikten ve gerekli KYC
+                          yüklendikten sonra <span class="text-danger">"Talep Oluştur"</span> butonuna
+                          basınız.<br /><br />
+                          Aşağıda bulunan tabloda oluşturulan talepleriniz
+                          görüntülenecektir.
+                          <hr />
                           NOT: Tüm fotoğraf tiplerinden KYC'lerin yüklenmesi
-                          gerekmektedir.
+                          gerekmektedir.<br /><br />
+                          NOT: Faturası bulunmayan kişiler E-Devlet uygulaması / web sitesi üzerinden <span class="text-danger">"İkametgah Belgesi"</span> ile başvurabilir.
                         </div>
+                      </b-col>
+                      <b-col cols="12" lg="6" class="my-2">
+                        <b-row>
+                          <b-col cols="12" class="text-center fw-bolder"
+                            >Örnek KYC Resimleri</b-col
+                          >
+                          <b-row class="my-1">
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/kimlik_on.jpg"> <br> <strong>Kimlik Ön Yüzü</strong> </b-col>
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/kimlik_arka.png"> <br> <strong>Kimlik Arka Yüzü</strong> </b-col>
+                          </b-row>
+                          <b-row class="my-1">
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/fatura_ornek.jpg"> <br> <strong>Fatura</strong> </b-col>
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/selfie.jpg"> <br> <strong>Selfie</strong> </b-col>
+                          </b-row>
+                        </b-row>
                       </b-col>
                     </b-row>
                   </b-card-text>
@@ -268,5 +287,8 @@ export default {
 .collapsed > .when-opened,
 :not(.collapsed) > .when-closed {
   display: none;
+}
+.h-200{
+  height: 200px !important;
 }
 </style>

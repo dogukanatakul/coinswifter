@@ -210,6 +210,7 @@ export default {
                 if (response.status === 'success') {
                     this.$notify({text: response.message, type: 'success'})
                     this.$emit('getWallets')
+                    location.reload();
                 } else if (response.status === 'fail') {
                     this.$notify({text: response.message, type: 'error'})
                 }
