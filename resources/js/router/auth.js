@@ -99,6 +99,26 @@ export default [
                     ]
                 },
             },
+            {
+                path: '/profile/ticket',
+                name: 'profile.ticket',
+                component: import ("../views/profile/Profile/Tickets.vue"),
+                meta: {
+                    middleware: [
+                        auth
+                    ]
+                },
+            },
+            {
+                path: '/profile/ticketsss',
+                name: 'profile.ticketsss',
+                component: import ("../views/profile/Profile/TicketSSS.vue"),
+                meta: {
+                    middleware: [
+                        auth
+                    ]
+                },
+            },
         ]
     },
     {

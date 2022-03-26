@@ -331,6 +331,7 @@ export default {
       amount: 0,
       wallet: null,
     },
+    setInterval: null,
   }),
   validations: () => ({
     form: {

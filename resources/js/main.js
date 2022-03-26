@@ -39,7 +39,8 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 
 import ConfirmationService from 'primevue/confirmationservice';
-
+import 'viewerjs/dist/viewer.css'
+import VueViewer from 'v-viewer'
 const options = {
     color: "#000461",
     failedColor: "#982c2c",
@@ -114,6 +115,8 @@ app.use(vue3PhotoPreview);
 app.component("font-awesome-icon", FontAwesomeIcon)
 app.component('v-select', vSelect);
 app.use(ConfirmationService)
+app.use(VueViewer)
+
 app.config.performance = true
 app.config.devtools = true
 app.mount("#app");

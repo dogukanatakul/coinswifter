@@ -180,6 +180,7 @@ export default {
     commission: 0,
     loader: null,
     convertDate: convertDate,
+    setInterval : null,
   }),
   computed: {
     ...mapGetters(["user"]),
@@ -188,6 +189,9 @@ export default {
     await this.$nextTick(() => {
       window.scrollTo(100, 0);
     });
+    this.setInterval = setInterval(function(){
+      this.getWallets();
+    }.bind(this), 5000);
   },
   methods: {
     dynamicFocus(method) {
@@ -254,6 +258,7 @@ export default {
           if (response.status === "success") {
             this.$notify({ text: response.message, type: "success" });
             this.getWallets();
+            //location.reload();
           } else {
             this.$notify({ text: response.message, type: "error" });
           }

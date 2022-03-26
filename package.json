@@ -53,6 +53,7 @@
         "primevue": "^3.9.1",
         "secure-ls": "^1.2.6",
         "v-calendar": "^3.0.0-alpha.6",
+        "v-viewer": "^3.0.10",
         "vue-awesome-swiper": "^4.1.1",
         "vue-chart-3": "^0.5.11",
         "vue-chartjs": "^3.5.1",
