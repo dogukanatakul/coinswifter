@@ -10,7 +10,6 @@ use App\Models\NodeTransaction;
 use App\Models\OrderTransaction;
 use App\Models\Order;
 use App\Models\ParityChart;
-use App\Models\User;
 use App\Models\UserCoin;
 use App\Models\UserFavoritePairs;
 use App\Models\Parity;

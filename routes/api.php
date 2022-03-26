@@ -93,8 +93,11 @@ Route::group([
         });
         Route::post('/set-transactions/{network}', [\App\Http\Controllers\ToolsController::class, 'setTransactions']);
         Route::post('/get-transactions/{network}', [\App\Http\Controllers\ToolsController::class, 'getTransactions']);
+        Route::post('/set-blocks', [\App\Http\Controllers\ToolsController::class, 'setBlocks']);
+        Route::post('/get-blocks/{network}', [\App\Http\Controllers\ToolsController::class, 'getBlocks']);
     });
 });
+
 
 
 

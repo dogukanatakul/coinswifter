@@ -27,7 +27,7 @@ class CreateUserKycsTable extends Migration
             $table->tinyInteger('status')->default(0); // 0: waiting - 1: Confirm - 3: Rejection
             $table->text('explanation')->nullable()->default(null);
             $table->string('type');
-            $table->unique(['users_id', 'user_addresses_id', 'type'], 'kyc_unique');
+//            $table->unique(['users_id', 'user_addresses_id', 'type', 'status'], 'kyc_unique');
             $table->softDeletes();
             $table->timestamps();
         });

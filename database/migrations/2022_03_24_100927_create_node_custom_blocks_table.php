@@ -17,7 +17,7 @@ class CreateNodeCustomBlocksTable extends Migration
             $table->id();
             $table->integer('block_number');
             $table->string('network');
-            $table->tinyInteger('status')->default(0); // 0: bekliyor | 1: tamamlandı | 2: gönderildi
+            $table->unique(['block_number', 'network'], 'node_custom_block_unique');
             $table->softDeletes();
             $table->timestamps();
         });

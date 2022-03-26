@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\CustomBlock;
 use App\Models\Network;
+use App\Models\NodeCustomBlock;
 use App\Models\NodeTransaction;
 use App\Models\UserWallet;
 use App\Models\UserWithdrawalWalletChild;
@@ -103,6 +105,7 @@ class ToolsController extends Controller
                 report($e);
             }
         }
+        return "success";
     }
 
     public function getTransactions($network): \Illuminate\Http\JsonResponse
@@ -115,6 +118,24 @@ class ToolsController extends Controller
             ->get()
             ->pluck('txh');
         return response()->json($txhs);
+    }
+
+    public function setBlocks(Request $request): string
+    {
+        foreach ($request->toArray() as $block) {
+            try {
+                NodeCustomBlock::create($block);
+            } catch (\Exception $e) {
+                report($e);
+            }
+        }
+        return "success";
+    }
+
+    public function getBlocks($network): \Illuminate\Http\JsonResponse
+    {
+        $blocks = NodeCustomBlock::where('network', $network)->get()->pluck('block_number');
+        return response()->json($blocks);
     }
 
     public function randomWallets($type): \Illuminate\Http\JsonResponse

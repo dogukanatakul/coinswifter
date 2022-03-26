@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\NodeCustomBlock;
 use App\Models\UserCoin;
 use App\Models\UserWithdrawalWallet;
 use App\Models\UserWithdrawalWalletChild;
@@ -35,6 +36,11 @@ class NodeTransaction implements ShouldQueue
         if (empty($transaction = \App\Models\NodeTransaction::where('processed', 0)->orderBy('block_number', 'ASC')->first())) {
             return 'null';
         }
+
+        if (!empty($nodeCustomBlock = NodeCustomBlock::where('block_number', $transaction->block_number)->where('network', $transaction->network)->first())) {
+            $nodeCustomBlock->delete();
+        }
+
         $userCoin = \App\Models\UserCoin::with(['coin', 'user_wallet'])
             ->whereHas('coin', function ($q) use ($transaction) {
                 $q->whereHas('network', function ($q) use ($transaction) {
