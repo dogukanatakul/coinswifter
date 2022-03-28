@@ -66,6 +66,8 @@ class AppServiceProvider extends ServiceProvider
             \App\Jobs\ChartData::dispatch()->onQueue('chart')->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 0.5 * 2 : 0.5)));
         } else if ($jobName === 'App\Jobs\TestJob') {
             \App\Jobs\TestJob::dispatch()->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 10 : 0)));
+        } else if ($jobName === 'App\Jobs\UserDeposit') {
+            \App\Jobs\UserDeposit::dispatch()->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 5 : 1)));
         }
     }
 }

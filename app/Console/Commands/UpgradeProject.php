@@ -63,6 +63,7 @@ class UpgradeProject extends Command
         \App\Jobs\TransferDB::dispatch()->onQueue('transfer');
         \App\Jobs\Exchange::dispatch()->onQueue('exchange');
         \App\Jobs\ChartData::dispatch()->onQueue('chart');
+        \App\Jobs\UserDeposit::dispatch()->onQueue('deposit');
 //        \App\Jobs\CheckBanks::dispatch()->onQueue('checkamount');
         if (env('APP_ENV') === 'production') {
             exec("service supervisord start", $output, $returnVar);

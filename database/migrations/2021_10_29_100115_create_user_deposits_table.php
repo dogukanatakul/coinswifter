@@ -32,6 +32,7 @@ class CreateUserDepositsTable extends Migration
             $table->text('description')->nullable()->default(null);
             $table->bigInteger('tck_no')->default(0);
             $table->tinyInteger('status')->default(0);
+            $table->unique(['receipt_no', 'contracted_banks_id'], 'user_deposit_unique');
             $table->softDeletes();
             $table->timestamps();
         });
