@@ -28,9 +28,9 @@ class UserDeposit implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @return void
+     * @return boolean
      */
-    public function handle()
+    public function handle(): bool
     {
         $deposits = \App\Models\UserDeposit::where('status', 0)->get();
         foreach ($deposits as $deposit) {
@@ -60,5 +60,6 @@ class UserDeposit implements ShouldQueue
                 $deposit->save();
             }
         }
+        return true;
     }
 }
