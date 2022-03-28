@@ -356,10 +356,11 @@ white-space: nowrap;
             margin-right: -24px;
         }
 
-        .text-smaller {
+        .text-smaller, .text-danger {
             // font-size: calc(2px + 6 * ((100vw - 320px) / 720));
             overflow: hidden;
             white-space: nowrap;
+            text-overflow: ellipsis;
         }
     }
 
@@ -456,4 +457,11 @@ white-space: nowrap;
 
 .float-right {
     float: right !important;
+}
+
+td.up{
+    color:green;
+}
+td.down{
+    color:red;
 }
