@@ -57,8 +57,10 @@ class UserDeposit implements ShouldQueue
                 } else {
                     $deposit->status = 3;
                 }
-                $deposit->save();
+            } else {
+                $deposit->status = 3;
             }
+            $deposit->save();
         }
         return true;
     }
