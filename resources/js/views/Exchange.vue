@@ -1036,7 +1036,11 @@ export default {
 }
 
 .text-small {
-  font-size: 12px;
+  // font-size: 12px;
+  overflow:hidden;
+  white-space: nowrap;
+  font-size:16px;
+  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 1690px) and(min-width: 992px) {

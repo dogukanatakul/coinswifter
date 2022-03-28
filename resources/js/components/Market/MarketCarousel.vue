@@ -47,36 +47,5 @@ export default {
 </script>
 
 <style scoped type="scss">
-    @media screen and (max-width:1300px) and (min-width:992px) {
-        .small-text{
-            font-size:12px;
-            font-weight: 500;
-        }
-    }
 
-    @media screen and (min-width:1300px) and (max-width:1600px) {
-        .small-text{
-            font-size: 12px;
-            font-weight: 500;
-        }
-    }
-
-    @media screen and (max-width:680px) {
-        .small-text{
-            font-size:16px;
-            font-weight: 500;
-        }
-    }
-
-    @media screen and (max-width:992px) and (min-width:768px) {
-        .small-text{
-            font-size:12px;
-            font-weight: 500;
-        }
-    }
-    @media screen and (min-width:768px) {
-        .heading2{
-            font-size:13px !important;
-        }
-    }
 </style>

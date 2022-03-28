@@ -200,10 +200,5 @@ export default {
 </script>
 
 <style scoped type="scss">
-@media screen and (max-width:1200px) and (min-width: 991px) {
-    .headings{
-        font-size:16px !important;
-        font-weight: bolder !important;
-    }
-}
+
 </style>

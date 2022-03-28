@@ -182,7 +182,8 @@ export default {
   },
   computed: {
     tabindex() {
-      return this.selectedCoin.source.symbol === "TRY" ? 1 : 2;
+      // return this.selectedCoin.source.symbol === "TRY" ? 1 : 2;
+      return Object.keys(this.$props["parities"]).indexOf(this.selectedCoin.source.symbol) + 1;
     },
   },
   data: () => ({

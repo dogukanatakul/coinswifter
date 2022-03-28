@@ -429,6 +429,9 @@ export default {
     Güvenlik: "Güvenlik",
     Destek: "Destek",
     "Banka Hesap Bilgilerim": "Banka Hesap Bilgilerim",
-    "Ticket": "Destek Bileti",
+    Ticket: "Destek Bileti",
+    "Toplam Varlık": "Toplam Varlık",
+    "Cüzdan": "Cüzdan",
+    "Takas": "Takas"
     //#endregion
 };

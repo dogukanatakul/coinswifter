@@ -11,8 +11,8 @@
           ></b-form-input>
         </b-col>
       </b-row>
-      <b-tabs content-class="mt-3 no-wrap" pills card fill>
-        <b-tab @click="selectedKey = ''">
+      <b-tabs content-class="mt-3 no-wrap" pills card fill v-model:selectedKey="selectedKey">
+        <b-tab @click="selectedKey = 0">
           <template #title>
             <i class="fas fa-star"></i> {{ $t("Favoriler") }}
           </template>
@@ -83,8 +83,8 @@
           :key="coin_tables_key"
           :value="coin_tables_key"
           :title="coin_tables_key"
-          :active="selectedKey === coin_tables_key.toString()"
-          @click="selectedKey = coin_tables_key.toString()"
+          :active="selectedKey === coin_tables_key"
+          @click="selectedKey = coin_tables_key"
         >
           <div class="table-responsive">
             <table class="table table-sm order-table" :key="search">
@@ -187,19 +187,18 @@ export default {
     },
   },
   computed: {
-    tabindex() {
-      return this.selectedCoin.source.symbol === "TRY" ? 1 : 2;
+    selectedKey() {
+      this.selectedKey = Object.keys(this.$props["parities"]).indexOf(this.selectedCoin.source.symbol) + 1;
+      return Object.keys(this.$props["parities"]).indexOf(this.selectedCoin.source.symbol) + 1;
     },
   },
   data: () => ({
     search: "",
-    selectedKey: "TRY",
+    selectedKey: 1,
   }),
 };
 </script>
 
 <style lang="scss" scoped>
-.no-wrap{
-  white-space: nowrap;
-}
+
 </style>

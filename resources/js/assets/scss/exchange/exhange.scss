@@ -36,11 +36,13 @@
                 height: 35px;
 
                 tr th {
-                    font-size: 13px;
+                    font-size: 12px;
                     font-weight: 300;
                     color: #758696;
                     height: 40px;
                     padding-bottom: 10px;
+                    overflow: hidden;
+                    white-space: nowrap;
                 }
             }
 
@@ -183,11 +185,15 @@
                     color: #758696;
                     font-weight: 500;
                     font-size: 12px;
+                    overflow: hidden;
+                    white-space: nowrap;
                 }
 
                 .price {
                     color: #26de81;
                     font-weight: 500;
+                    overflow: hidden;
+                    white-space: nowrap;
                     font-size: 14px;
                 }
 
@@ -201,7 +207,8 @@
 
                 .info {
                     font-size: 12px;
-
+overflow: hidden;
+white-space: nowrap;
                 }
             }
         }
@@ -312,7 +319,10 @@
 
 @media screen and (max-width:979px) {
     .text-small {
-        font-size: 12px !important;
+        font-size: 16px !important;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 }
 
@@ -347,7 +357,9 @@
         }
 
         .text-smaller {
-            font-size: calc(2px + 6 * ((100vw - 320px) / 720));
+            // font-size: calc(2px + 6 * ((100vw - 320px) / 720));
+            overflow: hidden;
+            white-space: nowrap;
         }
     }
 
@@ -411,7 +423,9 @@
     .title,
     .price,
     .info {
-        font-size: 9px !important;
+        // font-size: 9px !important;
+        overflow: hidden;
+        white-space: nowrap;
         // text-align: center;
     }
 

@@ -87,8 +87,8 @@
                 />
               </div>
               <div class="service-cont">
-                <h3>{{ $t("Dünyanın Her Yerine") }}</h3>
-                <h5>{{ $t("Para Gönder-Al.") }}</h5>
+                <h3 class="overflowed-table">{{ $t("Dünyanın Her Yerine") }}</h3>
+                <h5 class="overflowed-table">{{ $t("Para Gönder-Al.") }}</h5>
                 <!-- <a class="more-btn" href="#">Daha Fazla Oku</a> -->
               </div>
             </div>
@@ -110,8 +110,8 @@
                 />
               </div>
               <div class="service-cont">
-                <h3>{{ $t("Çeşitli Ödeme Yöntemlerimizle") }}</h3>
-                <h5>{{ $t("Sanal Para Satın Al / Sat.") }}</h5>
+                <h3 class="overflowed-table">{{ $t("Çeşitli Ödeme Yöntemlerimizle") }}</h3>
+                <h5 class="overflowed-table">{{ $t("Sanal Para Satın Al / Sat.") }}</h5>
                 <!-- <a class="more-btn" href="#">Daha Fazla Oku</a> -->
               </div>
             </div>
@@ -134,8 +134,8 @@
                 />
               </div>
               <div class="service-cont">
-                <h3>{{ $t("Sistemimize İstediğiniz Cihazdan") }}</h3>
-                <h5>{{ $t("Kolay ve Kesintisiz Bir Şekilde Erişin.") }}</h5>
+                <h3 class="overflowed-table">{{ $t("Sistemimize İstediğiniz Cihazdan") }}</h3>
+                <h5 class="overflowed-table">{{ $t("Kolay ve Kesintisiz Bir Şekilde Erişin.") }}</h5>
               </div>
             </div>
           </b-col>
@@ -157,8 +157,8 @@
                 />
               </div>
               <div class="service-cont">
-                <h3>{{ $t("Güvenlik Sistemimiz İle") }}</h3>
-                <h5>{{ $t("Cüzdanınız Bizimle Daima Güvende.") }}</h5>
+                <h3 class="overflowed-table">{{ $t("Güvenlik Sistemimiz İle") }}</h3>
+                <h5 class="overflowed-table">{{ $t("Cüzdanınız Bizimle Daima Güvende.") }}</h5>
                 <!-- <a class="more-btn" href="#">Daha Fazla Oku</a> -->
               </div>
             </div>
@@ -367,19 +367,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.fade-in-out {
-  animation: fadebackground 2s infinite;
-}
-@keyframes fadebackground {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-.margin-5 {
-  margin-left: 5% !important;
-}
+
 </style>

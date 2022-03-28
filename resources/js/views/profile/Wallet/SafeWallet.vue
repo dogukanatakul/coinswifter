@@ -59,7 +59,7 @@
         </b-row>
         <b-row v-else-if="is_bank && walletAction==='withdrawal' && user.kyc===true">
             <b-col cols="12" md="4">
-                <table class="table table-sm table-responsive">
+                <table class="table table-sm table-responsive overflowed">
                     <tr>
                         <th>Minimum:</th>
                         <td class="text--right">{{ walletSelect.transfer_min }} {{ walletSelect.symbol }}</td>

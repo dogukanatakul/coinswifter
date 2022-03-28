@@ -1,6 +1,6 @@
 <template>
   <div class="table-responsive">
-    <table class="table table-striped">
+    <table class="table table-striped overflowed-table">
       <thead>
         <tr>
           <th scope="col">{{ $t("IP") }}</th>

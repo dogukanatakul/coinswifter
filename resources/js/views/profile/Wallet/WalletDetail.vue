@@ -18,7 +18,7 @@
           >
         </span>
       </div>
-      <div class="float-end  mt-2">
+      <div class="float-end mt-2">
         <b-button-group>
           <b-button
             @click="walletAction = 'deposit'"
@@ -54,10 +54,7 @@
           </b-row>
           <b-row align-content="center" align-h="center">
             <b-col cols="12" md="8">
-              <b-input-group
-                
-                class="mt-3"
-              >
+              <b-input-group class="mt-3">
                 <b-form-input
                   ref="walletCode"
                   style="text-align: center"
@@ -66,7 +63,10 @@
                   inputmode="text"
                   readonly
                 ></b-form-input>
-                <b-button variant="primary" @click="copyWalletCode(walletSelect.wallet_code)">
+                <b-button
+                  variant="primary"
+                  @click="copyWalletCode(walletSelect.wallet_code)"
+                >
                   <i class="fas fa-clipboard"></i>
                 </b-button>
               </b-input-group>
@@ -76,7 +76,7 @@
       </b-row>
       <b-row v-if="walletAction === 'withdrawal'">
         <b-col cols="12" md="4">
-          <table class="table table-sm table-responsive">
+          <table class="table table-sm table-responsive overflowed">
             <tr>
               <th>{{ $t("Minimum:") }}</th>
               <td class="text--right">
@@ -132,12 +132,12 @@
                     inputmode="numeric"
                     autofocus
                   ></b-form-input>
-                  <b-form-invalid-feedback :state="!v$.form.amount.$error">
-                    <p class="text-danger">
-                      {{ $t("Lütfen geçerli bir tutar giriniz.") }}
-                    </p>
-                  </b-form-invalid-feedback>
                 </b-input-group>
+                <b-form-invalid-feedback :state="!v$.form.amount.$error">
+                  <p class="text-danger">
+                    {{ $t("Lütfen geçerli bir tutar giriniz.") }}
+                  </p>
+                </b-form-invalid-feedback>
               </b-col>
               <b-col cols="1" class="mx-3 px-3 mt-3">
                 <b-icon
@@ -192,8 +192,7 @@
               bg-danger
               text-light
               lh-lg
-              text-wrap
-              text-center
+              text-wrap text-center
             "
           >
             {{
@@ -208,7 +207,7 @@
   </b-card>
 
   <b-card :header="$t('Aktif Emirler')" class="my-3">
-    <div class="table-responsive">
+    <div class="table-responsive overflowed-table">
       <table class="table">
         <thead>
           <tr>
@@ -255,7 +254,7 @@
   </b-card>
 
   <b-card :header="$t('Çekim Talepleri')" header-tag="header" class="my-2">
-    <div class="table-responsive">
+    <div class="table-responsive overflowed-table">
       <table class="table">
         <thead>
           <tr>
@@ -312,7 +311,7 @@
 import SafeWallet from "./SafeWallet";
 import { copyText } from "vue3-clipboard";
 import useVuelidate from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
+import { required, minValue, maxValue } from "@vuelidate/validators";
 import restAPI from "../../../api/restAPI";
 
 export default {
@@ -333,23 +332,30 @@ export default {
     },
     setInterval: null,
   }),
-  validations: () => ({
-    form: {
-      amount: {
-        required,
+  validations() {
+    return {
+      form: {
+        amount: {
+          required,
+          minValue: minValue(0),
+          maxValue: maxValue(
+            this.walletSelect !== undefined ? this.walletSelect.balance : 0
+          ), //Buraya bak
+        },
+        wallet: {
+          required,
+        },
       },
-      wallet: {
-        required,
-      },
-    },
-  }),
+    };
+  },
   watch: {
     "form.withdrawal"(val) {
       this.commission = (parseFloat(val) / 100) * parseFloat(3);
     },
   },
   methods: {
-    dynamicFocus(method) {
+    async dynamicFocus(method) {
+      const isFormCorrect = await this.v$.$validate();
       if (method === "in") {
         this.dynamicInput = "input";
       } else {
@@ -433,6 +439,7 @@ export default {
       console.log("on paste", evt);
     },
     async withdrawalSend() {
+      
       const isFormCorrect = await this.v$.$validate();
       if (!isFormCorrect) return;
       this.$emit("withdrawalSend", this.form);

@@ -61,23 +61,26 @@
             </div>
             <div class="row justify-content-between py-0 py-md-4">
               <div
-                class="col-12 col-md-4 text-md-start d-grid gap-2 py-2 py-md-0"
+                class="col-12 col-md-6 text-md-start d-grid gap-2 py-2 py-md-0"
               >
                 <b-button
                   squared
                   block
                   variant="outline-secondary"
                   :to="{ name: 'forgot' }"
+                  class="overflowed-table"
                   >{{ $t("Şifremi unuttum?") }}</b-button
                 >
               </div>
               <div
-                class="col-12 col-md-4 text-md-end d-grid gap-2 py-2 py-md-0"
+                class="col-12 col-md-6 text-md-end d-grid gap-2 py-2 py-md-0"
               >
                 <b-button
                   squared
                   block
                   variant="outline-secondary"
+                  
+                  class="overflowed-table"
                   :to="{ name: 'signup' }"
                   >{{ $t("Yeni hesap oluştur!") }}</b-button
                 >

@@ -11,8 +11,8 @@
           @click="walletSelected('account_status')"
           :active="walletSelect === 'account_status'"
         >
-          <h4 class="my-5 pt-sm-5">Toplam Varlık</h4>
-          <h6 class="text-small my-5">{{ totalMount.total }} TRY</h6>
+          <h4 class="my-5 pt-sm-5">{{$t('Toplam Varlık')}}</h4>
+          <h6 class="text-small my-5 mx-auto overflowed" style="max-width:180px">{{ totalMount.total }} TRY</h6>
         </div>
       </b-col>
       <b-col cols="12" md="6" sm="6" lg="4" class="px-auto float-left mb-3">
@@ -30,10 +30,10 @@
           >
             <b-row class="w-100">
               <b-col cols="12" class="rounded bg-dark text-light mx-auto">
-                <b-col cols="6" class="float-left text-center">
+                <b-col cols="6" class="float-left text-center overflowed-table">
                   <span class="fw-bold small">{{ $t("Varlıklarım") }}</span>
                 </b-col>
-                <b-col cols="6" class="float-left">
+                <b-col cols="6" class="float-left overflowed-table">
                   <span class="fw-bold small">{{ totalMount.total }} TRY</span>
                 </b-col>
               </b-col>
@@ -74,7 +74,7 @@
                 class="rounded myBackground text-dark mx-auto"
                 :class="{ smallest: parseInt(wallet.locked) === 0 }"
               >
-                <b-col cols="5" class="float-left">
+                <b-col cols="4" class="float-left overflowed">
                   <img
                     :src="'../assets/img/coinicon/' + wallet.symbol + '.png'"
                     alt=""
@@ -82,19 +82,19 @@
                     height="16"
                     class="rounded"
                   />
-                  <span class="fw-bold small mx-2">{{ wallet.symbol }}</span>
+                  <span class="fw-bold  mx-2">{{ wallet.symbol }}</span>
                 </b-col>
-                <b-col cols="3" class="float-left" v-if="wallet.locked !== 0">
+                <b-col cols="4" class="float-left overflowed" v-if="wallet.locked !== 0">
                   <b-icon
                     icon="lock-fill"
                     font-scale="1"
-                    class="small p-0 myMargins"
+                    class="p-0 myMargins"
                     :class="{ smallest: parseInt(wallet.locked) === 0 }"
                   ></b-icon>
-                  <span class="small">{{ wallet.locked }}</span>
+                  <span class="">{{ wallet.locked }}</span>
                 </b-col>
-                <b-col cols="4" class="float-left">
-                  <span class="small">{{ wallet.balance }}</span>
+                <b-col cols="4" class="float-left overflowed">
+                  <span class="">{{ wallet.balance }}</span>
                 </b-col>
               </b-col>
             </b-row>
@@ -109,7 +109,7 @@
                 >
               </b-col> -->
               <div class="rounded myBackground text-dark mx-auto">
-                <b-col cols="6" class="float-left">
+                <b-col cols="6" class="float-left overflowed">
                   <img
                     :src="'../assets/img/coinicon/' + wallet.symbol + '.png'"
                     alt=""
@@ -118,10 +118,10 @@
                     class="rounded"
                   />
 
-                  <span class="fw-bold small mx-2">{{ wallet.symbol }}</span>
+                  <span class="fw-bold  mx-2">{{ wallet.symbol }}</span>
                 </b-col>
-                <b-col cols="6" class="float-left">
-                  <span class="small">{{ wallet.balance }}</span>
+                <b-col cols="6" class="float-left overflowed">
+                  <span class="">{{ wallet.balance }}</span>
                 </b-col>
               </div>
             </b-row>

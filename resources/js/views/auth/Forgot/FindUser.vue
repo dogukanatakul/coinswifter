@@ -27,7 +27,7 @@
                     </b-form-text>
                 </b-form-group>
                 <b-row>
-                    <b-col cols="12" md="4" class="float-left">
+                    <b-col cols="12" md="6" class="float-left">
                         <b-form-group :label="$t('Telefon Kodunuz')">
                             <v-select
                                 v-model.number="form['country_code']"
@@ -37,7 +37,7 @@
                             ></v-select>
                         </b-form-group>
                     </b-col>
-                    <b-col cols="12" md="8" class="float-left">
+                    <b-col cols="12" md="6" class="float-left">
                         <b-form-group
                             id="input-group-1"
                             label="Telefon Numaranız"

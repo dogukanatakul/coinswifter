@@ -4869,3 +4869,32 @@ p.link-hover,
         font-size: 16px !important;
     }
 }
+
+.fade-in-out {
+    animation: fadebackground 2s infinite;
+}
+
+@keyframes fadebackground {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.margin-5 {
+    margin-left: 5% !important;
+}
+
+@media screen and (max-width:1200px) and (min-width: 991px) {
+    .headings {
+        font-size: 16px !important;
+        font-weight: bolder !important;
+    }
+}
+
+

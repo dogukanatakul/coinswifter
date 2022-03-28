@@ -2,7 +2,9 @@
     thead {
         tr {
             th {
-                font-size: 13px;
+                font-size: 12px;
+                overflow: hidden;
+                white-space: nowrap;
             }
         }
     }
@@ -10,13 +12,19 @@
     tbody {
         tr {
             td {
-                font-size: 12px;
+                font-size: 13px;
+                overflow: hidden;
+                white-space: nowrap;
             }
 
             th {
-                font-size: 13px;
+                font-size: 12px;
                 font-weight: normal;
+                overflow: hidden;
+                white-space: nowrap;
             }
         }
     }
 }
+
+

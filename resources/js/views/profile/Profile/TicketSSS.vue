@@ -122,14 +122,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.text-left {
-  text-align: left !important;
-}
-.collapsed > .when-opened,
-:not(.collapsed) > .when-closed {
-  display: none;
-}
-.float-right{
-  float:right !important;
-}
+
 </style>

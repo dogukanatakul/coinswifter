@@ -423,6 +423,9 @@ export default {
     "Güvenlik": "Security",
     "Destek": "Support",
     "Banka Hesap Bilgilerim": "Bank Account Information",
-    "Ticket": "Support Ticket"
+    "Ticket": "Support Ticket",
+    "Toplam Varlık": "Total Supply",
+    "Cüzdan": "Wallet",
+    "Takas": "Exchange"
     //#endregion
 };

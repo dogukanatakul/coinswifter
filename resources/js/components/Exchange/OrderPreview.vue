@@ -131,7 +131,5 @@ export default {
 </script>
 
 <style scoped type="scss">
-.threedot{
-  overflow:hidden; white-space:nowrap; text-overflow:ellipsis; max-width:65% !important;
-}
+
 </style>

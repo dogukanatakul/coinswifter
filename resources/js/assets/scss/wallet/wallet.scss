@@ -178,3 +178,16 @@
     //     margin-top: -1.2vh !important;
     // }
 }
+
+.overflowed{
+    font-size:12px !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.overflowed-table{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+}

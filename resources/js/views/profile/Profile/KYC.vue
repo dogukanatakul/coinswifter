@@ -49,12 +49,12 @@
                             >Örnek KYC Resimleri</b-col
                           >
                           <b-row class="my-1">
-                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/kimlik_on.jpg"> <br> <strong>Kimlik Ön Yüzü</strong> </b-col>
-                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/kimlik_arka.png"> <br> <strong>Kimlik Arka Yüzü</strong> </b-col>
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/kimlik_on.jpg"> <br> <strong>Kimlik Ön Yüzü</strong> </b-col>
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/kimlik_arka.png"> <br> <strong>Kimlik Arka Yüzü</strong> </b-col>
                           </b-row>
                           <b-row class="my-1">
-                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/fatura_ornek.jpg"> <br> <strong>Fatura</strong> </b-col>
-                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/selfie.jpg"> <br> <strong>Selfie</strong> </b-col>
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/fatura_ornek.jpg"> <br> <strong>Fatura</strong> </b-col>
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/selfie.jpg"> <br> <strong>Selfie</strong> </b-col>
                           </b-row>
                         </b-row>
                       </b-col>
@@ -170,7 +170,7 @@
     </b-row> -->
     <b-row class="my-2">
       <b-col cols="12" class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped overflowed-table">
           <thead>
             <tr>
               <th scope="col">{{ $t("Dosya") }}</th>
@@ -284,11 +284,5 @@ export default {
 </script>
 
 <style scoped>
-.collapsed > .when-opened,
-:not(.collapsed) > .when-closed {
-  display: none;
-}
-.h-200{
-  height: 200px !important;
-}
+
 </style>

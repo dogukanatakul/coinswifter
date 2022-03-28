@@ -34,7 +34,7 @@
     </b-form>
     <b-row>
       <b-col cols="12" class="table-responsive">
-        <table class="table table-bordered table-stripped">
+        <table class="table table-bordered table-stripped overflowed-table">
           <thead>
             <tr>
               <th>#</th>

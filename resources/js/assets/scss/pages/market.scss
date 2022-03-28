@@ -69,39 +69,14 @@
     margin: 0 8px;
     text-align: left;
 }
-@media screen and (max-width:1300px) and (min-width:992px) {
-    .small-text {
-        font-size: 12px;
-        font-weight: 500;
-    }
-}
+    .small-text, .heading2 {
 
-@media screen and (min-width:1300px) and (max-width:1600px) {
-    .small-text {
-        font-size: 12px;
         font-weight: 500;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
-}
 
-@media screen and (max-width:680px) {
-    .small-text {
-        font-size: 16px;
-        font-weight: 500;
-    }
-}
-
-@media screen and (max-width:992px) and (min-width:768px) {
-    .small-text {
-        font-size: 12px;
-        font-weight: 500;
-    }
-}
-
-@media screen and (min-width:768px) {
-    .heading2 {
-        font-size: 13px !important;
-    }
-}
 @media screen and (max-width: 650px) {
     #table {
         overflow-x: auto;
@@ -112,7 +87,9 @@
         }
 
         td {
-            font-size: 10px;
+            font-size: 12px;
+            overflow: hidden;
+            white-space: nowrap;
         }
     }
 }
@@ -122,3 +99,106 @@
         display: none;
     }
 }
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+::v-deep {
+    .order-watch {
+        .list-group-item {
+            font-size: 12px;
+            padding: 0.1rem 1rem;
+        }
+    }
+
+    .input-group {
+        .input-group-prepend {
+            .input-group-text {
+                border-top-right-radius: 0px !important;
+                border-bottom-right-radius: 0px !important;
+                min-width: 120px;
+                width: 120px;
+                text-align: end;
+            }
+        }
+    }
+
+    .green-range::-webkit-slider-thumb {
+        background: #198754;
+    }
+
+    .green-range::-moz-range-thumb {
+        background: #198754;
+    }
+
+    .green-range::-ms-thumb {
+        background: #198754;
+    }
+
+    .red-range::-webkit-slider-thumb {
+        background: #dc3545;
+    }
+
+    .red-range::-moz-range-thumb {
+        background: #dc3545;
+    }
+
+    .red-range::-ms-thumb {
+        background: #dc3545;
+    }
+
+    .order-percents {
+        .btn-group {
+            width: 100%;
+            max-width: 100%;
+
+            .form-check-inline {
+                width: 25%;
+                padding: 0px 3px;
+                margin: 0px 0px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        .input-group-text {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 20% !important;
+            display: inline-block !important;
+            text-align: left !important;
+        }
+    }
+
+    .form-check-inline {
+        overflow: hidden !important;
+        white-space: nowrap !important;
+    }
+
+    .btn-sm>span {
+        text-overflow: ellipsis;
+    }
+}
+
+.threedot {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 65% !important;
+}
+
+    .small-text,
+    .heading2 {
+
+        font-weight: 500;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+

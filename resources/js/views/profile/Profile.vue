@@ -602,30 +602,34 @@ export default {
 
 <style lang="scss" scoped>
 .text-left {
-  text-align: left !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 20%;
-  white-space: nowrap;
+    text-align: left !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 20%;
+    white-space: nowrap;
 }
-.collapsed > .when-opened,
-:not(.collapsed) > .when-closed {
-  display: none;
+
+.collapsed>.when-opened,
+:not(.collapsed)>.when-closed {
+    display: none;
 }
+
 .list-group-item {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 20%;
-  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 20%;
+    white-space: nowrap;
 }
+
 @media screen and(max-width:576px) {
-  .d-xs-block {
-    display: block !important;
-  }
+    .d-xs-block {
+        display: block !important;
+    }
 }
+
 @media screen and (min-width:768px) {
-  .d-xs-block{
-    display:none !important;
-  }
+    .d-xs-block {
+        display: none !important;
+    }
 }
 </style>
