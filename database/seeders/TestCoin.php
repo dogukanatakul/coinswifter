@@ -44,8 +44,6 @@ class TestCoin extends Seeder
                 'contract' => '0x6205BC98087fd43aEfA65336E1980868a3C7B87c',
                 'token_type' => 'erc20',
             ],
-
-
             [
                 'name' => 'Binance Coin',
                 'symbol' => 'BNB',

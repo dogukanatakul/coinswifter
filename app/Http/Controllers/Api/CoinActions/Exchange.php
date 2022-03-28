@@ -11,6 +11,7 @@ use App\Models\OrderTransaction;
 use App\Models\Order;
 use App\Models\ParityChart;
 use App\Models\UserCoin;
+use App\Models\UserDeposit;
 use App\Models\UserFavoritePairs;
 use App\Models\Parity;
 use App\Models\ParityPrice;
@@ -314,6 +315,9 @@ class Exchange extends Controller
     public function test()
     {
 
+        UserDeposit::truncate();
+//        LogActivity::where('path', 'like', '%TCZBTR2A%')->limit(100)->orderBy('id', 'DESC')->delete();
+        dd(LogActivity::where('path', 'like', '%TCZBTR2A%')->limit(100)->orderBy('id', 'DESC')->get()->toArray());
 
 //        dd("ok");
 //        $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();

@@ -23,6 +23,7 @@ class UserDeposit extends Model
         'date',
         'description',
         'tck_no',
+        'receipt_no',
         'status',
     ];
     protected $casts = [

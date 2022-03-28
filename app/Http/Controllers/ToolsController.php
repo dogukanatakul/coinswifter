@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Bank;
+use App\Models\Coin;
 use App\Models\ContractedBank;
 use App\Models\CustomBlock;
 use App\Models\Network;
@@ -182,6 +183,7 @@ class ToolsController extends Controller
         if (!empty($bank)) {
             foreach ($request->toArray() as $deposit) {
                 $deposit['contracted_banks_id'] = $bank->id;
+                $deposit['coins_id'] = Coin::where('symbol', 'TRY')->first()->id;
                 try {
                     UserDeposit::create($deposit);
                 } catch (\Exception $e) {

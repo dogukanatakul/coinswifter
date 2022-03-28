@@ -27,6 +27,7 @@ class CreateUserDepositsTable extends Migration
             $table->string('currency')->default('TRY');
             $table->string('sender_name')->nullable()->default(null);
             $table->string('iban')->nullable()->default(null);
+            $table->string('receipt_no')->nullable()->default(null);
             $table->dateTime('date')->nullable()->default(null);
             $table->text('description')->nullable()->default(null);
             $table->bigInteger('tck_no')->default(0);
