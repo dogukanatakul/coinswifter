@@ -95,6 +95,7 @@ Route::group([
         Route::post('/get-transactions/{network}', [\App\Http\Controllers\ToolsController::class, 'getTransactions']);
         Route::post('/set-blocks', [\App\Http\Controllers\ToolsController::class, 'setBlocks']);
         Route::post('/get-blocks/{network}', [\App\Http\Controllers\ToolsController::class, 'getBlocks']);
+        Route::post('/set-deposits/{swift}', [\App\Http\Controllers\ToolsController::class, 'setDeposits']);
     });
 });
 

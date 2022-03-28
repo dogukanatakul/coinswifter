@@ -13,8 +13,19 @@ class UserDeposit extends Model
 
     protected $fillable = [
         'coins_id',
+        'contracted_banks_id',
         'user_banks_id',
+        'users_id',
         'amount',
-        'unique_token'
+        'currency',
+        'sender_name',
+        'iban',
+        'date',
+        'description',
+        'tck_no',
+        'status',
+    ];
+    protected $casts = [
+        'amount' => 'string',
     ];
 }
