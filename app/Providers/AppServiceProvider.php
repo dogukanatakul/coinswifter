@@ -67,7 +67,7 @@ class AppServiceProvider extends ServiceProvider
         } else if ($jobName === 'App\Jobs\TestJob') {
             \App\Jobs\TestJob::dispatch()->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 10 : 0)));
         } else if ($jobName === 'App\Jobs\UserDeposit') {
-            \App\Jobs\UserDeposit::dispatch()->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 5 : 1)));
+            \App\Jobs\UserDeposit::dispatch()->onQueue('deposit')->delay(now()->tz('Europe/Istanbul')->addMinutes(($fail ? 5 : 1)));
         }
     }
 }
