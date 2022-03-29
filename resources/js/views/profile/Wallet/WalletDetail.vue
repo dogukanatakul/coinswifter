@@ -162,9 +162,9 @@
     </div>
   </b-card>
 
-  <b-card :header="$t('Çekim Talepleri')" header-tag="header" class="my-2">
+  <b-card :header="$t('Çekim Talepleri')" header-tag="header" class="my-2" >
     <div class="table-responsive overflowed-table">
-      <table class="table">
+      <table class="table" :key="syncNum">
         <thead>
           <tr>
             <th scope="col">{{ $t("Miktar") }}</th>
@@ -218,7 +218,7 @@ export default {
     return { v$: useVuelidate() };
   },
   components: { SafeWallet },
-  props: ["walletSelect"],
+  props: ["walletSelect","wallets"],
   data: () => ({
     dynamicInput: "number",
     walletCreateLoader: false,
@@ -229,6 +229,7 @@ export default {
       wallet: null,
     },
     setInterval: null,
+    syncNum: 0,
   }),
   validations() {
     return {
@@ -250,6 +251,9 @@ export default {
     "form.withdrawal"(val) {
       this.commission = (parseFloat(val) / 100) * parseFloat(3);
     },
+    wallets(value){
+      this.syncNum+=1;
+    }
   },
   methods: {
     async dynamicFocus(method) {

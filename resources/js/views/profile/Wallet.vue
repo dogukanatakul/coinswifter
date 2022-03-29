@@ -64,7 +64,7 @@
 
       <b-col cols="12" sm="12" lg="8" class="mb-5 pb-2 float-left" v-if="walletSelect" >
         <wallet-status v-if="walletSelect === 'account_status'" :totalMount="totalMount" ></wallet-status>
-        <wallet-detail v-else :key="walletSelect" v-model:walletSelect="walletSelect" @getWallets="getWallets" @withdrawalSend="withdrawalSend" ></wallet-detail>
+        <wallet-detail v-else :key="walletSelect" v-model:wallets="wallets" v-model:walletSelect="walletSelect" @getWallets="getWallets" @withdrawalSend="withdrawalSend" ></wallet-detail>
       </b-col>
     </b-row>
     <b-row> </b-row>
@@ -110,7 +110,11 @@ export default {
     });
     this.setInterval = setInterval(
       function () {
-        this.getWallets();
+        this.getWallets().then(() => {
+          this.walletSelect = this.wallets.find(
+            (o) => o.symbol === this.walletSelect.symbol
+          );
+        });
       }.bind(this),
       5000
     );
@@ -180,7 +184,11 @@ export default {
         .then((response) => {
           if (response.status === "success") {
             this.$notify({ text: response.message, type: "success" });
-            this.getWallets();
+            this.getWallets().then(() => {
+              this.walletSelect = this.wallets.find(
+                (o) => o.symbol === this.walletSelect.symbol
+              );
+            });
             var index = Object.keys(this.wallets).indexOf(
               this.walletSelect.symbol
             );
