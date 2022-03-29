@@ -143,7 +143,7 @@
         <wallet-detail
           v-else
           :key="walletSelect"
-          :walletSelect="walletSelect"
+          v-model:walletSelect="walletSelect"
           @getWallets="getWallets"
           @withdrawalSend="withdrawalSend"
         ></wallet-detail>
@@ -158,6 +158,16 @@ import { mapGetters } from "vuex";
 import { convertDate } from "../../helpers/helpers";
 import WalletStatus from "./Wallet/WalletStatus";
 import WalletDetail from "./Wallet/WalletDetail";
+const initialData = () => ({
+dynamicInput: 'number',
+    wallets: [],
+    totalMount: {},
+    walletSelect: false,
+    commission: 0,
+    loader: null,
+    convertDate: convertDate,
+    setInterval : null,
+});
 export default {
   name: "wallets",
   components: { WalletDetail, WalletStatus },
@@ -172,16 +182,9 @@ export default {
       this.walletSelect = Object.values(this.wallets)[0];
     });
   },
-  data: () => ({
-    dynamicInput: 'number',
-    wallets: [],
-    totalMount: {},
-    walletSelect: false,
-    commission: 0,
-    loader: null,
-    convertDate: convertDate,
-    setInterval : null,
-  }),
+  data: function () {
+    return initialData();
+  },
   computed: {
     ...mapGetters(["user"]),
   },
@@ -252,12 +255,16 @@ export default {
     async withdrawalSend(form) {
       let setForm = form;
       setForm["coin"] = this.walletSelect.symbol;
+      console.log(this.walletSelect.symbol);
       await restAPI
         .getData({ Action: "withdrawal-wallet" }, setForm)
         .then((response) => {
           if (response.status === "success") {
             this.$notify({ text: response.message, type: "success" });
             this.getWallets();
+            var index = Object.keys(this.wallets).indexOf(this.walletSelect.symbol);
+            console.log(index);
+            this.walletSelect = Object.values(this.wallets)[index];
             //location.reload();
           } else {
             this.$notify({ text: response.message, type: "error" });
@@ -265,6 +272,14 @@ export default {
         });
     },
   },
+  watch:{
+    async walletSelect(value){
+      if(value !== undefined && Object.values(value) > 0){
+        Object.assign(this.$data,initialData());
+      }
+      await this.getWallets();
+    }
+  }
 };
 </script>
 <style scoped type="scss">

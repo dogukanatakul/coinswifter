@@ -195,7 +195,7 @@
           >
             {{
               $t(
-                "Tüm token çekimleriniz 1 dakika içerisinde gerçekleşir. Siz dilerseniz 1 dakika içerisinde iptal işlemi gerçekleştirebilirsiniz."
+                "Tüm token çekimleriniz 1 dakika içerisinde gerçekleşir. Siz dilerseniz 1 dakika sonra iptal işlemi gerçekleştirebilirsiniz."
               )
             }}
           </p>
