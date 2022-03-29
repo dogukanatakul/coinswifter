@@ -63,12 +63,13 @@ class WalletController extends Controller
 
         DB::beginTransaction();
         try {
-            if (!empty($checkWallet = UserWallet::where('wallet', trim($request->wallet))->first())) {
+            if (!empty($checkWallet = UserWallet::with(['user_coin'])->whereHas('user_coin', function ($q) use ($coin) {
+                $q->where('coins_id', $coin['coins_id']);
+            })->where('wallet', trim($request->wallet))->first())) {
                 $checkWallet = $checkWallet->users_id;
             } else {
                 $checkWallet = null;
             }
-
             $insertUserWithdrawalWallet = UserWithdrawalWallet::create([
                 'users_id' => $this->user->id,
                 'to_user_id' => $checkWallet,
@@ -79,7 +80,6 @@ class WalletController extends Controller
                 'commission' => $transferCommission,
                 'to' => $request->wallet
             ]);
-
             if (empty($checkWallet)) {
                 // Fee Coin ID
                 $coinID = Coin::whereNull('contract')->where('networks_id', $coin['networks_id'])->first()->id;
