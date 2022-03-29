@@ -279,7 +279,10 @@ export default {
       }
       await this.getWallets();
     }
-  }
+  },
+  beforeUnmount: function () {
+    clearInterval(this.setInterval);
+  },
 };
 </script>
 <style scoped type="scss">
