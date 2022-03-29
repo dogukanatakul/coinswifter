@@ -67,7 +67,7 @@ class ChartData implements ShouldQueue
             }
             foreach ($filterParts as $part) {
                 $a = $this->intervalCalc($part);
-                $b = $this->transactionCalc($a['periods'], $a['subDate'], $parity->id);
+                $b = $this->transactionCalc($a['periods'], $a['subDate'], $parity->id, $part);
                 ParityChart::create([
                     'parities_id' => $parity->id,
                     'type' => $part,
@@ -79,25 +79,34 @@ class ChartData implements ShouldQueue
         }
     }
 
-    public function transactionCalc($periods, $subDate, $parity): array
+    public function transactionCalc($periods, $subDate, $parity, $part): array
     {
+        if ($part === '1month') {
+            $dateType = "Y-m-t";
+        } else if ($part === '1day') {
+            $dateType = "Y-m-d";
+        } else if ($part === '1week') {
+            $dateType = "Y-m-d";
+        } else {
+            $dateType = "'Y-m-d H:i:s'";
+        }
         $list = [];
         $lastDate = false;
         foreach ($periods as $key => $value) {
-            if ($subDate !== $value->format('Y-m-d H:i:s')) {
-                $lastDate = $value->format('Y-m-d H:i:s');
+            if ($subDate !== $value->format($dateType)) {
+                $lastDate = $value->format($dateType);
                 $swap = OrderTransaction::where('created_at', '>=', $subDate)
-                    ->where('created_at', '<=', $value->format('Y-m-d H:i:s'))
+                    ->where('created_at', '<=', $value->format($dateType))
                     ->where('parities_id', $parity)
                     ->get();
-                $subDate = $value->format('Y-m-d H:i:s');
+                $subDate = $value->format($dateType);
                 $list[] = [
                     'x' => $value->format('D M d Y H:i:s O'),
                     'y' => [
-                        $swap->first()->price ?? 0,
-                        $swap->max('price') ?? 0,
-                        $swap->min('price') ?? 0,
-                        $swap->last()->price ?? 0,
+                        !empty($swap->first()->price) ? floatval($swap->first()->price) : 0,
+                        $swap->max('price') ? floatval($swap->max('price')) : 0,
+                        $swap->min('price') ? floatval($swap->min('price')) : 0,
+                        !empty($swap->last()->price) ? floatval($swap->last()->price) : 0,
                     ]
                 ];
             }
@@ -109,10 +118,10 @@ class ChartData implements ShouldQueue
             $list[] = [
                 'x' => now()->tz('Europe/Istanbul')->format('D M d Y H:i:s') . " +0000",
                 'y' => [
-                    $swap->first()->price ?? 0,
-                    $swap->max('price') ?? 0,
-                    $swap->min('price') ?? 0,
-                    $swap->last()->price ?? 0,
+                    !empty($swap->first()->price) ? floatval($swap->first()->price) : 0,
+                    $swap->max('price') ? floatval($swap->max('price')) : 0,
+                    $swap->min('price') ? floatval($swap->min('price')) : 0,
+                    !empty($swap->last()->price) ? floatval($swap->last()->price) : 0,
                 ]
             ];
         }
