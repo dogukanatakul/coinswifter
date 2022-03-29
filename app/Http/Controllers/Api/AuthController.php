@@ -831,7 +831,7 @@ class AuthController extends Controller
     {
         $validator = validator()->make(request()->all(), [
             'iban' => 'required|filled|string|exists:App\Models\UserBank,iban',
-            'primary' => 'required|integer',
+            'primary' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json([

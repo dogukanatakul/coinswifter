@@ -141,7 +141,6 @@ class TestCoin extends Seeder
                 'RoR',
                 'TRX',
                 'JST',
-                'USDJ'
             ],
         ];
 
