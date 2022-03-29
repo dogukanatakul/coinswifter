@@ -314,15 +314,28 @@ class Exchange extends Controller
 
     public function test()
     {
+        dd("ok");
+        dd(ParityChart::where('type', '1month')->first()->data);
 
-        UserDeposit::truncate();
-//        LogActivity::where('path', 'like', '%TCZBTR2A%')->limit(100)->orderBy('id', 'DESC')->delete();
-        dd(LogActivity::where('path', 'like', '%TCZBTR2A%')->limit(100)->orderBy('id', 'DESC')->get()->toArray());
+
+//        $transactions = UserWithdrawalWallet::with(['user_withdrawal_wallet_child', 'coin.network'])->where('status', 0)->get();
+//        dd($transactions->toArray());
+//        $bot = new \App\Jobs\ChartData();
+//        dd($bot->handle());
+//        foreach ($bot->intervalCalc("1month")['periods'] as $item) {
+//            echo $item->format('Y-m-d H:i:s') . "<br>";
+//        }
+//        dd("ok");
+
+//        ParityChart::truncate();
+//        dd("ok");
+////        LogActivity::where('path', 'like', '%TCZBTR2A%')->limit(100)->orderBy('id', 'DESC')->delete();
+        dd(LogActivity::where('path', 'like', '%network/set-blocks%')->limit(100)->orderBy('id', 'DESC')->get()->toArray());
 
 //        dd("ok");
 //        $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();
 //        $bot = new \App\Jobs\WalletCreate($user, 0);
-//        dd($bot->handle());
+
 
 //        dd(NodeTransaction::where('txh', '796e8bfabd256ff31ffa4c0d49b960066e383f9d672a9599e5c7c2450ea3d118')->orderBy('block_number', 'ASC')->get()->toArray());
 
@@ -346,10 +359,6 @@ class Exchange extends Controller
 //            ->inRandomOrder()
 //            ->first();
 //        dd($randWalletControl->toArray());
-
-//        $bot = new \App\Jobs\TransferTRON();
-//        $bot = new \App\Jobs\NodeTransaction();
-//        dd($bot->handle());
 
 
 //        dd(User::with(['wallet'])->whereHas('wallet', function ($q) {
