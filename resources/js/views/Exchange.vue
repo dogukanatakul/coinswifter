@@ -125,46 +125,6 @@
                     >{{ array.value }}
                   </b-link>
                 </div>
-                <!-- <b-col cols="12" md="2" class="float-left"
-                                  ><b-link
-                                    href="#"
-                                    @click="chartTime = '1h'"
-                                    class="chartLink mx-2"
-                                    >{{ $t("1 hour") }}</b-link
-                                  ></b-col
-                                >
-                                <b-col cols="12" md="2" class="float-left"
-                                  ><b-link
-                                    href="#"
-                                    @click="chartTime = '4h'"
-                                    class="chartLink mx-2"
-                                    >{{ $t("4 hour") }}</b-link
-                                  ></b-col
-                                >
-                                <b-col cols="12" md="2" class="float-left"
-                                  ><b-link
-                                    href="#"
-                                    @click="chartTime = '1d'"
-                                    class="chartLink mx-2"
-                                    >{{ $t("1 day") }}</b-link
-                                  ></b-col
-                                >
-                                <b-col cols="12" md="2" class="float-left"
-                                  ><b-link
-                                    href="#"
-                                    @click="chartTime = '1w'"
-                                    class="chartLink mx-2"
-                                    >{{ $t("1 week") }}</b-link
-                                  ></b-col
-                                >
-                                <b-col cols="12" md="2" class="float-left"
-                                  ><b-link
-                                    href="#"
-                                    @click="chartTime = '1m'"
-                                    class="chartLink mx-2"
-                                    >{{ $t("1 month") }}</b-link
-                                  ></b-col
-                                > -->
               </div>
               <div style="clear: both"></div>
               <div>
@@ -172,7 +132,7 @@
                   v-if="chart"
                   :chart.sync="chart"
                   v-model:selectedCoin="selectedCoin"
-                  :key="selectedCoin"
+                  :key="chart"
                 ></new-chart>
                 <trading-chart
                   class="trading-chart"
