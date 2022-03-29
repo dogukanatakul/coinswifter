@@ -12,16 +12,8 @@
             </b-col>
             <b-col cols="12">
                 <b-form-group :label="$t('Şifreniz')">
-                    <b-form-input
-                        v-model="form['password']"
-                        type="password"
-                        :placeholder="$t('Şifreniz')"
-                        inputmode="text"
-                    ></b-form-input>
-                    <b-form-text
-                        v-if="v$.form.password.$error"
-                        class="text-danger"
-                    >
+                    <b-form-input v-model="form['password']" type="password" :placeholder="$t('Şifreniz')" inputmode="text" ></b-form-input>
+                    <b-form-text v-if="v$.form.password.$error" class="text-danger" >
                         <p class="text-danger">
                             {{ $t("Güvenliğiniz için az 8 karakterli, büyük harf, küçük harf ve sembolik ifade (?,*,+) bulunduran bir şifre belirleyiniz.") }}
                         </p>
@@ -30,16 +22,8 @@
             </b-col>
             <b-col cols="12">
                 <b-form-group :label="$t('Şifreniz Tekrar')">
-                    <b-form-input
-                        v-model="form.password_confirm"
-                        :placeholder="$t('Şifreniz Tekrar')"
-                        type="password"
-                        inputmode="text"
-                    ></b-form-input>
-                    <b-form-text
-                        v-if="v$.form.password_confirm.$error"
-                        class="text-danger"
-                    >
+                    <b-form-input v-model="form.password_confirm" :placeholder="$t('Şifreniz Tekrar')" type="password" inputmode="text" ></b-form-input>
+                    <b-form-text v-if="v$.form.password_confirm.$error" class="text-danger" >
                         <p class="text-danger">
                             {{ $t("Şifreleriniz eşleşmiyor!") }}
                         </p>
@@ -48,11 +32,7 @@
             </b-col>
             <b-col cols="12">
                 <div class="d-grid gap-2">
-                    <b-button
-                        block
-                        type="submit"
-                        variant="primary"
-                    >{{ $t("Şifreni Değiştir") }}
+                    <b-button block type="submit" variant="primary" >{{ $t("Şifreni Değiştir") }}
                     </b-button>
                 </div>
             </b-col>

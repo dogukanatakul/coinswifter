@@ -24,9 +24,7 @@
           </b-form-group>
           <b-form-group>
               <div class="d-grid gap-2">
-            <b-button type="submit" block variant="primary">{{
-              $t("TALEP OLUŞTUR")
-            }}</b-button>
+            <b-button type="submit" block variant="primary">{{ $t("TALEP OLUŞTUR") }}</b-button>
           </div>
           </b-form-group>
         </b-col>

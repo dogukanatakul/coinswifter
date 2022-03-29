@@ -8,95 +8,31 @@
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Fiyat')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['limit']['buy']['price']"
-                        :placeholder="marketStatus.sell_price"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['limit']['buy']['price']" :placeholder="marketStatus.sell_price" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Miktar')"
-                      :append="selectedCoin.coin.symbol"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['limit']['buy']['amount']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['limit']['buy']['amount']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Toplam')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['limit']['buy']['total']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['limit']['buy']['total']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
                     <b-input-group class="order-percents my-2" size="sm">
-                      <b-form-radio-group
-                        :disabled="disabledTrade"
-                        v-model.number="form['limit']['buy']['percent']"
-                        :options="percentOptions"
-                        button-variant="outline-success"
-                        size="sm"
-                        name="radios-btn-outline"
-                        buttons
-                      ></b-form-radio-group>
+                      <b-form-radio-group :disabled="disabledTrade" v-model.number="form['limit']['buy']['percent']" :options="percentOptions" button-variant="outline-success" size="sm" name="radios-btn-outline" buttons ></b-form-radio-group>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12">
-                    <order-preview
-                      :key="form['limit']['buy']"
-                      v-model:form="form['limit']['buy']"
-                      v-model:selectedCoin="selectedCoin"
-                      v-model:commission="commission"
-                      v-model:wallet="wallet"
-                      type="buy"
-                    ></order-preview>
+                    <order-preview :key="form['limit']['buy']" v-model:form="form['limit']['buy']" v-model:selectedCoin="selectedCoin" v-model:commission="commission" v-model:wallet="wallet" type="buy" ></order-preview>
                   </b-col>
                   <b-col cols="12" class="py-2">
                     <div class="d-grid gap-2">
-                      <b-button
-                        :disabled="disabledTrade"
-                        @click="sendOrder('limit', 'buy', form['limit']['buy'])"
-                        block
-                        variant="success"
-                        >{{ selectedCoin.coin.symbol }} {{ $t("AL") }}</b-button
-                      >
+                      <b-button :disabled="disabledTrade" @click="sendOrder('limit', 'buy', form['limit']['buy'])" block variant="success" >{{ selectedCoin.coin.symbol }} {{ $t("AL") }}</b-button >
                     </div>
                   </b-col>
                 </b-row>
@@ -108,98 +44,31 @@
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Fiyat')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['limit']['sell']['price']"
-                        :placeholder="marketStatus.buy_price"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['limit']['sell']['price']" :placeholder="marketStatus.buy_price" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Miktar')"
-                      :append="selectedCoin.coin.symbol"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['limit']['sell']['amount']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['limit']['sell']['amount']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Toplam')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['limit']['sell']['total']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['limit']['sell']['total']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
                     <b-input-group class="order-percents my-2" size="sm">
-                      <b-form-radio-group
-                        :disabled="disabledTrade"
-                        v-model.number="form['limit']['sell']['percent']"
-                        :options="percentOptions"
-                        button-variant="outline-danger"
-                        size="sm"
-                        name="radios-btn-outline"
-                        buttons
-                      ></b-form-radio-group>
+                      <b-form-radio-group :disabled="disabledTrade" v-model.number="form['limit']['sell']['percent']" :options="percentOptions" button-variant="outline-danger" size="sm" name="radios-btn-outline" buttons ></b-form-radio-group>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12">
-                    <order-preview
-                      :key="form['limit']['sell']"
-                      v-model:form="form['limit']['sell']"
-                      v-model:selectedCoin="selectedCoin"
-                      v-model:commission="commission"
-                      v-model:wallet="wallet"
-                      type="sell"
-                    ></order-preview>
+                    <order-preview :key="form['limit']['sell']" v-model:form="form['limit']['sell']" v-model:selectedCoin="selectedCoin" v-model:commission="commission" v-model:wallet="wallet" type="sell" ></order-preview>
                   </b-col>
                   <b-col cols="12" class="py-2">
                     <div class="d-grid gap-2">
-                      <b-button
-                        :disabled="disabledTrade"
-                        @click="
-                          sendOrder('limit', 'sell', form['limit']['sell'])
-                        "
-                        block
-                        variant="danger"
-                        >{{ selectedCoin.coin.symbol }}
-                        {{ $t("SAT") }}</b-button
-                      >
+                      <b-button :disabled="disabledTrade" @click=" sendOrder('limit', 'sell', form['limit']['sell']) " block variant="danger" >{{ selectedCoin.coin.symbol }} {{ $t("SAT") }}</b-button >
                     </div>
                   </b-col>
                 </b-row>
@@ -208,175 +77,64 @@
           </b-col>
         </b-row>
       </TabPanel>
-      <TabPanel
-        :header="selectedCoin.durum !== 'ico' ? $t('Piyasa') : $t('Satın Al')"
-        :disabled="marketStatus.price === 0 && selectedCoin.durum !== 'ico'"
-      >
+      <TabPanel :header="selectedCoin.durum !== 'ico' ? $t('Piyasa') : $t('Satın Al')" :disabled="marketStatus.price === 0 && selectedCoin.durum !== 'ico'" >
         <b-row align-content="center" align-v="center" align-h="center">
           <b-col cols="12" md="6" class="p-0">
             <b-card class="p-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Miktar')"
-                      :append="selectedCoin.coin.symbol"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['market']['buy']['amount']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['market']['buy']['amount']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Toplam')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['market']['buy']['total']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['market']['buy']['total']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
                     <b-input-group class="order-percents my-2" size="sm">
-                      <b-form-radio-group
-                        :disabled="disabledTrade"
-                        v-model.number="form['market']['buy']['percent']"
-                        :options="percentOptions"
-                        button-variant="outline-success"
-                        size="sm"
-                        name="radios-btn-outline"
-                        buttons
-                      ></b-form-radio-group>
+                      <b-form-radio-group :disabled="disabledTrade" v-model.number="form['market']['buy']['percent']" :options="percentOptions" button-variant="outline-success" size="sm" name="radios-btn-outline" buttons ></b-form-radio-group>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12">
-                    <order-preview
-                      :key="form['market']['buy']"
-                      v-model:form="form['market']['buy']"
-                      v-model:selectedCoin="selectedCoin"
-                      v-model:commission="commission"
-                      v-model:wallet="wallet"
-                      type="buy"
-                    ></order-preview>
+                    <order-preview :key="form['market']['buy']" v-model:form="form['market']['buy']" v-model:selectedCoin="selectedCoin" v-model:commission="commission" v-model:wallet="wallet" type="buy" ></order-preview>
                   </b-col>
                   <b-col cols="12" class="py-2">
                     <div class="d-grid gap-2">
-                      <b-button
-                        :disabled="disabledTrade"
-                        @click="
-                          sendOrder('market', 'buy', form['market']['buy'])
-                        "
-                        block
-                        variant="success"
-                        >{{ selectedCoin.coin.symbol }} {{ $t("AL") }}</b-button
-                      >
+                      <b-button :disabled="disabledTrade" @click=" sendOrder('market', 'buy', form['market']['buy']) " block variant="success" >{{ selectedCoin.coin.symbol }} {{ $t("AL") }}</b-button >
                     </div>
                   </b-col>
                 </b-row>
               </b-card-body>
             </b-card>
           </b-col>
-          <b-col
-            cols="12"
-            md="6"
-            class="p-0"
-            v-if="selectedCoin.durum !== 'ico'"
-          >
+          <b-col cols="12" md="6" class="p-0" v-if="selectedCoin.durum !== 'ico'" >
             <b-card class="p-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Miktar')"
-                      :append="selectedCoin.coin.symbol"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['market']['sell']['amount']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['market']['sell']['amount']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Toplam')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['market']['sell']['total']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['market']['sell']['total']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
                     <b-input-group class="order-percents my-2" size="sm">
-                      <b-form-radio-group
-                        :disabled="disabledTrade"
-                        v-model.number="form['market']['sell']['percent']"
-                        :options="percentOptions"
-                        button-variant="outline-danger"
-                        size="sm"
-                        name="radios-btn-outline"
-                        buttons
-                      ></b-form-radio-group>
+                      <b-form-radio-group :disabled="disabledTrade" v-model.number="form['market']['sell']['percent']" :options="percentOptions" button-variant="outline-danger" size="sm" name="radios-btn-outline" buttons ></b-form-radio-group>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12">
-                    <order-preview
-                      :key="form['market']['sell']"
-                      v-model:form="form['market']['sell']"
-                      v-model:selectedCoin="selectedCoin"
-                      v-model:commission="commission"
-                      v-model:wallet="wallet"
-                      type="sell"
-                    ></order-preview>
+                    <order-preview :key="form['market']['sell']" v-model:form="form['market']['sell']" v-model:selectedCoin="selectedCoin" v-model:commission="commission" v-model:wallet="wallet" type="sell" ></order-preview>
                   </b-col>
                   <b-col cols="12" class="py-2">
                     <div class="d-grid gap-2">
-                      <b-button
-                        :disabled="disabledTrade"
-                        @click="
-                          sendOrder('market', 'sell', form['market']['sell'])
-                        "
-                        block
-                        variant="danger"
-                        >{{ selectedCoin.coin.symbol }}
-                        {{ $t("SAT") }}</b-button
-                      >
+                      <b-button :disabled="disabledTrade" @click=" sendOrder('market', 'sell', form['market']['sell']) " block variant="danger" >{{ selectedCoin.coin.symbol }} {{ $t("SAT") }}</b-button >
                     </div>
                   </b-col>
                 </b-row>
@@ -385,70 +143,31 @@
           </b-col>
         </b-row>
       </TabPanel>
-      <TabPanel
-        :header="$t('Stop Piyasa')"
-        v-if="selectedCoin.durum !== 'ico'"
-        :disabled="true"
-      >
+      <TabPanel :header="$t('Stop Piyasa')" v-if="selectedCoin.durum !== 'ico'" :disabled="true" >
         <b-row>
           <b-col cols="12" md="6" class="p-0">
             <b-card class="p-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
+                    <b-input-group size="sm" :append="selectedCoin.source.symbol.toString()" >
                       <b-input-group-prepend is-text>
                         {{ $t("Tetikleme Fiyatı") }}
                       </b-input-group-prepend>
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="
-                          form['stopMarket']['buy']['trigger_price']
-                        "
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                      <b-form-input :disabled="disabledTrade" v-model.number=" form['stopMarket']['buy']['trigger_price'] " step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
+                    <b-input-group size="sm" :append="selectedCoin.source.symbol.toString()" >
                       <b-input-group-prepend is-text>
                         Toplam
                       </b-input-group-prepend>
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopMarket']['buy']['total']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopMarket']['buy']['total']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
                     <b-input-group size="sm">
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopMarket']['buy']['percent']"
-                        type="range"
-                        min="0"
-                        max="100"
-                        step="25"
-                      ></b-form-input>
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopMarket']['buy']['percent']" type="range" min="0" max="100" step="25" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="text-center">
@@ -456,19 +175,7 @@
                   </b-col>
                   <b-col cols="12" class="py-2">
                     <div class="d-grid gap-2">
-                      <b-button
-                        :disabled="disabledTrade"
-                        @click="
-                          sendOrder(
-                            'stopMarket',
-                            'buy',
-                            form['stopMarket']['buy']
-                          )
-                        "
-                        block
-                        variant="success"
-                        >{{ selectedCoin.coin.symbol }} {{ $t("AL") }}</b-button
-                      >
+                      <b-button :disabled="disabledTrade" @click=" sendOrder( 'stopMarket', 'buy', form['stopMarket']['buy'] ) " block variant="success" >{{ selectedCoin.coin.symbol }} {{ $t("AL") }}</b-button >
                     </div>
                   </b-col>
                 </b-row>
@@ -480,55 +187,18 @@
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Tetikleme Fiyatı')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="
-                          form['stopMarket']['sell']['trigger_price']
-                        "
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Tetikleme Fiyatı')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number=" form['stopMarket']['sell']['trigger_price'] " step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Toplam')"
-                      :append="selectedCoin.coin.symbol"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopMarket']['sell']['total']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.coin.symbol" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopMarket']['sell']['total']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
                     <b-input-group size="sm">
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopMarket']['sell']['percent']"
-                        type="range"
-                        min="0"
-                        max="100"
-                        step="25"
-                      ></b-form-input>
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopMarket']['sell']['percent']" type="range" min="0" max="100" step="25" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="text-center">
@@ -536,20 +206,7 @@
                   </b-col>
                   <b-col cols="12" class="py-2">
                     <div class="d-grid gap-2">
-                      <b-button
-                        :disabled="disabledTrade"
-                        @click="
-                          sendOrder(
-                            'stopMarket',
-                            'sell',
-                            form['stopMarket']['sell']
-                          )
-                        "
-                        block
-                        variant="danger"
-                        >{{ selectedCoin.coin.symbol }}
-                        {{ $t("SAT") }}</b-button
-                      >
+                      <b-button :disabled="disabledTrade" @click=" sendOrder( 'stopMarket', 'sell', form['stopMarket']['sell'] ) " block variant="danger" >{{ selectedCoin.coin.symbol }} {{ $t("SAT") }}</b-button >
                     </div>
                   </b-col>
                 </b-row>
@@ -558,105 +215,35 @@
           </b-col>
         </b-row>
       </TabPanel>
-      <TabPanel
-        header="Stop Limit"
-        v-if="selectedCoin.durum !== 'ico'"
-        :disabled="true"
-      >
+      <TabPanel header="Stop Limit" v-if="selectedCoin.durum !== 'ico'" :disabled="true" >
         <b-row>
           <b-col cols="12" md="6" class="p-0">
             <b-card class="p-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Tetikleme Fiyatı')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="
-                          form['stopLimit']['buy']['trigger_price']
-                        "
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Tetikleme Fiyatı')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number=" form['stopLimit']['buy']['trigger_price'] " step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Fiyat')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopLimit']['buy']['price']"
-                        :placeholder="marketStatus.price"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopLimit']['buy']['price']" :placeholder="marketStatus.price" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Miktar')"
-                      :append="selectedCoin.coin.symbol"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopLimit']['buy']['amount']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopLimit']['buy']['amount']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Toplam')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopLimit']['buy']['total']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopLimit']['buy']['total']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
                     <b-input-group size="sm">
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopLimit']['buy']['percent']"
-                        type="range"
-                        min="0"
-                        max="100"
-                        step="25"
-                      ></b-form-input>
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopLimit']['buy']['percent']" type="range" min="0" max="100" step="25" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="text-center">
@@ -664,19 +251,7 @@
                   </b-col>
                   <b-col cols="12" class="py-2">
                     <div class="d-grid gap-2">
-                      <b-button
-                        :disabled="disabledTrade"
-                        @click="
-                          sendOrder(
-                            'stopLimit',
-                            'buy',
-                            form['stopLimit']['buy']
-                          )
-                        "
-                        block
-                        variant="success"
-                        >{{ selectedCoin.coin.symbol }} {{ $t("AL") }}</b-button
-                      >
+                      <b-button :disabled="disabledTrade" @click=" sendOrder( 'stopLimit', 'buy', form['stopLimit']['buy'] ) " block variant="success" >{{ selectedCoin.coin.symbol }} {{ $t("AL") }}</b-button >
                     </div>
                   </b-col>
                 </b-row>
@@ -688,94 +263,28 @@
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Tetikleme Fiyatı')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="
-                          form['stopLimit']['sell']['trigger_price']
-                        "
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Tetikleme Fiyatı')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number=" form['stopLimit']['sell']['trigger_price'] " step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Fiyat')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopLimit']['sell']['price']"
-                        :placeholder="marketStatus.price"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Fiyat')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopLimit']['sell']['price']" :placeholder="marketStatus.price" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Miktar')"
-                      :append="selectedCoin.coin.symbol"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopLimit']['sell']['amount']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Miktar')" :append="selectedCoin.coin.symbol" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopLimit']['sell']['amount']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
-                    <b-input-group
-                      size="sm"
-                      :prepend="$t('Toplam')"
-                      :append="selectedCoin.source.symbol.toString()"
-                    >
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopLimit']['sell']['total']"
-                        step="0.00000001"
-                        min="0.00000001"
-                        @focus="dynamicFocus('in')"
-                        @focusout="dynamicFocus('out')"
-                        :type="dynamicInput"
-                        style="appearance: textfield"
-                        inputmode="numeric"
-                      ></b-form-input>
+                    <b-input-group size="sm" :prepend="$t('Toplam')" :append="selectedCoin.source.symbol.toString()" >
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopLimit']['sell']['total']" step="0.00000001" min="0.00000001" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" style="appearance: textfield" inputmode="numeric" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="mt-2">
                     <b-input-group size="sm">
-                      <b-form-input
-                        :disabled="disabledTrade"
-                        v-model.number="form['stopLimit']['sell']['percent']"
-                        type="range"
-                        min="0"
-                        max="100"
-                        step="25"
-                      ></b-form-input>
+                      <b-form-input :disabled="disabledTrade" v-model.number="form['stopLimit']['sell']['percent']" type="range" min="0" max="100" step="25" ></b-form-input>
                     </b-input-group>
                   </b-col>
                   <b-col cols="12" class="text-center">
@@ -783,20 +292,7 @@
                   </b-col>
                   <b-col cols="12" class="py-2">
                     <div class="d-grid gap-2">
-                      <b-button
-                        :disabled="disabledTrade"
-                        @click="
-                          sendOrder(
-                            'stopLimit',
-                            'sell',
-                            form['stopLimit']['sell']
-                          )
-                        "
-                        block
-                        variant="danger"
-                        >{{ selectedCoin.coin.symbol }}
-                        {{ $t("SAT") }}</b-button
-                      >
+                      <b-button :disabled="disabledTrade" @click=" sendOrder( 'stopLimit', 'sell', form['stopLimit']['sell'] ) " block variant="danger" >{{ selectedCoin.coin.symbol }} {{ $t("SAT") }}</b-button >
                     </div>
                   </b-col>
                 </b-row>

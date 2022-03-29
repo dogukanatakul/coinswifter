@@ -1,10 +1,5 @@
 <template>
-  <b-card
-    :header="$t('Emirlerim')"
-    header-tag="header"
-    class="my-2 p-0"
-    no-body
-  >
+  <b-card :header="$t('Emirlerim')" header-tag="header" class="my-2 p-0" no-body >
     <div class="table-responsive">
       <table class="table table-sm order-table">
         <thead>
@@ -22,19 +17,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="(order, order_key) in myOrders"
-            :key="order_key"
-            :style="bgColorOrder(order.percent, order.process)"
-          >
+          <tr v-for="(order, order_key) in myOrders" :key="order_key" :style="bgColorOrder(order.percent, order.process)" >
             <td>
               {{ selectedCoin.coin.symbol + "/" + selectedCoin.source.symbol }}
             </td>
             <td>{{ order.amount_pure }} {{ selectedCoin.coin.symbol }}</td>
             <td>{{ order.amount }} {{ selectedCoin.coin.symbol }}</td>
             <td>
-              {{ order.price == "0" ? "-" : order.price }}
-              {{ order.price == "0" ? "" : selectedCoin.source.symbol }}
+              {{ order.price == "0" ? "-" : order.price }} {{ order.price == "0" ? "" : selectedCoin.source.symbol }}
             </td>
             <td class="text-center">%{{ order.percent }}</td>
             <!--                <td>{{ (order.trigger == '0' ? '-' : order.trigger) }}</td>-->
@@ -42,13 +32,7 @@
             <td>{{ order.operation }}</td>
             <td>{{ order.created_at }}</td>
             <td>
-              <b-button
-                v-if="!order.is_deleted"
-                squared
-                variant="outline-danger"
-                @click="deleteOrder(order.uuid)"
-                size="sm"
-              >
+              <b-button v-if="!order.is_deleted" squared variant="outline-danger" @click="deleteOrder(order.uuid)" size="sm" >
                 <b-icon icon="x-circle" font-scale="0.5"></b-icon>
               </b-button>
             </td>

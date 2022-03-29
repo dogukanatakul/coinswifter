@@ -6,7 +6,8 @@
                 <h1 class="text-center">Coin Start UP Projesi</h1>
                 <h4>Start Up nedir?</h4>
                 <p>Girişim (veya girişim şirketi) bir pazar ihtiyacını giderme amacı taşıyan yenilikçi bir ürün, süreç veya servis sunan, genel olarak yeni kurulmuş ve hızlı büyüme gösteren bir müessesedir.</p>
-                <p>Bir girişim genellikle hızlı bir şekilde ölçeklenebilir bir iş modeli ortaya çıkarmak için kurulan küçük bir işletme, ortaklık veya organizasyondur. Girişimler çoğu zaman internet, e-ticaret, bilgisayar, telekomünikasyon veya robotik gibi alanlarda yeni teknolojiler ortaya koyarlar. Tüm girişimler teknoloji alanında faaliyet göstermeseler de, "girişim" terimi 1990'lı yılların sonunda çok sayıda internet tabanlı şirketin kurulduğu .Com Balonu zamanında uluslararası yayılıma kavuşmuştur.</p>
+                <p>Bir girişim genellikle hızlı bir şekilde ölçeklenebilir bir iş modeli ortaya çıkarmak için kurulan küçük bir işletme, ortaklık veya organizasyondur. Girişimler çoğu zaman internet, e-ticaret, bilgisayar, telekomünikasyon veya robotik gibi alanlarda yeni teknolojiler ortaya koyarlar. Tüm girişimler teknoloji alanında faaliyet göstermeseler de, "girişim" terimi 1990'lı yılların sonunda çok sayıda internet tabanlı şirketin kurulduğu .Com Balonu zamanında uluslararası yayılıma
+                kavuşmuştur.</p>
                 <h3>Coin Start UP nedir?</h3>
                 <ul>
                     <li>

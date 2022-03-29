@@ -8,18 +8,8 @@
                 <hr/>
             </div>
             <b-form @submit="findUser">
-                <b-form-group
-                    id="input-group-1"
-                    :label="$t('E-Posta')"
-                    label-for="input-1"
-                >
-                    <b-form-input
-                        id="input-1"
-                        v-model="form['email']"
-                        type="email"
-                        placeholder="xxx@xxx.xxx"
-                        inputmode="email"
-                    ></b-form-input>
+                <b-form-group id="input-group-1" :label="$t('E-Posta')" label-for="input-1" >
+                    <b-form-input id="input-1" v-model="form['email']" type="email" placeholder="xxx@xxx.xxx" inputmode="email" ></b-form-input>
                     <b-form-text v-if="v$.form.email.$error">
                         <p class="text-danger">
                             {{ $t("Lütfen geçerli mail adresi giriniz!") }}
@@ -29,28 +19,12 @@
                 <b-row>
                     <b-col cols="12" md="6" class="float-left">
                         <b-form-group :label="$t('Telefon Kodunuz')">
-                            <v-select
-                                v-model.number="form['country_code']"
-                                label="text"
-                                :options="phoneCodes"
-                                :reduce="(data) => data.value"
-                            ></v-select>
+                            <v-select v-model.number="form['country_code']" label="text" :options="phoneCodes" :reduce="(data) => data.value" ></v-select>
                         </b-form-group>
                     </b-col>
                     <b-col cols="12" md="6" class="float-left">
-                        <b-form-group
-                            id="input-group-1"
-                            label="Telefon Numaranız"
-                            label-for="input-1"
-                        >
-                            <b-form-input
-                                id="input-1"
-                                v-model="form['telephone']"
-                                type="text"
-                                placeholder="53XXXXXXX"
-                                class="mt-1"
-                                inputmode="tel"
-                            ></b-form-input>
+                        <b-form-group id="input-group-1" label="Telefon Numaranız" label-for="input-1" >
+                            <b-form-input id="input-1" v-model="form['telephone']" type="text" placeholder="53XXXXXXX" class="mt-1" inputmode="tel" ></b-form-input>
                             <b-form-text v-if="v$.form.telephone.$error">
                                 <p class="text-danger">
                                     {{ $t("Lütfen geçerli telefon numarası giriniz!") }}
@@ -63,27 +37,13 @@
 
                     <b-col cols="12">
                         <b-form-group :label="$t('Doğum Tarihiniz')">
-                            <v-date-picker
-                                v-model="form.birthday"
-                                :masks="dateInputMask"
-                                :model-config="dateModelMask"
-                                is-required
-                            >
+                            <v-date-picker v-model="form.birthday" :masks="dateInputMask" :model-config="dateModelMask" is-required >
                                 <template v-slot="{ inputValue, inputEvents }">
-                                    <input
-                                        class="form-control w-100"
-                                        :value="inputValue"
-                                        :placeholder="$t('Gün-Ay-Yıl')"
-                                        v-on="inputEvents"
-                                        v-maska="'##-##-####'"
-                                    />
+                                    <input class="form-control w-100" :value="inputValue" :placeholder="$t('Gün-Ay-Yıl')" v-on="inputEvents" v-maska="'##-##-####'" />
                                 </template>
                             </v-date-picker>
 
-                            <b-form-text
-                                v-if="v$.form.birthday.$error"
-                                class="text-danger"
-                            >
+                            <b-form-text v-if="v$.form.birthday.$error" class="text-danger" >
                                 <p class="text-danger">
                                     {{ $t("Lütfen doğum tarihinizi giriniz.") }}
                                 </p>
@@ -91,37 +51,12 @@
                         </b-form-group>
                     </b-col>
                 </b-row>
-                <b-form-group
-                    v-if="code"
-                    id="input-group-1"
-                    :label="$t('Doğrulama Kodunuz')"
-                    label-for="input-1"
-                >
-                    <b-form-input
-                        id="input-1"
-                        v-model="form['code']"
-                        type="number"
-                        placeholder="XXXXXX"
-                        inputmode="number"
-                    ></b-form-input>
+                <b-form-group v-if="code" id="input-group-1" :label="$t('Doğrulama Kodunuz')" label-for="input-1" >
+                    <b-form-input id="input-1" v-model="form['code']" type="number" placeholder="XXXXXX" inputmode="number" ></b-form-input>
                 </b-form-group>
-                <b-form-group
-                    v-if="code"
-                    id="input-group-2"
-                    :label="$t('Yeni Şifreniz')"
-                    label-for="input-2"
-                >
-                    <b-form-input
-                        id="input-2"
-                        v-model="form['password']"
-                        type="password"
-                        :placeholder="$t('Şifreniz')"
-                        inputmode="text"
-                    ></b-form-input>
-                    <b-form-text
-                        v-if="v$.form.password.$error"
-                        class="text-danger"
-                    >
+                <b-form-group v-if="code" id="input-group-2" :label="$t('Yeni Şifreniz')" label-for="input-2" >
+                    <b-form-input id="input-2" v-model="form['password']" type="password" :placeholder="$t('Şifreniz')" inputmode="text" ></b-form-input>
+                    <b-form-text v-if="v$.form.password.$error" class="text-danger" >
                         <p class="text-danger">
                             {{ $t("Güvenliğiniz için az 8 karakterli, büyük harf, küçük harf ve sembolik ifade (?,*,+) bulunduran bir şifre belirleyiniz.") }}
                         </p>

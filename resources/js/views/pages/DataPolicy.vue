@@ -7,810 +7,187 @@
           <h5>RAYSOFT YAZILIM VE TİCARET ANONİM ŞİRKETİ</h5>
           <h5 class="px-5">MÜŞTERİLERİNE YÖNELİK AYDINLATMA METNİ</h5>
           <p>
-            Raysoft Yazılım Anonim Şirketi (“Şirketimiz” veya “Raysoft Yazılım”)
-            olarak siz müşterilerimize ait kişisel verilerin, 6698 sayılı
-            Kişisel Verilerin Korunması Kanunu (“KVKK”) ve ikincil düzenlemeleri
-            ile Kişisel Verileri Koruma Kurulu Kararlarına (“KVK mevzuatı”)
-            uygun olarak işlenmesi ve korunması için azami hassasiyeti
-            göstermekteyiz.
+            Raysoft Yazılım Anonim Şirketi (“Şirketimiz” veya “Raysoft Yazılım”) olarak siz müşterilerimize ait kişisel verilerin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) ve ikincil düzenlemeleri ile Kişisel Verileri Koruma Kurulu Kararlarına (“KVK mevzuatı”) uygun olarak işlenmesi ve korunması için azami hassasiyeti göstermekteyiz.
           </p>
           <p>
-            İşbu Müşterilere Yönelik Aydınlatma Metni (“Aydınlatma Metni”)
-            Şirketimizin müşterilerine yönelik olarak gerçekleştirdiği kişisel
-            veri işleme faaliyetleri kapsamında, veri sorumlusu sıfatıyla KVK
-            mevzuatından kaynaklanan aydınlatma yükümlülüğünün yerine
-            getirilmesi amacıyla hazırlanmıştır.
+            İşbu Müşterilere Yönelik Aydınlatma Metni (“Aydınlatma Metni”) Şirketimizin müşterilerine yönelik olarak gerçekleştirdiği kişisel veri işleme faaliyetleri kapsamında, veri sorumlusu sıfatıyla KVK mevzuatından kaynaklanan aydınlatma yükümlülüğünün yerine getirilmesi amacıyla hazırlanmıştır.
           </p>
           <h5>
-            1. İşlenen Kişisel Verileriniz, Toplanma Yöntemleri, İşlenme
-            Amaçları ve Hukuka Uygunluk Sebepleri
+            1. İşlenen Kişisel Verileriniz, Toplanma Yöntemleri, İşlenme Amaçları ve Hukuka Uygunluk Sebepleri
           </h5>
           <p>
-            Aşağıdaki belirtilen kişisel verileriniz (“kişisel verileriniz”)
-            Şirketimiz tarafından internet sitesi, mobil veya dijital
-            uygulamalarla, telefon/mobil/internet kanalıyla yapılan müşteri
-            görüşmeleriyle, Şirketimize yapılan yazılı ve dijital başvurularla,
-            elektronik, sözlü veya fiziki yollarla aşağıdaki amaçlarla
-            bağlantılı, sınırlı ve ölçülü bir şekilde ve KVKK’nın ilkeleri
-            doğrultusunda KVK mevzuatına uygun olarak otomatik ve otomatik
-            olmayan yollarla elde edilmekte ve işlenmektedir.
+            Aşağıdaki belirtilen kişisel verileriniz (“kişisel verileriniz”) Şirketimiz tarafından internet sitesi, mobil veya dijital uygulamalarla, telefon/mobil/internet kanalıyla yapılan müşteri görüşmeleriyle, Şirketimize yapılan yazılı ve dijital başvurularla, elektronik, sözlü veya fiziki yollarla aşağıdaki amaçlarla bağlantılı, sınırlı ve ölçülü bir şekilde ve KVKK’nın ilkeleri doğrultusunda KVK mevzuatına uygun olarak otomatik ve otomatik olmayan yollarla elde edilmekte ve
+            işlenmektedir.
           </p>
           <p>
-            • Kimlik bilgileriniz (isim, soyisim, cinsiyet, doğum tarihi, TCKN,
-            nüfus cüzdanı numarası, sürücü belgesi numarası, pasaport numarası,
-            ikamet tezkeresi numarası, doğum yeri, anne-baba adı, uyruk) kanuni
-            zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve
-            mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması;
-            MASAK'a şüpheli işlem bildiriminde bulunulması, internet kullanımına
-            ilişkin bilgilerin hukuki yükümlülük kapsamında tutulması ve
-            e-defter düzenlenmesi, dava işlerinin takibi ve yürütülmesi,
-            arabuluculuk işlerinin takibi ve yürütülmesi, icra işlerinin takibi
-            ve yürütülmesi,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres,
-            faks numarası) kanuni zorunluluk kapsamında savcılık, emniyet
-            müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi
-            taleplerinin karşılanması; MASAK'a şüpheli işlem bildiriminde
-            bulunulması, internet kullanımına ilişkin bilgilerin hukuki
-            yükümlülük kapsamında tutulması ve e-defter düzenlenmesi, dava
-            işlerinin takibi ve yürütülmesi, arabuluculuk işlerinin takibi ve
-            yürütülmesi, icra işlerinin takibi ve yürütülmesi,
-            <br />
-            • İşlem güvenliği bilgileriniz (IP adresi bilgileri, MAC numarası,
-            log kayıtları) kanuni zorunluluk kapsamında savcılık, emniyet
-            müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi
-            taleplerinin karşılanması, internet kullanımına ilişkin bilgilerin
-            hukuki yükümlülük kapsamında tutulması,
-            <br />
-            • Görsel ve işitsel kayıtlarınız (kimlik fotoğrafı) kanuni
-            zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve
-            mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması,
-            <br />
-            • Finans bilgileriniz (hesap hareketleri, banka hesap bilgileri,
-            malvarlığı bilgileri) kanuni zorunluluk kapsamında savcılık, emniyet
-            müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi
-            taleplerinin karşılanması; MASAK'a şüpheli işlem bildiriminde
-            bulunulması, dava işlerinin takibi ve yürütülmesi, arabuluculuk
-            işlerinin takibi ve yürütülmesi, icra işlerinin takibi ve
+            • Kimlik bilgileriniz (isim, soyisim, cinsiyet, doğum tarihi, TCKN, nüfus cüzdanı numarası, sürücü belgesi numarası, pasaport numarası, ikamet tezkeresi numarası, doğum yeri, anne-baba adı, uyruk) kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması; MASAK'a şüpheli işlem bildiriminde bulunulması, internet kullanımına ilişkin bilgilerin hukuki yükümlülük kapsamında tutulması ve e-defter düzenlenmesi,
+            dava işlerinin takibi ve yürütülmesi, arabuluculuk işlerinin takibi ve yürütülmesi, icra işlerinin takibi ve yürütülmesi,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres, faks numarası) kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması; MASAK'a şüpheli işlem bildiriminde bulunulması, internet kullanımına ilişkin bilgilerin hukuki yükümlülük kapsamında tutulması ve e-defter düzenlenmesi, dava işlerinin takibi ve yürütülmesi, arabuluculuk işlerinin takibi ve yürütülmesi, icra işlerinin takibi ve
             yürütülmesi,
-            <br />
-            • Mesleki deneyim bilgileriniz (meslek) MASAK'a şüpheli işlem
-            bildiriminde bulunulması,
-            <br />
-            • Hukuki işlem bilgileriniz (adli makamlarla yazışmalardaki
-            bilgiler, dava dosyasındaki bilgiler) dava işlerinin takibi ve
-            yürütülmesi, arabuluculuk işlerinin takibi ve yürütülmesi, icra
-            işlerinin takibi ve yürütülmesi,
-            <br />
-            • Diğer bilgileriniz (işlem tarihi, işlem türü, işlem tutarı,
-            işlemin yapıldığı yer, işlemin yapıldığı yöntem, işlem tipi) MASAK'a
-            şüpheli işlem bildiriminde bulunulması amaçlarıyla, kanunlarda
-            açıkça öngörülme (KVKK md. 5/2-a) hukuki sebebine dayanılarak
-            işlenmektedir.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, TCKN, doğum tarihi, uyruk,
-            anne-baba adı, doğum yeri, imza, sosyal medya kullanıcı adı) yeni
-            üyeliğin değerlendirilmesi için kayıt yapılması, kurumsal hesap
-            açılış taleplerinin değerlendirilmesi, müşteri hesap açılışı
-            yapılması, hesap açılışı esnasında kontak kişi belirlenmesi, iş
-            süreçlerine dair aksiyon alınması, uygulama üzerinden müşteriye
-            ilişkin talep oluşturulması, işlem gerçekleştiren müşterinin
-            kimliğinin teyit edilmesi, müşterilere uygulama üzerinden bildirim
-            gönderilmesi, müşterilere e-posta üzerinden işlemlerine ilişkin
-            bildirim gönderilmesi, müşterilere SMS üzerinden bilgilendirme
-            mesajı gönderilmesi, müşteri veri tabanı oluşturulması, müşterilere
-            hizmet sunulması amacıyla sisteme giriş yapılması, müşteriye fatura
-            kesilmesi, müşteri hesap bilgilerinde değişiklik yapılması, müşteri
-            hesap seviyesi yükseltme, müşterinin şikâyet ve taleplerinin
-            değerlendirilmesi, müşterilerin çağrı merkezi aracılığıyla
-            ilettikleri şikâyet ve taleplerin değerlendirilmesi, müşterilerin
-            sosyal medya aracılığıyla ilettikleri şikâyet ve taleplerin
-            değerlendirilmesi, müşteri destek kapsamında bankalar ile irtibata
-            geçilmesi, VIP müşterilere özel müşteri hizmeti sağlanması, işlemi
-            gerçekleştiren müşterinin teyit edilmesi (hesap onay işlemleri),
-            şirket içi operasyonel süreçlerin yürütülmesi, dava ve icra
-            işlerinin takibi ve yürütülmesi, müşterinin gerçekleştirdiği
-            işlemlerin takip ve teyit edilmesi, müşteri hesaplarına para
-            girişlerinin yapılması, müşteri hesaplarından para çıkışlarının
-            yapılması, müşterilerin kripto para sanal cüzdan adreslerine
-            gelen-giden kripto paraların takibi, sosyal medya üzerinden
-            yarışmalar düzenlenmesi ve kazanan yarışmacıya hediye gönderilmesi,
-            şirket tarafından akdedilen sözleşmelere ilişkin damga vergisi
-            hesaplaması yapılması, müşterihesaplarına izinsiz girişlerin
-            önlenmesi, müşteri hesaplarının koruma amaçlı rutin takibi, müşteri
-            hesaplarından hatalı olarak çekilen veya müşteri hesaplarına hatalı
-            olarak yatırılan miktarların iade edilmesi, müşterilerin talep ve
-            şikayetlerinin hukuki açıdan değerlendirilmesi, sözleşme
-            süreçlerinin yönetilmesi,
-            <br />
-            • İletişim bilgileriniz (e-posta adresi, telefon numarası, adres)
-            yeni üyeliğin değerlendirilmesi için kayıt yapılması, kurumsal hesap
-            açılış taleplerinin değerlendirilmesi, müşteri hesap açılışı
-            yapılması, hesap açılışı esnasında kontak kişi belirlenmesi, işlem
-            gerçekleştiren müşterinin kimliğinin teyit edilmesi, müşterilere
-            uygulama üzerinden bildirim gönderilmesi, müşterilere e-posta
-            üzerinden işlemlerine ilişkin bildirim gönderilmesi, müşterilere SMS
-            üzerinden bilgilendirme mesajı gönderilmesi, ticari elektronik ileti
-            onayı alınması, müşteri veri tabanı oluşturulması, müşteriye hizmet
-            sunulması amacıyla sisteme giriş yapılması, müşteriye fatura
-            kesilmesi, müşteri hesap bilgilerinde değişiklik yapılması, müşteri
-            hesap seviyesi yükseltme, müşterinin şikâyet ve taleplerinin
-            değerlendirilmesi, müşterilerin çağrı merkezi aracılığıyla
-            ilettikleri şikâyet ve taleplerin değerlendirilmesi, müşterilerin
-            sosyal medya aracılığıyla ilettikleri şikâyet ve taleplerin
-            değerlendirilmesi, VIP müşterilere özel müşteri hizmeti sağlanması,
-            işlemi gerçekleştiren müşterinin teyit edilmesi (hesap onay
-            işlemleri), şirket içi operasyonel süreçlerin yürütülmesi,
-            müşterinin gerçekleştirdiği işlemlerin takip ve teyit edilmesi,
-            sosyal medya üzerinden yarışmalar düzenlenmesi ve kazanan
-            yarışmacıya hediye gönderilmesi, şirket tarafından akdedilen
-            sözleşmelere ilişkin damga vergisi hesaplaması yapılması, müşteri
-            hesaplarına izinsiz girişlerin önlenmesi, müşteri hesaplarının
-            koruma amaçlı rutin takibi, müşterilerin talep ve şikayetlerinin
-            hukuki açıdan değerlendirilmesi, sözleşme süreçlerinin yönetilmesi,
-            <br />
-            • Müşteri işlem bilgileriniz (müşteri ID numarası, fatura üzerindeki
-            bilgiler) kurumsal hesap açılış taleplerinin değerlendirilmesi,
-            müşteri hesap açılışı yapılması, iş süreçlerine dair aksiyon
-            alınması, uygulama üzerinden müşteriye ilişkin talep oluşturulması,
-            müşteriye SMS üzerinden bilgilendirme mesajı gönderilmesi, müşteri
-            veri tabanı oluşturulması, müşteriye fatura kesilmesi, müşterinin
-            gerçekleştirdiği işlemlerin takip ve teyit edilmesi, kullanıcı
-            şikayetlerinin tespiti ve giderilmesi, müşteri hesaplarının koruma
-            amaçlı rutin takibi, müşterilerin talep ve şikayetlerinin hukuki
-            açıdan değerlendirilmesi,
-            <br />
-            • Finans bilgileriniz (hesap hareketleri, IBAN, hesap seviye
-            bilgileri, bakiye bilgileri, yatırılan tutar, banka hesap bilgileri,
-            kripto para bakiyesi, kripto para sanal cüzdan adresi, kripto para
-            hesap bilgileri, kripto para sanal cüzdan numarası, malvarlığı
-            bilgileri, vergi dairesi) kurumsal hesap açılış taleplerinin
-            değerlendirilmesi, müşteri veri tabanı oluşturulması, müşterinin
-            şikâyet ve taleplerinin değerlendirilmesi, müşterilerin çağrı
-            merkezi aracılığıyla ilettikleri şikâyet ve taleplerin
-            değerlendirilmesi, şirket içi operasyonel süreçlerin yürütülmesi,
-            dava ve icra işlerinin takibi ve yürütülmesi, müşterinin
-            gerçekleştirdiği işlemlerin takip ve teyit edilmesi, müşteri
-            hesaplarına para girişlerinin yapılması, müşteri hesaplarından para
-            çıkışlarının yapılması, müşterilerin kripto para sanal cüzdan
-            adreslerine gelen-giden kripto paraların takibi, kullanıcı
-            şikayetlerinin tespiti ve giderilmesi, şirket tarafından akdedilen
-            sözleşmelere ilişkin damga vergisi hesaplaması yapılması, müşteri
-            hesaplarının koruma amaçlı rutin takibi, müşteri hesaplarından
-            hatalı olarak çekilen veya müşteri hesaplarına hatalı olarak
-            yatırılan miktarların iade edilmesi, müşterilerin talep ve
-            şikayetlerinin hukuki açıdan değerlendirilmesi,
-            <br />
-            • İşlem güvenliği bilgileriniz (IP adres bilgileri, cihaz bilgileri,
-            internet sitesi giriş çıkış bilgileri, log kayıtları) kurumsal hesap
-            açılış taleplerinin değerlendirilmesi, müşterilere uygulama
-            üzerinden bildirim gönderilmesi, müşteri veri tabanı oluşturulması,
-            müşteriye hizmet sunulması amacıyla sisteme giriş yapılması,
-            müşterinin şikâyet ve taleplerinin değerlendirilmesi, müşterilerin
-            çağrı merkezi aracılığıyla ilettikleri şikâyet ve taleplerin
-            değerlendirilmesi, şirket içi operasyonel süreçlerin yürütülmesi,
-            müşteri hesaplarına izinsiz girişlerin önlenmesi, müşterilerin talep
-            ve şikayetlerinin hukuki açıdan değerlendirilmesi,
-            <br />
-            • Görsel ve işitsel kayıtlarınız (kimlik fotoğrafı, ses kaydı)
-            kurumsal hesap açılış taleplerinin değerlendirilmesi, işlem
-            gerçekleştiren müşterinin kimliğinin teyit edilmesi, müşteri veri
-            tabanı oluşturulması, müşteri hesap bilgilerinde değişiklik
-            yapılması, müşteri hesap seviyesi yükseltme, müşterinin şikâyet ve
-            taleplerinin değerlendirilmesi, müşterilerin çağrı merkezi
-            aracılığıyla ilettikleri şikâyet ve taleplerin değerlendirilmesi,
-            işlemi gerçekleştiren müşterinin teyit edilmesi (hesap onay
-            işlemleri), şirket içi operasyonel süreçlerin yürütülmesi,
-            müşterilerin talep ve şikayetlerinin hukuki açıdan
-            değerlendirilmesi,
-            <br />
-            • Diğer bilgileriniz (yetki, talep içeriği, işlem kanalı, şirket
-            temsil yetkisi) hesap açılışı esnasında kontak kişi belirlenmesi,
-            müşterilerin çağrı merkezi aracılığıyla ilettikleri şikâyet ve
-            taleplerin değerlendirilmesi, müşterilerin sosyal medya aracılığıyla
-            ilettikleri şikâyet ve taleplerin değerlendirilmesi, müşterinin
-            gerçekleştirdiği işlemlerin takip ve teyit edilmesi,
-            <br />
-            • Lokasyon bilginiz (bulunduğunuz yerin konum bilgileri)
-            müşterilerin çağrı merkezi aracılığıyla ilettikleri şikâyet ve
-            taleplerin değerlendirilmesi amaçlarıyla, bir sözleşmenin kurulması
-            veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin
-            taraflarına ait kişisel verilerin işlenmesinin gerekli olması (KVKK
-            md. 5/2-c) hukuki sebebine dayanılarak işlenmektedir.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, cinsiyet, doğum tarihi, TCKN,
-            nüfus cüzdanı numarası, sürücü belgesi numarası, pasaport numarası,
-            ikamet tezkeresi numarası, doğum yeri, anne-baba adı, uyruk, imza)
-            müşteri hesaplarına izinsiz girişlerin önlenmesi, müşteri
-            hesaplarının koruma amaçlı rutin takibi; müşteri hesaplarından
-            hatalı olarak çekilen veya müşteri hesaplarına hatalı olarak
-            yatırılan miktarların iade edilmesi, kanuni zorunluluk kapsamında
-            savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin müşterilere
-            ilişkin bilgi taleplerinin karşılanması, MASAK'a şüpheli işlem
-            bildiriminde bulunulması, e-defter düzenlenmesi, müşteri tanımlama
-            ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren
-            müşterilerin belirlenmesi ve kaydı, bağımsız denetim sürecinde
-            kontrollerin gerçekleştirilmesi, internet kullanımına ilişkin
-            bilgilerin hukuki yükümlülük kapsamında tutulması,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres,
-            faks numarası) müşteri hesaplarına izinsiz girişlerin önlenmesi,
-            müşteri hesaplarının koruma amaçlı rutin takibi; kanuni zorunluluk
-            kapsamında savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin
-            müşterilere ilişkin bilgi taleplerinin karşılanması, MASAK'a şüpheli
-            işlem bildiriminde bulunulması, e-defter düzenlenmesi, bağımsız
-            denetim sürecinde kontrollerin gerçekleştirilmesi, müşteri tanımlama
-            ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren
-            müşterilerin belirlenmesi ve kaydı,
-            <br />
-            • İşlem güvenliği bilgileriniz (IP adresi bilgileri, MAC numarası,
-            log kayıtları, cihaz bilgileri) müşteri hesaplarına izinsiz
-            girişlerin önlenmesi; kanuni zorunluluk kapsamında savcılık, emniyet
-            müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi
-            taleplerinin karşılanması, internet kullanımına ilişkin bilgilerin
-            hukuki yükümlülük kapsamında tutulması, müşteri tanımlama ve şüpheli
-            işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren
-            müşterilerin belirlenmesi ve kaydı,
-            <br />
-            • Finans bilgileriniz (hesap hareketleri, IBAN, malvarlığı
-            bilgileri, banka hesap bilgileri, kripto para adresi, kripto para
-            bakiyesi, vergi dairesi) müşteri hesaplarının koruma amaçlı rutin
-            takibi, müşteri hesaplarından hatalı olarak çekilen veya müşteri
-            hesaplarına hatalı olarak yatırılan miktarların iade edilmesi;
-            kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma
-            ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması,
-            MASAK'a şüpheli işlem bildiriminde bulunulması, bağımsız denetim
-            sürecinde kontrollerin gerçekleştirilmesi, müşteri tanımlama ve
-            şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren
-            müşterilerin belirlenmesi ve kaydı,
-            <br />
-            • Müşteri işlem bilgileriniz (müşteri ID numarasI) müşteri
-            hesaplarının koruma amaçlı rutin takibi, müşteri tanımlama ve
-            şüpheli işlemlerin tespit edilmesi,
-            <br />
-            • Görsel ve işitsel kayıtlarınız (kimlik fotoğrafı) kanuni
-            zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve
-            mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması;
-            müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi,
-            <br />
-            • Mesleki deneyim bilgileriniz (meslek bilgileri) MASAK'a şüpheli
-            işlem bildiriminde bulunulması, müşteri tanımlama ve şüpheli
-            işlemlerin tespit edilmesi,
-            <br />
-            • Diğer bilgileriniz (işlem tarihi, işlem türü, işlem tutarı,
-            işlemin yapıldığı yer, işlemin yapıldığı yöntem, işlem tipi) MASAK'a
-            şüpheli işlem bildiriminde bulunulması amaçlarıyla, veri
-            sorumlusunun hukuki yükümlülüğünü yerine getirebilmesi için zorunlu
-            olması (KVKK md. 5/2-ç) hukuki sebebine dayanılarak işlenmektedir.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, TCKN, doğum tarihi, imza,
-            pasaport numarası, TBB sicil numarası, baro sicil numarası, sürücü
-            belgesi numarası, uyruk, doğum yeri, anne-baba adı) müşterinin
-            gerçekleştirdiği işlemlerin denetimi, mali kontrol çıktılarının üst
-            yönetime raporlanması, şüpheli işlem tespiti ve fraud engelleme,
-            etkinlik katılımcıları ile iletişime geçilmesi, fraud süreçlerinin
-            takibi, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi,
-            şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres)
-            müşterinin gerçekleştirdiği işlemlerin denetimi, mali kontrol
-            çıktılarının üst yönetime raporlanması, şüpheli işlem tespiti ve
-            fraud engelleme, etkinlik katılımcıları ile iletişime geçilmesi,
-            fraud süreçlerinin takibi, müşteri tanımlama ve şüpheli işlemlerin
-            tespit edilmesi, şüpheli işlem gerçekleştiren müşterilerin
-            belirlenmesi ve kaydı,
-            <br />
-            • Finans bilgileriniz (hesap hareketleri, IBAN, malvarlığı
-            bilgileri, banka hesap bilgileri, kripto para adresi, kripto para
-            bakiyesi, bakiye bilgileri) müşterinin gerçekleştirdiği işlemlerin
-            denetimi, mali kontrol çıktılarının üst yönetime raporlanması,
-            şüpheli işlem tespiti ve fraud engelleme, fraud süreçlerinin takibi,
-            müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli
-            işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı,
-            <br />
-            • Müşteri işlem bilgileriniz (müşteri ID numarası) müşterinin
-            gerçekleştirdiği işlemlerin denetimi, mali kontrol çıktılarının üst
-            yönetime raporlanması, müşteri tanımlama ve şüpheli işlemlerin
-            tespit edilmesi,
-            <br />
-            • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz
-            bilgileri, site üyelik tarihi) şüpheli işlem tespiti ve fraud
-            engelleme, fraud süreçlerinin takibi, müşteri tanımlama ve şüpheli
-            işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren
-            müşterilerin belirlenmesi ve kaydı,
-            <br />
-            • Mesleki deneyim bilgileriniz (vergi levhası, meslek) müşteri
-            tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem
+            <br /> • İşlem güvenliği bilgileriniz (IP adresi bilgileri, MAC numarası, log kayıtları) kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması, internet kullanımına ilişkin bilgilerin hukuki yükümlülük kapsamında tutulması,
+            <br /> • Görsel ve işitsel kayıtlarınız (kimlik fotoğrafı) kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması,
+            <br /> • Finans bilgileriniz (hesap hareketleri, banka hesap bilgileri, malvarlığı bilgileri) kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması; MASAK'a şüpheli işlem bildiriminde bulunulması, dava işlerinin takibi ve yürütülmesi, arabuluculuk işlerinin takibi ve yürütülmesi, icra işlerinin takibi ve yürütülmesi,
+            <br /> • Mesleki deneyim bilgileriniz (meslek) MASAK'a şüpheli işlem bildiriminde bulunulması,
+            <br /> • Hukuki işlem bilgileriniz (adli makamlarla yazışmalardaki bilgiler, dava dosyasındaki bilgiler) dava işlerinin takibi ve yürütülmesi, arabuluculuk işlerinin takibi ve yürütülmesi, icra işlerinin takibi ve yürütülmesi,
+            <br /> • Diğer bilgileriniz (işlem tarihi, işlem türü, işlem tutarı, işlemin yapıldığı yer, işlemin yapıldığı yöntem, işlem tipi) MASAK'a şüpheli işlem bildiriminde bulunulması amaçlarıyla, kanunlarda açıkça öngörülme (KVKK md. 5/2-a) hukuki sebebine dayanılarak işlenmektedir.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, TCKN, doğum tarihi, uyruk, anne-baba adı, doğum yeri, imza, sosyal medya kullanıcı adı) yeni üyeliğin değerlendirilmesi için kayıt yapılması, kurumsal hesap açılış taleplerinin değerlendirilmesi, müşteri hesap açılışı yapılması, hesap açılışı esnasında kontak kişi belirlenmesi, iş süreçlerine dair aksiyon alınması, uygulama üzerinden müşteriye ilişkin talep oluşturulması, işlem gerçekleştiren müşterinin kimliğinin teyit edilmesi,
+            müşterilere uygulama üzerinden bildirim gönderilmesi, müşterilere e-posta üzerinden işlemlerine ilişkin bildirim gönderilmesi, müşterilere SMS üzerinden bilgilendirme mesajı gönderilmesi, müşteri veri tabanı oluşturulması, müşterilere hizmet sunulması amacıyla sisteme giriş yapılması, müşteriye fatura kesilmesi, müşteri hesap bilgilerinde değişiklik yapılması, müşteri hesap seviyesi yükseltme, müşterinin şikâyet ve taleplerinin değerlendirilmesi, müşterilerin çağrı merkezi
+            aracılığıyla ilettikleri şikâyet ve taleplerin değerlendirilmesi, müşterilerin sosyal medya aracılığıyla ilettikleri şikâyet ve taleplerin değerlendirilmesi, müşteri destek kapsamında bankalar ile irtibata geçilmesi, VIP müşterilere özel müşteri hizmeti sağlanması, işlemi gerçekleştiren müşterinin teyit edilmesi (hesap onay işlemleri), şirket içi operasyonel süreçlerin yürütülmesi, dava ve icra işlerinin takibi ve yürütülmesi, müşterinin gerçekleştirdiği işlemlerin takip ve teyit
+            edilmesi, müşteri hesaplarına para girişlerinin yapılması, müşteri hesaplarından para çıkışlarının yapılması, müşterilerin kripto para sanal cüzdan adreslerine gelen-giden kripto paraların takibi, sosyal medya üzerinden yarışmalar düzenlenmesi ve kazanan yarışmacıya hediye gönderilmesi, şirket tarafından akdedilen sözleşmelere ilişkin damga vergisi hesaplaması yapılması, müşterihesaplarına izinsiz girişlerin önlenmesi, müşteri hesaplarının koruma amaçlı rutin takibi, müşteri
+            hesaplarından hatalı olarak çekilen veya müşteri hesaplarına hatalı olarak yatırılan miktarların iade edilmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi, sözleşme süreçlerinin yönetilmesi,
+            <br /> • İletişim bilgileriniz (e-posta adresi, telefon numarası, adres) yeni üyeliğin değerlendirilmesi için kayıt yapılması, kurumsal hesap açılış taleplerinin değerlendirilmesi, müşteri hesap açılışı yapılması, hesap açılışı esnasında kontak kişi belirlenmesi, işlem gerçekleştiren müşterinin kimliğinin teyit edilmesi, müşterilere uygulama üzerinden bildirim gönderilmesi, müşterilere e-posta üzerinden işlemlerine ilişkin bildirim gönderilmesi, müşterilere SMS üzerinden
+            bilgilendirme mesajı gönderilmesi, ticari elektronik ileti onayı alınması, müşteri veri tabanı oluşturulması, müşteriye hizmet sunulması amacıyla sisteme giriş yapılması, müşteriye fatura kesilmesi, müşteri hesap bilgilerinde değişiklik yapılması, müşteri hesap seviyesi yükseltme, müşterinin şikâyet ve taleplerinin değerlendirilmesi, müşterilerin çağrı merkezi aracılığıyla ilettikleri şikâyet ve taleplerin değerlendirilmesi, müşterilerin sosyal medya aracılığıyla ilettikleri şikâyet
+            ve taleplerin değerlendirilmesi, VIP müşterilere özel müşteri hizmeti sağlanması, işlemi gerçekleştiren müşterinin teyit edilmesi (hesap onay işlemleri), şirket içi operasyonel süreçlerin yürütülmesi, müşterinin gerçekleştirdiği işlemlerin takip ve teyit edilmesi, sosyal medya üzerinden yarışmalar düzenlenmesi ve kazanan yarışmacıya hediye gönderilmesi, şirket tarafından akdedilen sözleşmelere ilişkin damga vergisi hesaplaması yapılması, müşteri hesaplarına izinsiz girişlerin
+            önlenmesi, müşteri hesaplarının koruma amaçlı rutin takibi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi, sözleşme süreçlerinin yönetilmesi,
+            <br /> • Müşteri işlem bilgileriniz (müşteri ID numarası, fatura üzerindeki bilgiler) kurumsal hesap açılış taleplerinin değerlendirilmesi, müşteri hesap açılışı yapılması, iş süreçlerine dair aksiyon alınması, uygulama üzerinden müşteriye ilişkin talep oluşturulması, müşteriye SMS üzerinden bilgilendirme mesajı gönderilmesi, müşteri veri tabanı oluşturulması, müşteriye fatura kesilmesi, müşterinin gerçekleştirdiği işlemlerin takip ve teyit edilmesi, kullanıcı şikayetlerinin tespiti
+            ve giderilmesi, müşteri hesaplarının koruma amaçlı rutin takibi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi,
+            <br /> • Finans bilgileriniz (hesap hareketleri, IBAN, hesap seviye bilgileri, bakiye bilgileri, yatırılan tutar, banka hesap bilgileri, kripto para bakiyesi, kripto para sanal cüzdan adresi, kripto para hesap bilgileri, kripto para sanal cüzdan numarası, malvarlığı bilgileri, vergi dairesi) kurumsal hesap açılış taleplerinin değerlendirilmesi, müşteri veri tabanı oluşturulması, müşterinin şikâyet ve taleplerinin değerlendirilmesi, müşterilerin çağrı merkezi aracılığıyla ilettikleri
+            şikâyet ve taleplerin değerlendirilmesi, şirket içi operasyonel süreçlerin yürütülmesi, dava ve icra işlerinin takibi ve yürütülmesi, müşterinin gerçekleştirdiği işlemlerin takip ve teyit edilmesi, müşteri hesaplarına para girişlerinin yapılması, müşteri hesaplarından para çıkışlarının yapılması, müşterilerin kripto para sanal cüzdan adreslerine gelen-giden kripto paraların takibi, kullanıcı şikayetlerinin tespiti ve giderilmesi, şirket tarafından akdedilen sözleşmelere ilişkin damga
+            vergisi hesaplaması yapılması, müşteri hesaplarının koruma amaçlı rutin takibi, müşteri hesaplarından hatalı olarak çekilen veya müşteri hesaplarına hatalı olarak yatırılan miktarların iade edilmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi,
+            <br /> • İşlem güvenliği bilgileriniz (IP adres bilgileri, cihaz bilgileri, internet sitesi giriş çıkış bilgileri, log kayıtları) kurumsal hesap açılış taleplerinin değerlendirilmesi, müşterilere uygulama üzerinden bildirim gönderilmesi, müşteri veri tabanı oluşturulması, müşteriye hizmet sunulması amacıyla sisteme giriş yapılması, müşterinin şikâyet ve taleplerinin değerlendirilmesi, müşterilerin çağrı merkezi aracılığıyla ilettikleri şikâyet ve taleplerin değerlendirilmesi, şirket
+            içi operasyonel süreçlerin yürütülmesi, müşteri hesaplarına izinsiz girişlerin önlenmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi,
+            <br /> • Görsel ve işitsel kayıtlarınız (kimlik fotoğrafı, ses kaydı) kurumsal hesap açılış taleplerinin değerlendirilmesi, işlem gerçekleştiren müşterinin kimliğinin teyit edilmesi, müşteri veri tabanı oluşturulması, müşteri hesap bilgilerinde değişiklik yapılması, müşteri hesap seviyesi yükseltme, müşterinin şikâyet ve taleplerinin değerlendirilmesi, müşterilerin çağrı merkezi aracılığıyla ilettikleri şikâyet ve taleplerin değerlendirilmesi, işlemi gerçekleştiren müşterinin teyit
+            edilmesi (hesap onay işlemleri), şirket içi operasyonel süreçlerin yürütülmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi,
+            <br /> • Diğer bilgileriniz (yetki, talep içeriği, işlem kanalı, şirket temsil yetkisi) hesap açılışı esnasında kontak kişi belirlenmesi, müşterilerin çağrı merkezi aracılığıyla ilettikleri şikâyet ve taleplerin değerlendirilmesi, müşterilerin sosyal medya aracılığıyla ilettikleri şikâyet ve taleplerin değerlendirilmesi, müşterinin gerçekleştirdiği işlemlerin takip ve teyit edilmesi,
+            <br /> • Lokasyon bilginiz (bulunduğunuz yerin konum bilgileri) müşterilerin çağrı merkezi aracılığıyla ilettikleri şikâyet ve taleplerin değerlendirilmesi amaçlarıyla, bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin taraflarına ait kişisel verilerin işlenmesinin gerekli olması (KVKK md. 5/2-c) hukuki sebebine dayanılarak işlenmektedir.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, cinsiyet, doğum tarihi, TCKN, nüfus cüzdanı numarası, sürücü belgesi numarası, pasaport numarası, ikamet tezkeresi numarası, doğum yeri, anne-baba adı, uyruk, imza) müşteri hesaplarına izinsiz girişlerin önlenmesi, müşteri hesaplarının koruma amaçlı rutin takibi; müşteri hesaplarından hatalı olarak çekilen veya müşteri hesaplarına hatalı olarak yatırılan miktarların iade edilmesi, kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü,
+            jandarma ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması, MASAK'a şüpheli işlem bildiriminde bulunulması, e-defter düzenlenmesi, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı, bağımsız denetim sürecinde kontrollerin gerçekleştirilmesi, internet kullanımına ilişkin bilgilerin hukuki yükümlülük kapsamında tutulması,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres, faks numarası) müşteri hesaplarına izinsiz girişlerin önlenmesi, müşteri hesaplarının koruma amaçlı rutin takibi; kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması, MASAK'a şüpheli işlem bildiriminde bulunulması, e-defter düzenlenmesi, bağımsız denetim sürecinde kontrollerin gerçekleştirilmesi, müşteri tanımlama ve şüpheli
+            işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı,
+            <br /> • İşlem güvenliği bilgileriniz (IP adresi bilgileri, MAC numarası, log kayıtları, cihaz bilgileri) müşteri hesaplarına izinsiz girişlerin önlenmesi; kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması, internet kullanımına ilişkin bilgilerin hukuki yükümlülük kapsamında tutulması, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve
+            kaydı,
+            <br /> • Finans bilgileriniz (hesap hareketleri, IBAN, malvarlığı bilgileri, banka hesap bilgileri, kripto para adresi, kripto para bakiyesi, vergi dairesi) müşteri hesaplarının koruma amaçlı rutin takibi, müşteri hesaplarından hatalı olarak çekilen veya müşteri hesaplarına hatalı olarak yatırılan miktarların iade edilmesi; kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması, MASAK'a şüpheli işlem
+            bildiriminde bulunulması, bağımsız denetim sürecinde kontrollerin gerçekleştirilmesi, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı,
+            <br /> • Müşteri işlem bilgileriniz (müşteri ID numarasI) müşteri hesaplarının koruma amaçlı rutin takibi, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi,
+            <br /> • Görsel ve işitsel kayıtlarınız (kimlik fotoğrafı) kanuni zorunluluk kapsamında savcılık, emniyet müdürlüğü, jandarma ve mahkemelerin müşterilere ilişkin bilgi taleplerinin karşılanması; müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi,
+            <br /> • Mesleki deneyim bilgileriniz (meslek bilgileri) MASAK'a şüpheli işlem bildiriminde bulunulması, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi,
+            <br /> • Diğer bilgileriniz (işlem tarihi, işlem türü, işlem tutarı, işlemin yapıldığı yer, işlemin yapıldığı yöntem, işlem tipi) MASAK'a şüpheli işlem bildiriminde bulunulması amaçlarıyla, veri sorumlusunun hukuki yükümlülüğünü yerine getirebilmesi için zorunlu olması (KVKK md. 5/2-ç) hukuki sebebine dayanılarak işlenmektedir.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, TCKN, doğum tarihi, imza, pasaport numarası, TBB sicil numarası, baro sicil numarası, sürücü belgesi numarası, uyruk, doğum yeri, anne-baba adı) müşterinin gerçekleştirdiği işlemlerin denetimi, mali kontrol çıktılarının üst yönetime raporlanması, şüpheli işlem tespiti ve fraud engelleme, etkinlik katılımcıları ile iletişime geçilmesi, fraud süreçlerinin takibi, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem
             gerçekleştiren müşterilerin belirlenmesi ve kaydı,
-            <br />
-            • Görsel ve işitsel kayıtlarınız (kimlik fotoğrafı, ses kaydı,
-            video) şüpheli işlem tespiti ve fraud engelleme, fraud süreçlerinin
-            takibi, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi,
-            şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres) müşterinin gerçekleştirdiği işlemlerin denetimi, mali kontrol çıktılarının üst yönetime raporlanması, şüpheli işlem tespiti ve fraud engelleme, etkinlik katılımcıları ile iletişime geçilmesi, fraud süreçlerinin takibi, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı,
+            <br /> • Finans bilgileriniz (hesap hareketleri, IBAN, malvarlığı bilgileri, banka hesap bilgileri, kripto para adresi, kripto para bakiyesi, bakiye bilgileri) müşterinin gerçekleştirdiği işlemlerin denetimi, mali kontrol çıktılarının üst yönetime raporlanması, şüpheli işlem tespiti ve fraud engelleme, fraud süreçlerinin takibi, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı,
+            <br /> • Müşteri işlem bilgileriniz (müşteri ID numarası) müşterinin gerçekleştirdiği işlemlerin denetimi, mali kontrol çıktılarının üst yönetime raporlanması, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi,
+            <br /> • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz bilgileri, site üyelik tarihi) şüpheli işlem tespiti ve fraud engelleme, fraud süreçlerinin takibi, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı,
+            <br /> • Mesleki deneyim bilgileriniz (vergi levhası, meslek) müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı,
+            <br /> • Görsel ve işitsel kayıtlarınız (kimlik fotoğrafı, ses kaydı, video) şüpheli işlem tespiti ve fraud engelleme, fraud süreçlerinin takibi, müşteri tanımlama ve şüpheli işlemlerin tespit edilmesi, şüpheli işlem gerçekleştiren müşterilerin belirlenmesi ve kaydı,
             <br />
           </p>
           <p>
             <h5>Pazarlama bilgileriniz (çerez kayıtları) hedef veya reklam çerez kullanımı,</h5>
 
-            • Pazarlama işlem güvenliği bilgileriniz (IP adresi bilgileri) hedef
-            veya reklam çerez kullanımı amaçlarıyla, veri sorumlusunun meşru
-            menfaatleri için veri işlenmesinin zorunlu olması (KVKK md. 5/2-f)
-            hukuki sebebine dayanılarak işlenmektedir.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim) müşterilere bülten
-            gönderilmesi, SMS üzerinden bilgilendirme/pazarlama mesajı
-            gönderilmesi, sosyal medya üzerinden müşterilerle iletişime
-            geçilmesi, e-posta üzerinden bilgilendirme/pazarlama mesajı
-            gönderilmesi,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi)
-            müşterilere bülten gönderilmesi, SMS üzerinden
-            bilgilendirme/pazarlama mesajı gönderilmesi, sosyal medya üzerinden
-            müşterilerle iletişime geçilmesi, e-posta üzerinden
-            bilgilendirme/pazarlama mesajı gönderilmesi amaçlarıyla, açık
-            rızanıza (KVKK md. 5/1) dayanılarak işlenmektedir.
-            <br />
-            • Biyometrik verileriniz (biyometrik fotoğraf) müşteri hesap
-            seviyesi yükseltme ve işlemi gerçekleştiren müşterinin teyit
-            edilmesi (hesap onay işlemleri) amaçlarıyla, açık rızanıza (KVKK md.
-            6/2) dayanılarak işlenmektedir.
+            • Pazarlama işlem güvenliği bilgileriniz (IP adresi bilgileri) hedef veya reklam çerez kullanımı amaçlarıyla, veri sorumlusunun meşru menfaatleri için veri işlenmesinin zorunlu olması (KVKK md. 5/2-f) hukuki sebebine dayanılarak işlenmektedir.
+            <br /> • Kimlik bilgileriniz (isim, soyisim) müşterilere bülten gönderilmesi, SMS üzerinden bilgilendirme/pazarlama mesajı gönderilmesi, sosyal medya üzerinden müşterilerle iletişime geçilmesi, e-posta üzerinden bilgilendirme/pazarlama mesajı gönderilmesi,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi) müşterilere bülten gönderilmesi, SMS üzerinden bilgilendirme/pazarlama mesajı gönderilmesi, sosyal medya üzerinden müşterilerle iletişime geçilmesi, e-posta üzerinden bilgilendirme/pazarlama mesajı gönderilmesi amaçlarıyla, açık rızanıza (KVKK md. 5/1) dayanılarak işlenmektedir.
+            <br /> • Biyometrik verileriniz (biyometrik fotoğraf) müşteri hesap seviyesi yükseltme ve işlemi gerçekleştiren müşterinin teyit edilmesi (hesap onay işlemleri) amaçlarıyla, açık rızanıza (KVKK md. 6/2) dayanılarak işlenmektedir.
             <br />
           </p>
           <h5>2. Kişisel Verilerinizin Üçüncü Kişilerle Paylaşılması</h5>
           <p>
-            Kişisel verilerinizi paylaştığımız üçüncü kişiler KVK mevzuatında
-            aksi öngörülmedikçe paylaşım amacıyla bağlı ve sınırlı olarak
-            kişisel verilerinizi işlemek ve korumakla sözleşme ilişkimiz
-            kapsamında yükümlü olup Coin Swifter'ın denetimindedir.
+            Kişisel verilerinizi paylaştığımız üçüncü kişiler KVK mevzuatında aksi öngörülmedikçe paylaşım amacıyla bağlı ve sınırlı olarak kişisel verilerinizi işlemek ve korumakla sözleşme ilişkimiz kapsamında yükümlü olup Coin Swifter'ın denetimindedir.
           </p>
           <h5>2.1. Yurt İçi Aktarım</h5>
           <p>
-            Yukarıda anılan kişisel verileriniz aşağıda anılan amaçlar ve hukuka
-            uygunluk sebepleri uyarınca aktarılmaktadır:
+            Yukarıda anılan kişisel verileriniz aşağıda anılan amaçlar ve hukuka uygunluk sebepleri uyarınca aktarılmaktadır:
           </p>
           <p>
-            • Hukuki işlem bilgileriniz (adli makamlarla yazışmalardaki
-            bilgiler, dava dosyasındaki bilgiler) hukuk işlerinin takibi ve
-            yürütülmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan
-            değerlendirilmesi amacıyla, kanunlarda açıkça öngörülmesi (KVKK md.
-            5/2-a) hukuki sebebine dayanılarak tedarikçilere (dış hizmet
-            sağlayıcılar, avukatlar) aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, cinsiyet, doğum tarihi, doğum
-            yeri, TCKN, nüfus cüzdanı numarası, sürücü belgesi numarası,
-            pasaport numarası, ikamet tezkeresi numarası, anne-baba adı, uyruk)
-            yetkili kişi, kurum ve kuruluşlara bilgi verilmesi, risk yönetimi
-            süreçlerinin yürütülmesi,
-            <br />
-            • İletişim bilgileriniz (e-posta adresi, telefon numarası, faks
-            numarası, adres) yetkili kişi, kurum ve kuruluşlara bilgi verilmesi,
-            risk yönetimi süreçlerinin yürütülmesi,
-            <br />
-            • Görsel ve işitsel kaydınız (kimlik fotoğrafı) yetkili kişi, kurum
-            ve kuruluşlara bilgi verilmesi,
-            <br />
-            • Mesleki deneyim bilginiz (meslek) risk yönetimi süreçlerinin
-            yürütülmesi,
-            <br />
-            • Finans bilgileriniz (hesap hareketleri, banka hesap bilgileri)
-            yetkili kişi, kurum ve kuruluşlara bilgi verilmesi, risk yönetimi
-            süreçlerinin yürütülmesi,
-            <br />
-            • İşlem güvenliği bilginiz (log kayıtları) yetkili kişi, kurum ve
-            kuruluşlara bilgi verilmesi,
-            <br />
-            • Diğer bilgileriniz (işlem tarihi, işlem türü, işlem tutarı,
-            işlemin yapıldığı yer, işlemin yapıldığı yöntem, işlem tipi) risk
-            yönetimi süreçlerinin yürütülmesi amaçlarıyla, kanunlarda açıkça
-            öngörülmesi (KVKK md. 5/2-a) hukuki sebebine dayanılarak yetkili
-            kamu kurum ve kuruluşlarına (MASAK, Gelir İdaresi Başkanlığı, kolluk
-            kuvvetleri, savcılık, mahkemeler) aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, TCKN, uyruk, doğum tarihi,
-            doğum yeri, anne-baba adı, imza) talep/şikayetlerin takibi, bilgi
-            güvenliği süreçlerinin yürütülmesi, iletişim faaliyetlerinin
-            yürütülmesi, sözleşme süreçlerinin yürütülmesi, finans ve muhasebe
-            işlerinin yürütülmesi, müşteri ilişkileri yönetimi süreçlerinin
-            yürütülmesi, iş sürekliliğinin sağlanması faaliyetlerinin
-            yürütülmesi, hizmet satış sonrası destek hizmetlerinin yürütülmesi,
-            hukuk işlerinin takibi ve yürütülmesi, müşterilerin talep ve
-            şikayetlerinin hukuki açıdan değerlendirilmesi,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres)
-            talep/şikayetlerin takibi, bilgi güvenliği süreçlerinin yürütülmesi,
-            iletişim faaliyetlerinin yürütülmesi, sözleşme süreçlerinin
-            yürütülmesi, finans ve muhasebe işlerinin yürütülmesi, müşteri
-            ilişkileri yönetimi süreçlerinin yürütülmesi, iş sürekliliğinin
-            sağlanması faaliyetlerinin yürütülmesi, hukuk işlerinin takibi ve
-            yürütülmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan
-            değerlendirilmesi,
-            <br />
-            • Görsel ve işitsel kayıtlarınız (ses kaydı, kimlik fotoğrafı)
-            talep/şikayetlerin takibi, bilgi güvenliği süreçlerinin yürütülmesi,
-            müşteri ilişkileri yönetimi süreçlerinin yürütülmesi, iş
-            sürekliliğinin sağlanması faaliyetlerinin yürütülmesi,
-            <br />
-            • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz
-            bilgileri) talep/şikayetlerin takibi, iletişim faaliyetlerinin
-            yürütülmesi, iş sürekliliğinin sağlanması faaliyetlerinin
-            yürütülmesi,
-            <br />
-            • Finans bilgileriniz (hesap hareketleri, IBAN, banka hesap
-            bilgileri, bakiye bilgileri, kripto para hesap bilgileri, kripto
-            para adresi, yatırılan tutar, malvarlığı bilgileri, kripto para
-            cüzdan numarası, kripto para bakiyesi, vergi dairesi)
-            talep/şikayetlerin takibi, sözleşme süreçlerinin yürütülmesi, finans
-            ve muhasebe işlerinin yürütülmesi, iş sürekliliğinin sağlanması
-            faaliyetlerinin yürütülmesi, hizmet satış sonrası destek
-            hizmetlerinin yürütülmesi, hukuk işlerinin takibi ve yürütülmesi,
-            müşterilerin talep ve şikayetlerinin hukuki açıdan
-            değerlendirilmesi,
-            <br />
-            • Lokasyon bilginiz (bulunduğunuz yerin konum bilgileri)
-            talep/şikayetlerin takibi,
-            <br />
-            • Müşteri işlem bilgileriniz (müşteri ID numarası, faturaya ilişkin
-            bilgiler) hizmet üretim ve operasyon süreçlerinin yürütülmesi,
-            finans ve muhasebe işlerinin yürütülmesi, iş sürekliliğinin
-            sağlanması faaliyetlerinin yürütülmesi,
-            <br />
-            • Hukuki işlem bilgileriniz (adli makamlarla yazışmalardaki
-            bilgiler, dava dosyasındaki bilgiler) hukuk işlerinin takibi ve
-            yürütülmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan
-            değerlendirilmesi,
-            <br />
-            • Diğer bilgileriniz (talep ve şikâyet içeriği, işlem kanalı)
-            talep/şikayetlerin takibi, iş sürekliliğinin sağlanması
-            faaliyetlerinin yürütülmesi, amaçlarıyla bir sözleşmenin kurulması
-            veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin
-            taraflarına ait kişisel verilerin işlenmesinin gerekli olması (KVKK
-            md. 5/2-c) hukuki sebebine dayanılarak tedarikçilere (dış hizmet
-            sağlayıcılar, avukatlar, kargo şirketi) aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, TCKN, doğum tarihi, doğum
-            yeri, anne-baba adı) denetim faaliyetlerinin yürütülmesi, finans ve
-            muhasebe işlerinin yürütülmesi, bilgi güvenliği süreçlerinin
-            yürütülmesi, iş faaliyetlerinin yürütülmesi/denetimi,
-            <br />
-            • İletişim bilgileriniz (e-posta adresi, adres) denetim
-            faaliyetlerinin yürütülmesi,
-            <br />
-            • Finans bilgileriniz (vergi dairesi, IBAN) denetim faaliyetlerinin
-            yürütülmesi, finans ve muhasebe işlerinin yürütülmesi,
-            <br />
-            • İşlem güvenliği bilgileriniz (IP adresi bilgileri, MAC numarası,
-            log kayıtları) bilgi güvenliği süreçlerinin yürütülmesi,
-            <br />
-            • Görsel ve işitsel kaydınız (kimlik fotoğrafı) iş faaliyetlerinin
-            yürütülmesi/denetimi amaçlarıyla veri sorumlusunun hukuki
-            yükümlülüğünü yerine getirebilmesi için zorunlu olması (KVKK md.
-            5/2-ç) hukuki sebebine dayanılarak tedarikçilere (dış hizmet
-            sağlayıcılar) aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, TCKN, , , sürücü belgesi
-            numarası, doğum tarihi, anne-baba adı, uyruk, imza) iş
-            sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, iletişim
-            faaliyetlerinin yürütülmesi, finans ve muhasebe işlerinin
-            yürütülmesi/iç denetim faaliyetlerinin yürütülmesi, risk yönetimi
-            süreçlerinin yürütülmesi, iç denetim faaliyetlerinin yürütülmesi,
-            <br />
-            • İletişim bilgileriniz (e-posta adresi, telefon numarası, adres) iş
-            sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, iletişim
-            faaliyetlerinin yürütülmesi, finans ve muhasebe işlerinin
-            yürütülmesi/iç denetim faaliyetlerinin yürütülmesi, risk yönetimi
-            süreçlerinin yürütülmesi, iç denetim faaliyetlerinin yürütülmesi,
-            <br />
-            • Görsel ve işitsel kaydınız (kimlik fotoğrafı, video, ses kaydı) iş
-            sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, risk yönetimi
-            süreçlerinin yürütülmesi,
-            <br />
-            • Finans bilgileriniz (IBAN, hesap hareketleri, banka hesap
-            bilgileri, kripto para adresi, kripto para bakiyesi, malvarlığı
-            bilgileri) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi,
-            finans ve muhasebe işlerinin yürütülmesi/iç denetim faaliyetlerinin
-            yürütülmesi, risk yönetimi süreçlerinin yürütülmesi, iç denetim
-            faaliyetlerinin yürütülmesi,
-            <br />
-            • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz
-            bilgileri) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi,
-            risk yönetimi süreçlerinin yürütülmesi,
-            <br />
-            • Pazarlama bilginiz (çerez kayıtları) pazarlama analiz
-            çalışmalarının yürütülmesi,
-            <br />
-            • Pazarlama/işlem güvenliği bilginiz (IP adresi bilgileri) pazarlama
-            analiz çalışmalarının yürütülmesi,
-            <br />
-            • Müşteri işlem bilgileriniz (müşteri ID numarası, gelir kaynağı,
-            öğrenim durumu) finans ve muhasebe işlerinin yürütülmesi/iç denetim
-            faaliyetlerinin yürütülmesi, risk yönetimi süreçlerinin yürütülmesi,
-            iç denetim faaliyetlerinin yürütülmesi,
-            <br />
-            • Mesleki deneyim bilginiz (meslek) risk yönetimi süreçlerinin
-            yürütülmesi amaçlarıyla veri sorumlusunun meşru menfaatleri için
-            veri işlenmesinin zorunlu olması (KVKK md. 5/2-f) hukuki sebebine
-            dayanılarak tedarikçilere (dış hizmet sağlayıcılar) aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim) reklam/kampanya/promosyon
-            süreçlerinin yürütülmesi,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi)
-            reklam/kampanya/promosyon süreçlerinin yürütülmesi amaçlarıyla açık
-            rızanıza (KVKK md. 5/1) dayanılarak tedarikçilere (dış hizmet
-            sağlayıcılar) aktarılmaktadır.
-            <br />
-            • Biyometrik veriniz (biyometrik fotoğraf) bilgi güvenliği
-            süreçlerinin yürütülmesi, müşteri ilişkileri yönetimi süreçlerinin
-            yürütülmesi, amacıyla açık rızanıza (KVKK md. 6/2) dayanılarak
-            tedarikçilere (dış hizmet sağlayıcılar) aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, TCKN, anne-baba adı, uyruk,
-            doğum yeri, doğum tarihi) iş sürekliliğinin sağlanması
-            faaliyetlerinin yürütülmesi, iş faaliyetlerinin yürütülmesi, bilgi
-            güvenliği süreçlerinin yürütülmesi, sözleşme süreçlerinin
-            yürütülmesi ve talep/şikayetlerin takibi,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres) iş
-            sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, iş
-            faaliyetlerinin yürütülmesi, bilgi güvenliği süreçlerinin
-            yürütülmesi, sözleşme süreçlerinin yürütülmesi,
-            <br />
-            • Müşteri işlem bilgileriniz (müşteri ID numarası) iş sürekliliğinin
-            sağlanması faaliyetlerinin yürütülmesi, hizmet üretim ve operasyon
-            süreçlerinin yürütülmesi,
-            <br />
-            • Finans bilgileriniz (hesap hareketleri, IBAN, malvarlığı
-            bilgileri, banka hesap bilgileri, kripto para bakiyesi, bakiye
-            bilgileri, kripto para adresi, vergi dairesi), iş sürekliliğinin
-            sağlanması faaliyetlerinin yürütülmesi ve sözleşme süreçlerinin
-            yürütülmesi,
-            <br />
-            • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz
-            bilgileri, log kayıtları) iş sürekliliğinin sağlanması
-            faaliyetlerinin yürütülmesi, iş faaliyetlerinin yürütülmesi, bilgi
-            güvenliği süreçlerinin yürütülmesi,
-            <br />
-            • Görsel işitsel kayıtlarınız (kimlik fotoğrafı) iş sürekliliğinin
-            sağlanması faaliyetlerinin yürütülmesi amaçlarıyla bir sözleşmenin
-            kurulması veya ifasıyla doğrudan doğruya ilgili olması kaydıyla,
-            sözleşmenin taraflarına ait kişisel verilerin işlenmesinin gerekli
-            olması (KVKK md. 5/2-c) hukuki sebebine dayanılarak gerçek kişiler
-            veya özel hukuk tüzel kişilerine (banka, ulusal veri tabanı sistemi)
-            aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, TCKN, anne-baba adı, uyruk)
-            bilgi güvenliği süreçlerinin yürütülmesi,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres)
-            bilgi güvenliği süreçlerinin yürütülmesi,
-            <br />
-            • Müşteri işlem bilginiz (müşteri ID numarası) bilgi güvenliği
-            süreçlerinin yürütülmesi,
-            <br />
-            • Finans bilgileriniz (hesap hareketleri, IBAN, malvarlığı
-            bilgileri) bilgi güvenliği süreçlerinin yürütülmesi,
-            <br />
-            • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz
-            bilgileri) bilgi güvenliği süreçlerinin yürütülmesi, amaçlarıyla
-            veri sorumlusunun hukuki yükümlülüğünü yerine getirmesi (KVKK md.
-            5/2-ç) hukuki sebebine dayanılarak gerçek kişiler veya özel hukuk
-            tüzel kişilerine (banka, ulusal veri tabanı sistemi)
-            aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, TCKN, doğum tarihi, doğum
-            yeri, anne-baba adı, imza, sürücü belgesi numarası, pasaport
-            numarası, baro sicil numarası, TBB sicil numarası, uyruk) risk
-            yönetimi süreçlerinin yürütülmesi,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi) risk
-            yönetimi süreçlerinin yürütülmesi,
-            <br />
-            • Müşteri işlem bilginiz (müşteri ID numarası) risk yönetimi
-            süreçlerinin yürütülmesi,
-            <br />
-            • Finans bilgileriniz (hesap hareketleri, IBAN, banka hesap
-            bilgileri, bakiye bilgileri, kripto para bakiyesi, kripto para
-            adresi) risk yönetimi süreçlerinin yürütülmesi,
-            <br />
-            • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz
-            bilgileri) risk yönetimi süreçlerinin yürütülmesi,
-            <br />
-            • Görsel işitsel kayıtlarınız (kimlik fotoğrafı) risk yönetimi
-            süreçlerinin yürütülmesi amaçlarıyla veri sorumlusunun meşru
-            menfaatleri için veri işlenmesinin zorunlu olması (KVKK md. 5/2-f)
-            hukuki sebebine dayanılarak gerçek kişiler veya özel hukuk tüzel
-            kişilerine (banka, ulusal veri tabanı sistemi) aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, TCKN, doğum tarihi, doğum
-            yeri, anne-baba adı, imza) müşteri ilişkileri yönetim veya iletişim
-            süreçlerinin yerine getirilmesi,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi) müşteri
-            ilişkileri yönetim veya iletişim süreçlerinin yerine getirilmesi,
-            <br />
-            • Görsel işitsel kayıtlarınız (kimlik fotoğrafı) müşteri ilişkileri
-            yönetim veya iletişim süreçlerinin yerine getirilmesi amaçlarıyla
-            bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili
-            olması kaydıyla, sözleşmenin taraflarına ait kişisel verilerin
-            işlenmesinin gerekli olması (KVKK md. 5/2-c) hukuki sebebine
-            dayanılarak yetkili kamu kurum ve kuruluşlarına (MASAK, Gelir
-            İdaresi Başkanlığı, kolluk kuvvetleri, savcılık, mahkemeler)
-            aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (isim, soyisim, cinsiyet, doğum tarihi, TCKN,
-            nüfus cüzdanı numarası, sürücü belgesi numarası, pasaport numarası,
-            ikamet tezkeresi numarası, doğum yeri, anne- baba adı, uyruk, imza)
-            risk yönetimi süreçlerinin yürütülmesi, yetkili kişi, kurum ve
-            kuruluşlara bilgi verilmesi, hukuk işlerinin takibi ve yürütülmesi,
-            <br />
-            • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres,
-            faks numarası) risk yönetimi süreçlerinin yürütülmesi, yetkili kişi,
-            kurum ve kuruluşlara bilgi verilmesi, hukuk işlerinin takibi ve
-            yürütülmesi,
-            <br />
-            • Finans bilgileriniz (banka hesap bilgileri, hesap hareketleri,
-            malvarlığı bilgileri) risk yönetimi süreçlerinin yürütülmesi,
-            yetkili kişi, kurum ve kuruluşlara bilgi verilmesi, hukuk işlerinin
-            takibi ve yürütülmesi,
-            <br />
-            • Görsel ve işitsel kayıtlarınız (kimlik fotoğrafı) yetkili kişi,
-            kurum ve kuruluşlara bilgi verilmesi,
-            <br />
-            • İşlem güvenliği bilgileriniz (log kayıtları) yetkili kişi, kurum
-            ve kuruluşlara bilgi verilmesi,
-            <br />
-            • Mesleki deneyim bilginiz (meslek) risk yönetimi süreçlerinin
-            yürütülmesi,
-            <br />
-            • Hukuki işlem bilgileriniz (adli makamlarla yazışmalardaki
-            bilgiler, dava dosyasındaki bilgiler), hukuk işlerinin takibi ve
-            yürütülmesi,
-            <br />
-            • Diğer (işlem tarihi, işlem türü, işlem tutarı, işlemin yapıldığı
-            yer, işlemin yapıldığı yöntem, işlem tipi) risk yönetimi
-            süreçlerinin yürütülmesi amaçlarıyla veri sorumlusunun hukuki
-            yükümlülüğünü yerine getirmesi (KVKK md. 5/2-ç) hukuki sebebine
-            dayanılarak yetkili kamu kurum ve kuruluşlarına (MASAK, Gelir
-            İdaresi Başkanlığı, kolluk kuvvetleri, savcılık, mahkemeler)
-            aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (İsim, soyisim, TCKN, doğum tarihi) hizmet
-            satış sonrası destek hizmetlerinin yürütülmesi, iş sürekliliğinin
-            sağlanması faaliyetlerinin yürütülmesi, finans ve muhasebe işlerinin
-            yürütülmesi,
-            <br />
-            • İletişim bilgileriniz (e-posta adresi, telefon numarası) iş
-            sürekliliğinin sağlanması faaliyetlerinin yürütülmesi,
-            <br />
-            • Finans bilgileriniz (hesap hareketleri, IBAN, yatırılan tutar,
-            malvarlığı bilgileri, banka hesap bilgileri, kripto para hesap
-            bilgileri, kripto para cüzdan numarası, kripto para bakiyesi) iş
-            sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, finans ve
-            muhasebe işlerinin yürütülmesi ve hizmet satış sonrası destek
-            hizmetlerinin yürütülmesi,
-            <br />
-            • Müşteri işlem bilgileriniz (müşteri ID numarası) iş sürekliliğinin
-            sağlanması faaliyetlerinin yürütülmesi,
-            <br />
-            • Diğer bilgileriniz (işlem kanalı) iş sürekliliğinin sağlanması
-            faaliyetlerinin yürütülmesi amaçlarıyla bir sözleşmenin kurulması
-            veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin
-            taraflarına ait kişisel verilerin işlenmesinin gerekli olması (KVKK
-            md. 5/2-c) hukuki sebebine dayanılarak iş ortaklarımıza (banka,
-            çözüm ortağı) aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (İsim, soyisim, TCKN) yeni müşteriliklerin
-            değerlendirilmesi,
-            <br />
-            • İletişim bilgileriniz (e-posta adresi, telefon numarası) yeni
-            müşteriliklerin değerlendirilmesi amaçlarıyla veri sorumlusunun
-            meşru menfaatleri için veri işlenmesinin zorunlu olması (KVKK md.
-            5/2-f) hukuki sebebine dayanılarak iş ortaklarımıza (banka, çözüm
-            ortağı) aktarılmaktadır.
-            <br />
-            • Kimlik bilgileriniz (İsim, soyisim, TCKN) finans ve muhasebe
-            işlerinin yürütülmesi,
-            <br />
-            • Finans bilgileriniz (IBAN, hesap hareketleri) finans ve muhasebe
-            işlerinin yürütülmesi amaçlarıyla veri sorumlusunun hukuki
-            yükümlülüğünü yerine getirmesi (KVKK md. 5/2-ç) hukuki sebebine
-            dayanılarak iş ortaklarımıza (banka, çözüm ortağı) aktarılmaktadır.
+            • Hukuki işlem bilgileriniz (adli makamlarla yazışmalardaki bilgiler, dava dosyasındaki bilgiler) hukuk işlerinin takibi ve yürütülmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi amacıyla, kanunlarda açıkça öngörülmesi (KVKK md. 5/2-a) hukuki sebebine dayanılarak tedarikçilere (dış hizmet sağlayıcılar, avukatlar) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, cinsiyet, doğum tarihi, doğum yeri, TCKN, nüfus cüzdanı numarası, sürücü belgesi numarası, pasaport numarası, ikamet tezkeresi numarası, anne-baba adı, uyruk) yetkili kişi, kurum ve kuruluşlara bilgi verilmesi, risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • İletişim bilgileriniz (e-posta adresi, telefon numarası, faks numarası, adres) yetkili kişi, kurum ve kuruluşlara bilgi verilmesi, risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • Görsel ve işitsel kaydınız (kimlik fotoğrafı) yetkili kişi, kurum ve kuruluşlara bilgi verilmesi,
+            <br /> • Mesleki deneyim bilginiz (meslek) risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • Finans bilgileriniz (hesap hareketleri, banka hesap bilgileri) yetkili kişi, kurum ve kuruluşlara bilgi verilmesi, risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • İşlem güvenliği bilginiz (log kayıtları) yetkili kişi, kurum ve kuruluşlara bilgi verilmesi,
+            <br /> • Diğer bilgileriniz (işlem tarihi, işlem türü, işlem tutarı, işlemin yapıldığı yer, işlemin yapıldığı yöntem, işlem tipi) risk yönetimi süreçlerinin yürütülmesi amaçlarıyla, kanunlarda açıkça öngörülmesi (KVKK md. 5/2-a) hukuki sebebine dayanılarak yetkili kamu kurum ve kuruluşlarına (MASAK, Gelir İdaresi Başkanlığı, kolluk kuvvetleri, savcılık, mahkemeler) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, TCKN, uyruk, doğum tarihi, doğum yeri, anne-baba adı, imza) talep/şikayetlerin takibi, bilgi güvenliği süreçlerinin yürütülmesi, iletişim faaliyetlerinin yürütülmesi, sözleşme süreçlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi, müşteri ilişkileri yönetimi süreçlerinin yürütülmesi, iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, hizmet satış sonrası destek hizmetlerinin yürütülmesi, hukuk işlerinin takibi ve
+            yürütülmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres) talep/şikayetlerin takibi, bilgi güvenliği süreçlerinin yürütülmesi, iletişim faaliyetlerinin yürütülmesi, sözleşme süreçlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi, müşteri ilişkileri yönetimi süreçlerinin yürütülmesi, iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, hukuk işlerinin takibi ve yürütülmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi,
+            <br /> • Görsel ve işitsel kayıtlarınız (ses kaydı, kimlik fotoğrafı) talep/şikayetlerin takibi, bilgi güvenliği süreçlerinin yürütülmesi, müşteri ilişkileri yönetimi süreçlerinin yürütülmesi, iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi,
+            <br /> • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz bilgileri) talep/şikayetlerin takibi, iletişim faaliyetlerinin yürütülmesi, iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi,
+            <br /> • Finans bilgileriniz (hesap hareketleri, IBAN, banka hesap bilgileri, bakiye bilgileri, kripto para hesap bilgileri, kripto para adresi, yatırılan tutar, malvarlığı bilgileri, kripto para cüzdan numarası, kripto para bakiyesi, vergi dairesi) talep/şikayetlerin takibi, sözleşme süreçlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi, iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, hizmet satış sonrası destek hizmetlerinin yürütülmesi, hukuk işlerinin
+            takibi ve yürütülmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi,
+            <br /> • Lokasyon bilginiz (bulunduğunuz yerin konum bilgileri) talep/şikayetlerin takibi,
+            <br /> • Müşteri işlem bilgileriniz (müşteri ID numarası, faturaya ilişkin bilgiler) hizmet üretim ve operasyon süreçlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi, iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi,
+            <br /> • Hukuki işlem bilgileriniz (adli makamlarla yazışmalardaki bilgiler, dava dosyasındaki bilgiler) hukuk işlerinin takibi ve yürütülmesi, müşterilerin talep ve şikayetlerinin hukuki açıdan değerlendirilmesi,
+            <br /> • Diğer bilgileriniz (talep ve şikâyet içeriği, işlem kanalı) talep/şikayetlerin takibi, iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, amaçlarıyla bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin taraflarına ait kişisel verilerin işlenmesinin gerekli olması (KVKK md. 5/2-c) hukuki sebebine dayanılarak tedarikçilere (dış hizmet sağlayıcılar, avukatlar, kargo şirketi) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, TCKN, doğum tarihi, doğum yeri, anne-baba adı) denetim faaliyetlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi, bilgi güvenliği süreçlerinin yürütülmesi, iş faaliyetlerinin yürütülmesi/denetimi,
+            <br /> • İletişim bilgileriniz (e-posta adresi, adres) denetim faaliyetlerinin yürütülmesi,
+            <br /> • Finans bilgileriniz (vergi dairesi, IBAN) denetim faaliyetlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi,
+            <br /> • İşlem güvenliği bilgileriniz (IP adresi bilgileri, MAC numarası, log kayıtları) bilgi güvenliği süreçlerinin yürütülmesi,
+            <br /> • Görsel ve işitsel kaydınız (kimlik fotoğrafı) iş faaliyetlerinin yürütülmesi/denetimi amaçlarıyla veri sorumlusunun hukuki yükümlülüğünü yerine getirebilmesi için zorunlu olması (KVKK md. 5/2-ç) hukuki sebebine dayanılarak tedarikçilere (dış hizmet sağlayıcılar) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, TCKN, , , sürücü belgesi numarası, doğum tarihi, anne-baba adı, uyruk, imza) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, iletişim faaliyetlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi/iç denetim faaliyetlerinin yürütülmesi, risk yönetimi süreçlerinin yürütülmesi, iç denetim faaliyetlerinin yürütülmesi,
+            <br /> • İletişim bilgileriniz (e-posta adresi, telefon numarası, adres) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, iletişim faaliyetlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi/iç denetim faaliyetlerinin yürütülmesi, risk yönetimi süreçlerinin yürütülmesi, iç denetim faaliyetlerinin yürütülmesi,
+            <br /> • Görsel ve işitsel kaydınız (kimlik fotoğrafı, video, ses kaydı) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • Finans bilgileriniz (IBAN, hesap hareketleri, banka hesap bilgileri, kripto para adresi, kripto para bakiyesi, malvarlığı bilgileri) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi/iç denetim faaliyetlerinin yürütülmesi, risk yönetimi süreçlerinin yürütülmesi, iç denetim faaliyetlerinin yürütülmesi,
+            <br /> • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz bilgileri) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • Pazarlama bilginiz (çerez kayıtları) pazarlama analiz çalışmalarının yürütülmesi,
+            <br /> • Pazarlama/işlem güvenliği bilginiz (IP adresi bilgileri) pazarlama analiz çalışmalarının yürütülmesi,
+            <br /> • Müşteri işlem bilgileriniz (müşteri ID numarası, gelir kaynağı, öğrenim durumu) finans ve muhasebe işlerinin yürütülmesi/iç denetim faaliyetlerinin yürütülmesi, risk yönetimi süreçlerinin yürütülmesi, iç denetim faaliyetlerinin yürütülmesi,
+            <br /> • Mesleki deneyim bilginiz (meslek) risk yönetimi süreçlerinin yürütülmesi amaçlarıyla veri sorumlusunun meşru menfaatleri için veri işlenmesinin zorunlu olması (KVKK md. 5/2-f) hukuki sebebine dayanılarak tedarikçilere (dış hizmet sağlayıcılar) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (isim, soyisim) reklam/kampanya/promosyon süreçlerinin yürütülmesi,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi) reklam/kampanya/promosyon süreçlerinin yürütülmesi amaçlarıyla açık rızanıza (KVKK md. 5/1) dayanılarak tedarikçilere (dış hizmet sağlayıcılar) aktarılmaktadır.
+            <br /> • Biyometrik veriniz (biyometrik fotoğraf) bilgi güvenliği süreçlerinin yürütülmesi, müşteri ilişkileri yönetimi süreçlerinin yürütülmesi, amacıyla açık rızanıza (KVKK md. 6/2) dayanılarak tedarikçilere (dış hizmet sağlayıcılar) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, TCKN, anne-baba adı, uyruk, doğum yeri, doğum tarihi) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, iş faaliyetlerinin yürütülmesi, bilgi güvenliği süreçlerinin yürütülmesi, sözleşme süreçlerinin yürütülmesi ve talep/şikayetlerin takibi,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, iş faaliyetlerinin yürütülmesi, bilgi güvenliği süreçlerinin yürütülmesi, sözleşme süreçlerinin yürütülmesi,
+            <br /> • Müşteri işlem bilgileriniz (müşteri ID numarası) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, hizmet üretim ve operasyon süreçlerinin yürütülmesi,
+            <br /> • Finans bilgileriniz (hesap hareketleri, IBAN, malvarlığı bilgileri, banka hesap bilgileri, kripto para bakiyesi, bakiye bilgileri, kripto para adresi, vergi dairesi), iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi ve sözleşme süreçlerinin yürütülmesi,
+            <br /> • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz bilgileri, log kayıtları) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, iş faaliyetlerinin yürütülmesi, bilgi güvenliği süreçlerinin yürütülmesi,
+            <br /> • Görsel işitsel kayıtlarınız (kimlik fotoğrafı) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi amaçlarıyla bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin taraflarına ait kişisel verilerin işlenmesinin gerekli olması (KVKK md. 5/2-c) hukuki sebebine dayanılarak gerçek kişiler veya özel hukuk tüzel kişilerine (banka, ulusal veri tabanı sistemi) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, TCKN, anne-baba adı, uyruk) bilgi güvenliği süreçlerinin yürütülmesi,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres) bilgi güvenliği süreçlerinin yürütülmesi,
+            <br /> • Müşteri işlem bilginiz (müşteri ID numarası) bilgi güvenliği süreçlerinin yürütülmesi,
+            <br /> • Finans bilgileriniz (hesap hareketleri, IBAN, malvarlığı bilgileri) bilgi güvenliği süreçlerinin yürütülmesi,
+            <br /> • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz bilgileri) bilgi güvenliği süreçlerinin yürütülmesi, amaçlarıyla veri sorumlusunun hukuki yükümlülüğünü yerine getirmesi (KVKK md. 5/2-ç) hukuki sebebine dayanılarak gerçek kişiler veya özel hukuk tüzel kişilerine (banka, ulusal veri tabanı sistemi) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, TCKN, doğum tarihi, doğum yeri, anne-baba adı, imza, sürücü belgesi numarası, pasaport numarası, baro sicil numarası, TBB sicil numarası, uyruk) risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi) risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • Müşteri işlem bilginiz (müşteri ID numarası) risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • Finans bilgileriniz (hesap hareketleri, IBAN, banka hesap bilgileri, bakiye bilgileri, kripto para bakiyesi, kripto para adresi) risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • İşlem güvenliği bilgileriniz (IP adresi bilgileri, cihaz bilgileri) risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • Görsel işitsel kayıtlarınız (kimlik fotoğrafı) risk yönetimi süreçlerinin yürütülmesi amaçlarıyla veri sorumlusunun meşru menfaatleri için veri işlenmesinin zorunlu olması (KVKK md. 5/2-f) hukuki sebebine dayanılarak gerçek kişiler veya özel hukuk tüzel kişilerine (banka, ulusal veri tabanı sistemi) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, TCKN, doğum tarihi, doğum yeri, anne-baba adı, imza) müşteri ilişkileri yönetim veya iletişim süreçlerinin yerine getirilmesi,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi) müşteri ilişkileri yönetim veya iletişim süreçlerinin yerine getirilmesi,
+            <br /> • Görsel işitsel kayıtlarınız (kimlik fotoğrafı) müşteri ilişkileri yönetim veya iletişim süreçlerinin yerine getirilmesi amaçlarıyla bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin taraflarına ait kişisel verilerin işlenmesinin gerekli olması (KVKK md. 5/2-c) hukuki sebebine dayanılarak yetkili kamu kurum ve kuruluşlarına (MASAK, Gelir İdaresi Başkanlığı, kolluk kuvvetleri, savcılık, mahkemeler) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (isim, soyisim, cinsiyet, doğum tarihi, TCKN, nüfus cüzdanı numarası, sürücü belgesi numarası, pasaport numarası, ikamet tezkeresi numarası, doğum yeri, anne- baba adı, uyruk, imza) risk yönetimi süreçlerinin yürütülmesi, yetkili kişi, kurum ve kuruluşlara bilgi verilmesi, hukuk işlerinin takibi ve yürütülmesi,
+            <br /> • İletişim bilgileriniz (telefon numarası, e-posta adresi, adres, faks numarası) risk yönetimi süreçlerinin yürütülmesi, yetkili kişi, kurum ve kuruluşlara bilgi verilmesi, hukuk işlerinin takibi ve yürütülmesi,
+            <br /> • Finans bilgileriniz (banka hesap bilgileri, hesap hareketleri, malvarlığı bilgileri) risk yönetimi süreçlerinin yürütülmesi, yetkili kişi, kurum ve kuruluşlara bilgi verilmesi, hukuk işlerinin takibi ve yürütülmesi,
+            <br /> • Görsel ve işitsel kayıtlarınız (kimlik fotoğrafı) yetkili kişi, kurum ve kuruluşlara bilgi verilmesi,
+            <br /> • İşlem güvenliği bilgileriniz (log kayıtları) yetkili kişi, kurum ve kuruluşlara bilgi verilmesi,
+            <br /> • Mesleki deneyim bilginiz (meslek) risk yönetimi süreçlerinin yürütülmesi,
+            <br /> • Hukuki işlem bilgileriniz (adli makamlarla yazışmalardaki bilgiler, dava dosyasındaki bilgiler), hukuk işlerinin takibi ve yürütülmesi,
+            <br /> • Diğer (işlem tarihi, işlem türü, işlem tutarı, işlemin yapıldığı yer, işlemin yapıldığı yöntem, işlem tipi) risk yönetimi süreçlerinin yürütülmesi amaçlarıyla veri sorumlusunun hukuki yükümlülüğünü yerine getirmesi (KVKK md. 5/2-ç) hukuki sebebine dayanılarak yetkili kamu kurum ve kuruluşlarına (MASAK, Gelir İdaresi Başkanlığı, kolluk kuvvetleri, savcılık, mahkemeler) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (İsim, soyisim, TCKN, doğum tarihi) hizmet satış sonrası destek hizmetlerinin yürütülmesi, iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi,
+            <br /> • İletişim bilgileriniz (e-posta adresi, telefon numarası) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi,
+            <br /> • Finans bilgileriniz (hesap hareketleri, IBAN, yatırılan tutar, malvarlığı bilgileri, banka hesap bilgileri, kripto para hesap bilgileri, kripto para cüzdan numarası, kripto para bakiyesi) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi, finans ve muhasebe işlerinin yürütülmesi ve hizmet satış sonrası destek hizmetlerinin yürütülmesi,
+            <br /> • Müşteri işlem bilgileriniz (müşteri ID numarası) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi,
+            <br /> • Diğer bilgileriniz (işlem kanalı) iş sürekliliğinin sağlanması faaliyetlerinin yürütülmesi amaçlarıyla bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin taraflarına ait kişisel verilerin işlenmesinin gerekli olması (KVKK md. 5/2-c) hukuki sebebine dayanılarak iş ortaklarımıza (banka, çözüm ortağı) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (İsim, soyisim, TCKN) yeni müşteriliklerin değerlendirilmesi,
+            <br /> • İletişim bilgileriniz (e-posta adresi, telefon numarası) yeni müşteriliklerin değerlendirilmesi amaçlarıyla veri sorumlusunun meşru menfaatleri için veri işlenmesinin zorunlu olması (KVKK md. 5/2-f) hukuki sebebine dayanılarak iş ortaklarımıza (banka, çözüm ortağı) aktarılmaktadır.
+            <br /> • Kimlik bilgileriniz (İsim, soyisim, TCKN) finans ve muhasebe işlerinin yürütülmesi,
+            <br /> • Finans bilgileriniz (IBAN, hesap hareketleri) finans ve muhasebe işlerinin yürütülmesi amaçlarıyla veri sorumlusunun hukuki yükümlülüğünü yerine getirmesi (KVKK md. 5/2-ç) hukuki sebebine dayanılarak iş ortaklarımıza (banka, çözüm ortağı) aktarılmaktadır.
           </p>
           <h5>2.2. Yurt Dışı Aktarım</h5>
           <p>
-            Yine yukarıda anılan kişisel verileriniz, Şirket faaliyetlerinin
-            gerçekleştirilmesi amacıyla ve anılan amaçlarla bağlantılı, ölçülü
-            ve sınırlı şekilde Coin Swifter'ın kullanmakta olduğu altyapı ve
-            bilişim sistemlerinin işleyişi gereği bu faaliyetlerin yürütülmesi
-            için yurt dışı veri aktarımının gerekli olması sebebiyle, açık rıza
-            vermeniz halinde yurt dışındaki tedarikçilere (altyapı ve bilişim
-            sistemi hizmeti sunan dış hizmet sağlayıcılar) aktarılmaktadır.
+            Yine yukarıda anılan kişisel verileriniz, Şirket faaliyetlerinin gerçekleştirilmesi amacıyla ve anılan amaçlarla bağlantılı, ölçülü ve sınırlı şekilde Coin Swifter'ın kullanmakta olduğu altyapı ve bilişim sistemlerinin işleyişi gereği bu faaliyetlerin yürütülmesi için yurt dışı veri aktarımının gerekli olması sebebiyle, açık rıza vermeniz halinde yurt dışındaki tedarikçilere (altyapı ve bilişim sistemi hizmeti sunan dış hizmet sağlayıcılar) aktarılmaktadır.
           </p>
           <h5>3. Kişisel Verilerinizin Korunması, Muhafazası ve İmhası</h5>
           <p>
-            Kişisel verilerinize yetkisiz kişiler tarafından erişilmesini,
-            kişisel verilerinizin hatalı işlenmesini, ifşa edilmesini, hukuka
-            uygun olmayan sebeplerle değiştirilmesini/silinmesini önlemek,
-            korunmasını ve güvenliğini sağlamak amacıyla Şirketimiz KVK mevzuatı
-            uyarınca gerekli tüm teknik ve idari tedbirleri alır.
-            <br />
-            Kişisel verileriniz, aramızda sözleşme imzalanmış olmasının söz
-            konusu olduğu hallerde sözleşmenin sona erme tarihinden itibaren 10
-            yıl süreyle muhafaza edilir. Sözleşmesel ilişki dışında işlenen
-            kişisel verileriniz ise işleme amacının gerekli kıldığı makul
-            süreler boyunca işlenecektir. Bununla birlikte, her halükârda,
-            ilgili işleme süreci kapsamında kişisel verilerinizin muhafazasına
-            ilişkin yasal düzenlemelerle öngörülen saklama sürelerinin bulunması
-            durumunda, söz konusu süreler boyunca verilerinizin
-            silinemeyeceğinin altını çizmek isteriz.
-            <br />
-            Kişisel verileriniz, ilgili yasal düzenlemede öngörülen veya
-            işlendiği amaç için gerekli olan sürenin sona ermesi halinde veya
-            sizlerin silme taleplerinin olumlu sonuçlanması durumunda,
-            Şirketimizin Kişisel Verilerin Korunması ve Gizliliği Prosedürü ile
-            Kişisel Veri Saklama ve İmha Prosedürleri doğrultusunda KVK
-            mevzuatına uygun olarak silinir, yok edilir veya anonim hale
-            getirilir.
-            <br />
-            Coin Swifter'ın fiziki arşivine ve/veya sunucularına ve/veya diğer
-            sistemlerine yapılan saldırılar sonucunda kişisel verilerinizin
-            zarar görmesi ve/veya üçüncü kişiler tarafından ele
-            geçirilmesi/ifşası durumunda, Şirketimiz sizleri ve KVK Kurulunu söz
-            konusu durumdan haberdar olduktan sonra 72 saat içinde
-            bilgilendirir.
+            Kişisel verilerinize yetkisiz kişiler tarafından erişilmesini, kişisel verilerinizin hatalı işlenmesini, ifşa edilmesini, hukuka uygun olmayan sebeplerle değiştirilmesini/silinmesini önlemek, korunmasını ve güvenliğini sağlamak amacıyla Şirketimiz KVK mevzuatı uyarınca gerekli tüm teknik ve idari tedbirleri alır.
+            <br /> Kişisel verileriniz, aramızda sözleşme imzalanmış olmasının söz konusu olduğu hallerde sözleşmenin sona erme tarihinden itibaren 10 yıl süreyle muhafaza edilir. Sözleşmesel ilişki dışında işlenen kişisel verileriniz ise işleme amacının gerekli kıldığı makul süreler boyunca işlenecektir. Bununla birlikte, her halükârda, ilgili işleme süreci kapsamında kişisel verilerinizin muhafazasına ilişkin yasal düzenlemelerle öngörülen saklama sürelerinin bulunması durumunda, söz konusu
+            süreler boyunca verilerinizin silinemeyeceğinin altını çizmek isteriz.
+            <br /> Kişisel verileriniz, ilgili yasal düzenlemede öngörülen veya işlendiği amaç için gerekli olan sürenin sona ermesi halinde veya sizlerin silme taleplerinin olumlu sonuçlanması durumunda, Şirketimizin Kişisel Verilerin Korunması ve Gizliliği Prosedürü ile Kişisel Veri Saklama ve İmha Prosedürleri doğrultusunda KVK mevzuatına uygun olarak silinir, yok edilir veya anonim hale getirilir.
+            <br /> Coin Swifter'ın fiziki arşivine ve/veya sunucularına ve/veya diğer sistemlerine yapılan saldırılar sonucunda kişisel verilerinizin zarar görmesi ve/veya üçüncü kişiler tarafından ele geçirilmesi/ifşası durumunda, Şirketimiz sizleri ve KVK Kurulunu söz konusu durumdan haberdar olduktan sonra 72 saat içinde bilgilendirir.
           </p>
           <h5>4. Bilgi Edinme Hakkınız</h5>
           <p>
-            KVKK’nın 11. maddesi kapsamında, Şirketimize başvurarak kişisel
-            verilerinizin <br />
-            (i) işlenip işlenmediğini öğrenme <br />
-            (ii) işlenmişse buna ilişkin bilgi talep etme <br />
-            (iii) işlenme amacını ve amacına uygun kullanılıp kullanılmadığını
-            öğrenme <br />
-            (iv) yurt içinde veya yurt dışında aktarıldığı 3. kişileri bilme
-            <br />
-            (v) eksik veya yanlış işlenmişse düzeltilmesini isteme <br />
-            (vi) KVKK’nın 7. maddesinde öngörülen şartlar çerçevesinde
-            silinmesini veya yok edilmesini isteme <br />
-            (vii) kişisel verilerinizin KVKK’nın 7. maddesi kapsamında silinmesi
-            ve yok edilmesi ve eksik veya yanlış işlenmiş kişisel verilerinin
-            düzeltilmesi taleplerinin, kişisel verilerin aktarıldığı üçüncü
-            kişilere bildirilmesini isteme <br />
-            (viii) münhasıran otomatik sistemler ile analiz edilmesi nedeniyle
-            aleyhinize bir sonucun ortaya çıkmasına itiraz etme <br />
-            (ix) kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız
-            hâlinde zararın giderilmesini talep etme haklarına sahip olduğunuzu
-            bildiririz.
-            <br />
-            KVKK kapsamında, kişisel verilerinizle ilgili başvuruda bulunmak
-            istemeniz halinde başvurularınızı aşağıda belirtilen kanallardan
-            birini kullanarak
-            <br />
-            • Odunluk mah. Akpınar Cad. No:5 Kat:10 Daire:23 Green White Plaza
-            Nilüfer / BURSA adresine kimlik teyidinizin yapılması sağlanarak
-            yazılı olarak bizzat veya noter kanalıyla veya
-            <br />
-            • kayıtlı elektronik posta (KEP) adresi, güvenli elektronik imza,
-            mobil imza yoluyla ya da tarafınızca Coin Swifter'a daha önce
-            bildirilen ve Coin Swifter'ın sisteminde kayıtlı bulunan e-posta
-            adresinizi kullanmak suretiyle Şirketimizin
+            KVKK’nın 11. maddesi kapsamında, Şirketimize başvurarak kişisel verilerinizin <br /> (i) işlenip işlenmediğini öğrenme <br /> (ii) işlenmişse buna ilişkin bilgi talep etme <br /> (iii) işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme <br /> (iv) yurt içinde veya yurt dışında aktarıldığı 3. kişileri bilme
+            <br /> (v) eksik veya yanlış işlenmişse düzeltilmesini isteme <br /> (vi) KVKK’nın 7. maddesinde öngörülen şartlar çerçevesinde silinmesini veya yok edilmesini isteme <br /> (vii) kişisel verilerinizin KVKK’nın 7. maddesi kapsamında silinmesi ve yok edilmesi ve eksik veya yanlış işlenmiş kişisel verilerinin düzeltilmesi taleplerinin, kişisel verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme <br /> (viii) münhasıran otomatik sistemler ile analiz edilmesi nedeniyle aleyhinize
+            bir sonucun ortaya çıkmasına itiraz etme <br /> (ix) kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme haklarına sahip olduğunuzu bildiririz.
+            <br /> KVKK kapsamında, kişisel verilerinizle ilgili başvuruda bulunmak istemeniz halinde başvurularınızı aşağıda belirtilen kanallardan birini kullanarak
+            <br /> • Odunluk mah. Akpınar Cad. No:5 Kat:10 Daire:23 Green White Plaza Nilüfer / BURSA adresine kimlik teyidinizin yapılması sağlanarak yazılı olarak bizzat veya noter kanalıyla veya
+            <br /> • kayıtlı elektronik posta (KEP) adresi, güvenli elektronik imza, mobil imza yoluyla ya da tarafınızca Coin Swifter'a daha önce bildirilen ve Coin Swifter'ın sisteminde kayıtlı bulunan e-posta adresinizi kullanmak suretiyle Şirketimizin
             <b-link href="kisiselveri@coinswifter.com">kisiselveri@coinswifter.com</b-link> adresine
-            <br />
-            KVKK’nın 13.maddesi ve 30356 sayılı ve 10.03.2018 tarihli Resmî
-            Gazete’de yayımlanan Veri Sorumlusuna Başvuru Usul ve Esasları
-            Hakkında Tebliğ’in başvuru usulünü düzenleyen 5.maddesine uygun
-            şekilde iletebilirsiniz.
-            <br />
-            Şirketimiz, usulüne uygun olan başvuru taleplerini, talebin
-            niteliğine göre ve en geç 30 (otuz) gün içinde sonuçlandıracaktır.
-            İşlemin maliyet gerektirmesi halinde, KVK Kurulu tarafından
-            belirlenen tarife uygulanacaktır. Talebiniz kabul edilecek veya
-            gerekçesi açıklanarak reddedilebilecek olup, cevabımız yazılı olarak
-            veya elektronik ortamda tarafınıza iletilecektir.
-            <br />
-            İşbu Aydınlatma Metni, değişen şartlara ve yasal düzenlemelere uyum
-            sağlamak amacıyla güncellenebilecektir. Şirketimiz tarafından
-            yapılacak güncellemeler siz müşterilere bildirilecektir.
+            <br /> KVKK’nın 13.maddesi ve 30356 sayılı ve 10.03.2018 tarihli Resmî Gazete’de yayımlanan Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ’in başvuru usulünü düzenleyen 5.maddesine uygun şekilde iletebilirsiniz.
+            <br /> Şirketimiz, usulüne uygun olan başvuru taleplerini, talebin niteliğine göre ve en geç 30 (otuz) gün içinde sonuçlandıracaktır. İşlemin maliyet gerektirmesi halinde, KVK Kurulu tarafından belirlenen tarife uygulanacaktır. Talebiniz kabul edilecek veya gerekçesi açıklanarak reddedilebilecek olup, cevabımız yazılı olarak veya elektronik ortamda tarafınıza iletilecektir.
+            <br /> İşbu Aydınlatma Metni, değişen şartlara ve yasal düzenlemelere uyum sağlamak amacıyla güncellenebilecektir. Şirketimiz tarafından yapılacak güncellemeler siz müşterilere bildirilecektir.
           </p>
         </b-col>
       </b-row>

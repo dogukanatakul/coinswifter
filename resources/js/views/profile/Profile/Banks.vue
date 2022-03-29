@@ -2,16 +2,8 @@
     <b-form @submit="sendBank">
         <b-row>
             <b-col cols="12" md="5">
-                <b-form-group
-                    :label="$t('Banka')"
-                >
-                    <v-select
-                        :placeholder="$t('Banka Seçin')"
-                        v-model.number="form.bank"
-                        label="text"
-                        :options="banks"
-                        :reduce="data => data.value"
-                    ></v-select>
+                <b-form-group :label="$t('Banka')" >
+                    <v-select :placeholder="$t('Banka Seçin')" v-model.number="form.bank" label="text" :options="banks" :reduce="data => data.value" ></v-select>
                     <b-form-text v-if="v$.form.bank.$error" class="text-danger">
                         <p class="text-danger">
                             {{ $t("Lütfen banka seçiniz!") }}
@@ -20,16 +12,8 @@
                 </b-form-group>
             </b-col>
             <b-col cols="12" md="7">
-                <b-form-group
-                    label="Iban"
-                >
-                    <b-form-input
-                        v-model="form.iban"
-                        size="sm"
-                        class="mt-3"
-                        placeholder="TRXXXXXXXXXX"
-                        inputmode="text"
-                    ></b-form-input>
+                <b-form-group label="Iban" >
+                    <b-form-input v-model="form.iban" size="sm" class="mt-3" placeholder="TRXXXXXXXXXX" inputmode="text" ></b-form-input>
                     <b-form-text v-if="v$.form.iban.$error" class="text-danger">
                         <p class="text-danger">
                             Lütfen iban bilgisi giriniz!
@@ -38,9 +22,7 @@
                 </b-form-group>
             </b-col>
             <b-col cols="5">
-                <b-form-checkbox
-                    v-model="form.primary"
-                >
+                <b-form-checkbox v-model="form.primary" >
                     {{ $t("Birincil Olarak Ayarla") }}
                 </b-form-checkbox>
             </b-col>
@@ -52,12 +34,7 @@
         </b-row>
     </b-form>
     <b-row>
-        <b-card
-            :header="$t('Tanımlı Banka Hesaplarım')"
-            header-tag="header"
-            nobody
-            class="mt-4 table-responsive"
-            style="padding: 0px">
+        <b-card :header="$t('Tanımlı Banka Hesaplarım')" header-tag="header" nobody class="mt-4 table-responsive" style="padding: 0px">
             <table class="table table-striped">
                 <thead>
                 <tr>

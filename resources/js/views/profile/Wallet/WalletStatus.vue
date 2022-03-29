@@ -2,12 +2,7 @@
   <b-card :header="$t('Toplam Varlıklarım')" header-tag="header">
     <b-row class="text-center justify-content-center align-items-center">
       <b-col cols="12">
-        <apexchart
-          type="donut"
-          :options="chartOptions"
-          :series="series"
-          style="text-align: left"
-        ></apexchart>
+        <apexchart type="donut" :options="chartOptions" :series="series" style="text-align: left" ></apexchart>
       </b-col>
     </b-row>
   </b-card>

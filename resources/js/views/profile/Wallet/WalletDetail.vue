@@ -1,39 +1,21 @@
 <template>
-  <safe-wallet
-    v-if="walletSelect.network.short_name === 'SOURCE'"
-    v-model:walletSelect="walletSelect"
-    @getWallets="getWallets"
-  ></safe-wallet>
+  <safe-wallet v-if="walletSelect.network.short_name === 'SOURCE'" v-model:walletSelect="walletSelect" @getWallets="getWallets" ></safe-wallet>
   <b-card v-else>
     <template #header>
       <div class="float-start">
         <h5>
-          {{ walletSelect.symbol }}
-          {{ walletAction === "deposit" ? "Yatırma" : "Çekme" }}
+          {{ walletSelect.symbol }} {{ walletAction === "deposit" ? "Yatırma" : "Çekme" }}
         </h5>
         <span>
           <label>{{ $t("Toplam Varlık") }}</label>
-          <label class="mx-2"
-            >{{ walletSelect.total_balance }} {{ walletSelect.symbol }}</label
-          >
+          <label class="mx-2" >{{ walletSelect.total_balance }} {{ walletSelect.symbol }}</label >
         </span>
       </div>
       <div class="float-end mt-2">
         <b-button-group>
-          <b-button
-            @click="walletAction = 'deposit'"
-            :variant="
-              (walletAction !== 'deposit' ? 'outline-' : '') + 'success'
-            "
-            >{{ $t("Yatırma") }}
+          <b-button @click="walletAction = 'deposit'" :variant=" (walletAction !== 'deposit' ? 'outline-' : '') + 'success' " >{{ $t("Yatırma") }}
           </b-button>
-          <b-button
-            v-if="walletSelect.durum !== 'ico'"
-            @click="walletAction = 'withdrawal'"
-            :variant="
-              (walletAction !== 'withdrawal' ? 'outline-' : '') + 'danger'
-            "
-            >{{ $t("Çekme") }}
+          <b-button v-if="walletSelect.durum !== 'ico'" @click="walletAction = 'withdrawal'" :variant=" (walletAction !== 'withdrawal' ? 'outline-' : '') + 'danger' " >{{ $t("Çekme") }}
           </b-button>
         </b-button-group>
       </div>
@@ -43,30 +25,14 @@
         <b-col cols="12" class="mx-auto">
           <b-row align-content="center" align-h="center">
             <b-col cols="12" class="text-center mx-auto">
-              <img
-                :src="
-                  'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' +
-                  walletSelect.wallet_code
-                "
-                alt="qr-code"
-              />
+              <img :src=" 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + walletSelect.wallet_code " alt="qr-code" />
             </b-col>
           </b-row>
           <b-row align-content="center" align-h="center">
             <b-col cols="12" md="8">
               <b-input-group class="mt-3">
-                <b-form-input
-                  ref="walletCode"
-                  style="text-align: center"
-                  autofocus
-                  :model-value="walletSelect.wallet_code"
-                  inputmode="text"
-                  readonly
-                ></b-form-input>
-                <b-button
-                  variant="primary"
-                  @click="copyWalletCode(walletSelect.wallet_code)"
-                >
+                <b-form-input ref="walletCode" style="text-align: center" autofocus :model-value="walletSelect.wallet_code" inputmode="text" readonly ></b-form-input>
+                <b-button variant="primary" @click="copyWalletCode(walletSelect.wallet_code)" >
                   <i class="fas fa-clipboard"></i>
                 </b-button>
               </b-input-group>
@@ -80,15 +46,13 @@
             <tr>
               <th>{{ $t("Minimum:") }}</th>
               <td class="text--right">
-                {{ walletSelect.transfer_min }}
-                {{ walletSelect.symbol }}
+                {{ walletSelect.transfer_min }} {{ walletSelect.symbol }}
               </td>
             </tr>
             <tr>
               <th>{{ $t("Maksimum:") }}</th>
               <td class="text--right">
-                {{ walletSelect.transfer_max }}
-                {{ walletSelect.symbol }}
+                {{ walletSelect.transfer_max }} {{ walletSelect.symbol }}
               </td>
             </tr>
             <tr>
@@ -98,18 +62,13 @@
             <tr>
               <th>{{ $t("Transfer Bedeli:") }}</th>
               <td class="text--right">
-                {{ (form["amount"] * walletSelect.commission_out) / 100 }}
-                {{ walletSelect.symbol }}
+                {{ (form["amount"] * walletSelect.commission_out) / 100 }} {{ walletSelect.symbol }}
               </td>
             </tr>
             <tr>
               <th>{{ $t("Gidecek Tutar:") }}</th>
               <td class="text--right">
-                {{
-                  form["amount"] -
-                  (form["amount"] * walletSelect.commission_out) / 100
-                }}
-                {{ walletSelect.symbol }}
+                {{ form["amount"] - (form["amount"] * walletSelect.commission_out) / 100 }} {{ walletSelect.symbol }}
               </td>
             </tr>
           </table>
@@ -120,16 +79,7 @@
             <b-row align-v="center" align-h="center">
               <b-col cols="12">
                 <b-input-group :append="walletSelect.symbol" class="mt-3">
-                  <b-form-input
-                    step="0.00000001"
-                    style="appearance: textfield"
-                    v-model="form['amount']"
-                    @focus="dynamicFocus('in')"
-                    @focusout="dynamicFocus('out')"
-                    :type="dynamicInput"
-                    inputmode="numeric"
-                    autofocus
-                  ></b-form-input>
+                  <b-form-input step="0.00000001" style="appearance: textfield" v-model="form['amount']" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" inputmode="numeric" autofocus ></b-form-input>
                 </b-input-group>
                 <b-form-invalid-feedback :state="!v$.form.amount.$error">
                   <p class="text-danger">
@@ -138,22 +88,12 @@
                 </b-form-invalid-feedback>
               </b-col>
               <b-col cols="1" class="mx-3 px-3 mt-3">
-                <b-icon
-                  icon="box-arrow-down"
-                  animation="cylon-vertical"
-                  font-scale="2"
-                ></b-icon>
+                <b-icon icon="box-arrow-down" animation="cylon-vertical" font-scale="2" ></b-icon>
               </b-col>
               <b-col cols="12">
                 <b-overlay :show="toWalletControl" rounded="sm">
                   <b-input-group class="my-3">
-                    <b-form-input
-                      @paste="clipboardPaste"
-                      type="text"
-                      v-model="form['wallet']"
-                      :placeholder="$t('Gidecek cüzdan adresini giriniz')"
-                      inputmode="text"
-                    ></b-form-input>
+                    <b-form-input @paste="clipboardPaste" type="text" v-model="form['wallet']" :placeholder="$t('Gidecek cüzdan adresini giriniz')" inputmode="text" ></b-form-input>
                     <b-form-invalid-feedback :state="!v$.form.wallet.$error">
                       <p class="text-danger">
                         {{ $t("Bu alan zorunludur.") }}
@@ -162,11 +102,7 @@
                   </b-input-group>
                   <template #overlay>
                     <div class="text-center">
-                      <b-icon
-                        icon="search"
-                        font-scale="2"
-                        animation="throb"
-                      ></b-icon>
+                      <b-icon icon="search" font-scale="2" animation="throb" ></b-icon>
                       <p>{{ $t("Cüzdan kontrol ediliyor.") }}</p>
                     </div>
                   </template>
@@ -174,30 +110,15 @@
               </b-col>
               <b-col cols="12">
                 <div class="d-grid gap-2">
-                  <b-button block variant="primary" type="submit">{{
-                    $t("Transfer İşlemini Başlat")
-                  }}</b-button>
+                  <b-button block variant="primary" type="submit">{{ $t("Transfer İşlemini Başlat") }}</b-button>
                 </div>
               </b-col>
             </b-row>
           </b-form>
         </b-col>
         <b-col cols="12" class="my-2">
-          <p
-            class="
-              alert alert-danger
-              fw-bolder
-              bg-danger
-              text-light
-              lh-lg
-              text-wrap text-center
-            "
-          >
-            {{
-              $t(
-                "Tüm token çekimleriniz 1 dakika içerisinde gerçekleşir. Siz dilerseniz 1 dakika sonra iptal işlemi gerçekleştirebilirsiniz."
-              )
-            }}
+          <p class=" alert alert-danger fw-bolder bg-danger text-light lh-lg text-wrap text-center " >
+            {{ $t( "Tüm token çekimleriniz 1 dakika içerisinde gerçekleşir. Siz dilerseniz 1 dakika sonra iptal işlemi gerçekleştirebilirsiniz." ) }}
           </p>
         </b-col>
       </b-row>
@@ -221,11 +142,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="(order, order_key) in walletSelect.orders"
-            :key="order_key"
-            :style="bgColorOrder(order.percent, order.operation)"
-          >
+          <tr v-for="(order, order_key) in walletSelect.orders" :key="order_key" :style="bgColorOrder(order.percent, order.operation)" >
             <td>{{ order.parity }}</td>
             <td>{{ order.amount }}</td>
             <td class="text-center">%{{ order.percent }}</td>
@@ -235,13 +152,7 @@
             <td>{{ order.operation }}</td>
             <td>{{ order.created_at }}</td>
             <td>
-              <b-button
-                v-if="!order.is_deleted"
-                squared
-                variant="outline-danger"
-                @click="deleteOrder(order.microtime)"
-                size="sm"
-              >
+              <b-button v-if="!order.is_deleted" squared variant="outline-danger" @click="deleteOrder(order.microtime)" size="sm" >
                 <b-icon icon="x-circle" font-scale="0.5"></b-icon>
               </b-button>
             </td>
@@ -266,10 +177,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="(item, key) in walletSelect.user_withdrawal_wallet"
-            :key="key"
-          >
+          <tr v-for="(item, key) in walletSelect.user_withdrawal_wallet" :key="key" >
             <th scope="row">{{ item.amount }}</th>
             <th scope="row">{{ item.send_amount }}</th>
             <th scope="row">{{ item.commission }}</th>
@@ -277,11 +185,7 @@
             <td>{{ item.created_at }}</td>
             <td>{{ item.status }}</td>
             <td>
-              <b-button
-                @click="deleteWithdrawalWallet(item.uuid)"
-                block
-                variant="primary"
-                >{{ $t("İptal") }}
+              <b-button @click="deleteWithdrawalWallet(item.uuid)" block variant="primary" >{{ $t("İptal") }}
               </b-button>
             </td>
           </tr>
@@ -291,11 +195,7 @@
             <td>{{ item.created_at }}</td>
             <td>{{ item.status }}</td>
             <td>
-              <b-button
-                @click="deleteWithdrawal(item.uuid)"
-                block
-                variant="primary"
-                >{{ $t("İptal") }}
+              <b-button @click="deleteWithdrawal(item.uuid)" block variant="primary" >{{ $t("İptal") }}
               </b-button>
             </td>
           </tr>

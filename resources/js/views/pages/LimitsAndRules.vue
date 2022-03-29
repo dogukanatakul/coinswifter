@@ -82,102 +82,60 @@
                     </b-row>
 
                     <p>
-                        <span class="text-danger">*</span> Bitcoin Cüzdanı ile yatırma çekme
-                        işlemleri için Bitcoin Cüzdanı'nızın aktifleştirilmesi
-                        gerekmektedir.
+                        <span class="text-danger">*</span> Bitcoin Cüzdanı ile yatırma çekme işlemleri için Bitcoin Cüzdanı'nızın aktifleştirilmesi gerekmektedir.
                     </p>
                     <p>
-                        İlk defa Bitcoin çekme talimatı verebilmeniz için en az bir kere
-                        Türkiye'deki herhangi bir bankadan adınıza açılmış hesap ile TL
-                        yatırma veya çekme işlemi gerçekleştirmeniz ve bu işlemin üzerinden
-                        48 saat geçmesi gerekmektedir.
+                        İlk defa Bitcoin çekme talimatı verebilmeniz için en az bir kere Türkiye'deki herhangi bir bankadan adınıza açılmış hesap ile TL yatırma veya çekme işlemi gerçekleştirmeniz ve bu işlemin üzerinden 48 saat geçmesi gerekmektedir.
                     </p>
                     <p>
-                        Bitcoin cüzdanınızın aktif olabilmesi için Hesap -> Bitcoin Cüzdanım
-                        sayfasındaki yönergeleri izleyin.
+                        Bitcoin cüzdanınızın aktif olabilmesi için Hesap -> Bitcoin Cüzdanım sayfasındaki yönergeleri izleyin.
                     </p>
                     <p>
-                        Bitcoin Cüzdanı Aktif Değil: Kimlik bilgileri NVİ sisteminden
-                        doğrulanan, e-posta adresini ve telefon numarasını doğrulamış
-                        kullanıcı hesapları
+                        Bitcoin Cüzdanı Aktif Değil: Kimlik bilgileri NVİ sisteminden doğrulanan, e-posta adresini ve telefon numarasını doğrulamış kullanıcı hesapları
                     </p>
                     <p>
-                        Bitcoin Cüzdanı Aktif: Coin Swifter sistemine yüklenen dilekçeli
-                        selfie ve kimlik belgeleri Coin Swifter tarafından doğrulanmış,
-                        Bitcoin Cüzdan Şifresi tanımlamış kullanıcı hesapları
+                        Bitcoin Cüzdanı Aktif: Coin Swifter sistemine yüklenen dilekçeli selfie ve kimlik belgeleri Coin Swifter tarafından doğrulanmış, Bitcoin Cüzdan Şifresi tanımlamış kullanıcı hesapları
                     </p>
                     <h5>Para Yatırma Kuralları</h5>
                     <p>
-                        Lütfen aşağıdaki kurallara uygun transferler yapınız. Kural dışı
-                        transferler masraflar çıkartılıp 1 iş günü içinde iade edilecektir.
+                        Lütfen aşağıdaki kurallara uygun transferler yapınız. Kural dışı transferler masraflar çıkartılıp 1 iş günü içinde iade edilecektir.
                     </p>
                     <p>
-                        Akbank, Denizbank, Fibabanka, Türkiye İş Bankası, VakıfBank, Yapı
-                        Kredi ve Ziraat Bankası üzerinden, bu bankalara yapılan havale ile
-                        TL yatırma işlemleri 7/24 otomatik olarak hesabınıza
-                        aktarılmaktadır. Farklı bir bankadan gerçekleştirilen ve hafta sonu
-                        ve resmi tatiller haricinde saat 16.45'e kadar tarafımıza ulaşan EFT
-                        ile para yatırma işlemleri aynı gün içerisinde hesabınıza
-                        aktarılacaktır.
+                        Akbank, Denizbank, Fibabanka, Türkiye İş Bankası, VakıfBank, Yapı Kredi ve Ziraat Bankası üzerinden, bu bankalara yapılan havale ile TL yatırma işlemleri 7/24 otomatik olarak hesabınıza aktarılmaktadır. Farklı bir bankadan gerçekleştirilen ve hafta sonu ve resmi tatiller haricinde saat 16.45'e kadar tarafımıza ulaşan EFT ile para yatırma işlemleri aynı gün içerisinde hesabınıza aktarılacaktır.
                     </p>
                     <p>
-                        Türkiye Cumhuriyet Merkez Bankası (TCMB) tarafından hizmete sunulan
-                        FAST (Fonların Anlık ve Sürekli Transferi) ödeme sistemi ile FAST
-                        limitleri dahilinde Coin Swifter hesaplarına yapılan para yatırma
-                        işlemleri aynı gün içerisinde hesabınıza aktarılacaktır.
+                        Türkiye Cumhuriyet Merkez Bankası (TCMB) tarafından hizmete sunulan FAST (Fonların Anlık ve Sürekli Transferi) ödeme sistemi ile FAST limitleri dahilinde Coin Swifter hesaplarına yapılan para yatırma işlemleri aynı gün içerisinde hesabınıza aktarılacaktır.
                     </p>
                     <p>
-                        Sadece kendi adınıza kayıtlı banka hesabından yaptığınız transferler
-                        kabul edilecektir. Sitede kayıtlı olduğunuz isim ile tarafımıza
-                        transfer gerçekleştirdiğiniz banka hesabı sahibi aynı olmalıdır.
+                        Sadece kendi adınıza kayıtlı banka hesabından yaptığınız transferler kabul edilecektir. Sitede kayıtlı olduğunuz isim ile tarafımıza transfer gerçekleştirdiğiniz banka hesabı sahibi aynı olmalıdır.
                     </p>
                     <p>
-                        Akbank, Denizbank, Fibabanka, Türkiye İş Bankası, VakıfBank, Yapı
-                        Kredi ve Ziraat Bankası Hesaplarımıza havale veya EFT ile para
-                        transfer edebilirsiniz.
+                        Akbank, Denizbank, Fibabanka, Türkiye İş Bankası, VakıfBank, Yapı Kredi ve Ziraat Bankası Hesaplarımıza havale veya EFT ile para transfer edebilirsiniz.
                     </p>
                     <p>
-                        TRY yatırma işlemlerinizi, talep oluşturmadan, açıklama kodu girmeye
-                        gerek kalmadan bankanızın internet veya mobil bankacılık
-                        kanallarından gerçekleştirebilirsiniz.
+                        TRY yatırma işlemlerinizi, talep oluşturmadan, açıklama kodu girmeye gerek kalmadan bankanızın internet veya mobil bankacılık kanallarından gerçekleştirebilirsiniz.
                     </p>
                     <p>
-                        TRY yatırma işlemleri için herhangi bir alt limit bulunmamaktadır.
-                        Günlük TRY yatırma limitiniz dahilinde, bankanızın izin verdiği
-                        tutarda havale/EFT yapabilirsiniz.
+                        TRY yatırma işlemleri için herhangi bir alt limit bulunmamaktadır. Günlük TRY yatırma limitiniz dahilinde, bankanızın izin verdiği tutarda havale/EFT yapabilirsiniz.
                     </p>
                     <p>
-                        ATM'lerden gönderilen paralar kabul edilmemektedir. İadesi için
-                        kimlik fotokopisi ve aynı isme kayıtlı banka hesabı istenecektir.
+                        ATM'lerden gönderilen paralar kabul edilmemektedir. İadesi için kimlik fotokopisi ve aynı isme kayıtlı banka hesabı istenecektir.
                     </p>
                     <p>
-                        Bilgisayarınızdaki dosyaların şifrelenmesi, virüslerin çözümü ya da
-                        benzeri bir nedenle Bitcoin ödemesi talep ediliyorsa Coin Swifter'a
-                        para yatırmanız yasaktır. Yapılan transferler iade edilecek ve
-                        hesabınız kapatılacaktır.
+                        Bilgisayarınızdaki dosyaların şifrelenmesi, virüslerin çözümü ya da benzeri bir nedenle Bitcoin ödemesi talep ediliyorsa Coin Swifter'a para yatırmanız yasaktır. Yapılan transferler iade edilecek ve hesabınız kapatılacaktır.
                     </p>
                     <h5>Para Çekme Kuralları</h5>
                     <p>
-                        Akbank, Denizbank, Fibabanka, Türkiye İş Bankası, VakıfBank, Yapı
-                        Kredi ve Ziraat Bankası hesaplarınıza, 7/24 havale ile TRY çekme
-                        talimatı verebilirsiniz.
+                        Akbank, Denizbank, Fibabanka, Türkiye İş Bankası, VakıfBank, Yapı Kredi ve Ziraat Bankası hesaplarınıza, 7/24 havale ile TRY çekme talimatı verebilirsiniz.
                     </p>
                     <p>
-                        Akbank, Denizbank, Fibabanka, Türkiye İş Bankası, VakıfBank, Yapı
-                        Kredi ve Ziraat Bankası haricindeki vadesiz Türk Lirası
-                        hesaplarınıza resmi tatiller haricinde, hafta içi saat 16.45'e kadar
-                        verilen EFT ile TRY çekme talepleri aynı gün içerisinde
-                        gönderilecektir.
+                        Akbank, Denizbank, Fibabanka, Türkiye İş Bankası, VakıfBank, Yapı Kredi ve Ziraat Bankası haricindeki vadesiz Türk Lirası hesaplarınıza resmi tatiller haricinde, hafta içi saat 16.45'e kadar verilen EFT ile TRY çekme talepleri aynı gün içerisinde gönderilecektir.
                     </p>
                     <p>
-                        Türkiye Cumhuriyet Merkez Bankası (TCMB) tarafından hizmete sunulan
-                        FAST (Fonların Anlık ve Sürekli Transferi) ödeme sistemi ile FAST
-                        limitleri dahilinde 7 gün 24 saat Türk Lirası çekebilirsiniz.
+                        Türkiye Cumhuriyet Merkez Bankası (TCMB) tarafından hizmete sunulan FAST (Fonların Anlık ve Sürekli Transferi) ödeme sistemi ile FAST limitleri dahilinde 7 gün 24 saat Türk Lirası çekebilirsiniz.
                     </p>
                     <p>
-                        Resmi tatil günleri ve hafta sonu, FAST limitlerini aşan tutarlar
-                        için EFT ile TRY çekme talepleri takip eden ilk iş gününde
-                        gerçekleşmektedir.
+                        Resmi tatil günleri ve hafta sonu, FAST limitlerini aşan tutarlar için EFT ile TRY çekme talepleri takip eden ilk iş gününde gerçekleşmektedir.
                     </p>
                     <h5>Bitcoin Alma Kuralları</h5>
                     <p>En az 10 TL ile Bitcoin alabilirsiniz.</p>

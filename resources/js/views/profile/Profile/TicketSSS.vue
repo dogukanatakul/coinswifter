@@ -8,32 +8,12 @@
         <div class="accordion" role="tablist">
           <b-card no-body class="mb-1">
             <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button
-                block
-                v-b-toggle.inner-accordion-1
-                class="w-100 border-0 bg-transparent text-dark text-left"
-                @click="activeIndices = 0"
-                >Dışarıdaki bir uygulamaya nasıl cüzdanımdaki parayı
-                aktarabilirim?
-                <span class="float-right when-opened"
-                  ><i class="fas fa-chevron-down"></i></span
-                ><span class="float-right when-closed"
-                  ><i class="fas fa-chevron-up"></i></span
-              ></b-button>
+              <b-button block v-b-toggle.inner-accordion-1 class="w-100 border-0 bg-transparent text-dark text-left" @click="activeIndices = 0" >Dışarıdaki bir uygulamaya nasıl cüzdanımdaki parayı aktarabilirim?
+                <span class="float-right when-opened" ><i class="fas fa-chevron-down"></i></span ><span class="float-right when-closed" ><i class="fas fa-chevron-up"></i></span ></b-button>
             </b-card-header>
-            <b-collapse
-              id="inner-accordion-1"
-              :visible="activeIndices === 0"
-              :aria-expanded="activeIndices === 0 ? true : false"
-              accordion="my-accordion"
-              role="tabpanel"
-            >
+            <b-collapse id="inner-accordion-1" :visible="activeIndices === 0" :aria-expanded="activeIndices === 0 ? true : false" accordion="my-accordion" role="tabpanel" >
               <b-card-body>
-                <b-card-text
-                  >Cüzdanım bölümünden göndereceğiniz Coin / Tokeni seçerek
-                  "Çekme" butonuna tıklayarak gönderilecek miktarı ve cüzdan
-                  adresini yazıp "Transfer İşlemini Başlat" butonuna
-                  tıklayabilirsiniz.
+                <b-card-text >Cüzdanım bölümünden göndereceğiniz Coin / Tokeni seçerek "Çekme" butonuna tıklayarak gönderilecek miktarı ve cüzdan adresini yazıp "Transfer İşlemini Başlat" butonuna tıklayabilirsiniz.
                 </b-card-text>
               </b-card-body>
             </b-collapse>
@@ -41,58 +21,24 @@
 
           <b-card no-body class="mb-1">
             <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button
-                block
-                v-b-toggle.inner-accordion-2
-                class="w-100 border-0 bg-transparent text-dark text-left"
-                @click="activeIndices = 1"
-                >KYC'lerimi eksiksiz yükledim fakat işlemim onaylanmadı ve Onay
-                Bekliyor'a düştü.
-                <span class="float-right when-opened"
-                  ><i class="fas fa-chevron-down"></i></span
-                ><span class="float-right when-closed"
-                  ><i class="fas fa-chevron-up"></i></span
-              ></b-button>
+              <b-button block v-b-toggle.inner-accordion-2 class="w-100 border-0 bg-transparent text-dark text-left" @click="activeIndices = 1" >KYC'lerimi eksiksiz yükledim fakat işlemim onaylanmadı ve Onay Bekliyor'a düştü.
+                <span class="float-right when-opened" ><i class="fas fa-chevron-down"></i></span ><span class="float-right when-closed" ><i class="fas fa-chevron-up"></i></span ></b-button>
             </b-card-header>
-            <b-collapse
-              id="inner-accordion-2"
-              accordion="my-accordion"
-              role="tabpanel"
-              :visible="activeIndices === 1"
-              :aria-expanded="activeIndices === 1 ? true : false"
-            >
+            <b-collapse id="inner-accordion-2" accordion="my-accordion" role="tabpanel" :visible="activeIndices === 1" :aria-expanded="activeIndices === 1 ? true : false" >
               <b-card-body>
-                <b-card-text
-                  >KYC'leriniz yüklendikten sonra gerekli ekiplerce incelemeler
-                  yapılıp doğruluğu kabul edilene kadar KYC onayınız
-                  gerçekleşmez. Ancak tüm bilgilerin eksiksiz - doğru
-                  gönderildiği ispat edilirse ekipler tarafından onaylanır ve
-                  sizlerde tüm işlemlerinizi
-                  gerçekleştirebilirsiniz.</b-card-text
-                >
+                <b-card-text >KYC'leriniz yüklendikten sonra gerekli ekiplerce incelemeler yapılıp doğruluğu kabul edilene kadar KYC onayınız gerçekleşmez. Ancak tüm bilgilerin eksiksiz - doğru gönderildiği ispat edilirse ekipler tarafından onaylanır ve sizlerde tüm işlemlerinizi gerçekleştirebilirsiniz.</b-card-text >
               </b-card-body>
             </b-collapse>
           </b-card>
 
-          <!-- <b-card no-body class="mb-1">
-            <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button
-                block
-                v-b-toggle.inner-accordion-3
-                class="w-100 border-0 bg-transparent text-dark"
-                >Accordion 3</b-button
+          <!-- <b-card no-body class="mb-1"> <b-card-header header-tag="header" class="p-1" role="tab"> <b-button block v-b-toggle.inner-accordion-3 class="w-100 border-0 bg-transparent text-dark" >Accordion 3</b-button
               >
-            </b-card-header>
-            <b-collapse
-              id="inner-accordion-3"
-              accordion="my-accordion"
-              role="tabpanel"
+            </b-card-header> <b-collapse id="inner-accordion-3" accordion="my-accordion" role="tabpanel"
             >
               <b-card-body>
                 <b-card-text></b-card-text>
               </b-card-body>
-            </b-collapse>
-          </b-card> -->
+            </b-collapse> </b-card> -->
         </div>
       </b-col>
     </b-row>

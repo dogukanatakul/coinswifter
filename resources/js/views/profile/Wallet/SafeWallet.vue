@@ -18,13 +18,7 @@
 
         <b-row v-if="is_bank && walletAction==='deposit'">
             <b-col cols="12">
-                <v-select
-                    placeholder="Banka Seçin"
-                    v-model.number="selectedBank"
-                    label="text"
-                    :options="banksSelect"
-                    :reduce="data => data.value"
-                ></v-select>
+                <v-select placeholder="Banka Seçin" v-model.number="selectedBank" label="text" :options="banksSelect" :reduce="data => data.value" ></v-select>
             </b-col>
             <b-col cols="12">
                 <table class="table">
@@ -89,9 +83,7 @@
                     <b-row align-v="center" align-h="center">
                         <b-col cols="12">
                             <b-input-group :append="walletSelect.symbol" class="mt-3">
-                                <b-form-input type="number" step="0.00000001"
-                                              style="appearance: textfield;"
-                                              :max="walletSelect.balance" v-model="form['amount']" inputmode="number" autofocus></b-form-input>
+                                <b-form-input type="number" step="0.00000001" style="appearance: textfield;" :max="walletSelect.balance" v-model="form['amount']" inputmode="number" autofocus></b-form-input>
                             </b-input-group>
                             <b-form-invalid-feedback :state="!v$.form.amount.$error">
                                 <p class="text-danger">

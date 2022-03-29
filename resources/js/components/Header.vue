@@ -1,22 +1,12 @@
 <template>
     <header class="light-bb">
-        <nav
-            class="navbar navbar-expand-lg fixed-top bg-white my-border"
-            role="navigation"
-        >
+        <nav class="navbar navbar-expand-lg fixed-top bg-white my-border" role="navigation" >
             <router-link class="navbar-brand" to="/">
                 <img v-bind:src="'../assets/img/logos/logo.png'" alt="CoinSwifter"/>
             </router-link>
             <div class="navbar-header">
-                <div
-                    id="menuToggle"
-                    class="hamburger navbar-toggler collapsed d-lg-none"
-                >
-                    <input
-                        type="checkbox"
-                        id="hamburgers"
-                        @blur="closeHamburger($event)"
-                    />
+                <div id="menuToggle" class="hamburger navbar-toggler collapsed d-lg-none" >
+                    <input type="checkbox" id="hamburgers" @blur="closeHamburger($event)" />
                     <span></span>
                     <span></span>
                     <span></span>
@@ -46,10 +36,7 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link
-                                class="nav-link"
-                                :to="{ name: 'coin_listing_request' }"
-                            >
+                            <router-link class="nav-link" :to="{ name: 'coin_listing_request' }" >
                                 <i class="fas fa-handshake"></i>
                                 {{ $t("Coin Listeleme") }}
                             </router-link>
@@ -99,10 +86,7 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link
-                                class="nav-link"
-                                :to="{ name: 'coin_listing_request' }"
-                            >
+                            <router-link class="nav-link" :to="{ name: 'coin_listing_request' }" >
                                 <i class="fas fa-handshake"></i>
                                 {{ $t("Coin Listeleme") }}
                             </router-link>
@@ -149,10 +133,7 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link
-                            class="nav-link"
-                            :to="{ name: 'coin_listing_request' }"
-                        >
+                        <router-link class="nav-link" :to="{ name: 'coin_listing_request' }" >
                             <i class="fas fa-handshake"></i>
                             {{ $t("Coin Listeleme") }}
                         </router-link>
@@ -174,46 +155,24 @@
                     <li class="nav-item dropdown header-img-icon">
                         <div>
                             <b-dropdown v-if="user" id="dropdown-header" :text="user.name">
-                                <router-link
-                                    :to="{ name: 'wallets' }"
-                                    class="text-decoration-none"
-                                >
-                                    <b-dropdown-item-button
-                                        aria-describedby="dropdown-header-label"
-                                    >
+                                <router-link :to="{ name: 'wallets' }" class="text-decoration-none" >
+                                    <b-dropdown-item-button aria-describedby="dropdown-header-label" >
                                         {{ $t("Cüzdanım") }}
                                     </b-dropdown-item-button>
                                 </router-link>
-                                <router-link
-                                    :to="{ name: 'profile' }"
-                                    class="text-decoration-none"
-                                >
-                                    <b-dropdown-item-button
-                                        aria-describedby="dropdown-header-label"
-                                    >
+                                <router-link :to="{ name: 'profile' }" class="text-decoration-none" >
+                                    <b-dropdown-item-button aria-describedby="dropdown-header-label" >
                                         {{ $t("Hesabım") }}
                                     </b-dropdown-item-button>
                                 </router-link>
-                                <b-dropdown-item-button
-                                    @click="logout"
-                                    aria-describedby="dropdown-header-label"
-                                >
+                                <b-dropdown-item-button @click="logout" aria-describedby="dropdown-header-label" >
                                     {{ $t("Çıkış Yap") }}
                                 </b-dropdown-item-button>
                             </b-dropdown>
                             <div v-else>
-                                <b-button
-                                    squared
-                                    variant="outline-secondary"
-                                    :to="{ name: 'signin' }"
-                                    class="mx-2"
-                                >{{ $t("Giriş Yap") }}
+                                <b-button squared variant="outline-secondary" :to="{ name: 'signin' }" class="mx-2" >{{ $t("Giriş Yap") }}
                                 </b-button>
-                                <b-button
-                                    squared
-                                    variant="outline-secondary"
-                                    :to="{ name: 'signup' }"
-                                >
+                                <b-button squared variant="outline-secondary" :to="{ name: 'signup' }" >
                                     {{ $t("Kayıt Ol") }}
                                 </b-button>
                             </div>

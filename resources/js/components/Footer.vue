@@ -3,14 +3,7 @@
         <footer class="footer-container mt-2">
             <b-container>
                 <b-row class="pb-50 mb-pb-20 footer-top-content overflow-hidden">
-                    <b-col
-                        cols="12"
-                        md="12"
-                        lg="4"
-                        class="footer-col wow fadeInUp justify-content-md-center"
-                        data-wow-duration="1s"
-                        data-wow-delay=".2s"
-                    >
+                    <b-col cols="12" md="12" lg="4" class="footer-col wow fadeInUp justify-content-md-center" data-wow-duration="1s" data-wow-delay=".2s" >
                         <div class="footer-cryptu">
                             <div class="footer-logo">
                                 <router-link :to="{name:'home'}">
@@ -27,8 +20,7 @@
                                             </a>
                                         </span>
                                         <p>
-                                            Odunluk mah. Akpınar Cad. No:5 Kat:10 Daire:23 Green White
-                                            Plaza <br/>
+                                            Odunluk mah. Akpınar Cad. No:5 Kat:10 Daire:23 Green White Plaza <br/>
                                         </p>
                                         <p class="text-end">Nilüfer / BURSA</p>
                                     </div>
@@ -81,14 +73,7 @@
                             </ul>
                         </div>
                     </b-col>
-                    <b-col
-                        cols="12"
-                        md="6"
-                        lg="2"
-                        class="footer-col link-hover wow fadeInUp"
-                        data-wow-duration="1s"
-                        data-wow-delay=".4s"
-                    >
+                    <b-col cols="12" md="6" lg="2" class="footer-col link-hover wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s" >
                         <h4 class="headings">COINSWIFTER</h4>
                         <ul>
                             <li>
@@ -96,14 +81,7 @@
                             </li>
                         </ul>
                     </b-col>
-                    <b-col
-                        cols="12"
-                        md="6"
-                        lg="2"
-                        class="footer-col link-hover wow fadeInUp"
-                        data-wow-duration="1s"
-                        data-wow-delay=".6s"
-                    >
+                    <b-col cols="12" md="6" lg="2" class="footer-col link-hover wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s" >
                         <h4 class="headings">{{ $t('Yasal Bilgiler') }}</h4>
                         <ul>
                             <li>
@@ -126,14 +104,7 @@
                             </li>
                         </ul>
                     </b-col>
-                    <b-col
-                        cols="12"
-                        md="6"
-                        lg="2"
-                        class="footer-col wow fadeInUp"
-                        data-wow-duration="1s"
-                        data-wow-delay=".8s"
-                    >
+                    <b-col cols="12" md="6" lg="2" class="footer-col wow fadeInUp" data-wow-duration="1s" data-wow-delay=".8s" >
                         <h4 class="headings">{{ $t('Bilgi Platformu') }}</h4>
                         <ul>
                             <li>
@@ -150,14 +121,7 @@
                             </li>
                         </ul>
                     </b-col>
-                    <b-col
-                        cols="12"
-                        md="6"
-                        lg="2"
-                        class="footer-col wow fadeInUp"
-                        data-wow-duration="1s"
-                        data-wow-delay=".8s"
-                    >
+                    <b-col cols="12" md="6" lg="2" class="footer-col wow fadeInUp" data-wow-duration="1s" data-wow-delay=".8s" >
                         <h4 class="headings">{{ $t('Yardım') }}</h4>
                         <ul>
                             <li>

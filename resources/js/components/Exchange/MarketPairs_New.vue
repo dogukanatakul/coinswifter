@@ -3,12 +3,7 @@
     <b-card-text>
       <b-row>
         <b-col>
-          <b-form-input
-            v-model="search"
-            class="search"
-            :placeholder="$t('Parite Çifti Arayın')"
-            inputmode="text"
-          ></b-form-input>
+          <b-form-input v-model="search" class="search" :placeholder="$t('Parite Çifti Arayın')" inputmode="text" ></b-form-input>
         </b-col>
       </b-row>
       <b-tabs content-class="mt-3 no-wrap" pills card fill v-model:selectedKey="selectedKey">
@@ -27,48 +22,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  v-for="(coin, coin_key) in Object.values(coins).filter(
-                    (element) => element.user_favorite === true
-                  )"
-                  :class="
-                    selectedCoin.coin.symbol === coin.coin.symbol &&
-                    selectedCoin.source.symbol === coin.source.symbol
-                      ? 'selected'
-                      : ''
-                  "
-                  style="cursor: pointer"
-                  :key="coin_key"
-                  @click="selectCoin(coin)"
-                >
-                  <td
-                    @click="
-                      addFavorite({
-                        coin: coin.coin.symbol,
-                        source: coin.source.symbol,
-                      })
-                    "
-                  >
-                    <i
-                      v-if="coin.user_favorite"
-                      class="fa fa-star"
-                      style="color: yellow"
-                    ></i>
+                <tr v-for="(coin, coin_key) in Object.values(coins).filter( (element) => element.user_favorite === true )" :class=" selectedCoin.coin.symbol === coin.coin.symbol && selectedCoin.source.symbol === coin.source.symbol ? 'selected' : '' " style="cursor: pointer" :key="coin_key" @click="selectCoin(coin)" >
+                  <td @click=" addFavorite({ coin: coin.coin.symbol, source: coin.source.symbol, }) " >
+                    <i v-if="coin.user_favorite" class="fa fa-star" style="color: yellow" ></i>
                     <i v-else class="far fa-star"></i>
                   </td>
                   <td>{{ coin.coin.symbol + "/" + coin.source.symbol }}</td>
                   <td :class="coin.parity_price.price.status">
                     {{ coin.parity_price.price.value }}
                   </td>
-                  <td
-                    v-if="coin.parity_price.percent_last_24_hours !== undefined"
-                    :class="coin.parity_price.price.status"
-                  >
-                    {{
-                      parseFloat(
-                        coin.parity_price.percent_last_24_hours.value
-                      ).toFixed(2)
-                    }}%
+                  <td v-if="coin.parity_price.percent_last_24_hours !== undefined" :class="coin.parity_price.price.status" >
+                    {{ parseFloat( coin.parity_price.percent_last_24_hours.value ).toFixed(2) }}%
                   </td>
                   <td v-else>-%</td>
                 </tr>
@@ -76,16 +40,7 @@
             </table>
           </div>
         </b-tab>
-        <b-tab
-        v-model="selectedKey"
-          v-for="(coin_tables, coin_tables_key) in parities"
-          :header="coin_tables_key"
-          :key="coin_tables_key"
-          :value="coin_tables_key"
-          :title="coin_tables_key"
-          :active="selectedKey === coin_tables_key"
-          @click="selectedKey = coin_tables_key"
-        >
+        <b-tab v-model="selectedKey" v-for="(coin_tables, coin_tables_key) in parities" :header="coin_tables_key" :key="coin_tables_key" :value="coin_tables_key" :title="coin_tables_key" :active="selectedKey === coin_tables_key" @click="selectedKey = coin_tables_key" >
           <div class="table-responsive">
             <table class="table table-sm order-table" :key="search">
               <thead>
@@ -97,30 +52,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  :class="
-                    selectedCoin.coin.symbol === coin.coin.symbol &&
-                    selectedCoin.source.symbol === coin.source.symbol
-                      ? 'selected'
-                      : ''
-                  "
-                  style="cursor: pointer"
-                  v-for="(coin, coin_key) in coin_tables.filter(
-                    (element) =>
-                      this.search === '' ||
-                      element.coin.symbol.indexOf(this.search) >= 0
-                  )"
-                  :key="coin_key"
-                  @click="selectCoin(coin)"
-                >
-                  <td
-                    @click="
-                      addFavorite({
-                        coin: coin.coin.symbol,
-                        source: coin.source.symbol,
-                      })
-                    "
-                  >
+                <tr :class=" selectedCoin.coin.symbol === coin.coin.symbol && selectedCoin.source.symbol === coin.source.symbol ? 'selected' : '' " style="cursor: pointer" v-for="(coin, coin_key) in coin_tables.filter( (element) => this.search === '' || element.coin.symbol.indexOf(this.search) >= 0 )" :key="coin_key" @click="selectCoin(coin)" >
+                  <td @click=" addFavorite({ coin: coin.coin.symbol, source: coin.source.symbol, }) " >
                     <i v-if="coin.user_favorite" class="fa fa-star"></i>
                     <i v-else class="far fa-star"></i>
                   </td>
@@ -128,15 +61,8 @@
                   <td :class="coin.parity_price.price.status">
                     {{ coin.parity_price.price.value }}
                   </td>
-                  <td
-                    v-if="coin.parity_price.percent_last_24_hours !== undefined"
-                    :class="coin.parity_price.price.status"
-                  >
-                    {{
-                      parseFloat(
-                        coin.parity_price.percent_last_24_hours.value
-                      ).toFixed(2)
-                    }}%
+                  <td v-if="coin.parity_price.percent_last_24_hours !== undefined" :class="coin.parity_price.price.status" >
+                    {{ parseFloat( coin.parity_price.percent_last_24_hours.value ).toFixed(2) }}%
                   </td>
                   <td v-else>-%</td>
                 </tr>

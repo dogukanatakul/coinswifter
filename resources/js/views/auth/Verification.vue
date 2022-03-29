@@ -17,28 +17,12 @@
                                     <span v-if="change">(<router-link :to="{ name: 'profile.contact' }">{{ $t("Değiştir") }}</router-link>)</span>
                                 </div>
                                 <div class="text-center">
-                                    <b-button
-                                        :disabled="sendCodeButton"
-                                        @click="sendCode"
-                                        squared
-                                        variant="success"
-                                        size="sm"
-                                    >{{ sendCodeMsg }}
+                                    <b-button :disabled="sendCodeButton" @click="sendCode" squared variant="success" size="sm" >{{ sendCodeMsg }}
                                     </b-button>
                                 </div>
                                 <b-form @submit="signin">
-                                    <b-form-group
-                                        id="input-group-2"
-                                        :label="type + ' ' + $t('Doğrulama Kodunuz')"
-                                        label-for="input-2"
-                                    >
-                                        <b-form-input
-                                            id="input-2"
-                                            v-model="form['code']"
-                                            type="text"
-                                            :placeholder="type + ' ' + $t('Doğrulama Kodunuz')"
-                                            inputmode="text"
-                                        ></b-form-input>
+                                    <b-form-group id="input-group-2" :label="type + ' ' + $t('Doğrulama Kodunuz')" label-for="input-2" >
+                                        <b-form-input id="input-2" v-model="form['code']" type="text" :placeholder="type + ' ' + $t('Doğrulama Kodunuz')" inputmode="text" ></b-form-input>
                                         <b-form-text v-if="v$.form.code.$error" class="text-danger">
                                             <p class="text-danger">
                                                 {{ $t("6 haneli kodu giriniz") }}
@@ -46,13 +30,7 @@
                                         </b-form-text>
                                     </b-form-group>
                                     <div class="d-grid gap-2">
-                                        <b-button
-                                            block
-                                            type="submit"
-                                            variant="primary"
-                                            :disabled="verificationBtn"
-                                            v-html="verificationBtnMsg"
-                                        ></b-button>
+                                        <b-button block type="submit" variant="primary" :disabled="verificationBtn" v-html="verificationBtnMsg" ></b-button>
                                     </div>
                                 </b-form>
                             </div>

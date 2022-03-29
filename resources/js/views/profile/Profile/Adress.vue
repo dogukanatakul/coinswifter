@@ -2,29 +2,13 @@
     <b-form>
         <b-row>
             <b-col cols="12" lg="4" class="mb-2">
-                <v-select
-                    :placeholder="$t('Ülke')"
-                    v-model.number="form.countries_id"
-                    label="text"
-                    :options="countries"
-                    :reduce="data => data.value"
-                ></v-select>
+                <v-select :placeholder="$t('Ülke')" v-model.number="form.countries_id" label="text" :options="countries" :reduce="data => data.value" ></v-select>
             </b-col>
             <b-col cols="12" lg="4" class="mb-2">
-                <v-select
-                    v-model.number="form.provinces_id"
-                    label="text"
-                    :options="provinces"
-                    :reduce="data => data.value"
-                ></v-select>
+                <v-select v-model.number="form.provinces_id" label="text" :options="provinces" :reduce="data => data.value" ></v-select>
             </b-col>
             <b-col cols="12" lg="4" class="mb-2">
-                <v-select
-                    v-model.number="form.districts_id"
-                    label="text"
-                    :options="district"
-                    :reduce="data => data.value"
-                ></v-select>
+                <v-select v-model.number="form.districts_id" label="text" :options="district" :reduce="data => data.value" ></v-select>
             </b-col>
         </b-row>
         <b-row class="mt-3">

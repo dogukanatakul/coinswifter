@@ -10,12 +10,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="(item, key) in orders['sell']"
-            :key="key"
-            @click="sendTradeForm('buy', item.price, item.amount)"
-            class="cursor-pointer sell"
-          >
+          <tr v-for="(item, key) in orders['sell']" :key="key" @click="sendTradeForm('buy', item.price, item.amount)" class="cursor-pointer sell" >
             <td class="text-danger">{{ item.price }}</td>
             <td class="text-danger">{{ item.amount }}</td>
             <td class="text-danger">{{ item.total }}</td>
@@ -38,12 +33,7 @@
           </tr>
         </tbody>
         <tbody>
-          <tr
-            v-for="(item, key) in orders['buy']"
-            :key="key"
-            @click="sendTradeForm('sell', item.price, item.amount)"
-            class="cursor-pointer buy"
-          >
+          <tr v-for="(item, key) in orders['buy']" :key="key" @click="sendTradeForm('sell', item.price, item.amount)" class="cursor-pointer buy" >
             <td class="text-success">{{ item.price }}</td>
             <td class="text-success">{{ item.amount }}</td>
             <td class="text-success">{{ item.total }}</td>

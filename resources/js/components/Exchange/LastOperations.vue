@@ -1,8 +1,5 @@
 <template>
-    <b-card
-        :header="$t('Son İşlemler')"
-        header-tag="header"
-        class="mt-2">
+    <b-card :header="$t('Son İşlemler')" header-tag="header" class="mt-2">
         <b-card-text>
             <div class="table-responsive" style="max-height: 30vh;overflow-y: auto;overflow-x: hidden;">
                 <table class="table table-sm order-table">

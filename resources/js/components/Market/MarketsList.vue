@@ -5,11 +5,7 @@
         <div class="col-md-12">
           <b-card no-body>
             <b-tabs v:model="$route.params.parityName" card>
-              <b-tab
-                v-for="(parityGroups, parities_key) in parities"
-                :title="parities_key"
-                @click="$emit('update:parityName', parities_key)"
-              >
+              <b-tab v-for="(parityGroups, parities_key) in parities" :title="parities_key" @click="$emit('update:parityName', parities_key)" >
                 <b-card-text id="table">
                   <div class="table-responsive">
                     <table class="table table-hover">
@@ -23,18 +19,9 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr
-                          v-for="(parity, parity_key) in parityGroups"
-                          :key="parity_key"
-                          style="cursor: pointer"
-                          @click="selectCoin(parity)"
-                        >
+                        <tr v-for="(parity, parity_key) in parityGroups" :key="parity_key" style="cursor: pointer" @click="selectCoin(parity)" >
                           <td>
-                            {{
-                              [parity.coin.symbol, parity.source.symbol].join(
-                                "/"
-                              )
-                            }}
+                            {{ [parity.coin.symbol, parity.source.symbol].join( "/" ) }}
                           </td>
                           <td>
                             {{ parity.parity_price.price.value }}
@@ -43,9 +30,7 @@
                             {{ parity.parity_price.percent_last_1_hours.value }}
                           </td>
                           <td class="td2">
-                            {{
-                              parity.parity_price.percent_last_24_hours.value
-                            }}
+                            {{ parity.parity_price.percent_last_24_hours.value }}
                           </td>
                           <td>
                             {{ parity.parity_price.market_price.value }}

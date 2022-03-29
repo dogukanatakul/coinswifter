@@ -17,36 +17,11 @@
             <b-badge pill class="threedot">{{ getTotal.price }} {{ getTotal.symbol }}</b-badge>
         </b-list-group-item>
     </b-list-group>
-  <!-- <b-row class="order-watch bordered">
-    <b-col cols="12" class="px-auto bordered-bottom my-1">
-      <b-col cols="12" xl="3" class="float-left text-small text-aligned-left">{{
-        $t("Mevcut")
-      }}</b-col>
-      <b-col
-        cols="12"
-        xl="9"
-        class="float-left text-small text-aligned-right text-responsive mb-2"
-        ><b-badge pill
-          >{{ getCurrent.price }} {{ getCurrent.symbol }}</b-badge
-        ></b-col
+  <!-- <b-row class="order-watch bordered"> <b-col cols="12" class="px-auto bordered-bottom my-1"> <b-col cols="12" xl="3" class="float-left text-small text-aligned-left">{{ $t("Mevcut") }}</b-col> <b-col cols="12" xl="9" class="float-left text-small text-aligned-right text-responsive mb-2" ><b-badge pill >{{ getCurrent.price }} {{ getCurrent.symbol }}</b-badge ></b-col
       >
-    </b-col>
-    <b-col cols="12" class="px-auto bordered-bottom my-1">
-      <b-col cols="12" xl="3" class="float-left text-small text-aligned-left">{{
-        $t("Miktar")
-      }}</b-col>
-      <b-col
-        cols="12"
-        xl="9"
-        class="float-left text-small text-aligned-right text-responsive mb-2"
-        ><b-badge pill
-          >{{ getAmount.price }} {{ getAmount.symbol }}</b-badge
-        ></b-col
+    </b-col> <b-col cols="12" class="px-auto bordered-bottom my-1"> <b-col cols="12" xl="3" class="float-left text-small text-aligned-left">{{ $t("Miktar") }}</b-col> <b-col cols="12" xl="9" class="float-left text-small text-aligned-right text-responsive mb-2" ><b-badge pill >{{ getAmount.price }} {{ getAmount.symbol }}</b-badge ></b-col
       >
-    </b-col>
-    <b-col cols="12" class="px-auto bordered-bottom my-1">
-      <b-col cols="12" xl="3" class="float-left text-small text-aligned-left"
-        >{{ $t("Komisyon") }} ({{ commission }}%)</b-col
+    </b-col> <b-col cols="12" class="px-auto bordered-bottom my-1"> <b-col cols="12" xl="3" class="float-left text-small text-aligned-left" >{{ $t("Komisyon") }} ({{ commission }}%)</b-col
       >
       <b-col
         cols="12"
@@ -56,21 +31,9 @@
           >{{ getCommission.price }} {{ getCommission.symbol }}</b-badge
         ></b-col
       >
-    </b-col>
-    <b-col cols="12" class="px-auto bordered-bottom my-1">
-      <b-col cols="12" xl="3" class="float-left text-small text-aligned-left">{{
-        $t("Toplam")
-      }}</b-col>
-      <b-col
-        cols="12"
-        xl="9"
-        class="float-left text-small text-aligned-right text-responsive mb-2"
-        ><b-badge pill
-          >{{ getTotal.price }} {{ getTotal.symbol }}</b-badge
-        ></b-col
+    </b-col> <b-col cols="12" class="px-auto bordered-bottom my-1"> <b-col cols="12" xl="3" class="float-left text-small text-aligned-left">{{ $t("Toplam") }}</b-col> <b-col cols="12" xl="9" class="float-left text-small text-aligned-right text-responsive mb-2" ><b-badge pill >{{ getTotal.price }} {{ getTotal.symbol }}</b-badge ></b-col
       >
-    </b-col>
-  </b-row> -->
+    </b-col> </b-row> -->
 </template>
 
 <script>

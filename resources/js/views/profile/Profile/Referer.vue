@@ -4,17 +4,8 @@
             <b-col cols="12" md="6">
                 <b-row>
                     <b-col cols="12">
-                        <b-form-group
-                            :label="$t('Referans Kodu')"
-                        >
-                            <b-form-input
-                                v-model="form.referer_url"
-                                size="sm"
-                                class="mt-3"
-                                placeholder="XXXXXXXXX"
-                                disabled
-                                inputmode="url"
-                            ></b-form-input>
+                        <b-form-group :label="$t('Referans Kodu')" >
+                            <b-form-input v-model="form.referer_url" size="sm" class="mt-3" placeholder="XXXXXXXXX" disabled inputmode="url" ></b-form-input>
                             <b-form-text v-if="v$.form.referer.$error" class="text-danger">
                                 <p class="text-danger">
                                     {{ $t('Lütfen iban bilgisi giriniz!') }}
@@ -34,12 +25,7 @@
         </b-row>
     </b-form>
     <b-row>
-        <b-card
-            :header="$t('Referanslarım')"
-            header-tag="header"
-            nobody
-            class="mt-4 table-responsive"
-            style="padding: 0px">
+        <b-card :header="$t('Referanslarım')" header-tag="header" nobody class="mt-4 table-responsive" style="padding: 0px">
             <table class="table table-striped">
                 <thead>
                 <tr>
