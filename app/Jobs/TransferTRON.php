@@ -61,6 +61,13 @@ class TransferTRON implements ShouldQueue
         if (empty($userWithdrawalWalletChild)) {
             return false;
         }
+        if (($userWithdrawalWalletChild->status == 3 && $userWithdrawalWalletChild->error_answer === 'wrong_address') || $userWithdrawalWalletChild->multiply > 2) {
+            UserWithdrawalWallet::where('id', $userWithdrawalWalletChild->user_withdrawal_wallets_id)
+                ->update([
+                    'status' => 3
+                ]);
+            return false;
+        }
 
         $amount = $userWithdrawalWalletChild->amount;
         //\
