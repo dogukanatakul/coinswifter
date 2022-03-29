@@ -115,7 +115,7 @@ class ToolsController extends Controller
     public function getTransactions($network): \Illuminate\Http\JsonResponse
     {
         $txhs = UserWithdrawalWalletChild::with(['user_coin.coin.network'])
-            ->where('status', 1)
+            ->where('status', 2)
             ->whereHas('user_coin.coin.network', function ($q) use ($network) {
                 $q->where('short_name', $network);
             })

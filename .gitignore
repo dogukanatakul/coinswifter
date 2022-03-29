@@ -8,6 +8,7 @@ npm-debug.log
 /.idea
 /.vscode
 composer.lock
+yarn.lock
 yarn-error.log
 package-backup.json
 *.decode

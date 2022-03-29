@@ -42,4 +42,9 @@ class UserWithdrawalWallet extends Model
     {
         return $this->hasMany(UserWithdrawalWalletChild::class, 'user_withdrawal_wallets_id', 'id');
     }
+
+    public function coin(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Coin::class, 'id', 'coins_id');
+    }
 }
