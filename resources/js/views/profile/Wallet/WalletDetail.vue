@@ -121,8 +121,6 @@
               <b-col cols="12">
                 <b-input-group :append="walletSelect.symbol" class="mt-3">
                   <b-form-input
-                    :min="walletSelect.transfer_min"
-                    :max="walletSelect.balance"
                     step="0.00000001"
                     style="appearance: textfield"
                     v-model="form['amount']"
