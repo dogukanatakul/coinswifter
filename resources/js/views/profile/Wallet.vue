@@ -142,7 +142,7 @@ export default {
                             if (response.status === "success") {
                                 this.$notify({text: response.message, type: "success"});
                                 this.getWallets().then(() => {
-                                    this.walletSelect = this.wallets.find(
+                                    this.walletSelect = Object.values(this.wallets).find(
                                         (o) => o.symbol === this.walletSelect.symbol
                                     );
                                 });
@@ -180,7 +180,7 @@ export default {
                     if (response.status === "success") {
                         this.$notify({text: response.message, type: "success"});
                         this.getWallets().then(() => {
-                            this.walletSelect = this.wallets.find(
+                            this.walletSelect = Object.values(this.wallets).find(
                                 (o) => o.symbol === this.walletSelect.symbol
                             );
                         });
