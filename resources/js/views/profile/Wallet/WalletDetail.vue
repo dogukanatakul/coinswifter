@@ -355,7 +355,6 @@ export default {
   },
   methods: {
     async dynamicFocus(method) {
-      const isFormCorrect = await this.v$.$validate();
       if (method === "in") {
         this.dynamicInput = "input";
       } else {
@@ -439,7 +438,6 @@ export default {
       console.log("on paste", evt);
     },
     async withdrawalSend() {
-      
       const isFormCorrect = await this.v$.$validate();
       if (!isFormCorrect) return;
       this.$emit("withdrawalSend", this.form);
