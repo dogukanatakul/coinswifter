@@ -52,9 +52,6 @@
                                     <span class="fw-bold mx-2">{{ wallet.symbol }}</span>
                                 </b-col>
                                 <b-col cols="12" class="float-left px-2 overflowed-wallet">
-                                  &nbsp;
-                                </b-col>
-                                <b-col cols="12" class="float-left px-2 overflowed-wallet">
                                     <span class="mx-4">{{ wallet.balance }}</span>
                                 </b-col>
                             </div>
