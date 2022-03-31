@@ -31,30 +31,30 @@
                               >
                             </b-col> -->
                             <b-col cols="12" class="rounded myBackground text-dark mx-auto" :class="{ smallest: parseInt(wallet.locked) === 0 }">
-                                <b-col cols="12" class="float-left px-3 overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.symbol">
-                                    <img :src="'../assets/img/coinicon/' + wallet.symbol + '.png'" alt="" width="16" height="16" class="rounded"/>
+                                <b-col cols="12" class="float-left px-3 overflowed-wallet" v-b-tooltip v-b-tooltip.hover :title="wallet.symbol">
+                                    <img :src="'../assets/img/coinicon/' + wallet.symbol + '.png'" alt="" width="16" height="16" class="rounded" @error="onImgError"/>
                                     <span class="fw-bold mx-2" id="symbols">{{ wallet.symbol }}</span>
                                 </b-col>
-                                <b-col cols="12" class="float-left px-3 overflowed" v-if="wallet.locked !== 0" v-b-tooltip v-b-tooltip.hover :title="wallet.locked">
+                                <b-col cols="12" class="float-left px-3 overflowed-wallet" v-if="wallet.locked !== 0" v-b-tooltip v-b-tooltip.hover :title="wallet.locked">
                                     <b-icon icon="lock-fill" font-scale="1" class="p-0 myMargins" :class="{ smallest: parseInt(wallet.locked) === 0 }"></b-icon>
                                     <span class="">{{ wallet.locked }}</span>
                                 </b-col>
-                                <b-col cols="12" class="float-left px-3 overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.balance">
+                                <b-col cols="12" class="float-left px-3 overflowed-wallet" v-b-tooltip v-b-tooltip.hover :title="wallet.balance">
                                     <span class="">{{ wallet.balance }}</span>
                                 </b-col>
                             </b-col>
                         </b-row>
                         <b-row class="w-100 pl-2 mx-2" v-else>
                             <div class="rounded myBackground text-dark mx-auto">
-                                <b-col cols="12" class="float-left px-3 overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.symbol">
-                                    <img :src="'../assets/img/coinicon/' + wallet.symbol + '.png'" alt="" width="16" height="16" class="rounded"/>
+                                <b-col cols="12" class="float-left px-3 overflowed-wallet" v-b-tooltip v-b-tooltip.hover :title="wallet.symbol">
+                                    <img :src="'../assets/img/coinicon/' + wallet.symbol + '.png'" alt="" width="16" height="16" class="rounded" @error="onImgError"/>
 
                                     <span class="fw-bold mx-2">{{ wallet.symbol }}</span>
                                 </b-col>
-                                <b-col cols="12" class="float-left px-3 overflowed">
+                                <b-col cols="12" class="float-left px-3 overflowed-wallet">
                                   &nbsp;
                                 </b-col>
-                                <b-col cols="12" class="float-left px-3 overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.balance">
+                                <b-col cols="12" class="float-left px-3 overflowed-wallet" v-b-tooltip v-b-tooltip.hover :title="wallet.balance">
                                     <span class="">{{ wallet.balance }}</span>
                                 </b-col>
                             </div>
@@ -87,6 +87,7 @@ const initialData = () => ({
     convertDate: convertDate,
     setInterval: null,
     dynamicContent: 0,
+    imgError: false,
 });
 export default {
     name: "wallets",
@@ -196,6 +197,10 @@ export default {
                     }
                 });
         },
+        onImgError(event){
+            this.imgError = true;
+            event.target.src = '../assets/img/coinicon/empty-token.png';
+        }
     },
     watch: {
         async walletSelect(value) {
