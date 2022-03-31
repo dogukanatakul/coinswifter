@@ -1,5 +1,5 @@
 <template>
-    <div class="container wallet">
+    <div class="wallet">
         <b-row class="" v-on:scroll.passive="handleScroll" ref="handleScroll">
             <b-col cols="12" md="6" sm="6" class="px-auto d-lg-none">
                 <div class="border myRounded text-sm-center xs-center mx-auto my-5 myDiv" @click="walletSelected('account_status')" :active="walletSelect === 'account_status'" v-b-tooltip v-b-tooltip.hover :title="totalMount.total + ' TRY'">
@@ -14,10 +14,10 @@
                     <b-list-group-item class=" d-flex justify-content-between align-items-start d-none d-lg-block " style="cursor: pointer" @click="walletSelected('account_status')" :active="walletSelect === 'account_status'">
                         <b-row class="w-100">
                             <b-col cols="12" class="rounded bg-dark text-light mx-3" v-b-tooltip v-b-tooltip.hover :title="totalMount.total + ' TRY'">
-                                <b-col cols="6" class="float-left text-center overflowed-table">
+                                <b-col cols="12" class="float-left px-3 overflowed-table">
                                     <span class="fw-bold small">{{ $t("Varlıklarım") }}</span>
                                 </b-col>
-                                <b-col cols="6" class="float-left overflowed-table">
+                                <b-col cols="12" class="float-left px-3 overflowed-table">
                                     <span class="fw-bold small">{{ totalMount.total }} TRY</span>
                                 </b-col>
                             </b-col>
@@ -31,30 +31,30 @@
                               >
                             </b-col> -->
                             <b-col cols="12" class="rounded myBackground text-dark mx-auto" :class="{ smallest: parseInt(wallet.locked) === 0 }">
-                                <b-col cols="4" class="float-left overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.symbol">
+                                <b-col cols="12" class="float-left px-3 overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.symbol">
                                     <img :src="'../assets/img/coinicon/' + wallet.symbol + '.png'" alt="" width="16" height="16" class="rounded"/>
                                     <span class="fw-bold mx-2" id="symbols">{{ wallet.symbol }}</span>
                                 </b-col>
-                                <b-col cols="4" class="float-left overflowed" v-if="wallet.locked !== 0" v-b-tooltip v-b-tooltip.hover :title="wallet.locked">
+                                <b-col cols="12" class="float-left px-3 overflowed" v-if="wallet.locked !== 0" v-b-tooltip v-b-tooltip.hover :title="wallet.locked">
                                     <b-icon icon="lock-fill" font-scale="1" class="p-0 myMargins" :class="{ smallest: parseInt(wallet.locked) === 0 }"></b-icon>
                                     <span class="">{{ wallet.locked }}</span>
                                 </b-col>
-                                <b-col cols="4" class="float-left overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.balance">
+                                <b-col cols="12" class="float-left px-3 overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.balance">
                                     <span class="">{{ wallet.balance }}</span>
                                 </b-col>
                             </b-col>
                         </b-row>
                         <b-row class="w-100 pl-2 mx-2" v-else>
                             <div class="rounded myBackground text-dark mx-auto">
-                                <b-col cols="4" class="float-left overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.symbol">
+                                <b-col cols="12" class="float-left px-3 overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.symbol">
                                     <img :src="'../assets/img/coinicon/' + wallet.symbol + '.png'" alt="" width="16" height="16" class="rounded"/>
 
                                     <span class="fw-bold mx-2">{{ wallet.symbol }}</span>
                                 </b-col>
-                                <b-col cols="4" class="float-left overflowed">
+                                <b-col cols="12" class="float-left px-3 overflowed">
                                   &nbsp;
                                 </b-col>
-                                <b-col cols="4" class="float-left overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.balance">
+                                <b-col cols="12" class="float-left px-3 overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.balance">
                                     <span class="">{{ wallet.balance }}</span>
                                 </b-col>
                             </div>
