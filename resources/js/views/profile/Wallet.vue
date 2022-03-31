@@ -13,7 +13,7 @@
                 <b-list-group class="wallet-coins myOverflow my-sm-3 my-md-3">
                     <b-list-group-item class=" d-flex justify-content-between align-items-start d-none d-lg-block " style="cursor: pointer" @click="walletSelected('account_status')" :active="walletSelect === 'account_status'">
                         <b-row class="w-100">
-                            <b-col cols="12" class="rounded bg-dark text-light mx-auto" v-b-tooltip v-b-tooltip.hover :title="totalMount.total + ' TRY'">
+                            <b-col cols="12" class="rounded bg-dark text-light mx-3" v-b-tooltip v-b-tooltip.hover :title="totalMount.total + ' TRY'">
                                 <b-col cols="6" class="float-left text-center overflowed-table">
                                     <span class="fw-bold small">{{ $t("Varlıklarım") }}</span>
                                 </b-col>
@@ -23,7 +23,7 @@
                             </b-col>
                         </b-row>
                     </b-list-group-item>
-                    <b-list-group-item v-for="(wallet, wallet_key) in wallets" :key="wallet_key" class="d-flex justify-content-between align-items-start" style="cursor: pointer" @click="walletSelected(wallet)"
+                    <b-list-group-item v-for="(wallet, wallet_key) in wallets" :key="wallet_key" class="justify-content-between align-items-start" style="cursor: pointer" @click="walletSelected(wallet)"
                                        :active=" walletSelect !== null && walletSelect !== 'account_status' && wallet.symbol === walletSelect.symbol ? true : false ">
                         <b-row class="w-100 px-auto mx-2" v-if="parseInt(wallet.locked) !== 0">
                             <!-- <b-col cols="12" md="5" class="text-center text-md-start"> <span class="fw-bold">{{ wallet.symbol }}</span> {{ wallet.name }} </b-col> <b-col cols="6" md="3" v-if="parseInt(wallet.locked) !== 0"> <b-badge variant="warning" class="float-left mx-1 w-100"> <b-icon icon="lock-fill" font-scale="1"></b-icon> {{ wallet.locked }} {{ wallet.symbol }} </b-badge> </b-col> <b-col cols="6" md="4"> <b-badge variant="secondary" class="float-left mx-1 w-100" >{{ parseFloat(wallet.balance) }}
@@ -46,12 +46,15 @@
                         </b-row>
                         <b-row class="w-100 pl-2 mx-2" v-else>
                             <div class="rounded myBackground text-dark mx-auto">
-                                <b-col cols="6" class="float-left overflowed">
+                                <b-col cols="4" class="float-left overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.symbol">
                                     <img :src="'../assets/img/coinicon/' + wallet.symbol + '.png'" alt="" width="16" height="16" class="rounded"/>
 
                                     <span class="fw-bold mx-2">{{ wallet.symbol }}</span>
                                 </b-col>
-                                <b-col cols="6" class="float-left overflowed">
+                                <b-col cols="4" class="float-left overflowed">
+                                  &nbsp;
+                                </b-col>
+                                <b-col cols="4" class="float-left overflowed" v-b-tooltip v-b-tooltip.hover :title="wallet.balance">
                                     <span class="">{{ wallet.balance }}</span>
                                 </b-col>
                             </div>
