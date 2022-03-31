@@ -103,7 +103,11 @@
                 li:first-child:nth-last-child(5) ~ li {
                     width: 25%;
                 }
-
+                /* five items */
+                li:first-child:nth-last-child(6),
+                li:first-child:nth-last-child(6) ~ li {
+                    width: 20%;
+                }
 
                 li {
                     text-align: center;
