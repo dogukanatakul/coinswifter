@@ -117,7 +117,7 @@
                     </b-form>
                 </b-col>
                 <b-col cols="12" class="my-2">
-                    <p class=" alert alert-danger fw-bolder bg-danger text-light lh-lg text-wrap text-center ">
+                    <p class=" fw-bolder text-danger lh-lg text-wrap text-center ">
                         {{ $t("Tüm token çekimleriniz 1 dakika içerisinde gerçekleşir. Siz dilerseniz 1 dakika sonra iptal işlemi gerçekleştirebilirsiniz.") }}
                     </p>
                 </b-col>

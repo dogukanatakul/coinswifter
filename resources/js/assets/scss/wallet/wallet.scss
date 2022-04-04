@@ -197,3 +197,49 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.text-parities{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 24px !important;
+    padding-top: auto !important;
+    padding-bottom: auto !important;
+}
+
+#symbols{
+    padding-top: .3vh !important;
+}
+
+.bg-blue{
+    background-color: #000461;
+}
+.myMargins{
+    margin-bottom: .5vh !important;
+}
+
+.list-group-item + .list-group-item.active{
+    background-color: #000461 !important;
+    color: white !important;
+}
+
+.list-group-item +{
+    background-color: transparent !important;
+    color: black !important;
+}
+
+@media screen and (max-width:576px) {
+    .text-xs-center{
+        text-align: center;
+    }
+}
+
+
+.active{
+    background-color: #000461 !important;
+    color: white !important;
+}
+
+.aligns-right{
+    text-align: right !important;
+}
