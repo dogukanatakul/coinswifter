@@ -45,16 +45,13 @@
                 </b-col>
               </b-col>
             </b-row>
-            <b-row class="w-100 pl-2 mx-2" v-else>
+            <b-row class="w-100" v-else>
               <div class="rounded mx-auto">
                 <b-col cols="12" lg="4" md="3" sm="3" class="float-left text-parities" >
                   <img :src="'../assets/img/coinicon/' + wallet.symbol + '.png'" alt="" width="16" height="16" class="rounded" @error="onImgError" />
                   <span class="fw-bold mx-2" id="symbols">{{ wallet.symbol }}</span>
                 </b-col>
                 <b-col cols="12" lg="8" md="9" sm="9" class="float-left aligns-right">
-                  <b-col cols="12" class="float-left overflowed-wallet" >
-                    &nbsp;
-                  </b-col>
                   <b-col cols="12" class="float-left overflowed-wallet">
                     <span>{{ wallet.balance }}</span>
                   </b-col>
