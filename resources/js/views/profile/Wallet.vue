@@ -1,5 +1,5 @@
 <template>
-  <div class="wallet">
+  <div class="wallet p-3">
     <b-row class="" v-on:scroll.passive="handleScroll" ref="handleScroll">
       <b-col cols="12" md="6" sm="6" class="px-auto d-lg-none">
         <div class="border myRounded text-sm-center xs-center mx-auto my-5 myDiv" @click="walletSelected('account_status')" :active="walletSelect === 'account_status'" >
