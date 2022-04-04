@@ -35,13 +35,12 @@
                   <span class="fw-bold mx-2" id="symbols">{{ wallet.symbol }}</span>
                 </b-col>
                 <b-col cols="12" lg="8" md="9" sm="9" class="float-left aligns-right">
-                  
-                  <b-col cols="12" class="float-left overflowed-wallet">
-                    <span>{{ wallet.balance }}</span>
-                  </b-col>
                   <b-col cols="12" class="float-left overflowed-wallet" v-if="wallet.locked !== 0" >
                     <b-icon icon="lock-fill" font-scale="1" class="p-0 myMargins" :class="{ smallest: parseInt(wallet.locked) === 0 }" ></b-icon>
                     <span>{{ wallet.locked }}</span>
+                  </b-col>
+                  <b-col cols="12" class="float-left overflowed-wallet">
+                    <span>{{ wallet.balance }}</span>
                   </b-col>
                 </b-col>
               </b-col>
@@ -53,12 +52,11 @@
                   <span class="fw-bold mx-2" id="symbols">{{ wallet.symbol }}</span>
                 </b-col>
                 <b-col cols="12" lg="8" md="9" sm="9" class="float-left aligns-right">
-                  
-                  <b-col cols="12" class="float-left overflowed-wallet">
-                    <span>{{ wallet.balance }}</span>
-                  </b-col>
                   <b-col cols="12" class="float-left overflowed-wallet" >
                     &nbsp;
+                  </b-col>
+                  <b-col cols="12" class="float-left overflowed-wallet">
+                    <span>{{ wallet.balance }}</span>
                   </b-col>
                 </b-col>
               </div>
