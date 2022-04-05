@@ -1,7 +1,7 @@
 <template>
   <div class="wallet p-3">
     <b-row class="" v-on:scroll.passive="handleScroll" ref="handleScroll">
-      <b-col cols="12" md="6" sm="6" class="px-auto d-lg-none">
+      <b-col cols="12" class="px-auto d-lg-none">
         <div class="border myRounded text-sm-center xs-center mx-auto my-5 myDiv" @click="walletSelected('account_status')" :active="walletSelect === 'account_status'" >
           <h4 class="my-5 pt-sm-5">{{ $t("Toplam Varlık") }}</h4>
           <h6 class="my-5 mx-auto overflowed-wallet" style="max-width: 180px" >
@@ -9,7 +9,7 @@
           </h6>
         </div>
       </b-col>
-      <b-col cols="12" md="6" sm="6" lg="4" class="px-auto float-left mb-3">
+      <b-col cols="12" lg="4" class="px-auto float-left mb-3">
         <b-list-group class="wallet-coins myOverflow">
           <b-list-group-item class=" d-flex justify-content-between align-items-start d-none d-lg-block " style="cursor: pointer" @click="walletSelected('account_status')" :active="walletSelect === 'account_status'" >
             <b-row class="w-100">
@@ -46,7 +46,7 @@
               </b-col>
             </b-row>
             <b-row class="w-100" v-else>
-              <div class="rounded mx-auto">
+              <div class="rounded mx-auto text-xs-center">
                 <b-col cols="12" lg="4" md="3" sm="3" class="float-left text-parities" >
                   <img :src="'../assets/img/coinicon/' + wallet.symbol + '.png'" alt="" width="16" height="16" class="rounded" @error="onImgError" />
                   <span class="fw-bold mx-2" id="symbols">{{ wallet.symbol }}</span>
