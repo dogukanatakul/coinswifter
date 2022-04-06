@@ -4,7 +4,7 @@
         <template #header>
             <div class="float-start">
                 <h5>
-                    {{ walletSelect.symbol }} {{ walletAction === "deposit" ? "Yatırma" : "Çekme" }}
+                    {{ walletSelect.symbol }} {{ walletAction === "deposit" ? $t("Yatırma") : $t("Çekme")}}
                 </h5>
                 <span>
           <label>{{ $t("Toplam Varlık") }}</label>
