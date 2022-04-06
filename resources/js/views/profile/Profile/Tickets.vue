@@ -31,7 +31,7 @@
       </b-row>
     </b-form>
     <b-row>
-      <b-col cols="12" class="table-responsive">
+      <b-col cols="12" class="table-responsive ticket-table">
         <table class="table table-bordered table-stripped overflowed-table">
           <thead>
             <tr>
@@ -73,10 +73,5 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-th, td{
-  min-width: 10% !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+
 </style>

@@ -216,8 +216,5 @@ export default {
 </script>
 <style scoped type="scss">
 
-.active{
-    background-color: #000461 !important;
-    color: white !important;
-}
+
 </style>

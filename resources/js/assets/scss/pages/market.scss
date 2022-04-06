@@ -104,7 +104,7 @@
     white-space: nowrap;
 }
 
-::v-deep {
+
     .order-watch {
         .list-group-item {
             font-size: 12px;
@@ -184,7 +184,6 @@
     .btn-sm>span {
         text-overflow: ellipsis;
     }
-}
 
 .threedot {
     overflow: hidden;
@@ -202,3 +201,45 @@
         text-overflow: ellipsis;
     }
 
+.ticket-table{
+    th, td{
+  min-width: 10% !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+}
+
+.profile{
+    .text-left {
+    text-align: left !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 20%;
+    white-space: nowrap;
+}
+
+.collapsed>.when-opened,
+:not(.collapsed)>.when-closed {
+    display: none;
+}
+
+.list-group-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 20%;
+    white-space: nowrap;
+}
+
+@media screen and(max-width:576px) {
+    .d-xs-block {
+        display: block !important;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .d-xs-block {
+        display: none !important;
+    }
+}
+}

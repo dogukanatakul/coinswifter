@@ -1,5 +1,5 @@
 <template>
-  <b-card border-variant="white">
+  <b-card border-variant="white" class="profile">
     <b-row>
       <b-col cols="12" md="4" class="mb-2">
         <b-card-group deck class="d-none d-md-block">
@@ -266,35 +266,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.text-left {
-    text-align: left !important;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 20%;
-    white-space: nowrap;
-}
 
-.collapsed>.when-opened,
-:not(.collapsed)>.when-closed {
-    display: none;
-}
-
-.list-group-item {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 20%;
-    white-space: nowrap;
-}
-
-@media screen and(max-width:576px) {
-    .d-xs-block {
-        display: block !important;
-    }
-}
-
-@media screen and (min-width:768px) {
-    .d-xs-block {
-        display: none !important;
-    }
-}
 </style>
