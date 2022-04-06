@@ -249,7 +249,7 @@
       </b-col>
       <b-col cols="12">
         <TabView content-class="mt-3" :activeIndex="1" v-model:changeParitiesView="changeParitiesView" >
-          <TabPanel header="Grafik">
+          <TabPanel :header="$t('Grafik')">
             <b-row>
               <div class="justify-content-between no-wrap">
                 <div class="float-left d-none d-md-block d-sm-block text-center" style=" width: calc(10.3vw - 1 * ((1.4vw * 280) / 730)) !important; " v-for="(array, index) in timeArray" :key="array.key" >
@@ -288,7 +288,7 @@
           <!-- <b-tab title="Pariteler">
 
                     </b-tab> -->
-          <TabPanel header="Alım - Satım" :class="{ active: changeParitiesView === true }" >
+          <TabPanel :header="$t('Alım - Satım')" :class="{ active: changeParitiesView === true }" >
             <b-overlay :show="marketTradeLoader" rounded="sm">
               <MarketTrade v-if="Object.values(selectedCoin).length > 0" v-model:selectedCoin="selectedCoin" v-model:wallet="wallet" v-model:marketStatus="marketStatus" v-model:selectedTrade="selectedTrade" v-model:commission="selectedCoin.commission" :key="selectedCoin" @getParity="getParity" />
               <template #overlay>
@@ -299,10 +299,10 @@
               </template>
             </b-overlay>
           </TabPanel>
-          <TabPanel header="Emir Defteri">
+          <TabPanel :header="$t('Emir Defteri')">
             <order-book v-if="Object.values(selectedCoin).length > 0" v-model:orders="orders" v-model:selectedCoin="selectedCoin" v-model:marketStatus="marketStatus" @sendTradeForm="sendTradeForm" class="mt-2" />
           </TabPanel>
-          <TabPanel header="Son İşlemler">
+          <TabPanel :header="$t('Son İşlemler')">
             <last-operations v-if="Object.values(selectedCoin).length > 0" v-model:lastOperations="lastOperations" v-model:selectedCoin="selectedCoin" ></last-operations>
             <!-- <b-col cols="12" class="d-none d-md-block d-sm-block d-xs-block my-2"
                         >
@@ -312,7 +312,7 @@
                             >
                           </b-modal> </b-col> -->
           </TabPanel>
-          <TabPanel header="Emirlerim" v-if="myOrders">
+          <TabPanel :header="$t('Emirlerim')" v-if="myOrders">
             <div v-if="myOrders" class="b-overlay-wrap position-relative">
               <my-orders :key="myOrders" :myOrders.sync="myOrders" v-model:selectedCoin="selectedCoin" @getParity="getParity" ></my-orders>
             </div>

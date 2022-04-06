@@ -441,6 +441,11 @@ export default {
     "Örnek KYC Resimleri": "Sample KYC Pictures",
     "Kimlik Ön Yüzü": "ID Frontside",
     "Kimlik Arka Yüzü": "ID Backside",
-    "Fatura":"Invoice"
+    "Fatura":"Invoice",
+    "Grafik": "Graphic",
+    "Alım - Satım": "Deposit - Withdraw",
+    "Emir Defteri": "Order Book",
+    "Son İşlemler": "Finishing Operations",
+    "Emirlerim":"My Orders"
     //#endregion
 };

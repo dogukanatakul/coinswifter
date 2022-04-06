@@ -447,6 +447,11 @@ export default {
     "Örnek KYC Resimleri": "Örnek KYC Resimleri",
     "Kimlik Ön Yüzü": "Kimlik Ön Yüzü",
     "Kimlik Arka Yüzü": "Kimlik Arka Yüzü",
-    "Fatura":"Fatura"
+    "Fatura": "Fatura",
+    "Grafik": "Grafik",
+    "Alım - Satım": "Alım - Satım",
+    "Emir Defteri": "Emir Defteri",
+    "Son İşlemler": "Son İşlemler",
+    "Emirlerim":"Emirlerim"
     //#endregion
 };

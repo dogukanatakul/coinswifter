@@ -58,28 +58,13 @@
             <b-overlay v-if=" Object.values(selectedCoin).length > 0 && selectedCoin.status !== 'ico' " :show="marketTradeLoader" rounded="sm" >
               <div class="justify-content-between no-wrap">
                 <div class="float-left text-center" style=" width: calc(4.6vw + 1 * ((1.4vw * 280) / 730)) !important; " v-for="(array, index) in timeArray" :key="array.key" >
-                  <b-link href="#" @click="chartTime = array.key" class="chartLink text-small" >{{ array.value }}</b-link >
+                  <b-link href="#" @click="chartTime = array.key" class="chartLink text-small" >{{ array.value }}
+                  </b-link>
                 </div>
-                <!-- <b-col cols="12" md="2" class="float-left"
-                  ><b-link href="#" @click="chartTime = '1h'" class="chartLink mx-2"
-                    >{{ $t("1 hour") }}</b-link </b-col
-                >
-                <b-col cols="12" md="2" class="float-left" <b-link href="#" @click="chartTime = '4h'" class="chartLink mx-2"
-                    >{{ $t("4 hour") }}</b-link </b-col
-                >
-                <b-col cols="12" md="2" class="float-left" <b-link href="#" @click="chartTime = '1d'" class="chartLink mx-2"
-                    >{{ $t("1 day") }}</b-link </b-col
-                >
-                <b-col cols="12" md="2" class="float-left" <b-link href="#" @click="chartTime = '1w'" class="chartLink mx-2"
-                    >{{ $t("1 week") }}</b-link </b-col
-                >
-                <b-col cols="12" md="2" class="float-left" <b-link href="#" @click="chartTime = '1m'" class="chartLink mx-2"
-                    >{{ $t("1 month") }}</b-link </b-col
-                > -->
               </div>
               <div style="clear: both"></div>
               <div>
-                <new-chart v-if="chart" :chart.sync="chart" v-model:selectedCoin="selectedCoin" :key="selectedCoin" ></new-chart>
+                <new-chart v-if="chart" :chart.sync="chart" v-model:selectedCoin="selectedCoin" :key="chart" ></new-chart>
                 <trading-chart class="trading-chart" v-else-if="selectedCoin.settings.trading_market" v-model:selectedCoin="selectedCoin" :key="selectedCoin" ></trading-chart>
 
                 <b-card class="pariy-banner" v-else-if="!selectedCoin.settings.trading_market" no-body >
@@ -118,7 +103,7 @@
     </b-row>
 
     <b-row class="d-none d-md-flex d-sm-flex d-xs-flex">
-      <b-col cols="12">
+      <b-col cols="12" class="d-none d-600-big-block">
         <b-col class="coin-prices" cols="12" v-if="Object.values(selectedCoin).length > 0" >
           <b-col cols="12" lg="2" class="float-left">
             <div class=" fw-bold text-md-center text-sm-center text-center text-small my-2 " @click="paritiesShowView = !paritiesShowView" >
@@ -164,39 +149,114 @@
           </b-col>
         </b-col>
       </b-col>
+
+      <b-col cols="12" class="d-none d-600-small-block">
+        <b-col class="coin-prices" cols="12" v-if="Object.values(selectedCoin).length > 0" >
+          <b-row>
+            <div class="d-grid gap-2">
+              <b-row>
+                <div class="col-5 my-auto" style="grid-column: 1/2; grid-row: 1/2" >
+                  <div class="fw-bold mt-2 mx-2" @click="paritiesShowView = !paritiesShowView" >
+                    {{ [ selectedCoin.coin.symbol, selectedCoin.source.symbol, ].join("/") }}
+                    <i class="fas fa-caret-down"></i>
+                  </div>
+                  <div class="coin-detail mx-2">
+                    <div class="coin-info border-0">
+                      <div class="row">
+                        <div class="col">
+                          <div class="text-start" :class=" 'price ' + selectedCoin.parity_price.price.status " >
+                            <h3 class="overflowed">{{ selectedCoin.parity_price.price.value }}</h3>
+                          </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                          <div class="info text-start overflowed">
+                            {{ selectedCoin.parity_price.price.value }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-7 no-wrap text-start my-auto" style="grid-column: 2/3; grid-row: 2-3" >
+                  <div class="coin-detail">
+                    <div class="coin-info border-0 p-0">
+                      <div class="row">
+                        <div class="col-5">
+                          <div class="title text-start overflowed">
+                            {{ $t("Değişim (24S)") }}
+                          </div>
+                        </div>
+                        <div class="col-7">
+                          <div class="text-start" :class=" 'info ' + selectedCoin.parity_price.percent_last_24_hours .status " >
+                            {{ selectedCoin.parity_price.percent_last_24_hours .value }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="coin-info border-0 p-0">
+                      <div class="row">
+                        <div class="col-5">
+                          <div class="title text-start overflowed">
+                            {{ $t("En Yüksek (24S)") }}
+                          </div>
+                        </div>
+                        <div class="col-7">
+                          <div class="text-start" :class=" 'info ' + selectedCoin.parity_price.highest.status " >
+                            {{ selectedCoin.parity_price.highest.value }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="coin-info border-0 p-0">
+                      <div class="row">
+                        <div class="col-5">
+                          <div class="title text-start overflowed">
+                            {{ $t("En Düşük (24S)") }}
+                          </div>
+                        </div>
+                        <div class="col-7">
+                          <div class="text-start" :class=" 'info ' + selectedCoin.parity_price.lowest.status " >
+                            {{ selectedCoin.parity_price.lowest.value }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="coin-info border-0 p-0">
+                      <div class="row">
+                        <div class="col-5">
+                          <div class="title text-start overflowed">
+                            {{ $t("Hacim (24S)") }}
+                          </div>
+                        </div>
+                        <div class="col-7">
+                          <div class="text-start" :class=" 'info ' + selectedCoin.parity_price .volume_last_24_hours_price.status " >
+                            {{ selectedCoin.parity_price .volume_last_24_hours_price.value }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </b-row>
+            </div>
+          </b-row>
+        </b-col>
+      </b-col>
+
       <b-col cols="12">
         <wallet v-if=" Object.values(selectedCoin).length > 0 && Object.values(wallet).length > 0 " :wallet.sync="wallet" :key="wallet" @sendTradeFormWallet="sendTradeFormWallet" ></wallet>
       </b-col>
       <b-col cols="12">
         <TabView content-class="mt-3" :activeIndex="1" v-model:changeParitiesView="changeParitiesView" >
-          <TabPanel header="Grafik">
+          <TabPanel :header="$t('Grafik')">
             <b-row>
               <div class="justify-content-between no-wrap">
                 <div class="float-left d-none d-md-block d-sm-block text-center" style=" width: calc(10.3vw - 1 * ((1.4vw * 280) / 730)) !important; " v-for="(array, index) in timeArray" :key="array.key" >
-                  <b-link href="#" @click="chartTime = array.key" class="chartLink mx-2 text-small" >{{ array.value }}</b-link >
+                  <b-link href="#" @click="chartTime = array.key" class="chartLink mx-2 text-small" >{{ array.value }}
+                  </b-link>
                 </div>
-                
-                <!-- <b-col cols="4" md="2" class="float-left d-none d-small-block" v-for="(array, index) in timeArray" :key="array.key"
-                  ><b-link href="#" @click="chartTime = array.key" class="chartLink mx-2" {{ array.value }}</b-link </b-col
-                > -->
-
-                <v-select v-model="chartTime" :options="timeArray" label="value" :reduce="array => array.key" class="float-left d-none d-small-block col-12 my-2" :clearable="false"></v-select>
-                <!-- <b-col cols="4" md="2" class="float-left"
-                  ><b-link href="#" @click="chartTime = '1h'" class="chartLink mx-2"
-                    >{{ $t("1 hour") }}</b-link </b-col
-                >
-                <b-col cols="4" md="2" class="float-left" <b-link href="#" @click="chartTime = '4h'" class="chartLink mx-2"
-                    >{{ $t("4 hour") }}</b-link </b-col
-                >
-                <b-col cols="4" md="2" class="float-left" <b-link href="#" @click="chartTime = '1d'" class="chartLink mx-2"
-                    >{{ $t("1 day") }}</b-link </b-col
-                >
-                <b-col cols="4" md="2" class="float-left" <b-link href="#" @click="chartTime = '1w'" class="chartLink mx-2"
-                    >{{ $t("1 week") }}</b-link </b-col
-                >
-                <b-col cols="4" md="2" class="float-left" <b-link href="#" @click="chartTime = '1m'" class="chartLink mx-2"
-                    >{{ $t("1 month") }}</b-link </b-col
-                > -->
+                <v-select v-model="chartTime" :options="timeArray" label="value" :reduce="(array) => array.key" class="float-left d-none d-small-block col-12 my-2" :clearable="false" ></v-select>
               </div>
               <b-col cols="12">
                 <div v-if=" Object.values(selectedCoin).length > 0 && Object.values(selectedCoin.promotion).length > 0 && selectedCoin.status == 'ico' " >
@@ -227,8 +287,8 @@
           </TabPanel>
           <!-- <b-tab title="Pariteler">
 
-          </b-tab> -->
-          <TabPanel header="Alım - Satım" :class="{ active: changeParitiesView === true }" >
+                    </b-tab> -->
+          <TabPanel :header="$t('Alım - Satım')" :class="{ active: changeParitiesView === true }" >
             <b-overlay :show="marketTradeLoader" rounded="sm">
               <MarketTrade v-if="Object.values(selectedCoin).length > 0" v-model:selectedCoin="selectedCoin" v-model:wallet="wallet" v-model:marketStatus="marketStatus" v-model:selectedTrade="selectedTrade" v-model:commission="selectedCoin.commission" :key="selectedCoin" @getParity="getParity" />
               <template #overlay>
@@ -239,30 +299,32 @@
               </template>
             </b-overlay>
           </TabPanel>
-          <TabPanel header="Emir Defteri">
+          <TabPanel :header="$t('Emir Defteri')">
             <order-book v-if="Object.values(selectedCoin).length > 0" v-model:orders="orders" v-model:selectedCoin="selectedCoin" v-model:marketStatus="marketStatus" @sendTradeForm="sendTradeForm" class="mt-2" />
           </TabPanel>
-          <TabPanel header="Son İşlemler">
+          <TabPanel :header="$t('Son İşlemler')">
             <last-operations v-if="Object.values(selectedCoin).length > 0" v-model:lastOperations="lastOperations" v-model:selectedCoin="selectedCoin" ></last-operations>
             <!-- <b-col cols="12" class="d-none d-md-block d-sm-block d-xs-block my-2"
-            >
-              <b-button @click="modalShow = !modalShow" variant="primary" class="w-100" >{{ $t("Kullanılabilir Bakiyeler") }}</b-button
-              >
-              <b-modal v-model="modalShow" id="modal-lg" size="lg" title="Kullanılabilir Bakiyeler" centered ok-only hide-backdrop hide-footer
-                >
-              </b-modal> </b-col> -->
+                        >
+                          <b-button @click="modalShow = !modalShow" variant="primary" class="w-100" >{{ $t("Kullanılabilir Bakiyeler") }}</b-button
+                          >
+                          <b-modal v-model="modalShow" id="modal-lg" size="lg" title="Kullanılabilir Bakiyeler" centered ok-only hide-backdrop hide-footer
+                            >
+                          </b-modal> </b-col> -->
           </TabPanel>
-          <TabPanel header="Emirlerim" v-if="myOrders">
+          <TabPanel :header="$t('Emirlerim')" v-if="myOrders">
             <div v-if="myOrders" class="b-overlay-wrap position-relative">
               <my-orders :key="myOrders" :myOrders.sync="myOrders" v-model:selectedCoin="selectedCoin" @getParity="getParity" ></my-orders>
             </div>
           </TabPanel>
         </TabView>
-        <b-modal v-model="paritiesShowView" ref="modal" id="modal-lg" size="lg" title="Parite Çiftleri" centered ok-only hide-footer position-y="bottom" ><b-col cols="12" xs="3" sm="12" lg="3" class="d-sm-block">
+        <b-modal v-model="paritiesShowView" ref="modal" id="modal-lg" size="lg" title="Parite Çiftleri" centered ok-only hide-footer position-y="bottom" >
+          <b-col cols="12" xs="3" sm="12" lg="3" class="d-sm-block">
             <MarketPairsNew v-if="Object.values(selectedCoin).length > 0" :key="selectedCoin" v-model:selectedCoin="selectedCoin" v-model:parities="parities" v-model:coins="coins" @changeParities="changeParities" @paritiesShow="paritiesShow" @getTokens="getTokens" />
           </b-col>
           <div slot="modal-footer">
-            <b-button class="mr-sm-2 su-btn-link float-right" variant="primary" @click="paritiesShowView = false" >{{ $t("Kapat") }}</b-button >
+            <b-button class="mr-sm-2 su-btn-link float-right" variant="primary" @click="paritiesShowView = false" >{{ $t("Kapat") }}
+            </b-button>
           </div>
         </b-modal>
       </b-col>
@@ -286,6 +348,7 @@ import NewChart from "../components/Exchange/newChart";
 import { groupBy } from "../helpers/helpers";
 import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
+
 const initialData = () => ({
   modalShow: false,
   paritiesShowView: false,
@@ -317,44 +380,7 @@ const initialData = () => ({
   setInterval: null,
   changeParitiesView: true,
   chartTime: "15min",
-  timeArray: [
-    {
-      key: "1min",
-      value: "1 min",
-    },
-    {
-      key: "5min",
-      value: "5 min",
-    },
-    {
-      key: "15min",
-      value: "15 min",
-    },
-    {
-      key: "30min",
-      value: "30 min",
-    },
-    {
-      key: "1hours",
-      value: "1 hours",
-    },
-    {
-      key: "4hours",
-      value: "4 hours",
-    },
-    {
-      key: "1day",
-      value: "1 day",
-    },
-    {
-      key: "1week",
-      value: "1 week",
-    },
-    {
-      key: "1month",
-      value: "1 month",
-    },
-  ],
+  timeArray: [],
 });
 
 export default {
@@ -402,7 +428,9 @@ export default {
       this.selectedCoin = this.coins[value];
     },
   },
-  data: () => initialData(),
+  data: function () {
+    return initialData();
+  },
   computed: {
     ...mapGetters(["user"]),
     parity() {
@@ -421,6 +449,46 @@ export default {
     },
     parities() {
       return groupBy(Object.values(this.coins), "source", "symbol");
+    },
+    timeArray() {
+      return [
+        {
+          key: "1min",
+          value: this.$t("1 min"),
+        },
+        {
+          key: "5min",
+          value: this.$t("5 min"),
+        },
+        {
+          key: "15min",
+          value: this.$t("15 min"),
+        },
+        {
+          key: "30min",
+          value: this.$t("30 min"),
+        },
+        {
+          key: "1hours",
+          value: this.$t("1 hours"),
+        },
+        {
+          key: "4hours",
+          value: this.$t("4 hours"),
+        },
+        {
+          key: "1day",
+          value: this.$t("1 day"),
+        },
+        {
+          key: "1week",
+          value: this.$t("1 week"),
+        },
+        {
+          key: "1month",
+          value: this.$t("1 month"),
+        },
+      ];
     },
   },
   methods: {
