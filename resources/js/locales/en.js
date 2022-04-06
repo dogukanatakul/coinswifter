@@ -446,6 +446,9 @@ export default {
     "Alım - Satım": "Deposit - Withdraw",
     "Emir Defteri": "Order Book",
     "Son İşlemler": "Finishing Operations",
-    "Emirlerim":"My Orders"
+    "Emirlerim": "My Orders",
+    "Tüm token çekimleriniz 1 dakika içerisinde gerçekleşir. Siz dilerseniz 1 dakika sonra iptal işlemi gerçekleştirebilirsiniz.": "All your token withdrawals take place within 1 minute. You can cancel after 1 minute if you wish.",
+    "Gönderilen Miktar": "Amount Send",
+    "Kesilen Komisyon": "Deducted Commission"
     //#endregion
 };
