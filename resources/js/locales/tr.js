@@ -428,6 +428,25 @@ export default {
     "Banka Hesap Bilgilerim": "Banka Hesap Bilgilerim",
     "Ticket": "Destek Bileti",
     "Takas": "Takas",
-    "Kalan Miktar": "Kalan Miktar"
+    "Kalan Miktar": "Kalan Miktar",
+    "Nasıl Kullanılır": "Nasıl Kullanılır",
+    "Adım 1) Yükleyeceğiniz KYC nin tipini": "Adım 1) Yükleyeceğiniz KYC nin tipini",
+    "Tip": "Tip",
+    "bölümünden seçiniz": "bölümünden seçiniz",
+    "Adım 2) Tip seçildikten sonra": "Adım 2) Tip seçildikten sonra",
+    "Dosya": "Dosya",
+    "kısmından KYC nizi yükleyiniz": "kısmından KYC'nizi yükleyiniz",
+    "Adım 3) KYC tipi seçildikten ve gerekli KYC yüklendikten sonra": "Adım 3) KYC tipi seçildikten ve gerekli KYC yüklendikten sonra",
+    "Talep Oluştur": "Talep Oluştur",
+    "butonuna basınız": "butonuna basınız",
+    "Aşağıda bulunan tabloda oluşturulan talepleriniz görüntülenecektir.": "Aşağıda bulunan tabloda oluşturulan talepleriniz görüntülenecektir.",
+    "NOT: Tüm fotoğraf tiplerinden KYC lerin yüklenmesi gerekmektedir.": "NOT: Tüm fotoğraf tiplerinden KYC lerin yüklenmesi gerekmektedir.",
+    "NOT: Faturası bulunmayan kişiler E-Devlet uygulaması / web sitesi üzerinden": "NOT: Faturası bulunmayan kişiler E-Devlet uygulaması / web sitesi üzerinden",
+    "İkametgah Belgesi": "İkametgah Belgesi",
+    "ile başvurabilir": "ile başvurabilir",
+    "Örnek KYC Resimleri": "Örnek KYC Resimleri",
+    "Kimlik Ön Yüzü": "Kimlik Ön Yüzü",
+    "Kimlik Arka Yüzü": "Kimlik Arka Yüzü",
+    "Fatura":"Fatura"
     //#endregion
 };

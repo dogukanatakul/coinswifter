@@ -6,7 +6,7 @@
           <div class="accordion" role="tablist" id="mytab">
             <b-card no-body class="mb-1">
               <b-card-header header-tag="header" class="p-1" role="tab">
-                <b-button block v-b-toggle.accordion-7 class="bg-transparent text-dark border-0 w-100 text-left" ><span> Nasıl Kullanılır<i class="fas fa-question"></i></span>
+                <b-button block v-b-toggle.accordion-7 class="bg-transparent text-dark border-0 w-100 text-left" ><span> {{$t('Nasıl Kullanılır')}}<i class="fas fa-question"></i></span>
                   <span class="float-right when-opened" ><i class="fas fa-chevron-down"></i></span ><span class="float-right when-closed" ><i class="fas fa-chevron-up"></i ></span>
                 </b-button>
               </b-card-header>
@@ -16,19 +16,19 @@
                     <b-row class="my-1">
                       <b-col cols="12" lg="6">
                         <div class="fw-bolder text-justify text-dark">
-                          Adım 1) Yükleyeceğiniz KYC'nin tipini <span class="text-danger-custom">"Tip"</span> bölümünden seçiniz<br /><br /> Adım 2) Tip seçildikten sonra <span class="text-danger-custom">"Dosya"</span> kısmından KYC'nizi yükleyiniz<br /><br /> Adım 3) KYC tipi seçildikten ve gerekli KYC yüklendikten sonra <span class="text-danger-custom">"Talep Oluştur"</span> butonuna basınız.<br /><br /> Aşağıda bulunan tabloda oluşturulan talepleriniz görüntülenecektir.
-                          <hr /> NOT: Tüm fotoğraf tiplerinden KYC'lerin yüklenmesi gerekmektedir.<br /><br /> NOT: Faturası bulunmayan kişiler E-Devlet uygulaması / web sitesi üzerinden <span class="text-danger-custom">"İkametgah Belgesi"</span> ile başvurabilir.
+                          {{$t('Adım 1) Yükleyeceğiniz KYC nin tipini')}} <span class="text-danger-custom">"{{$t('Tip')}}"</span> {{$t('bölümünden seçiniz')}}<br /><br /> {{$t('Adım 2) Tip seçildikten sonra')}} <span class="text-danger-custom">"{{$t('Dosya')}}"</span> {{$t('kısmından KYC nizi yükleyiniz')}}<br /><br /> {{$t('Adım 3) KYC tipi seçildikten ve gerekli KYC yüklendikten sonra')}} <span class="text-danger-custom">"{{$t('Talep Oluştur')}}"</span> {{$t('butonuna basınız')}}.<br /><br /> {{$t('Aşağıda bulunan tabloda oluşturulan talepleriniz görüntülenecektir.')}}
+                          <hr /> {{$t('NOT: Tüm fotoğraf tiplerinden KYC lerin yüklenmesi gerekmektedir.')}}<br /><br /> {{$t('NOT: Faturası bulunmayan kişiler E-Devlet uygulaması / web sitesi üzerinden')}} <span class="text-danger-custom">"{{$t('İkametgah Belgesi')}}"</span> {{$t('ile başvurabilir')}}.
                         </div>
                       </b-col>
                       <b-col cols="12" lg="6" class="my-2">
                         <b-row>
-                          <b-col cols="12" class="text-center fw-bolder" >Örnek KYC Resimleri</b-col >
+                          <b-col cols="12" class="text-center fw-bolder" >{{$t('Örnek KYC Resimleri')}}</b-col >
                           <b-row class="my-1">
-                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/kimlik_on.jpg"> <br> <strong>Kimlik Ön Yüzü</strong> </b-col>
-                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/kimlik_arka.png"> <br> <strong>Kimlik Arka Yüzü</strong> </b-col>
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/kimlik_on.jpg"> <br> <strong>{{$t('Kimlik Ön Yüzü')}}</strong> </b-col>
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/kimlik_arka.png"> <br> <strong>{{$t('Kimlik Arka Yüzü')}}</strong> </b-col>
                           </b-row>
                           <b-row class="my-1">
-                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/fatura_ornek.jpg"> <br> <strong>Fatura</strong> </b-col>
+                            <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/fatura_ornek.jpg"> <br> <strong>{{$t('Fatura')}}</strong> </b-col>
                             <b-col cols="12" lg="6" class="justify-content-center text-center mx-auto border my-1 mx-1 overflowed-table" v-viewer="{toolbar: false,title:false,navbar:false}"> <img class="img-thumbnail h-200 text-center border-0" src="../../../assets/img/kyc/selfie.jpg"> <br> <strong>Selfie</strong> </b-col>
                           </b-row>
                         </b-row>
@@ -74,7 +74,7 @@
       <b-row class="my-1">
         <b-col cols="12">
           <div class="d-grid gap-2">
-            <b-button type="sumit" block variant="primary">{{ $t("TALEP OLUŞTUR") }}</b-button>
+            <b-button type="sumit" block variant="primary">{{ $t("Talep Oluştur") }}</b-button>
           </div>
         </b-col>
       </b-row>

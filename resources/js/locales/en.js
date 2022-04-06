@@ -422,6 +422,25 @@ export default {
     "Banka Hesap Bilgilerim": "Bank Account Information",
     "Ticket": "Support Ticket",
     "Takas": "Exchange",
-    "Kalan Miktar": "Remaining Amount"
+    "Kalan Miktar": "Remaining Amount",
+    "Nasıl Kullanılır": "How To Use",
+    "Adım 1) Yükleyeceğiniz KYC nin tipini": "Step 1) Select the type of KYC you will upload from the",
+    "Tip": "Type",
+    "bölümünden seçiniz": "section",
+    "Adım 2) Tip seçildikten sonra": "Step 2) After selecting the type, upload your KYC from",
+    "Dosya": "Folder",
+    "kısmından KYC nizi yükleyiniz": "",
+    "Adım 3) KYC tipi seçildikten ve gerekli KYC yüklendikten sonra": "Step 3) After selecting the KYC type and loading the required KYC, press the",
+    "Talep Oluştur": "Create Request",
+    "butonuna basınız": "button",
+    "Aşağıda bulunan tabloda oluşturulan talepleriniz görüntülenecektir.": "Your requests created in the table below will be displayed.",
+    "NOT: Tüm fotoğraf tiplerinden KYC lerin yüklenmesi gerekmektedir.": "NOTE: KYCs of all photo types must be uploaded.",
+    "NOT: Faturası bulunmayan kişiler E-Devlet uygulaması / web sitesi üzerinden": "NOTE: Persons who do not have an invoice can apply with",
+    "İkametgah Belgesi": "Certificate of Residence",
+    "ile başvurabilir": "via the E-Government application / website",
+    "Örnek KYC Resimleri": "Sample KYC Pictures",
+    "Kimlik Ön Yüzü": "ID Frontside",
+    "Kimlik Arka Yüzü": "ID Backside",
+    "Fatura":"Invoice"
     //#endregion
 };
