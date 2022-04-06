@@ -421,6 +421,7 @@ export default {
     "KYC": "KYC",
     "Banka Hesap Bilgilerim": "Bank Account Information",
     "Ticket": "Support Ticket",
-    "Takas": "Exchange"
+    "Takas": "Exchange",
+    "Kalan Miktar": "Remaining Amount"
     //#endregion
 };

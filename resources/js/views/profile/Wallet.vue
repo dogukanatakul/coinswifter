@@ -2,7 +2,7 @@
   <div class="wallet p-3">
     <b-row class="" v-on:scroll.passive="handleScroll" ref="handleScroll">
       <b-col cols="12" class="px-auto d-lg-none">
-        <div class="border myRounded text-sm-center xs-center mx-auto my-5 myDiv" @click="walletSelected('account_status')" :active="walletSelect === 'account_status'" >
+        <div class="border myRounded text-sm-center xs-center mx-auto my-5 myDiv bg-white" @click="walletSelected('account_status')" :active="walletSelect === 'account_status'" >
           <h4 class="my-5 pt-sm-5">{{ $t("Toplam Varlık") }}</h4>
           <h6 class="my-5 mx-auto overflowed-wallet" style="max-width: 180px" >
             {{ totalMount.total }} TRY

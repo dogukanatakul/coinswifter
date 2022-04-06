@@ -15,7 +15,7 @@
                     <p>
                         Yenilenen
                         <router-link :to="{name:'home'}">coinswifter.com</router-link>
-                        sitesi ve mobil uygulamasında ise Bitcoin alım/satım işlemlerinizi kolaylaştırmak ve hızlandırmak amacıyla kullanıcılar tarafından verilen alım/satım işlemleri Şirketimiz tarafından karşılanmaktadır <span class="text-danger">(*)</span> . Bu sayede kullanıcılarımız BTC/TRY işlem çiftindeki farklı emir tipleri, derinlik, emir defterinde fiyat oynaklığı, işlem zamanlaması gibi konularla uğraşmadan hızla ve güvenle Bitcoin alabilmekte ve satabilmektedir. Bitcoin alım/satım
+                        sitesi ve mobil uygulamasında ise Bitcoin alım/satım işlemlerinizi kolaylaştırmak ve hızlandırmak amacıyla kullanıcılar tarafından verilen alım/satım işlemleri Şirketimiz tarafından karşılanmaktadır <span class="text-danger-custom">(*)</span> . Bu sayede kullanıcılarımız BTC/TRY işlem çiftindeki farklı emir tipleri, derinlik, emir defterinde fiyat oynaklığı, işlem zamanlaması gibi konularla uğraşmadan hızla ve güvenle Bitcoin alabilmekte ve satabilmektedir. Bitcoin alım/satım
                         işlemlerinizde işlem anında Şirketimiz tarafından belirlenen Bitcoin alım/satım fiyatları esas alınmaktadır. Kullanıcılarımızın ilettiği alım/satım emirleri Şirketimiz tarafından (Şirketimiz hesabından eşzamanlı olarak kullanıcı adına alım ve kullanıcıya satım) yerine getirilir. Yapılan bu alım/satım işlemlerinizde Şirketimiz herhangi bir şekilde kullanıcılarına karşı pozisyon almamaktadır.
                     </p>
                     <p>
@@ -29,7 +29,7 @@
                     </p>
                     <p>
                         <router-link :to="{name:'home'}">coinswifter.com</router-link>
-                        sitesi ve Coin Swifter Mobil uygulamasında Kullanıcılar yaptıkları işlemler için ayrıca herhangi bir komisyon ödemezler <span class="text-danger">(**)</span>
+                        sitesi ve Coin Swifter Mobil uygulamasında Kullanıcılar yaptıkları işlemler için ayrıca herhangi bir komisyon ödemezler <span class="text-danger-custom">(**)</span>
                     </p>
                     <h5>
                         <router-link :to="{name:'home'}">coinswifter.com</router-link>
@@ -54,11 +54,11 @@
                         düzenlenmeyen ve/veya hüküm bulunmayan hallerde Kullanım Sözleşmesi hükümleri tamamlayıcı ve düzenleyici olarak uygulanacaktır. <br/>
                     </p>
                     <p>
-                        <span class="text-danger">(*)</span>
+                        <span class="text-danger-custom">(*)</span>
                         <router-link :to="{name:'home'}">www.coinswifter.com</router-link>
                         sitesi üzerinden yürütülen faaliyetlerde kullanıcılarımızın gördüğü Bitcoin alış/satış fiyatları, Şirketimizin spread (alış-satış arasındaki fark) ekleme hakkı saklı kalmak kaydıyla, işlem anında Şirketimiz tarafından belirlenmektedir. Kullanıcılarımızın ilettiği alım veya satım emirleri Şirketimiz tarafından (Şirketimiz hesabından kullanıcı adına alımı ve kullanıcıya satımı) yerine getirilebilir.
                         <br/>
-                        <span class="text-danger">(**)</span> Şirketimizin spread (alış-satış arasındaki fark) ekleme hakkı saklıdır.
+                        <span class="text-danger-custom">(**)</span> Şirketimizin spread (alış-satış arasındaki fark) ekleme hakkı saklıdır.
                     </p>
                 </b-col>
             </b-row>

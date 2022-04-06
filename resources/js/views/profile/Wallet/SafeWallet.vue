@@ -47,7 +47,7 @@
             <b-col cols="12">
                 <p class="text-wrap text-center" v-html="$t('kasa_cuzdan_uyari')"></p>
                 <p class="text-wrap text-center">
-                    <b class="text-danger">{{ $t("Ziraat bankası ödeme yollarıyla 7/24 hesabınıza bakiye tanımlayabilirsiniz.") }}</b>
+                    <b class="text-danger-custom">{{ $t("Ziraat bankası ödeme yollarıyla 7/24 hesabınıza bakiye tanımlayabilirsiniz.") }}</b>
                 </p>
             </b-col>
         </b-row>
@@ -86,7 +86,7 @@
                                 <b-form-input type="number" step="0.00000001" style="appearance: textfield;" :max="walletSelect.balance" v-model="form['amount']" inputmode="number" autofocus></b-form-input>
                             </b-input-group>
                             <b-form-invalid-feedback :state="!v$.form.amount.$error">
-                                <p class="text-danger">
+                                <p class="text-danger-custom">
                                     {{ $t("Lütfen geçerli bir tutar giriniz.") }}
                                 </p>
                             </b-form-invalid-feedback>
@@ -132,8 +132,8 @@
         <b-row v-else>
             <b-card class="justify-content-center text-center py-4" no-body>
                 <p class="text-wrap lh-lg" v-html="$t('kasa_cuzdan_uyari_2')"></p>
-                <p class="fw-bolder text-danger lh-lg text-wrap">{{ $t("Gönderim yapacağınız banka hesabı sizin adınıza olmalıdır! Hesap ismi ve Hesap TC Kimlik numarası eşleşmeyen gönderimler gönderici hesaba iade edilir.") }}</p>
-                <b-button class="mx-1" @click="goBank" variant="success">{{ $t("Banka Hesabı Tanımla") }}</b-button>
+                <p class="fw-bolder text-danger-custom lh-lg text-wrap">{{ $t("Gönderim yapacağınız banka hesabı sizin adınıza olmalıdır! Hesap ismi ve Hesap TC Kimlik numarası eşleşmeyen gönderimler gönderici hesaba iade edilir.") }}</p>
+                <b-button class="mx-1" @click="goBank" variant="primary">{{ $t("Banka Hesabı Tanımla") }}</b-button>
             </b-card>
         </b-row>
     </b-card>

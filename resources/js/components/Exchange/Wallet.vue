@@ -5,7 +5,7 @@
                 <div class="text-smaller" @click="sendTradeFormWallet('buy', 1, wallet['source']['balance'])">
                     {{ wallet["source"]["balance"] }} {{ wallet["source"]["symbol"] }}
                 </div>
-                <div class="text-danger text-smaller">
+                <div class="text-danger-custom text-smaller">
                     <b-icon icon="lock-fill" font-scale="0.5"></b-icon>
                     {{ wallet["source"]["locked"] }} {{ wallet["source"]["symbol"] }}</div >
             </b-col>
@@ -14,7 +14,7 @@
                 <div class="text-smaller" @click="sendTradeFormWallet('sell', wallet['coin']['balance'],1)">
                     {{ wallet['coin']['balance'] }} {{ wallet['coin']['symbol'] }}
                 </div>
-                <div class="text-danger text-smaller">
+                <div class="text-danger-custom text-smaller">
                     <b-icon icon="lock-fill" font-scale="0.5"></b-icon>
                     {{ wallet["coin"]["locked"] }} {{ wallet["coin"]["symbol"] }}</div >
             </b-col>

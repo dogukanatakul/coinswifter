@@ -1,5 +1,5 @@
 <template>
-    <div class="home mb-3 pb-2">
+    <div class="home mb-4 pb-2">
         <footer class="footer-container mt-2">
             <b-container>
                 <b-row class="pb-50 mb-pb-20 footer-top-content overflow-hidden">
@@ -154,7 +154,7 @@
             </b-container>
         </footer>
     </div>
-    <a class="backtop" href="javascript:"><i class="far fa-long-arrow-up"></i></a>
+    <!-- <a class="backtop" href="javascript:"><i class="far fa-long-arrow-up"></i></a> -->
 </template>
 
 <script>

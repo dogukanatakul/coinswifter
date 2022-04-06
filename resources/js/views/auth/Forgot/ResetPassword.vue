@@ -13,8 +13,8 @@
             <b-col cols="12">
                 <b-form-group :label="$t('Şifreniz')">
                     <b-form-input v-model="form['password']" type="password" :placeholder="$t('Şifreniz')" inputmode="text" ></b-form-input>
-                    <b-form-text v-if="v$.form.password.$error" class="text-danger" >
-                        <p class="text-danger">
+                    <b-form-text v-if="v$.form.password.$error" class="text-danger-custom" >
+                        <p class="text-danger-custom">
                             {{ $t("Güvenliğiniz için az 8 karakterli, büyük harf, küçük harf ve sembolik ifade (?,*,+) bulunduran bir şifre belirleyiniz.") }}
                         </p>
                     </b-form-text>
@@ -23,8 +23,8 @@
             <b-col cols="12">
                 <b-form-group :label="$t('Şifreniz Tekrar')">
                     <b-form-input v-model="form.password_confirm" :placeholder="$t('Şifreniz Tekrar')" type="password" inputmode="text" ></b-form-input>
-                    <b-form-text v-if="v$.form.password_confirm.$error" class="text-danger" >
-                        <p class="text-danger">
+                    <b-form-text v-if="v$.form.password_confirm.$error" class="text-danger-custom" >
+                        <p class="text-danger-custom">
                             {{ $t("Şifreleriniz eşleşmiyor!") }}
                         </p>
                     </b-form-text>

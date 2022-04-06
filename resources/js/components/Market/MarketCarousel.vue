@@ -32,10 +32,13 @@ export default {
       768: {
         itemsToShow: 3,
       },
-      992: {
-        itemsToShow: 4,
-      },
-      1200: {
+      // 992: {
+      //   itemsToShow: 3,
+      // },
+      // 1200: {
+      //   itemsToShow: 3,
+      // },
+      1600: {
         itemsToShow: 5,
       },
     },

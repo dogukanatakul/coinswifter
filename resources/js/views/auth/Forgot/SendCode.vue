@@ -13,8 +13,8 @@
             <b-form @submit="verify">
                 <b-form-group id="input-group-2" :label="type + ' ' + $t('Doğrulama Kodunuz')" label-for="input-2" >
                     <b-form-input id="input-2" v-model="form['code']" type="text" :placeholder="type + ' ' + $t('Doğrulama Kodunuz')" inputmode="text" ></b-form-input>
-                    <b-form-text v-if="v$.form.code.$error" class="text-danger">
-                        <p class="text-danger">
+                    <b-form-text v-if="v$.form.code.$error" class="text-danger-custom">
+                        <p class="text-danger-custom">
                             {{ $t("6 haneli kodu giriniz") }}
                         </p>
                     </b-form-text>

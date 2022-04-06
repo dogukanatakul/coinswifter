@@ -82,7 +82,7 @@
                                     <b-form-input step="0.00000001" style="appearance: textfield" v-model="form['amount']" @focus="dynamicFocus('in')" @focusout="dynamicFocus('out')" :type="dynamicInput" inputmode="numeric" autofocus></b-form-input>
                                 </b-input-group>
                                 <b-form-invalid-feedback :state="!v$.form.amount.$error">
-                                    <p class="text-danger">
+                                    <p class="text-danger-custom">
                                         {{ $t("Lütfen geçerli bir tutar giriniz.") }}
                                     </p>
                                 </b-form-invalid-feedback>
@@ -95,7 +95,7 @@
                                     <b-input-group class="my-3">
                                         <b-form-input @paste="clipboardPaste" type="text" v-model="form['wallet']" :placeholder="$t('Gidecek cüzdan adresini giriniz')" inputmode="text"></b-form-input>
                                         <b-form-invalid-feedback :state="!v$.form.wallet.$error">
-                                            <p class="text-danger">
+                                            <p class="text-danger-custom">
                                                 {{ $t("Bu alan zorunludur.") }}
                                             </p>
                                         </b-form-invalid-feedback>
@@ -117,7 +117,7 @@
                     </b-form>
                 </b-col>
                 <b-col cols="12" class="my-2">
-                    <p class=" fw-bolder text-danger lh-lg text-wrap text-center ">
+                    <p class=" fw-bolder text-danger-custom lh-lg text-wrap text-center ">
                         {{ $t("Tüm token çekimleriniz 1 dakika içerisinde gerçekleşir. Siz dilerseniz 1 dakika sonra iptal işlemi gerçekleştirebilirsiniz.") }}
                     </p>
                 </b-col>

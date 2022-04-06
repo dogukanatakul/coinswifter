@@ -13,7 +13,7 @@
                                     <td colspan="2" class="fw-bolder">Para Yatırma</td>
                                 </tr>
                                 <tr>
-                                    <td>Bitcoin <span class="text-danger">*</span></td>
+                                    <td>Bitcoin <span class="text-danger-custom">*</span></td>
                                     <td class="red a-right">Cüzdan Aktivasyonu Gerekli</td>
                                 </tr>
                                 <tr>
@@ -28,7 +28,7 @@
                                     <td colspan="2" class="fw-bolder">Para Çekme</td>
                                 </tr>
                                 <tr>
-                                    <td>Bitcoin <span class="text-danger">*</span></td>
+                                    <td>Bitcoin <span class="text-danger-custom">*</span></td>
                                     <td class="red a-right">Cüzdan Aktivasyonu Gerekli</td>
                                 </tr>
                                 <tr>
@@ -50,7 +50,7 @@
                                     <td colspan="2" class="fw-bolder">Para Yatırma</td>
                                 </tr>
                                 <tr>
-                                    <td>Bitcoin <span class="text-danger">*</span></td>
+                                    <td>Bitcoin <span class="text-danger-custom">*</span></td>
                                     <td class="green a-right">Limitsiz</td>
                                 </tr>
                                 <tr>
@@ -65,7 +65,7 @@
                                     <td colspan="2" class="fw-bolder">Para Çekme</td>
                                 </tr>
                                 <tr>
-                                    <td>Bitcoin <span class="text-danger">*</span></td>
+                                    <td>Bitcoin <span class="text-danger-custom">*</span></td>
                                     <td class="green a-right">Limitsiz</td>
                                 </tr>
                                 <tr>
@@ -82,7 +82,7 @@
                     </b-row>
 
                     <p>
-                        <span class="text-danger">*</span> Bitcoin Cüzdanı ile yatırma çekme işlemleri için Bitcoin Cüzdanı'nızın aktifleştirilmesi gerekmektedir.
+                        <span class="text-danger-custom">*</span> Bitcoin Cüzdanı ile yatırma çekme işlemleri için Bitcoin Cüzdanı'nızın aktifleştirilmesi gerekmektedir.
                     </p>
                     <p>
                         İlk defa Bitcoin çekme talimatı verebilmeniz için en az bir kere Türkiye'deki herhangi bir bankadan adınıza açılmış hesap ile TL yatırma veya çekme işlemi gerçekleştirmeniz ve bu işlemin üzerinden 48 saat geçmesi gerekmektedir.

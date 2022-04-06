@@ -22,8 +22,8 @@
                         {{ $t("sozlesme_4") }}
                         <a href="javascript:" @click=" contract.visible = true; contract.key = 'business_conditions'; " >{{ $t("sozlesme_5") }}</a >{{ $t("sozlesme_6") }}
                       </b-form-checkbox>
-                      <b-form-text v-if="v$.form.user_agreement.$error" class="text-danger" >
-                        <p class="text-danger">
+                      <b-form-text v-if="v$.form.user_agreement.$error" class="text-danger-custom" >
+                        <p class="text-danger-custom">
                           {{ $t( "Lütfen kullanıcı sözleşmesini okuyup onaylayınız." ) }}
                         </p>
                       </b-form-text>
@@ -32,8 +32,8 @@
                       <b-form-checkbox v-model="form['open_consent']" required>
                         <a href="javascript:" @click=" contract.visible = true; contract.key = 'open_consent'; " >{{ $t("sozlesme_7") }}</a >{{ $t("sozlesme_8") }}
                       </b-form-checkbox>
-                      <b-form-text v-if="v$.form.open_consent.$error" class="text-danger" >
-                        <p class="text-danger">
+                      <b-form-text v-if="v$.form.open_consent.$error" class="text-danger-custom" >
+                        <p class="text-danger-custom">
                           {{ $t("Lütfen açık rıza metnini okuyup onaylayınız.") }}
                         </p>
                       </b-form-text>
@@ -44,8 +44,8 @@
                         <a href="javascript:" @click=" contract.visible = true; contract.key = 'lighting_text'; " >{{ $t("sozlesme_10") }}</a >
                         {{ $t("sozlesme_11") }}
                       </b-form-checkbox>
-                      <b-form-text v-if="v$.form.lighting_text.$error" class="text-danger" >
-                        <p class="text-danger">
+                      <b-form-text v-if="v$.form.lighting_text.$error" class="text-danger-custom" >
+                        <p class="text-danger-custom">
                           {{ $t("Lütfen aydınlatma metnini okuyup onaylayınız.") }}
                         </p>
                       </b-form-text>

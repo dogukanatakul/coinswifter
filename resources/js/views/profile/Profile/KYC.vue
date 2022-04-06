@@ -16,8 +16,8 @@
                     <b-row class="my-1">
                       <b-col cols="12" lg="6">
                         <div class="fw-bolder text-justify text-dark">
-                          Adım 1) Yükleyeceğiniz KYC'nin tipini <span class="text-danger">"Tip"</span> bölümünden seçiniz<br /><br /> Adım 2) Tip seçildikten sonra <span class="text-danger">"Dosya"</span> kısmından KYC'nizi yükleyiniz<br /><br /> Adım 3) KYC tipi seçildikten ve gerekli KYC yüklendikten sonra <span class="text-danger">"Talep Oluştur"</span> butonuna basınız.<br /><br /> Aşağıda bulunan tabloda oluşturulan talepleriniz görüntülenecektir.
-                          <hr /> NOT: Tüm fotoğraf tiplerinden KYC'lerin yüklenmesi gerekmektedir.<br /><br /> NOT: Faturası bulunmayan kişiler E-Devlet uygulaması / web sitesi üzerinden <span class="text-danger">"İkametgah Belgesi"</span> ile başvurabilir.
+                          Adım 1) Yükleyeceğiniz KYC'nin tipini <span class="text-danger-custom">"Tip"</span> bölümünden seçiniz<br /><br /> Adım 2) Tip seçildikten sonra <span class="text-danger-custom">"Dosya"</span> kısmından KYC'nizi yükleyiniz<br /><br /> Adım 3) KYC tipi seçildikten ve gerekli KYC yüklendikten sonra <span class="text-danger-custom">"Talep Oluştur"</span> butonuna basınız.<br /><br /> Aşağıda bulunan tabloda oluşturulan talepleriniz görüntülenecektir.
+                          <hr /> NOT: Tüm fotoğraf tiplerinden KYC'lerin yüklenmesi gerekmektedir.<br /><br /> NOT: Faturası bulunmayan kişiler E-Devlet uygulaması / web sitesi üzerinden <span class="text-danger-custom">"İkametgah Belgesi"</span> ile başvurabilir.
                         </div>
                       </b-col>
                       <b-col cols="12" lg="6" class="my-2">

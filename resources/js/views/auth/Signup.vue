@@ -17,8 +17,8 @@
                     <b-col cols="12" md="6">
                       <b-form-group :label="$t('Adınız')">
                         <b-form-input v-model="form['name']" type="text" :placeholder="$t('Adınız')" inputmode="text" ></b-form-input>
-                        <b-form-text v-if="v$.form.name.$error" class="text-danger" >
-                          <p class="text-danger">
+                        <b-form-text v-if="v$.form.name.$error" class="text-danger-custom" >
+                          <p class="text-danger-custom">
                             {{ $t("Lütfen adınızı giriniz.") }}
                           </p>
                         </b-form-text>
@@ -27,8 +27,8 @@
                     <b-col cols="12" md="6">
                       <b-form-group :label="$t('Soyadınız')">
                         <b-form-input v-model="form['surname']" type="text" :placeholder="$t('Soyadınız')" inputmode="text" ></b-form-input>
-                        <b-form-text v-if="v$.form.surname.$error" class="text-danger" >
-                          <p class="text-danger">
+                        <b-form-text v-if="v$.form.surname.$error" class="text-danger-custom" >
+                          <p class="text-danger-custom">
                             {{ $t("Lütfen soyadınızı giriniz.") }}
                           </p>
                         </b-form-text>
@@ -42,8 +42,8 @@
                           </template>
                         </v-date-picker>
 
-                        <b-form-text v-if="v$.form.birthday.$error" class="text-danger" >
-                          <p class="text-danger">
+                        <b-form-text v-if="v$.form.birthday.$error" class="text-danger-custom" >
+                          <p class="text-danger-custom">
                             {{ $t("Lütfen doğum tarihinizi giriniz.") }}
                           </p>
                         </b-form-text>
@@ -52,8 +52,8 @@
                     <b-col cols="12" md="6">
                       <b-form-group :label="$t('Uyruğunuz')">
                         <v-select v-model.number="form['nationality']" label="text" :options="nationalities" :reduce="(data) => data.value" ></v-select>
-                        <b-form-text v-if="v$.form.nationality.$error" class="text-danger" >
-                          <p class="text-danger">
+                        <b-form-text v-if="v$.form.nationality.$error" class="text-danger-custom" >
+                          <p class="text-danger-custom">
                             {{ $t("Lütfen uyruğunuzu giriniz.") }}
                           </p>
                         </b-form-text>
@@ -62,8 +62,8 @@
                     <b-col v-if="form['nationality'] === 218" cols="12">
                       <b-form-group :label="$t('T.C. Kimlik Numaranız')">
                         <b-form-input v-model="form['tck_no']" type="number" :placeholder="$t('T.C. Kimlik Numaranız')" inputmode="number" ></b-form-input>
-                        <b-form-text v-if="v$.form.tck_no.$error" class="text-danger" >
-                          <p class="text-danger">
+                        <b-form-text v-if="v$.form.tck_no.$error" class="text-danger-custom" >
+                          <p class="text-danger-custom">
                             {{ $t( "Lütfen T.C. Kimlik numaranızı doğru girdiğinizden emin olun!" ) }}
                           </p>
                         </b-form-text>
@@ -73,7 +73,7 @@
                       <b-form-group :label="$t('Pasaport Numaranız')">
                         <b-form-input v-model="form['pasaport_no']" type="text" :placeholder="$t('Pasaport Numaranız')" inputmode="number" ></b-form-input>
                         <b-form-text v-if="v$.form.pasaport_no.$error">
-                          <p class="text-danger">
+                          <p class="text-danger-custom">
                             {{ $t("Lütfen pasaport numaranızı giriniz!") }}
                           </p>
                         </b-form-text>
@@ -83,7 +83,7 @@
                       <b-form-group :label="$t('E-Posta Adresiniz')">
                         <b-form-input v-model="form['email']" type="email" :placeholder="$t('E-Posta Adresiniz')" inputmode="email" ></b-form-input>
                         <b-form-text v-if="v$.form.email.$error">
-                          <p class="text-danger">
+                          <p class="text-danger-custom">
                             {{ $t("Lütfen geçerli mail adresi giriniz!") }}
                           </p>
                         </b-form-text>
@@ -98,7 +98,7 @@
                       <b-form-group :label="$t('Telefon Numaranız')">
                         <b-form-input v-model="form['telephone']" :key="formInputKey" type="text" placeholder="53XXXXX" inputmodde="tel" ></b-form-input>
                         <b-form-text v-if="v$.form.telephone.$error">
-                          <p class="text-danger">
+                          <p class="text-danger-custom">
                             {{ $t("Lütfen geçerli telefon numarası giriniz!") }}
                           </p>
                         </b-form-text>
@@ -107,19 +107,19 @@
                     <b-col cols="12">
                       <b-form-group :label="$t('Kullanıcı Adınız')">
                         <b-form-input v-model="form['username']" type="text" :placeholder="$t('Kullanıcı Adınız')" inputmode="text" ></b-form-input>
-                        <b-form-text v-if="v$.form.username.$error" class="text-danger" >
-                          <p class="text-danger">
+                        <b-form-text v-if="v$.form.username.$error" class="text-danger-custom" >
+                          <p class="text-danger-custom">
                             {{ $t( "En az 8 karakterli bir kullanıcı adı oluşturunuz!" ) }}
                           </p>
-                          <p class="text-danger">
+                          <p class="text-danger-custom">
                             {{ $t( "Metinsel ifade ve sonuna sadece rakamsal ifadeler kabul edilir." ) }}
                           </p>
                           <p>
                             {{ $t("Doğru Örnek:") }}
                             <b class="text-success">coinswifter01</b> | {{ $t("Yanlış örnekler:") }}
-                            <b class="text-danger">01coin</b> -
-                            <b class="text-danger">@coin</b> -
-                            <b class="text-danger">coin01swifter</b>
+                            <b class="text-danger-custom">01coin</b> -
+                            <b class="text-danger-custom">@coin</b> -
+                            <b class="text-danger-custom">coin01swifter</b>
                           </p>
                         </b-form-text>
                       </b-form-group>
@@ -127,8 +127,8 @@
                     <b-col cols="12">
                       <b-form-group :label="$t('Şifreniz')">
                         <b-form-input v-model="form['password']" type="password" :placeholder="$t('Şifreniz')" inputmode="text" ></b-form-input>
-                        <b-form-text v-if="v$.form.password.$error" class="text-danger" >
-                          <p class="text-danger">
+                        <b-form-text v-if="v$.form.password.$error" class="text-danger-custom" >
+                          <p class="text-danger-custom">
                             {{ $t( "Güvenliğiniz için az 8 karakterli, büyük harf, küçük harf ve sembolik ifade (?,*,+) bulunduran bir şifre belirleyiniz." ) }}
                           </p>
                         </b-form-text>
@@ -137,8 +137,8 @@
                     <b-col cols="12" md="12">
                       <b-form-group :label="$t('Şifreniz Tekrar')">
                         <b-form-input v-model="form.password_repeat" :placeholder="$t('Şifreniz Tekrar')" type="password" inputmode="text" ></b-form-input>
-                        <b-form-text v-if="v$.form.password_repeat.$error" class="text-danger" >
-                          <p class="text-danger">
+                        <b-form-text v-if="v$.form.password_repeat.$error" class="text-danger-custom" >
+                          <p class="text-danger-custom">
                             {{ $t("Şifreleriniz eşleşmiyor!") }}
                           </p>
                         </b-form-text>
@@ -154,8 +154,8 @@
                         {{ $t("sozlesme_4") }}
                         <a href="javascript:" @click=" contract.visible = true; contract.key = 'business_conditions'; " >{{ $t("sozlesme_5") }}</a >{{ $t("sozlesme_6") }}
                       </b-form-checkbox>
-                      <b-form-text v-if="v$.form.user_agreement.$error" class="text-danger" >
-                        <p class="text-danger">
+                      <b-form-text v-if="v$.form.user_agreement.$error" class="text-danger-custom" >
+                        <p class="text-danger-custom">
                           {{ $t( "Lütfen kullanıcı sözleşmesini okuyup onaylayınız." ) }}
                         </p>
                       </b-form-text>
@@ -164,8 +164,8 @@
                       <b-form-checkbox v-model="form['open_consent']" required>
                         <a href="javascript:" @click=" contract.visible = true; contract.key = 'open_consent'; " >{{ $t("sozlesme_7") }}</a >{{ $t("sozlesme_8") }}
                       </b-form-checkbox>
-                      <b-form-text v-if="v$.form.open_consent.$error" class="text-danger" >
-                        <p class="text-danger">
+                      <b-form-text v-if="v$.form.open_consent.$error" class="text-danger-custom" >
+                        <p class="text-danger-custom">
                           {{ $t("Lütfen açık rıza metnini okuyup onaylayınız.") }}
                         </p>
                       </b-form-text>
@@ -176,8 +176,8 @@
                         <a href="javascript:" @click=" contract.visible = true; contract.key = 'lighting_text'; " >{{ $t("sozlesme_10") }}</a >
                         {{ $t("sozlesme_11") }}
                       </b-form-checkbox>
-                      <b-form-text v-if="v$.form.lighting_text.$error" class="text-danger" >
-                        <p class="text-danger">
+                      <b-form-text v-if="v$.form.lighting_text.$error" class="text-danger-custom" >
+                        <p class="text-danger-custom">
                           {{ $t("Lütfen aydınlatma metnini okuyup onaylayınız.") }}
                         </p>
                       </b-form-text>

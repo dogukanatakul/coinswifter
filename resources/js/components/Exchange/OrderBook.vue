@@ -11,9 +11,9 @@
         </thead>
         <tbody>
           <tr v-for="(item, key) in orders['sell']" :key="key" @click="sendTradeForm('buy', item.price, item.amount)" class="cursor-pointer sell" >
-            <td class="text-danger">{{ item.price }}</td>
-            <td class="text-danger">{{ item.amount }}</td>
-            <td class="text-danger">{{ item.total }}</td>
+            <td class="text-danger-custom">{{ item.price }}</td>
+            <td class="text-danger-custom">{{ item.amount }}</td>
+            <td class="text-danger-custom">{{ item.total }}</td>
           </tr>
         </tbody>
         <tbody class="ob-heading">

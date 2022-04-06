@@ -9,6 +9,7 @@
     border: 1px solid #f2f4f9;
     margin: 15px 0;
     width: 80%;
+    background-color: white !important;
 }
 
 .market-carousel-item-name {
@@ -242,4 +243,21 @@
         display: none !important;
     }
 }
+}
+
+.markets{
+  .nav-item{
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    transition: clip-path 2s;
+  }
+  .nav-item:active{
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    
+  }
+  
+  .nav-link.active{
+    color: black !important;
+    background-color: white !important;
+    font-weight: bolder;
+  }
 }

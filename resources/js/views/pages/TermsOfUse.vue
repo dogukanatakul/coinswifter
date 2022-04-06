@@ -16,7 +16,7 @@
                     <h5>2.2. Kripto Para</h5>
                     <p>
                         Kriptografik/şifreli olarak güvenli işlem yapmaya ve ek sanal para arzına olanak sağlayan dijital değerlere, kripto-para denir. Kripto-paralar, alternatif para birimidirler, dijitaldirler ve aynı zamanda sanal paradırlar.
-                        <br/> Kripto-paralar, merkezi elektronik paraların ve bankacılık sistemlerindekinin aksine, merkezi olmayan yapıdadırlar. Merkezi olmayan bu yapının kontrolü Blok-Zincir (BlockChain) işlem veri tabanları tarafından gerçekleştirilir <span class="text-danger">(*)</span>.
+                        <br/> Kripto-paralar, merkezi elektronik paraların ve bankacılık sistemlerindekinin aksine, merkezi olmayan yapıdadırlar. Merkezi olmayan bu yapının kontrolü Blok-Zincir (BlockChain) işlem veri tabanları tarafından gerçekleştirilir <span class="text-danger-custom">(*)</span>.
                     </p>
                     <h5>2.3. Coin Swifter Cüzdanı</h5>
                     <p>
@@ -215,7 +215,7 @@
                         9.2. Kullanım Sözleşmesi'nin şartlarını kabul etmeyen kullanıcıların Site'yi ve Site üzerinden sağlanan servisleri kullanmamaları gerekmektedir. Aksi halde doğmuş ya da doğacak olan zararlardan Coin Swifter sorumlu tutulamaz.
                     </p>
                     <p>
-                        <span class="text-danger">(*)</span> Sermaye piyasası kurulu araştırma dairesinin Aralık 2016'da yayınlamış olduğu "Kripto-Para Bitcoin" raporundan alınmıştır.
+                        <span class="text-danger-custom">(*)</span> Sermaye piyasası kurulu araştırma dairesinin Aralık 2016'da yayınlamış olduğu "Kripto-Para Bitcoin" raporundan alınmıştır.
                     </p>
                 </b-col>
             </b-row>

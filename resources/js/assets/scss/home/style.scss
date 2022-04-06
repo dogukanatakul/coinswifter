@@ -4546,7 +4546,10 @@ button.timeline-nav-button:focus {
     -webkit-background-size: cover;
     background-size: cover;
     padding: 178px 0 5px;
-    border-radius: 100px 0 0 0
+    border-radius: 100px 0 0 0;
+        -moz-box-shadow:5px 5px 5px rgba(182, 182, 182, 0.75);
+     -webkit-box-shadow: 5px 5px 5px rgba(182, 182, 182, 0.75);
+     box-shadow: 5px 5px 5px rgba(182, 182, 182, 0.75);
 }
 
 .footer-container2 {
@@ -4858,9 +4861,10 @@ p.link-hover,
     display: none;
 }
 
+//Eski renk kodu : #2d71d6
 .router-link-active {
     .list-group-item {
-        color: #2d71d6 !important;
+        color: #aaaaaa !important;
     }
 }
 
@@ -4896,5 +4900,4 @@ p.link-hover,
         font-weight: bolder !important;
     }
 }
-
 

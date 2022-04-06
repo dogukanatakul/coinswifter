@@ -1,6 +1,6 @@
 <template>
     <header class="light-bb">
-        <nav class="navbar navbar-expand-lg fixed-top bg-white my-border" role="navigation" >
+        <nav class="navbar navbar-expand-lg fixed-top bg-dark-custom my-border" role="navigation" >
             <router-link class="navbar-brand" to="/">
                 <img v-bind:src="'../assets/img/logos/logo.png'" alt="CoinSwifter"/>
             </router-link>

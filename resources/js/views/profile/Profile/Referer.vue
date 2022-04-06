@@ -6,8 +6,8 @@
                     <b-col cols="12">
                         <b-form-group :label="$t('Referans Kodu')" >
                             <b-form-input v-model="form.referer_url" size="sm" class="mt-3" placeholder="XXXXXXXXX" disabled inputmode="url" ></b-form-input>
-                            <b-form-text v-if="v$.form.referer.$error" class="text-danger">
-                                <p class="text-danger">
+                            <b-form-text v-if="v$.form.referer.$error" class="text-danger-custom">
+                                <p class="text-danger-custom">
                                     {{ $t('Lütfen iban bilgisi giriniz!') }}
                                 </p>
                             </b-form-text>

@@ -44,12 +44,12 @@
   font-size: 12px;
 }
 @media screen and (max-width: 1690px) and(min-width:992px) {
-  .title,
-  .price,
-  .info {
-    font-size: 8px !important;
-    // text-align: center;
-  }
+  // .title,
+  // .price,
+  // .info {
+  //   font-size: 8px !important;
+  //   // text-align: center;
+  // }
   .d-xs-flex {
     display: none !important;
   }
@@ -201,4 +201,38 @@
   white-space: nowrap;
   max-width: 140px;
 }
+}
+
+//Salih AVCI Body Arkaplan değişikliği
+body{
+    background-color: #f6f7f9 !important;
+}
+
+.bg-dark-custom{
+    --bs-bg-opacity: 1;
+    background-color: #141516 !important;
+}
+
+
+.text-danger-custom{
+  --bs-bg-opacity:1;
+    color: #ff5e62 !important;
+}
+
+.mymarket-pairs{
+  .nav-item{
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    transition: clip-path 2s;
+  }
+  .nav-item:active{
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    
+  }
+  
+  .nav-link.active{
+    color: black !important;
+    background-color: white !important;
+    font-weight: bolder;
+  }
+
 }

@@ -1,5 +1,5 @@
 <template>
-  <b-card border-variant="white" class="profile">
+  <b-card border-variant="white" class="profile min-vh-100">
     <b-row>
       <b-col cols="12" md="4" class="mb-2">
         <b-card-group deck class="d-none d-md-block">

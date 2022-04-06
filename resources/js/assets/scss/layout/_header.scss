@@ -136,7 +136,7 @@ header .nav-link.btn {
 
 #menu a {
     text-decoration: none !important;
-    color: black;
+    color: white;
 }
 
 .hamburger ul li {
@@ -214,7 +214,8 @@ header .nav-link.btn {
     padding-top: 100px;
     padding-bottom: 75px;
     right: -70px;
-    background: rgba(237, 237, 237, .90);
+    // background: rgba(237, 237, 237, .90);
+    background: rgba(0, 0, 0, .90);
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;

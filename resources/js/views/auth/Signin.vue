@@ -15,15 +15,15 @@
                   <b-form-group id="input-group-1" :label="$t('E-Posta')" label-for="input-1" >
                     <b-form-input id="input-1" v-model="form['email']" type="email" :placeholder="$t('E-Posta Adresiniz')" inputmode="email" ></b-form-input>
                     <b-form-text v-if="v$.form.email.$error">
-                      <p class="text-danger">
+                      <p class="text-danger-custom">
                         {{ $t("Lütfen geçerli mail adresi giriniz!") }}
                       </p>
                     </b-form-text>
                   </b-form-group>
                   <b-form-group id="input-group-2" label="Şifre" label-for="input-2" >
                     <b-form-input id="input-2" v-model="form['password']" type="password" :placeholder="$t('Şifreniz')" inputmode="text" ></b-form-input>
-                    <b-form-text v-if="v$.form.password.$error" class="text-danger" >
-                      <p class="text-danger">
+                    <b-form-text v-if="v$.form.password.$error" class="text-danger-custom" >
+                      <p class="text-danger-custom">
                         {{ $t("Lütfen şifrenizi giriniz.") }}
                       </p>
                     </b-form-text>

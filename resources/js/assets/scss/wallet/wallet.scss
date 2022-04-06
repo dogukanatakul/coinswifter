@@ -212,14 +212,16 @@
 }
 
 .bg-blue{
-    background-color: #000461;
+    // background-color: #000461 !important;
+    background-color: #080c3c !important;
 }
 .myMargins{
     margin-bottom: .5vh !important;
 }
 
 .list-group-item + .list-group-item.active{
-    background-color: #000461 !important;
+    // background-color: #000461 !important;
+    background-color: #080c3c !important;
     color: white !important;
 }
 
@@ -246,7 +248,23 @@
 
 .wallet{
     .active{
-    background-color: #000461 !important;
+    // background-color: #000461 !important;
+    background-color: #080c3c !important;
     color: white !important;
 }
+}
+
+.btn-success{
+    background-color: #43cea2 !important;
+}
+.btn-danger{
+    background-color: #ff5e62 !important;
+}
+.btn-primary{
+    background-color: #080c3c !important;
+}
+
+.btn-secondary{
+    background-color: transparent !important;
+    border-color: transparent !important;
 }

@@ -4,8 +4,8 @@
             <b-col cols="12" md="12">
                 <b-form-group :label="$t('Mevcut Şifreniz')" >
                     <b-form-input v-model="form.current_password" size="sm" class="mt-3" placeholder="*****" type="password" inputmode="text" ></b-form-input>
-                    <b-form-text v-if="v$.form.current_password.$error" class="text-danger">
-                        <p class="text-danger">
+                    <b-form-text v-if="v$.form.current_password.$error" class="text-danger-custom">
+                        <p class="text-danger-custom">
                             {{ $t('Lütfen mevcut şifrenizi giriniz!') }}
                         </p>
                     </b-form-text>
@@ -14,8 +14,8 @@
             <b-col cols="12" md="12">
                 <b-form-group :label="$t('Yeni Şifreniz')" >
                     <b-form-input v-model="form.new_password" size="sm" class="mt-3" placeholder="*****" type="password" inputmode="text" ></b-form-input>
-                    <b-form-text v-if="v$.form.new_password.$error" class="text-danger">
-                        <p class="text-danger">
+                    <b-form-text v-if="v$.form.new_password.$error" class="text-danger-custom">
+                        <p class="text-danger-custom">
                             {{ $t('Güvenliğiniz için az 8 karakterli, büyük harf, küçük harf ve sembolik ifade (?,*,+) bulunduran bir şifre belirleyiniz.') }}
                         </p>
                     </b-form-text>
@@ -24,8 +24,8 @@
             <b-col cols="12" md="12">
                 <b-form-group :label="$t('Yeni Şifreniz Tekrar')" >
                     <b-form-input v-model="form.new_password_confirm" size="sm" class="mt-3" placeholder="*****" type="password" inputmode="text" ></b-form-input>
-                    <b-form-text v-if="v$.form.new_password_confirm.$error" class="text-danger">
-                        <p class="text-danger">
+                    <b-form-text v-if="v$.form.new_password_confirm.$error" class="text-danger-custom">
+                        <p class="text-danger-custom">
                             {{ $t('Şifreleriniz eşleşmiyor!') }}
                         </p>
                     </b-form-text>

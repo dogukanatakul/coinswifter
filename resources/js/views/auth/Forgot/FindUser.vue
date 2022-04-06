@@ -11,7 +11,7 @@
                 <b-form-group id="input-group-1" :label="$t('E-Posta')" label-for="input-1" >
                     <b-form-input id="input-1" v-model="form['email']" type="email" placeholder="xxx@xxx.xxx" inputmode="email" ></b-form-input>
                     <b-form-text v-if="v$.form.email.$error">
-                        <p class="text-danger">
+                        <p class="text-danger-custom">
                             {{ $t("Lütfen geçerli mail adresi giriniz!") }}
                         </p>
                     </b-form-text>
@@ -26,7 +26,7 @@
                         <b-form-group id="input-group-1" label="Telefon Numaranız" label-for="input-1" >
                             <b-form-input id="input-1" v-model="form['telephone']" type="text" placeholder="53XXXXXXX" class="mt-1" inputmode="tel" ></b-form-input>
                             <b-form-text v-if="v$.form.telephone.$error">
-                                <p class="text-danger">
+                                <p class="text-danger-custom">
                                     {{ $t("Lütfen geçerli telefon numarası giriniz!") }}
                                 </p>
                             </b-form-text>
@@ -43,8 +43,8 @@
                                 </template>
                             </v-date-picker>
 
-                            <b-form-text v-if="v$.form.birthday.$error" class="text-danger" >
-                                <p class="text-danger">
+                            <b-form-text v-if="v$.form.birthday.$error" class="text-danger-custom" >
+                                <p class="text-danger-custom">
                                     {{ $t("Lütfen doğum tarihinizi giriniz.") }}
                                 </p>
                             </b-form-text>
@@ -56,8 +56,8 @@
                 </b-form-group>
                 <b-form-group v-if="code" id="input-group-2" :label="$t('Yeni Şifreniz')" label-for="input-2" >
                     <b-form-input id="input-2" v-model="form['password']" type="password" :placeholder="$t('Şifreniz')" inputmode="text" ></b-form-input>
-                    <b-form-text v-if="v$.form.password.$error" class="text-danger" >
-                        <p class="text-danger">
+                    <b-form-text v-if="v$.form.password.$error" class="text-danger-custom" >
+                        <p class="text-danger-custom">
                             {{ $t("Güvenliğiniz için az 8 karakterli, büyük harf, küçük harf ve sembolik ifade (?,*,+) bulunduran bir şifre belirleyiniz.") }}
                         </p>
                     </b-form-text>

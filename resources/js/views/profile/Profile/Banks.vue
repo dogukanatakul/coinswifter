@@ -4,8 +4,8 @@
             <b-col cols="12" md="5">
                 <b-form-group :label="$t('Banka')" >
                     <v-select :placeholder="$t('Banka Seçin')" v-model.number="form.bank" label="text" :options="banks" :reduce="data => data.value" ></v-select>
-                    <b-form-text v-if="v$.form.bank.$error" class="text-danger">
-                        <p class="text-danger">
+                    <b-form-text v-if="v$.form.bank.$error" class="text-danger-custom">
+                        <p class="text-danger-custom">
                             {{ $t("Lütfen banka seçiniz!") }}
                         </p>
                     </b-form-text>
@@ -14,8 +14,8 @@
             <b-col cols="12" md="7">
                 <b-form-group label="Iban" >
                     <b-form-input v-model="form.iban" size="sm" class="mt-3" placeholder="TRXXXXXXXXXX" inputmode="text" ></b-form-input>
-                    <b-form-text v-if="v$.form.iban.$error" class="text-danger">
-                        <p class="text-danger">
+                    <b-form-text v-if="v$.form.iban.$error" class="text-danger-custom">
+                        <p class="text-danger-custom">
                             Lütfen iban bilgisi giriniz!
                         </p>
                     </b-form-text>
