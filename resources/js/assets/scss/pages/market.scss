@@ -9,7 +9,7 @@
     border: 1px solid #f2f4f9;
     margin: 15px 0;
     width: 80%;
-    background-color: white !important;
+    background-color: var(--bgTransparent) !important;
 }
 
 .market-carousel-item-name {
@@ -39,7 +39,7 @@
     color: #fff;
     padding: 8px 20px;
     box-shadow: 0px 0px 15px 0px #26de81ad;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     width: 46%;
     margin-right: 6%;
     border: 1px solid transparent;
@@ -53,7 +53,7 @@
 
 .market-carousel-item .btn.buy:hover,
 .market-carousel-item .btn.sell:hover {
-    background: transparent;
+    background: var(--bgTransparent) !important;
     color: #000;
     box-shadow: none;
     border: 1px solid #000;
@@ -88,7 +88,7 @@
         }
 
         td {
-            font-size: 12px;
+            font-size: var(--fontSize) !important;
             overflow: hidden;
             white-space: nowrap;
         }
@@ -108,7 +108,7 @@
 
     .order-watch {
         .list-group-item {
-            font-size: 12px;
+            font-size: var(--fontSize) !important;
             padding: 0.1rem 1rem;
         }
     }
@@ -121,6 +121,8 @@
                 min-width: 120px;
                 width: 120px;
                 text-align: end;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+                font-size: 13px;
             }
         }
     }
@@ -174,6 +176,8 @@
             width: 20% !important;
             display: inline-block !important;
             text-align: left !important;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 13px;
         }
     }
 
@@ -260,4 +264,23 @@
     background-color: white !important;
     font-weight: bolder;
   }
+  .nav-link{
+      color: black !important;
+  }
+}
+
+#section0{
+    .form-control{
+        background-color: var(--bgTransparent) !important;
+    }
+}
+
+.b-overlay-wrap{
+    .form-control{
+        background-color: var(--bgTransparent) !important;
+    }
+}
+
+.input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text, .input-group-sm > .btn{
+    background-color: var(--bgTransparent) !important;
 }

@@ -6,7 +6,7 @@
           <b-form-input v-model="search" class="search" :placeholder="$t('Parite Çifti Arayın')" inputmode="text" ></b-form-input>
         </b-col>
       </b-row>
-      <b-tabs content-class="mt-3 no-wrap" pills card fill v-model:selectedKey="selectedKey">
+      <b-tabs content-class="mt-3 no-wrap" pills card fill v-model:selectedKey="selectedKey" >
         <b-tab @click="selectedKey = 0">
           <template #title>
             <i class="fas fa-star"></i> {{ $t("Favoriler") }}
@@ -79,6 +79,10 @@
 import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
 import restAPI from "../../api/restAPI";
+const initialData = () => ({
+  search: "",
+  selectedKey: 1,
+});
 export default {
   name: "MarketPairs_New",
   components: { TabView, TabPanel },
@@ -114,17 +118,22 @@ export default {
   },
   computed: {
     selectedKey() {
-      this.selectedKey = Object.keys(this.$props["parities"]).indexOf(this.selectedCoin.source.symbol) + 1;
-      return Object.keys(this.$props["parities"]).indexOf(this.selectedCoin.source.symbol) + 1;
+      this.selectedKey =
+        Object.keys(this.$props["parities"]).indexOf(
+          this.selectedCoin.source.symbol
+        ) + 1;
+      return (
+        Object.keys(this.$props["parities"]).indexOf(
+          this.selectedCoin.source.symbol
+        ) + 1
+      );
     },
   },
-  data: () => ({
-    search: "",
-    selectedKey: 1,
-  }),
+  data: function () {
+    return initialData();
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-
 </style>

@@ -1,36 +1,140 @@
 <template>
   <div class="home">
-    <div class="banner-container">
-      <b-container>
-        <b-row class="banner-content-area justify-content-between text-responsive" >
-          <b-col cols="12" md="6" class="banner-content">
-            <div class="banner-cont-info text-white wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s" >
-              <img v-bind:src="'../assets/img/home/banner/home_slide_logo.png'" alt="CoinSwifter" class="banner-logo fade-in-out margin-5" />
-              <h5 class="text-white mt-2 text-responsive">
-                {{ $t("Güvenilir kripto para alım-satım deneyimi") }}
-              </h5>
-              <h1 class="text-white text-responsive">
-                {{ $t("CoinSwifter.com'da!") }}
-              </h1>
-              <a class="text-decoration-none" href="https://panel.broovs.io/whitepaper_tr.pdf" title="Broovs White Paper" rel="noreferrer" target="_blank" >
-                <p class="text-white mx-auto text-responsive">
-                  <b-icon icon="box-arrow-up-right" font-scale="0.5"></b-icon>
-                  {{ $t( "CoinSwifter Borsası Broovs (BRS) Ekosistemi Projesidir." ) }}
-                </p>
-              </a>
-              <router-link v-if="!user" :to="{ name: 'signup' }" class="crp-btn mx-auto text-white" >{{ $t("Hemen Hesap Oluştur") }}</router-link >
+    <div class="service-container">
+      <!-- <b-row class="banner-content-area justify-content-between text-responsive" > <b-col cols="12" md="6" class="banner-content"> <div class="banner-cont-info text-white wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s" > <img v-bind:src="'../assets/img/home/banner/home_slide_logo.png'" alt="CoinSwifter" class="banner-logo fade-in-out margin-5" /> <h5 class="text-white mt-2 text-responsive"> {{ $t("Güvenilir kripto para alım-satım deneyimi") }} </h5> <h1 class="text-white
+          text-responsive"> {{ $t("CoinSwifter.com'da!") }} </h1> <a class="text-decoration-none" href="https://panel.broovs.io/whitepaper_tr.pdf" title="Broovs White Paper" rel="noreferrer" target="_blank" > <p class="text-white mx-auto text-responsive"> <b-icon icon="box-arrow-up-right" font-scale="0.5"></b-icon> {{ $t( "CoinSwifter Borsası Broovs (BRS) Ekosistemi Projesidir." ) }} </p> </a> <router-link v-if="!user" :to="{ name: 'signup' }" class="crp-btn mx-auto text-white" >{{ $t("Hemen
+          Hesap Oluştur") }}</router-link > </div> </b-col> <b-col cols="12" md="6" lg="6" class="banner-content d-none d-sm-block" > <div class="banner-cont-img wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s" > <img src="assets/img/home/banner/hero-banner.png" alt="" /> </div> </b-col> </b-row> -->
+      <b-row>
+        <b-col cols="12" class="justify-content-between float-left" style="padding:inherit !important">
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" >
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" ></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" ></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" ></button>
             </div>
-          </b-col>
-          <b-col cols="12" md="6" lg="6" class="banner-content d-none d-sm-block" >
-            <div class="banner-cont-img wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s" >
-              <img src="assets/img/home/banner/hero-banner.png" alt="" />
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="assets/img/bg/bg-5.png" class="d-block w-100" alt="assets/img/bg/bg-5.png" />
+              </div>
+              <div class="carousel-item">
+                <img src="assets/img/bg/bg-5.png" class="d-block w-100" alt="assets/img/bg/bg-5.png" />
+              </div>
+              <div class="carousel-item">
+                <img src="assets/img/bg/bg-5.png" class="d-block w-100" alt="assets/img/bg/bg-5.png" />
+              </div>
             </div>
-          </b-col>
-        </b-row>
-        <!-- <div>
+          </div>
+        </b-col>
+      </b-row>
+      <!-- <div>
                     <img class="home-broovs-banner" v-bind:src="'../assets/img/icon_banner/broovs-home.jpeg'">
                 </div> -->
-      </b-container>
+    </div>
+    <div class="service-container d-600-big-block price-bg">
+      <b-row>
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6"  class="float-left overflowed fw-bolder price-percent up" >-0.30%</b-col >
+          </b-row>
+
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
+          </b-row>
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
+          </b-row>
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
+          </b-row>
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
+          </b-row>
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
+          </b-row>
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+      </b-row>
+    </div>
+    <div class="service-container d-600-small-block price-bg">
+      <b-row>
+        <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6"  class="float-left overflowed fw-bolder price-percent up" >-0.30%</b-col >
+          </b-row>
+
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+        <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
+          </b-row>
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+        <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
+          </b-row>
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+        <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
+          </b-row>
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+        <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
+          </b-row>
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+        <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
+          <b-row class="my-2">
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
+          </b-row>
+          <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
+          <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+        </b-col>
+      </b-row>
     </div>
     <div class="service-container">
       <b-container>
@@ -41,7 +145,9 @@
                 <img src="assets/img/home/icon/1.png" alt="" width="118" height="120" />
               </div>
               <div class="service-cont">
-                <h3 class="overflowed-table">{{ $t("Dünyanın Her Yerine") }}</h3>
+                <h3 class="overflowed-table">
+                  {{ $t("Dünyanın Her Yerine") }}
+                </h3>
                 <h5 class="overflowed-table">{{ $t("Para Gönder-Al.") }}</h5>
                 <!-- <a class="more-btn" href="#">Daha Fazla Oku</a> -->
               </div>
@@ -53,8 +159,12 @@
                 <img src="assets/img/home/icon/2.png" alt="" width="118" height="120" />
               </div>
               <div class="service-cont">
-                <h3 class="overflowed-table">{{ $t("Çeşitli Ödeme Yöntemlerimizle") }}</h3>
-                <h5 class="overflowed-table">{{ $t("Sanal Para Satın Al / Sat.") }}</h5>
+                <h3 class="overflowed-table">
+                  {{ $t("Çeşitli Ödeme Yöntemlerimizle") }}
+                </h3>
+                <h5 class="overflowed-table">
+                  {{ $t("Sanal Para Satın Al / Sat.") }}
+                </h5>
                 <!-- <a class="more-btn" href="#">Daha Fazla Oku</a> -->
               </div>
             </div>
@@ -65,8 +175,12 @@
                 <img src="assets/img/home/icon/3.png" alt="" width="118" height="120" />
               </div>
               <div class="service-cont">
-                <h3 class="overflowed-table">{{ $t("Sistemimize İstediğiniz Cihazdan") }}</h3>
-                <h5 class="overflowed-table">{{ $t("Kolay ve Kesintisiz Bir Şekilde Erişin.") }}</h5>
+                <h3 class="overflowed-table">
+                  {{ $t("Sistemimize İstediğiniz Cihazdan") }}
+                </h3>
+                <h5 class="overflowed-table">
+                  {{ $t("Kolay ve Kesintisiz Bir Şekilde Erişin.") }}
+                </h5>
               </div>
             </div>
           </b-col>
@@ -76,8 +190,12 @@
                 <img src="assets/img/home/icon/4.png" alt="" width="118" height="120" />
               </div>
               <div class="service-cont">
-                <h3 class="overflowed-table">{{ $t("Güvenlik Sistemimiz İle") }}</h3>
-                <h5 class="overflowed-table">{{ $t("Cüzdanınız Bizimle Daima Güvende.") }}</h5>
+                <h3 class="overflowed-table">
+                  {{ $t("Güvenlik Sistemimiz İle") }}
+                </h3>
+                <h5 class="overflowed-table">
+                  {{ $t("Cüzdanınız Bizimle Daima Güvende.") }}
+                </h5>
                 <!-- <a class="more-btn" href="#">Daha Fazla Oku</a> -->
               </div>
             </div>
@@ -200,5 +318,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
 </style>

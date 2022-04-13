@@ -57,10 +57,11 @@
             </div>
             <b-overlay v-if=" Object.values(selectedCoin).length > 0 && selectedCoin.status !== 'ico' " :show="marketTradeLoader" rounded="sm" >
               <div class="justify-content-between no-wrap">
-                <div class="float-left text-center" style=" width: calc(4.6vw + 1 * ((1.4vw * 280) / 730)) !important; " v-for="(array, index) in timeArray" :key="array.key" >
+                <!-- <div class="float-left text-center" style=" width: calc(4.6vw + 1 * ((1.4vw * 280) / 730)) !important; " v-for="(array, index) in timeArray" :key="array.key" >
                   <b-link href="#" @click="chartTime = array.key" class="chartLink text-small" >{{ array.value }}
                   </b-link>
-                </div>
+                </div> -->
+                <v-select v-model="chartTime" :options="timeArray" label="value" :reduce="(array) => array.key" class="float-left col-12 my-2" :clearable="false" v-if="selectedCoin.settings.trading_market"></v-select>
               </div>
               <div style="clear: both"></div>
               <div>
@@ -165,7 +166,9 @@
                       <div class="row">
                         <div class="col">
                           <div class="text-start" :class=" 'price ' + selectedCoin.parity_price.price.status " >
-                            <h3 class="overflowed">{{ selectedCoin.parity_price.price.value }}</h3>
+                            <h3 class="overflowed">
+                              {{ selectedCoin.parity_price.price.value }}
+                            </h3>
                           </div>
                         </div>
                         <div class="w-100"></div>
@@ -251,13 +254,7 @@
         <TabView content-class="mt-3" :activeIndex="1" v-model:changeParitiesView="changeParitiesView" >
           <TabPanel :header="$t('Grafik')">
             <b-row>
-              <div class="justify-content-between no-wrap">
-                <div class="float-left d-none d-md-block d-sm-block text-center" style=" width: calc(10.3vw - 1 * ((1.4vw * 280) / 730)) !important; " v-for="(array, index) in timeArray" :key="array.key" >
-                  <b-link href="#" @click="chartTime = array.key" class="chartLink mx-2 text-small" >{{ array.value }}
-                  </b-link>
-                </div>
-                <v-select v-model="chartTime" :options="timeArray" label="value" :reduce="(array) => array.key" class="float-left d-none d-small-block col-12 my-2" :clearable="false" ></v-select>
-              </div>
+              
               <b-col cols="12">
                 <div v-if=" Object.values(selectedCoin).length > 0 && Object.values(selectedCoin.promotion).length > 0 && selectedCoin.status == 'ico' " >
                   <a :href="selectedCoin.promotion.url" target="_blank">
@@ -265,6 +262,13 @@
                   </a>
                 </div>
                 <b-overlay v-if=" Object.values(selectedCoin).length > 0 && selectedCoin.status !== 'ico' " :show="marketTradeLoader" rounded="sm" >
+                  <div class="justify-content-between no-wrap">
+                <!-- <div class="float-left d-none d-md-block d-sm-block text-center" style=" width: calc(10.3vw - 1 * ((1.4vw * 280) / 730)) !important; " v-for="(array, index) in timeArray" :key="array.key" >
+                  <b-link href="#" @click="chartTime = array.key" class="chartLink mx-2 text-small" >{{ array.value }}
+                  </b-link>
+                </div> -->
+                <v-select v-model="chartTime" :options="timeArray" label="value" :reduce="(array) => array.key" class="float-left col-12 my-2" :clearable="false" v-if="selectedCoin.settings.trading_market"  ></v-select>
+              </div>
                   <div>
                     <new-chart v-if="chart" :chart.sync="chart" v-model:selectedCoin="selectedCoin" :key="selectedCoin" ></new-chart>
                     <trading-chart class="trading-chart" v-else-if="selectedCoin.settings.trading_market" v-model:selectedCoin="selectedCoin" :key="selectedCoin" ></trading-chart>
@@ -561,5 +565,4 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-
 </style>

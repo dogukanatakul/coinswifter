@@ -1,3 +1,4 @@
+
 @keyframes pulse {
     0% {
         opacity: 1;
@@ -104,7 +105,7 @@ header .nav-link.btn {
 }
 
 .header-img-icon .profile-nav .nav-item .nav-link {
-    font-size: 14px;
+    font-size: var(--mySize) !important;
     padding: 5px 20px;
 }
 
@@ -113,7 +114,7 @@ header .nav-link.btn {
 }
 
 .header-img-icon .profile-nav .nav-item .nav-link:hover {
-    color: #18214d;
+    color: #aaaaaa;
     background-color: #f8f9fa;
 }
 
@@ -215,8 +216,9 @@ header .nav-link.btn {
     padding-bottom: 75px;
     right: -70px;
     // background: rgba(237, 237, 237, .90);
-    background: rgba(0, 0, 0, .90);
-    list-style-type: none;
+
+        background-color: var(--headerBg) !important;
+        list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
     transform: translate(100%, 0);
@@ -236,7 +238,7 @@ header .nav-link.btn {
 
 @media screen and (max-width: 991px) and (min-width: 768px) {
     .my-border {
-        border-bottom: solid 1px lightgray;
+        border-bottom: solid 1px #0f212e;
     }
 }
 
@@ -252,7 +254,7 @@ header .nav-link.btn {
     }
 
     .my-border {
-        border-bottom: solid 1px lightgray;
+        border-bottom: solid 1px #0f212e;
     }
 }
 
@@ -280,7 +282,7 @@ header .nav-link.btn {
 }
 
 .foot-navigation {
-    background-color: #080c3c !important;
+    background-color: #0f121e !important;
 }
 
 .collapsed>.when-opened,
@@ -299,3 +301,20 @@ header .nav-link.btn {
     .float-right {
         float: right !important;
     }
+
+.my-border {
+        border-bottom: solid 1px #0f212e;
+}
+.navbar{
+.btn-outline-secondary{
+    color:white !important;
+    border-color: white !important;
+}
+}
+.price-bg{
+    background:var(--priceBg) !important;
+    border: var(--priceBorder) !important;
+}
+.price-col{
+    border-right: var(--priceBorder) !important;
+}

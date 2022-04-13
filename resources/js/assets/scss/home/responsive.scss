@@ -276,10 +276,10 @@
         margin-bottom: 0 !important
     }
     body {
-        font-size: 16px
+        font-size: var(--titleSize) !important
     }
     p {
-        font-size: 16px;
+        font-size: var(--titleSize) !important;
         line-height: 24px
     }
 }
@@ -307,7 +307,7 @@
     }
     .device-btn a {
         padding: 0 20px;
-        font-size: 16px;
+        font-size: var(--titleSize) !important;
         height: 38px;
         line-height: 36px;
         margin: 0 0 0 15px
@@ -459,7 +459,7 @@
 
 @media screen and (max-width: 480px) {
     .livesale .total-token span {
-        font-size: 16px
+        font-size: var(--titleSize) !important
     }
     .livesale .total-token small {
         font-size: 15px
@@ -819,7 +819,7 @@
     }
     .token-row strong {
         width: 180px;
-        font-size: 16px
+        font-size: var(--titleSize) !important
     }
     .token-row small {
         padding-left: 180px
@@ -889,7 +889,7 @@
         padding: 20px 10px
     }
     .timeline__content h3 {
-        font-size: 14px
+        font-size: var(--mySize) !important;
     }
     .timeline__content h5 {
         font-size: 17px
@@ -1153,7 +1153,7 @@
     .form-group textarea,
     .form-group input[type=email],
     .form-group input[type=text] {
-        font-size: 16px;
+        font-size: var(--titleSize) !important;
         padding: 0 15px
     }
     .form-group textarea {
@@ -1300,7 +1300,7 @@
         float: right
     }
     .chart-alc-sale-area .sale-item-cont small {
-        font-size: 12px
+        font-size: var(--fontSize) !important;
     }
     .chart-alc-sale-area .sale-item-cont {
         padding-left: 28px
@@ -1421,7 +1421,7 @@
     }
     .mlt-content h4 {
         padding-left: 13px;
-        font-size: 16px
+        font-size: var(--titleSize) !important
     }
     .opt-content p {
         padding-bottom: 30px
@@ -1496,14 +1496,14 @@
         padding: 20px 10px
     }
     .sidebar-post-content h4 {
-        font-size: 16px;
+        font-size: var(--titleSize) !important;
         line-height: 21px
     }
     .sidebar-post-img {
         margin-top: 4px
     }
     .tags-list a {
-        font-size: 16px;
+        font-size: var(--titleSize) !important;
         padding: 0 18px
     }
     .sidebar-post-col h3 {
@@ -1535,7 +1535,7 @@
     .input-field input[type=text],
     .input-field input[type=email] {
         padding: 0 10px;
-        font-size: 16px
+        font-size: var(--titleSize) !important
     }
     .input-field textarea {
         height: 110px;
@@ -1612,10 +1612,10 @@
         margin-right: 12px
     }
     .post-meta ul li:first-child {
-        font-size: 14px
+        font-size: var(--mySize) !important;
     }
     .prev-next-area a {
-        font-size: 16px;
+        font-size: var(--titleSize) !important;
         height: 46px;
         line-height: 46px
     }
@@ -1626,11 +1626,11 @@
         padding: 0 30px 0 15px
     }
     .prev-next-area a.prev-link::after {
-        font-size: 16px;
+        font-size: var(--titleSize) !important;
         left: 20px
     }
     .prev-next-area a.next-link::after {
-        font-size: 16px;
+        font-size: var(--titleSize) !important;
         right: 20px
     }
     .author-img {
@@ -1707,4 +1707,21 @@
     }
 
 
+}
+@media screen and (max-width: 992px) {
+  .d-600-big-block {
+    display: none !important;
+  }
+  .d-600-small-block {
+    display: block !important;
+  }
+}
+
+@media screen and(min-width: 992px) {
+  .d-600-big-block {
+    display: block !important;
+  }
+  .d-600-small-block {
+    display: none !important;
+  }
 }

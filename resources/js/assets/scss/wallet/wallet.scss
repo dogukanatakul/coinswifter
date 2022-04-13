@@ -1,6 +1,5 @@
 @media only screen and (max-width: 600px) {
     .wallet {
-
         .vs--single .vs__selected {
             font-size: 11px;
 
@@ -180,7 +179,7 @@
 }
 
 .overflowed{
-    font-size:12px !important;
+    font-size:var(--fontSize) !important;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -213,7 +212,7 @@
 
 .bg-blue{
     // background-color: #000461 !important;
-    background-color: #080c3c !important;
+    background-color: var(--active) !important;
 }
 .myMargins{
     margin-bottom: .5vh !important;
@@ -221,12 +220,12 @@
 
 .list-group-item + .list-group-item.active{
     // background-color: #000461 !important;
-    background-color: #080c3c !important;
+    background-color: var(--active) !important;
     color: white !important;
 }
 
 .list-group-item +{
-    background-color: transparent !important;
+    background-color: var(--bgTransparent) !important;
     color: black !important;
 }
 
@@ -249,22 +248,53 @@
 .wallet{
     .active{
     // background-color: #000461 !important;
-    background-color: #080c3c !important;
+    background-color: var(--active) !important;
     color: white !important;
 }
 }
 
 .btn-success{
-    background-color: #43cea2 !important;
+    background-color: var(--up) !important;
 }
 .btn-danger{
-    background-color: #ff5e62 !important;
+    background-color: var(--down) !important;
 }
 .btn-primary{
-    background-color: #080c3c !important;
+    background-color: var(--active) !important;
 }
 
 .btn-secondary{
-    background-color: transparent !important;
-    border-color: transparent !important;
+    background-color: var(--bgTransparent) !important;
+    border-color: var(--bgTransparent) !important;
+    color:white !important;
+}
+
+.bg-white-custom{
+    background: var(--bgTransparent) !important;
+}
+
+.accordion{
+    .list-group-item{
+        background-color: var(--bgTransparent) !important;
+    }
+}
+
+.myOverflow{
+    .list-group-item{
+        background-color: var(--bgTransparent) !important;
+    }
+    .list-group-item.active{
+    // background-color: #000461 !important;
+    background-color: var(--active) !important;
+    color: white !important;
+}
+}
+
+
+// .card-header{
+//             background-color: var(--bgTransparent) !important;
+//         }
+
+.form-control, .form-check-input{
+    background:var(--bgTransparent) !important;
 }

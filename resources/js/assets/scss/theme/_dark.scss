@@ -7,6 +7,8 @@
 .dark .nav-tabs {
   border: none;
   border-bottom: 1px solid #2a2e39;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: 13px;
 }
 .dark .market-trade .nav-tabs {
   border: none;
@@ -18,7 +20,7 @@
   color: #007bff;
 }
 .dark .nav-tabs .nav-link.active {
-  background: transparent;
+  background: var(--bgTransparent) !important;
 }
 .dark header nav a.btn:hover {
   color: #ffffff;
@@ -165,7 +167,7 @@
   background: #131722;
 }
 .dark .market-trade .nav .nav-item .nav-link.active {
-  background: transparent;
+  background: var(--bgTransparent) !important;
   color: #ffffff;
 }
 .dark .market-trade .nav .nav-item .nav-link {
@@ -187,6 +189,8 @@
   background: #2a2e39;
   color: #ffffff;
   border-color: #2a2e39;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 13px;
 }
 .dark .market-trade-buy .market-trade-list li a:hover {
   background: #26de81;
@@ -272,7 +276,7 @@
 }
 
 .dark .header-img-icon .profile-nav .nav-item .nav-link:hover {
-  background-color: #2a2e39;
+  background-color: #aaaaaa;
   color: #ffffff;
 }
 
@@ -363,10 +367,14 @@
 }
 .dark .settings .card {
   background: #1e222d;
+  background: var(--bgTransparent) !important;
+    border: none;
 }
 
 .dark .settings .card-title {
   color: #fff;
+  background: var(--bgTransparent) !important;
+    border: none;
 }
 
 .dark .settings-nav {
@@ -427,5 +435,8 @@
 }
 
 .nav-link:hover{
+  color:#aaaaaa !important;
+}
+.nav-link:focus{
   color:#aaaaaa !important;
 }

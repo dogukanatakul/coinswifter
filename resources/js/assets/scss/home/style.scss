@@ -59,12 +59,12 @@ h4 {
 }
 
 h5 {
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     line-height: 22px
 }
 
 h6 {
-    font-size: 14px;
+    font-size: var(--mySize) !important;
     line-height: 22px
 }
 
@@ -75,7 +75,7 @@ a:visited {
 }
 
 p {
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     line-height: 26px;
     color: #777;
     margin: 0
@@ -499,7 +499,7 @@ header ol {
     line-height: 20px;
     display: block;
     color: #000;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     font-weight: 500;
     padding: 10px 15px;
     text-transform: none
@@ -557,7 +557,7 @@ header ol {
 .device-btn a {
     padding: 0 33px;
     color: #fff;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     height: 42px;
     line-height: 36px;
     display: inline-block;
@@ -663,7 +663,7 @@ header ol {
     height: 48px;
     line-height: 46px;
     padding: 0 10px;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     display: block;
     text-align: center;
     text-transform: capitalize;
@@ -813,12 +813,12 @@ a.btn-scroll span::before {
 }
 
 .token-sale .clocktimes small {
-    font-size: 14px
+    font-size: var(--mySize) !important
 }
 
 .current-bonus small,
 .total-token small {
-    font-size: 14px;
+    font-size: var(--mySize) !important;
     display: block;
     font-weight: 500
 }
@@ -884,7 +884,7 @@ a.btn-scroll span::before {
 
 .livesale .clocktimes small {
     color: #fff;
-    font-size: 14px
+    font-size: var(--mySize) !important
 }
 
 .service-container .container {
@@ -1374,7 +1374,7 @@ a.btn-scroll span::before {
 }
 
 .token-amount-col h5 {
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     line-height: normal;
     color: #fff;
     padding-bottom: 10px;
@@ -1383,7 +1383,7 @@ a.btn-scroll span::before {
 }
 
 .token-amount-col p {
-    font-size: 14px;
+    font-size: var(--mySize) !important;
     line-height: normal;
     color: #bab9ec;
     font-weight: 400
@@ -2247,7 +2247,7 @@ h2.resp-accordion {
     background: #1e2571;
     width: 100%;
     height: 46px;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     color: #fff;
     border: none;
     outline: none;
@@ -2728,7 +2728,7 @@ h2.resp-accordion {
 
 .token-service-info span {
     color: #5ef7e5;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     display: block;
     padding-bottom: 15px;
     font-weight: 400
@@ -2743,7 +2743,7 @@ h2.resp-accordion {
 
 .token-service-info small {
     color: #777;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     display: block;
     font-weight: 400
 }
@@ -2776,7 +2776,7 @@ h2.resp-accordion {
 
 .progressbar-area small {
     color: #fff;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     margin-bottom: 7px;
     display: inline-block;
     font-weight: 500
@@ -2945,7 +2945,7 @@ h2.resp-accordion {
 .sale-item-cont small {
     display: block;
     color: #040c61;
-    font-size: 14px;
+    font-size: var(--mySize) !important;
     font-weight: 500
 }
 
@@ -3087,7 +3087,7 @@ h2.resp-accordion {
 }
 
 .livesale .progressbar-area small {
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     margin-bottom: 3px;
     font-weight: 600
 }
@@ -3115,7 +3115,7 @@ h2.resp-accordion {
 
 .join-btn a {
     color: #222;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     display: inline-block;
     border: 2px solid #7f7de0;
     padding: 6px 20px;
@@ -3363,7 +3363,7 @@ h2.resp-accordion {
 }
 
 .sale-date small {
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     color: #777;
     line-height: 16px;
     font-weight: 400
@@ -3407,7 +3407,7 @@ h2.resp-accordion {
 
 .token-row small {
     padding-left: 215px;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     color: #777;
     line-height: normal;
     display: block;
@@ -3539,7 +3539,7 @@ h2.resp-accordion {
     font-style: normal;
     font-weight: 900;
     text-decoration: inherit;
-    font-size: 12px;
+    font-size: var(--fontSize) !important;
     color: #ecebfa;
     line-height: 19px;
     text-align: center
@@ -3688,7 +3688,7 @@ button.timeline-nav-button:focus {
 
 .date-time a {
     color: #777;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     display: inline-block;
     text-decoration: none;
     font-weight: 400
@@ -3696,7 +3696,7 @@ button.timeline-nav-button:focus {
 
 .date-time span {
     color: #777;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     display: inline-block;
     margin-left: 25px;
     position: relative;
@@ -3923,7 +3923,7 @@ button.timeline-nav-button:focus {
 
 .sidebar-post-content small {
     color: #777;
-    font-size: 14px;
+    font-size: var(--mySize) !important;
     line-height: normal;
     font-weight: 400
 }
@@ -3957,7 +3957,7 @@ button.timeline-nav-button:focus {
     margin: 0;
     list-style-type: none;
     color: #888;
-    font-size: 14px;
+    font-size: var(--mySize) !important;
     font-family: poppins, sans-serif;
     font-weight: 400;
     float: right
@@ -3972,7 +3972,7 @@ button.timeline-nav-button:focus {
     line-height: 38px;
     color: #fff;
     background: #7f7dcb;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     padding: 0 28px 0 21px;
     margin: 0 2px 7px 1px;
     display: inline-block;
@@ -4181,7 +4181,7 @@ button.timeline-nav-button:focus {
 .sibgle-blog-content blockquote span {
     display: block;
     color: #222;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     padding-left: 35px;
     margin-top: 13px;
     text-transform: uppercase;
@@ -4192,7 +4192,7 @@ button.timeline-nav-button:focus {
 .sibgle-blog-content blockquote span small {
     display: inline-block;
     color: #777;
-    font-size: 14px;
+    font-size: var(--mySize) !important;
     text-transform: capitalize
 }
 
@@ -4320,7 +4320,7 @@ button.timeline-nav-button:focus {
 }
 
 .posttimeinfo small {
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     color: #888;
     font-family: poppins, sans-serif;
     font-weight: 400
@@ -4348,7 +4348,7 @@ button.timeline-nav-button:focus {
     height: 40px;
     line-height: 40px;
     display: inline-block;
-    font-size: 16px;
+    font-size: var(--titleSize) !important;
     color: #fefefe;
     text-transform: capitalize;
     font-weight: 400;
@@ -4870,7 +4870,7 @@ p.link-hover,
 
 @media screen and (max-width: 620px) {
     .text-responsive {
-        font-size: 16px !important;
+        font-size: var(--titleSize) !important;
     }
 }
 
@@ -4896,7 +4896,7 @@ p.link-hover,
 
 @media screen and (max-width:1200px) and (min-width: 991px) {
     .headings {
-        font-size: 16px !important;
+        font-size: var(--titleSize) !important;
         font-weight: bolder !important;
     }
 }
