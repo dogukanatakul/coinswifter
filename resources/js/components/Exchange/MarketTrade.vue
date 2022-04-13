@@ -4,7 +4,7 @@
       <TabPanel header="Limit" v-if="selectedCoin.durum !== 'ico'" active>
         <b-row class="p-0">
           <b-col cols="12" md="6" class="p-0">
-            <b-card class="p-0">
+            <b-card class="p-0 border-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12">
@@ -40,7 +40,7 @@
             </b-card>
           </b-col>
           <b-col cols="12" md="6" class="p-0">
-            <b-card class="p-0">
+            <b-card class="p-0 border-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12">
@@ -80,7 +80,7 @@
       <TabPanel :header="selectedCoin.durum !== 'ico' ? $t('Piyasa') : $t('Satın Al')" :disabled="marketStatus.price === 0 && selectedCoin.durum !== 'ico'" >
         <b-row align-content="center" align-v="center" align-h="center">
           <b-col cols="12" md="6" class="p-0">
-            <b-card class="p-0">
+            <b-card class="p-0 border-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
@@ -111,7 +111,7 @@
             </b-card>
           </b-col>
           <b-col cols="12" md="6" class="p-0" v-if="selectedCoin.durum !== 'ico'" >
-            <b-card class="p-0">
+            <b-card class="p-0 border-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
@@ -146,7 +146,7 @@
       <TabPanel :header="$t('Stop Piyasa')" v-if="selectedCoin.durum !== 'ico'" :disabled="true" >
         <b-row>
           <b-col cols="12" md="6" class="p-0">
-            <b-card class="p-0">
+            <b-card class="p-0 border-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
@@ -183,7 +183,7 @@
             </b-card>
           </b-col>
           <b-col cols="12" md="6" class="p-0">
-            <b-card class="p-0">
+            <b-card class="p-0 border-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
@@ -218,7 +218,7 @@
       <TabPanel header="Stop Limit" v-if="selectedCoin.durum !== 'ico'" :disabled="true" >
         <b-row>
           <b-col cols="12" md="6" class="p-0">
-            <b-card class="p-0">
+            <b-card class="p-0 border-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
@@ -259,7 +259,7 @@
             </b-card>
           </b-col>
           <b-col cols="12" md="6" class="p-0">
-            <b-card class="p-0">
+            <b-card class="p-0 border-0">
               <b-card-body class="p-0">
                 <b-row>
                   <b-col cols="12" class="mt-2">
