@@ -580,3 +580,20 @@ td.down {
 .down{
     color: var(--down) !important;
 }
+
+
+td.text-success{
+    color: var(--up) !important;
+}
+
+.text-danger-custom{
+    color: var(--down) !important;
+}
+
+span.badge.bg-secondary{
+    background-color: var(--priceBg) !important;
+}
+
+.input-group-text{
+    background-color: var(--bgTransparent) !important; 
+}
