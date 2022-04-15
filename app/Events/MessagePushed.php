@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class Hello implements ShouldBroadcast
+class MessagePushed implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -29,13 +29,15 @@ class Hello implements ShouldBroadcast
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastWith(){
-        return [
-            'hello' => 'there'
-        ];
-    }
     public function broadcastOn()
     {
-        return new Channel('channel-event');
+        return new Channel('test');
+    }
+    public function broadcastWith()
+    {
+//        $socket = $this->io('https://localhost:6001');
+//        $x = "";
+//        $socket->on('welcome_message',$x);
+        return ['hi' => "a"];
     }
 }
