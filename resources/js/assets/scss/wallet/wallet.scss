@@ -225,7 +225,7 @@
 }
 
 .list-group-item +{
-    background-color: var(--bgTransparent) !important;
+    background-color: var(--white) !important;
     color: black !important;
 }
 
@@ -270,18 +270,18 @@
 }
 
 .bg-white-custom{
-    background: var(--bgTransparent) !important;
+    background: var(--white) !important;
 }
 
 .accordion{
     .list-group-item{
-        background-color: var(--bgTransparent) !important;
+        background-color: var(--white) !important;
     }
 }
 
 .myOverflow{
     .list-group-item{
-        background-color: var(--bgTransparent) !important;
+        background-color: var(--white) !important;
     }
     .list-group-item.active{
     // background-color: #000461 !important;
@@ -292,9 +292,9 @@
 
 
 // .card-header{
-//             background-color: var(--bgTransparent) !important;
+//             background-color: var(--white) !important;
 //         }
 
 .form-control, .form-check-input{
-    background:var(--bgTransparent) !important;
+    background:var(--white) !important;
 }

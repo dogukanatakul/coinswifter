@@ -9,7 +9,7 @@
     border: 1px solid #f2f4f9;
     margin: 15px 0;
     width: 80%;
-    background-color: var(--bgTransparent) !important;
+    background-color: var(--white) !important;
 }
 
 .market-carousel-item-name {
@@ -53,7 +53,7 @@
 
 .market-carousel-item .btn.buy:hover,
 .market-carousel-item .btn.sell:hover {
-    background: var(--bgTransparent) !important;
+    background: var(--white) !important;
     color: #000;
     box-shadow: none;
     border: 1px solid #000;
@@ -271,16 +271,16 @@
 
 #section0{
     .form-control{
-        background-color: var(--bgTransparent) !important;
+        background-color: var(--white) !important;
     }
 }
 
 .b-overlay-wrap{
     .form-control{
-        background-color: var(--bgTransparent) !important;
+        background-color: var(--white) !important;
     }
 }
 
 .input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text, .input-group-sm > .btn{
-    background-color: var(--bgTransparent) !important;
+    background-color: var(--white) !important;
 }

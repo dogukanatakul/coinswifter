@@ -185,12 +185,12 @@
                   <div class="coin-detail">
                     <div class="coin-info border-0 p-0">
                       <div class="row">
-                        <div class="col-5">
+                        <div class="col-5 col-md-3">
                           <div class="title text-start overflowed">
                             {{ $t("Değişim (24S)") }}
                           </div>
                         </div>
-                        <div class="col-7">
+                        <div class="col-7 col-md-9">
                           <div class="text-start" :class=" 'info ' + selectedCoin.parity_price.percent_last_24_hours .status " >
                             {{ selectedCoin.parity_price.percent_last_24_hours .value }}
                           </div>
@@ -199,12 +199,12 @@
                     </div>
                     <div class="coin-info border-0 p-0">
                       <div class="row">
-                        <div class="col-5">
+                        <div class="col-5 col-md-3">
                           <div class="title text-start overflowed">
                             {{ $t("En Yüksek (24S)") }}
                           </div>
                         </div>
-                        <div class="col-7">
+                        <div class="col-7 col-md-9">
                           <div class="text-start" :class=" 'info ' + selectedCoin.parity_price.highest.status " >
                             {{ selectedCoin.parity_price.highest.value }}
                           </div>
@@ -213,12 +213,12 @@
                     </div>
                     <div class="coin-info border-0 p-0">
                       <div class="row">
-                        <div class="col-5">
+                        <div class="col-5 col-md-3">
                           <div class="title text-start overflowed">
                             {{ $t("En Düşük (24S)") }}
                           </div>
                         </div>
-                        <div class="col-7">
+                        <div class="col-7 col-md-9">
                           <div class="text-start" :class=" 'info ' + selectedCoin.parity_price.lowest.status " >
                             {{ selectedCoin.parity_price.lowest.value }}
                           </div>
@@ -227,12 +227,12 @@
                     </div>
                     <div class="coin-info border-0 p-0">
                       <div class="row">
-                        <div class="col-5">
+                        <div class="col-5 col-md-3">
                           <div class="title text-start overflowed">
                             {{ $t("Hacim (24S)") }}
                           </div>
                         </div>
-                        <div class="col-7">
+                        <div class="col-7 col-md-9">
                           <div class="text-start" :class=" 'info ' + selectedCoin.parity_price .volume_last_24_hours_price.status " >
                             {{ selectedCoin.parity_price .volume_last_24_hours_price.value }}
                           </div>

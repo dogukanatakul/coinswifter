@@ -20,7 +20,7 @@
   color: #007bff;
 }
 .dark .nav-tabs .nav-link.active {
-  background: var(--bgTransparent) !important;
+  background: var(--white) !important;
 }
 .dark header nav a.btn:hover {
   color: #ffffff;
@@ -167,7 +167,7 @@
   background: #131722;
 }
 .dark .market-trade .nav .nav-item .nav-link.active {
-  background: var(--bgTransparent) !important;
+  background: var(--white) !important;
   color: #ffffff;
 }
 .dark .market-trade .nav .nav-item .nav-link {
@@ -367,13 +367,13 @@
 }
 .dark .settings .card {
   background: #1e222d;
-  background: var(--bgTransparent) !important;
+  background: var(--white) !important;
     border: none;
 }
 
 .dark .settings .card-title {
   color: #fff;
-  background: var(--bgTransparent) !important;
+  background: var(--white) !important;
     border: none;
 }
 

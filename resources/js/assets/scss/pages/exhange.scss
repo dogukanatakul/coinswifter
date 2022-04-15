@@ -224,7 +224,7 @@
 
 //Salih AVCI Body Arkaplan değişikliği
 body {
-    background-color: #f6f7f9 !important;
+    background-color: var(--bodyBg) !important;
     // background-color: rgb(243, 241, 241) !important;
     font-family: var(--fontFamily) !important;
 

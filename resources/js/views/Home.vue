@@ -5,8 +5,8 @@
           text-responsive"> {{ $t("CoinSwifter.com'da!") }} </h1> <a class="text-decoration-none" href="https://panel.broovs.io/whitepaper_tr.pdf" title="Broovs White Paper" rel="noreferrer" target="_blank" > <p class="text-white mx-auto text-responsive"> <b-icon icon="box-arrow-up-right" font-scale="0.5"></b-icon> {{ $t( "CoinSwifter Borsası Broovs (BRS) Ekosistemi Projesidir." ) }} </p> </a> <router-link v-if="!user" :to="{ name: 'signup' }" class="crp-btn mx-auto text-white" >{{ $t("Hemen
           Hesap Oluştur") }}</router-link > </div> </b-col> <b-col cols="12" md="6" lg="6" class="banner-content d-none d-sm-block" > <div class="banner-cont-img wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s" > <img src="assets/img/home/banner/hero-banner.png" alt="" /> </div> </b-col> </b-row> -->
       <b-row>
-        <b-col cols="12" class="justify-content-between float-left" style="padding:inherit !important">
-          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" >
+        <b-col cols="12" class="justify-content-between float-left" style="padding: inherit !important" >
+          <div id="carouselExampleIndicators" class="carousel slide mh-700" data-bs-ride="carousel" >
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" ></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" ></button>
@@ -14,13 +14,49 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="assets/img/bg/bg-5.png" class="d-block w-100" alt="assets/img/bg/bg-5.png" />
+                <img src="assets/img/bg/bg-5.png" class="d-block contain narrow" alt="assets/img/bg/bg-5.png" />
+                <div class="carousel-caption">
+                  <b-col cols="12">
+                    <div>
+                      <h1>
+                        Coin<span class="up">Swifter</span> Borsasına Hoş geldiniz.
+                      </h1>
+                    </div>
+                    <div>
+                      Coin<span class="up">Swifter</span>, Kriptopara Alım - Satımın Tek Merkezi.
+                    </div>
+                  </b-col>
+                </div>
               </div>
               <div class="carousel-item">
-                <img src="assets/img/bg/bg-5.png" class="d-block w-100" alt="assets/img/bg/bg-5.png" />
+                <img src="assets/img/bg/bg-5.png" class="d-block contain narrow" alt="assets/img/bg/bg-5.png" />
+                <div class="carousel-caption">
+                  <b-col cols="12">
+                    <div>
+                      <h1>
+                        Coin<span class="up">Swifter</span> Borsasına Hoş geldiniz.
+                      </h1>
+                    </div>
+                    <div>
+                      Coin<span class="up">Swifter</span>, Kriptopara Alım - Satımın Tek Merkezi.
+                    </div>
+                  </b-col>
+                </div>
               </div>
               <div class="carousel-item">
-                <img src="assets/img/bg/bg-5.png" class="d-block w-100" alt="assets/img/bg/bg-5.png" />
+                <img src="assets/img/bg/bg-5.png" class="d-block contain narrow" alt="assets/img/bg/bg-5.png" />
+                <div class="carousel-caption">
+                  <b-col cols="12">
+                    <div>
+                      <h1>
+                        Coin<span class="up">Swifter</span> Borsasına Hoş geldiniz.
+                      </h1>
+                    </div>
+                    <div>
+                      Coin<span class="up">Swifter</span>, Kriptopara Alım - Satımın Tek Merkezi.
+                    </div>
+                  </b-col>
+                </div>
               </div>
             </div>
           </div>
@@ -32,54 +68,102 @@
     </div>
     <div class="service-container d-600-big-block price-bg">
       <b-row>
-        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
             <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
-            <b-col cols="6"  class="float-left overflowed fw-bolder price-percent up" >-0.30%</b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent up" >-0.30%</b-col >
           </b-row>
 
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
-        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
             <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
-        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
             <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
-        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
             <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
-        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
             <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
-        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col">
+        <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
             <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
       </b-row>
     </div>
@@ -88,11 +172,19 @@
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
             <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
-            <b-col cols="6"  class="float-left overflowed fw-bolder price-percent up" >-0.30%</b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-percent up" >-0.30%</b-col >
           </b-row>
 
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -101,6 +193,14 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -109,6 +209,14 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -117,6 +225,14 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -125,6 +241,14 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -133,6 +257,14 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
+          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
+            <b-col cols="8" class="float-left">
+              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
+            </b-col>
+            <b-col cols="4" class="float-left">
+              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
+            </b-col>
+          </b-col> -->
         </b-col>
       </b-row>
     </div>
