@@ -282,7 +282,7 @@ header .nav-link.btn {
 }
 
 .foot-navigation {
-    background-color: #0f121e !important;
+    background-color: var(--priceBg) !important;
 }
 
 .collapsed>.when-opened,
@@ -317,4 +317,10 @@ header .nav-link.btn {
 }
 .price-col{
     border-right: var(--priceBorder) !important;
+}
+
+.navbar-mobile{
+    .btn-outline-secondary{
+        border: none !important;
+    }
 }

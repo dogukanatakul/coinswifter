@@ -1,6 +1,5 @@
 <?php
 
-use App\Events\Hello;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,10 +15,6 @@ try {
 
 } catch (\Exception $e) {
 }
-
-Route::get('/broadcast', function (){
-   broadcast(new Hello());
-});
 
 Route::get('/{any?}', function () {
     if (env('CARE_MODE') && request()->ip() !== env('CARE_IP')) {
