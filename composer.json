@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.1",
         "ext-mbstring": "*",
+        "beyondcode/laravel-websockets": "^1.13",
         "brick/math": "^0.9.3",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
@@ -23,6 +24,7 @@
         "monicahq/laravel-cloudflare": "^2.0",
         "nicmart/string-template": "^0.1.2",
         "predis/predis": "^1.1",
+        "pusher/pusher-php-server": "^7.0",
         "rap2hpoutre/laravel-log-viewer": "^2.0",
         "romanzipp/laravel-queue-monitor": "^2.2"
     },

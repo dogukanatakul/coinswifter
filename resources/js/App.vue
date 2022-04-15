@@ -19,6 +19,10 @@ export default {
         ConfirmDialog
     },
     mounted() {
+        window.Echo.channel('channel-event')
+        .listen('Hello',(e)=>{
+            console.log(e)
+        })
         this.$Progress.finish();
     },
     created() {
