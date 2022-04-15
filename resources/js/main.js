@@ -10,16 +10,12 @@ import $ from 'jquery';
 import VueClipboard from 'vue3-clipboard'
 import Maska from 'maska'
 import VueProgressBar from "@aacassandra/vue3-progressbar";
+import VueSocketIO from 'vue-3-socket.io'
+import SocketIO from 'socket.io-client'
 // import VueLoading from 'vue-loading-overlay';
 // import 'vue-loading-overlay/dist/vue-loading.css';
 
-import Echo from "laravel-echo"
-window.io = require('socket.io-client');
 
-window.Echo = new Echo({
-    broadcaster: 'socket.io',
-    host: window.location.hostname + ':6001' // this is laravel-echo-server host
-});
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 import VCalendar from 'v-calendar';
@@ -47,6 +43,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import ConfirmationService from 'primevue/confirmationservice';
 import 'viewerjs/dist/viewer.css'
 import VueViewer from 'v-viewer'
+
 const options = {
     color: "#000461",
     failedColor: "#982c2c",
@@ -122,6 +119,29 @@ app.component("font-awesome-icon", FontAwesomeIcon)
 app.component('v-select', vSelect);
 app.use(ConfirmationService)
 app.use(VueViewer)
+
+
+
+
+app.use(new VueSocketIO({
+        debug: true,
+        connection: SocketIO('http://127.0.0.1:5000', {
+            transports: ['websocket'],
+            withCredentials: true,
+            credentials: true,
+            reconnection: false,
+            extraHeaders: {
+                "my-custom-header": "abcd"
+            }
+        }), //options object is Optional
+        vuex: {
+            store,
+            // actionPrefix: "SOCKET_",
+            // mutationPrefix: "SOCKET_"
+        },
+    })
+);
+
 
 app.config.performance = true
 app.config.devtools = true

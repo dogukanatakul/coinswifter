@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\CoinActions;
 
+use App\Events\ActionEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Coin;
 use App\Models\Commission;
@@ -20,6 +21,7 @@ use App\Models\UserWithdrawalWalletChild;
 use App\Models\UserWithdrawalWalletFee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use ElephantIO\Client as ElephantIOClient;
 
 
 class Exchange extends Controller
@@ -314,8 +316,13 @@ class Exchange extends Controller
 
     public function test()
     {
+
+
+        event(new ActionEvent("message", array("team1_score" => 46)));
+
+
         dd("ok");
-        dd(ParityChart::where('type', '1month')->first()->data);
+//        dd(ParityChart::where('type', '1month')->first()->data);
 
 
 //        $transactions = UserWithdrawalWallet::with(['user_withdrawal_wallet_child', 'coin.network'])->where('status', 0)->get();

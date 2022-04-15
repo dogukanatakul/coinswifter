@@ -11,6 +11,7 @@
 import Header from "./components/Header.vue";
 import ConfirmDialog from 'primevue/confirmdialog';
 import MobileNav from "./components/MobileNav";
+
 export default {
     components: {
         MobileNav,
@@ -19,20 +20,16 @@ export default {
     },
     data() {
         return {
-            socket:{}
+            socket: {}
         }
     },
     mounted() {
-        window.Echo.channel('coinswifter_database_test')
-            .listen('MessagePushed', (e) => {
-                console.log(e)
-            })
-        this.socket = io("http://localhost:6001", {transports: ['websocket']})
-        this.socket.emit("welcome_message", "x")
+        this.sockets.subscribe('messages', (data) => {
+            console.log(data)
+        });
 
-        // window.io.on('welcome', (data) => {
-        //     alert(data)
-        // })
+        // this.sockets.unsubscribe('messages');
+
         this.$Progress.finish();
     },
     created() {

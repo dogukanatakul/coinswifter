@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Socket</title>
+</head>
+<body>
+
+</body>
+<script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+<script>
+    let socket = io('http://127.0.0.1:5000', {
+        transports : ['websocket'],
+        withCredentials: true,
+        extraHeaders: {
+            "my-custom-header": "abcd"
+        }
+    });
+
+
+    // // eğer client tarafından socket'in posts event'ına daha göndermek isteseydik yine emit'i kullanacaktık
+    // socket.emit('posts', {
+    //     'id': 5,
+    //     'title': 'Test',
+    //     'content': 'bu bir tesstir',
+    //     'date': '2019-08-11 12:00:00'
+    // });
+</script>
+</html>
