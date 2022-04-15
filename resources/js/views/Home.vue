@@ -70,7 +70,7 @@
       <b-row>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent up" >-0.30%</b-col >
           </b-row>
 
@@ -87,7 +87,7 @@
         </b-col>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
@@ -103,7 +103,7 @@
         </b-col>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
@@ -119,7 +119,7 @@
         </b-col>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
@@ -135,7 +135,7 @@
         </b-col>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
@@ -151,7 +151,7 @@
         </b-col>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
@@ -171,7 +171,7 @@
       <b-row>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent up" >-0.30%</b-col >
           </b-row>
 
@@ -188,7 +188,7 @@
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
@@ -204,7 +204,7 @@
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
@@ -220,7 +220,7 @@
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
@@ -236,7 +236,7 @@
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
@@ -252,7 +252,7 @@
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
-            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h5 class="overflowed">BTC/USDT</h5></b-col >
+            <b-col cols="6" class="float-left overflowed fw-bolder price-text" ><h6>BTC/USDT</h6></b-col >
             <b-col cols="6" class="float-left overflowed fw-bolder price-percent down" >-0.30%</b-col >
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >

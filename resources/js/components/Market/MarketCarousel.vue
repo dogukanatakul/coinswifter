@@ -29,7 +29,7 @@ export default {
       576: {
         itemsToShow: 1,
       },
-      768: {
+      1024: {
         itemsToShow: 3,
       },
       // 992: {

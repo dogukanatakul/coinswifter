@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Ubuntu";
+    src: url('../../fonts/Ubuntu/Ubuntu-Bold.ttf');
+}
+
 :root {
     --fontSize: 12px;
     --titleSize: 16px;
@@ -20,6 +25,9 @@
         'Open Sans',
         'Helvetica Neue',
         sans-serif;
+    --headingFont:
+        Ubuntu 
+        sans-serif !important;
     --white: white;
     --bodyBg: #f6f7f9;
 }
@@ -368,7 +376,7 @@
 
 @media screen and (max-width:979px) {
     .text-small {
-        font-size: var(--titleSize) !important;
+        font-size: var(--fontSize) !important;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -467,7 +475,7 @@
 }
 
 .text-small {
-    font-size: var(--titleSize) !important;
+    font-size: var(--fontSize) !important;
 
 }
 
@@ -610,3 +618,11 @@ span.badge.bg-secondary {
 .carousel-caption {
     margin-bottom: 3vh !important;
 }
+
+.navbar-mobile {
+    .btn-outline-secondary {
+        border: none !important;
+    }
+
+}
+

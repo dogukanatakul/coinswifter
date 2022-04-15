@@ -7,7 +7,8 @@
                         <div class="footer-cryptu">
                             <div class="footer-logo">
                                 <router-link :to="{name:'home'}">
-                                    <img v-bind:src="'assets/img/logos/logo_white.png'" alt="CoinSwifter"/>
+                                    <!-- <img v-bind:src="'assets/img/logos/logo_white.png'" alt="CoinSwifter"/> -->
+                                    <img v-bind:src="'assets/img/logos/logo.png'" alt="CoinSwifter"/>
                                 </router-link>
                             </div>
                             <p>Raysoft Yazılım A.Ş.</p>
