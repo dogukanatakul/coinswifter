@@ -13,7 +13,13 @@ import VueProgressBar from "@aacassandra/vue3-progressbar";
 // import VueLoading from 'vue-loading-overlay';
 // import 'vue-loading-overlay/dist/vue-loading.css';
 
+import Echo from "laravel-echo"
+window.io = require('socket.io-client');
 
+window.Echo = new Echo({
+    broadcaster: 'socket.io',
+    host: window.location.hostname + ':6001' // this is laravel-echo-server host
+});
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 import VCalendar from 'v-calendar';
