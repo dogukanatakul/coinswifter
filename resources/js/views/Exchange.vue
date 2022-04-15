@@ -14,38 +14,50 @@
             </b-col>
             <b-col cols="12" lg="10" class="float-left">
               <div class="coin-detail">
-                <div class="coin-info">
-                  <div :class="'price ' + selectedCoin.parity_price.price.status" >
-                    {{ selectedCoin.parity_price.price.value }}
-                  </div>
-                  <div class="info">
-                    {{ selectedCoin.parity_price.price.value }}
-                  </div>
-                </div>
-                <div class="coin-info">
-                  <div class="title">{{ $t("Değişim (24S)") }}</div>
-                  <div :class=" 'info ' + selectedCoin.parity_price.percent_last_24_hours.status " >
-                    {{ selectedCoin.parity_price.percent_last_24_hours.value }}
-                  </div>
-                </div>
-                <div class="coin-info">
-                  <div class="title">{{ $t("En Yüksek (24S)") }}</div>
-                  <div :class="'info ' + selectedCoin.parity_price.highest.status" >
-                    {{ selectedCoin.parity_price.highest.value }}
-                  </div>
-                </div>
-                <div class="coin-info">
-                  <div class="title">{{ $t("En Düşük (24S)") }}</div>
-                  <div :class="'info ' + selectedCoin.parity_price.lowest.status" >
-                    {{ selectedCoin.parity_price.lowest.value }}
-                  </div>
-                </div>
-                <div class="coin-info">
-                  <div class="title">{{ $t("Hacim (24S)") }}</div>
-                  <div :class=" 'info ' + selectedCoin.parity_price.volume_last_24_hours_price .status " >
-                    {{ selectedCoin.parity_price.volume_last_24_hours_price.value }}
-                  </div>
-                </div>
+                <Carousel>
+                  <CarouselItem>
+                    <div class="coin-info">
+                      <div :class=" 'price ' + selectedCoin.parity_price.price.status " >
+                        {{ selectedCoin.parity_price.price.value }}
+                      </div>
+                      <div class="info">
+                        {{ selectedCoin.parity_price.price.value }}
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div class="coin-info">
+                      <div class="title">{{ $t("Değişim (24S)") }}</div>
+                      <div :class=" 'info ' + selectedCoin.parity_price.percent_last_24_hours.status " >
+                        {{ selectedCoin.parity_price.percent_last_24_hours.value }}
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div class="coin-info">
+                      <div class="title">{{ $t("En Yüksek (24S)") }}</div>
+                      <div :class=" 'info ' + selectedCoin.parity_price.highest.status " >
+                        {{ selectedCoin.parity_price.highest.value }}
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div class="coin-info">
+                      <div class="title">{{ $t("En Düşük (24S)") }}</div>
+                      <div :class=" 'info ' + selectedCoin.parity_price.lowest.status " >
+                        {{ selectedCoin.parity_price.lowest.value }}
+                      </div>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div class="coin-info">
+                      <div class="title">{{ $t("Hacim (24S)") }}</div>
+                      <div :class=" 'info ' + selectedCoin.parity_price.volume_last_24_hours_price .status " >
+                        {{ selectedCoin.parity_price.volume_last_24_hours_price .value }}
+                      </div>
+                    </div>
+                  </CarouselItem>
+                </Carousel>
               </div>
             </b-col>
           </b-col>
@@ -61,7 +73,7 @@
                   <b-link href="#" @click="chartTime = array.key" class="chartLink text-small" >{{ array.value }}
                   </b-link>
                 </div> -->
-                <v-select v-model="chartTime" :options="timeArray" label="value" :reduce="(array) => array.key" class="float-left col-12 my-2" :clearable="false" v-if="selectedCoin.settings.trading_market"></v-select>
+                <v-select v-model="chartTime" :options="timeArray" label="value" :reduce="(array) => array.key" class="float-left col-12 my-2" :clearable="false" v-if="selectedCoin.settings.trading_market" ></v-select>
               </div>
               <div style="clear: both"></div>
               <div>
@@ -254,7 +266,6 @@
         <TabView content-class="mt-3" :activeIndex="1" v-model:changeParitiesView="changeParitiesView" >
           <TabPanel :header="$t('Grafik')">
             <b-row>
-              
               <b-col cols="12">
                 <div v-if=" Object.values(selectedCoin).length > 0 && Object.values(selectedCoin.promotion).length > 0 && selectedCoin.status == 'ico' " >
                   <a :href="selectedCoin.promotion.url" target="_blank">
@@ -263,12 +274,12 @@
                 </div>
                 <b-overlay v-if=" Object.values(selectedCoin).length > 0 && selectedCoin.status !== 'ico' " :show="marketTradeLoader" rounded="sm" >
                   <div class="justify-content-between no-wrap">
-                <!-- <div class="float-left d-none d-md-block d-sm-block text-center" style=" width: calc(10.3vw - 1 * ((1.4vw * 280) / 730)) !important; " v-for="(array, index) in timeArray" :key="array.key" >
+                    <!-- <div class="float-left d-none d-md-block d-sm-block text-center" style=" width: calc(10.3vw - 1 * ((1.4vw * 280) / 730)) !important; " v-for="(array, index) in timeArray" :key="array.key" >
                   <b-link href="#" @click="chartTime = array.key" class="chartLink mx-2 text-small" >{{ array.value }}
                   </b-link>
                 </div> -->
-                <v-select v-model="chartTime" :options="timeArray" label="value" :reduce="(array) => array.key" class="float-left col-12 my-2" :clearable="false" v-if="selectedCoin.settings.trading_market"  ></v-select>
-              </div>
+                    <v-select v-model="chartTime" :options="timeArray" label="value" :reduce="(array) => array.key" class="float-left col-12 my-2" :clearable="false" v-if="selectedCoin.settings.trading_market" ></v-select>
+                  </div>
                   <div>
                     <new-chart v-if="chart" :chart.sync="chart" v-model:selectedCoin="selectedCoin" :key="selectedCoin" ></new-chart>
                     <trading-chart class="trading-chart" v-else-if="selectedCoin.settings.trading_market" v-model:selectedCoin="selectedCoin" :key="selectedCoin" ></trading-chart>
