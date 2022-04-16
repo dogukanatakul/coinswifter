@@ -47,6 +47,8 @@ Route::group([
         Route::post('/get-adress', [\App\Http\Controllers\Api\AuthController::class, 'adress']);
         Route::post('/set-adress', [\App\Http\Controllers\Api\AuthController::class, 'adressUpdate']);
         Route::post('/banks', [\App\Http\Controllers\Api\AuthController::class, 'banks']);
+        Route::post('/ticket',[\App\Http\Controllers\Api\AuthController::class,'getTicket']);
+        Route::post('/ticket-set',[\App\Http\Controllers\Api\AuthController::class,'setTicket']);
         Route::post('/sessions', [\App\Http\Controllers\Api\AuthController::class, 'sessions']);
         Route::post('/bank-set', [\App\Http\Controllers\Api\AuthController::class, 'bankSet']);
         Route::post('/bank-set-primary', [\App\Http\Controllers\Api\AuthController::class, 'bankSetPrimary']);

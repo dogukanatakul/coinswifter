@@ -12,6 +12,9 @@ use App\Models\Country;
 use App\Models\District;
 use App\Models\LogActivity;
 use App\Models\Province;
+use App\Models\Ticket;
+use App\Models\TicketCategory;
+use App\Models\TicketIssue;
 use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\UserAgreement;
@@ -1220,6 +1223,43 @@ class AuthController extends Controller
             'step' => $step,
         ]);
     }
+    public function getTicket(){
+        $ticket = Ticket::with('category','issue')->where('users_id', $this->user->id)->get();
+//        $ticket = collect($ticket)->map(function ($data,$key){
+//            return [
+//                'created_at' => $data->created_at->format('Y-m-d H:i')
+//            ];
+//        });
+        $ticketCategory = TicketCategory::all();
+        $ticketIssue = TicketIssue::all();
+        return response()->json([
+            'status' => 'success',
+            'ticket_categories' => $ticketCategory,
+            'ticket_issues' => $ticketIssue->toArray(),
+            'ticket' => $ticket->toArray()
+        ]);
+    }
 
+    public function setTicket(Request $request)
+    {
+//        $validator = validator()->make(request()->all(), [
+//            'type' => 'required|filled|string|in:' . implode(",", array_keys(kyc_keys())),
+//            'file' => 'required|mimes:png,jpg,jpeg|image|max:2048',
+//        ]);
+//        if ($validator->fails()) {
+//            return response()->json([
+//                'status' => 'fail',
+//                'message' => __('api_messages.form_parameter_fail_message')
+//            ]);
+//
+//        Ticket::create([
+//
+//            'users_id' => $request->session()->get('user')->id,
+//            'category_id'=>$request->category,
+//            'issue_id' => $request->issue,
+//            'detail' => $request->detail,
+//            'status'=>0,
+//        ]);
+    }
 
 }
