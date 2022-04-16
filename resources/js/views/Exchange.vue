@@ -8,7 +8,7 @@
         <b-row>
           <b-col class="coin-prices" cols="12" v-if="Object.values(selectedCoin).length > 0" >
             <b-col cols="12" lg="2" class="float-left">
-              <div class=" fw-bold text-md-center text-sm-center text-center text-small my-2 " >
+              <div class=" fw-bold  overflowed-table my-2 " >
                 {{ [selectedCoin.coin.symbol, selectedCoin.source.symbol].join( "/" ) }}
               </div>
             </b-col>

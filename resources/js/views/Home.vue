@@ -26,6 +26,7 @@
                       Coin<span class="up">Swifter</span>, Kriptopara Alım - Satımın Tek Merkezi.
                     </div>
                   </b-col>
+                  
                 </div>
               </div>
               <div class="carousel-item">
@@ -76,14 +77,7 @@
 
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-button v-b-modal.modal-hizli-al variant="success" class="mx-1 w-100 my-1" >Al</b-button > <b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-1 w-100 my-1" >Sat</b-button > </b-col> -->
         </b-col>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -92,14 +86,7 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-button v-b-modal.modal-hizli-al variant="success" class="mx-1 w-100 my-1" >Al</b-button > <b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-1 w-100 my-1" >Sat</b-button > </b-col> -->
         </b-col>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -108,14 +95,7 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-button v-b-modal.modal-hizli-al variant="success" class="mx-1 w-100 my-1" >Al</b-button > <b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-1 w-100 my-1" >Sat</b-button > </b-col> -->
         </b-col>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -124,14 +104,7 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-button v-b-modal.modal-hizli-al variant="success" class="mx-1 w-100 my-1" >Al</b-button > <b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-1 w-100 my-1" >Sat</b-button > </b-col> -->
         </b-col>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -140,14 +113,7 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-button v-b-modal.modal-hizli-al variant="success" class="mx-1 w-100 my-1" >Al</b-button > <b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-1 w-100 my-1" >Sat</b-button > </b-col> -->
         </b-col>
         <b-col cols="2" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -156,14 +122,7 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-button v-b-modal.modal-hizli-al variant="success" class="mx-1 w-100 my-1" >Al</b-button > <b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-1 w-100 my-1" >Sat</b-button > </b-col> -->
         </b-col>
       </b-row>
     </div>
@@ -177,14 +136,7 @@
 
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-al variant="success" class="mx-auto w-75 my-1" >Al</b-button ></b-col> <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-auto w-75 my-1" >Sat</b-button ></b-col> </b-col> -->
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -193,14 +145,7 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-al variant="success" class="mx-auto w-75 my-1" >Al</b-button ></b-col> <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-auto w-75 my-1" >Sat</b-button ></b-col> </b-col> -->
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -209,14 +154,7 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-al variant="success" class="mx-auto w-75 my-1" >Al</b-button ></b-col> <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-auto w-75 my-1" >Sat</b-button ></b-col> </b-col> -->
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -225,14 +163,7 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-al variant="success" class="mx-auto w-75 my-1" >Al</b-button ></b-col> <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-auto w-75 my-1" >Sat</b-button ></b-col> </b-col> -->
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -241,14 +172,7 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-al variant="success" class="mx-auto w-75 my-1" >Al</b-button ></b-col> <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-auto w-75 my-1" >Sat</b-button ></b-col> </b-col> -->
         </b-col>
         <b-col cols="12" class="justify-content-between float-left px-4 py-2 price-col" >
           <b-row class="my-2">
@@ -257,20 +181,76 @@
           </b-row>
           <b-col cols="12" class="float-left overflowed price-text" ><h4 class="overflowed-table">40.555,26</h4></b-col >
           <b-col cols="12" class="float-left overflowed price-vol" >24H Vol 26.291,82</b-col >
-          <!-- <b-col cols="12" class="float-left overflowed price-vol justify-content-between" >
-            <b-col cols="8" class="float-left">
-              <input type="text" placeholder="Tutar giriniz" class="form-control bg-light float-left" />
-            </b-col>
-            <b-col cols="4" class="float-left">
-              <input type="button" class="btn btn-success float-right overflowed-table" value="Satın Al" />
-            </b-col>
-          </b-col> -->
+          <!-- <b-col cols="12" class="float-left justify-content-between align-items-center" > <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-al variant="success" class="mx-auto w-75 my-1" >Al</b-button ></b-col> <b-col cols="6" class="float-left mx-auto text-center"><b-button v-b-modal.modal-hizli-sat variant="danger" class="mx-auto w-75 my-1" >Sat</b-button ></b-col> </b-col> -->
         </b-col>
       </b-row>
     </div>
     <div class="service-container">
       <b-container>
-        <b-row class="service-area pt-70">
+        <b-row class="service-area pt-70 mx-auto">
+          <b-col cols="12">
+            <b-card class="mb-2">
+              <b-card-text>
+                
+                <b-row>
+                  <b-col cols="12" class="text-center"><h2 class="text-dark">Kolay AL - SAT</h2></b-col>
+                  <b-col cols="12" class="mb-4">
+                    <div class="label d-flex justify-content-between">
+                      <div class="span overflowed-table">Satılacak VARLIK</div>
+                      <div class="d-flex span overflowed-table text-right">Kullanılabilir: -- TRY</div>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-container">
+                          <div class="input-group">
+                            <input type="number" placeholder="Lütfen 20-2500000 arası giriniz." class="inputs form-control bg-transparent border-0"/>
+                            <div class="input-group-append">
+                              <select name="deneme" id="deneme" class="bg-transparent form-control border-left-1">
+                                <option value="TRY">TRY</option>
+                                <option value="USDT">USDT</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </b-col>
+                  <b-col cols="12" class="mb-4 text-center">
+                    <b-button variant="primary" style="background:#f5f5f5 !important; color:black !important; border:none !important;"><i class="fas fa-exchange-alt" style="transform:rotate(90deg);"></i></b-button>
+                  </b-col>
+                  <b-col cols="12" class="mb-4">
+                    <div class="label d-flex justify-content-between">
+                      <div class="span overflowed-table">Alınacak VARLIK</div>
+                      <div class="d-flex span overflowed-table text-right">Kullanılabilir: -- BRS</div>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-container">
+                          <div class="input-group">
+                            <input type="number" placeholder="Lütfen 10-2500000 arası giriniz." class="inputs form-control bg-transparent border-0"/>
+                            <div class="input-group-append">
+                              <select name="test" id="test" class="bg-transparent form-control border-left-1">
+                                <option value="BRS">BRS</option>
+                                <option value="TRX">TRX</option>
+                                <option value="BTC">BTC</option>
+                                <option value="ETH">ETH</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </b-col>
+                  <b-col cols="12" class="mb-4">
+                    <b-button variant="primary" class="btn btn-block w-100">AL / SAT</b-button>
+                  </b-col>
+                </b-row>
+              </b-card-text>
+            </b-card>
+            
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
+    <div class="service-container">
+      <b-container>
+        <b-row class="service-area pt-70 mx-auto">
           <b-col cols="12" md="12" lg="3" class="mb-40 service wow zoomIn" data-wow-duration="1s" data-wow-delay=".3s" >
             <div class="service-info">
               <div class="service-icon">
@@ -433,6 +413,11 @@
 import Footer from "../components/Footer";
 import { mapGetters } from "vuex";
 
+const initialData = () => ({
+  showAl: false,
+  showSat: false,
+});
+
 export default {
   components: { Footer },
   name: "Home",
@@ -446,6 +431,9 @@ export default {
   },
   computed: {
     ...mapGetters(["user"]),
+  },
+  data: function () {
+    return initialData();
   },
 };
 </script>
