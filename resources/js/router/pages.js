@@ -42,6 +42,12 @@ export default [
             import ("../views/auth/Forgot.vue"),
     },
     {
+        path: "/corporative-services",
+        name: "corporative-services",
+        component: () =>
+            import ("../views/pages/CorporativeServices.vue"),
+    },
+    {
         path: '/page',
         redirect: "/coin-startup",
         component: () => import ("../views/pages/Page.vue"),

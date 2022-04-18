@@ -18,27 +18,14 @@
                 <div class="carousel-caption">
                   <b-col cols="12">
                     <div>
-                      <h1>
+                      <!-- <h1>
                         Coin<span class="up">Swifter</span> Borsasına Hoş geldiniz.
+                      </h1> -->
+                      <h1>
+                        Coin<span class="up">Swifter</span> Borsasına Hoşgeldiniz.
                       </h1>
                     </div>
-                    <div>
-                      Coin<span class="up">Swifter</span>, Kriptopara Alım - Satımın Tek Merkezi.
-                    </div>
-                  </b-col>
-                  
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img src="assets/img/bg/bg-5.png" class="d-block contain narrow" alt="assets/img/bg/bg-5.png" />
-                <div class="carousel-caption">
-                  <b-col cols="12">
-                    <div>
-                      <h1>
-                        Coin<span class="up">Swifter</span> Borsasına Hoş geldiniz.
-                      </h1>
-                    </div>
-                    <div>
+                    <div class="slideDetail">
                       Coin<span class="up">Swifter</span>, Kriptopara Alım - Satımın Tek Merkezi.
                     </div>
                   </b-col>
@@ -50,10 +37,25 @@
                   <b-col cols="12">
                     <div>
                       <h1>
-                        Coin<span class="up">Swifter</span> Borsasına Hoş geldiniz.
+                        Coin<span class="up">Swifter</span> Borsasına Hoşgeldiniz.
                       </h1>
                     </div>
+                    <div class="slideDetail">
+                      Coin<span class="up">Swifter</span>, Kriptopara Alım - Satımın Tek Merkezi.
+                    </div>
+                  </b-col>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="assets/img/bg/bg-5.png" class="d-block contain narrow" alt="assets/img/bg/bg-5.png" />
+                <div class="carousel-caption">
+                  <b-col cols="12">
                     <div>
+                      <h1>
+                        Coin<span class="up">Swifter</span> Borsasına Hoşgeldiniz.
+                      </h1>
+                    </div>
+                    <div class="slideDetail">
                       Coin<span class="up">Swifter</span>, Kriptopara Alım - Satımın Tek Merkezi.
                     </div>
                   </b-col>
@@ -191,59 +193,61 @@
           <b-col cols="12">
             <b-card class="mb-2">
               <b-card-text>
-                
                 <b-row>
-                  <b-col cols="12" class="text-center"><h2 class="text-dark">Kolay AL - SAT</h2></b-col>
+                  <b-col cols="12" class="text-center" ><h2 class="text-dark headings">KOLAY AL - SAT</h2></b-col >
                   <b-col cols="12" class="mb-4">
                     <div class="label d-flex justify-content-between">
                       <div class="span overflowed-table">Satılacak VARLIK</div>
-                      <div class="d-flex span overflowed-table text-right">Kullanılabilir: -- TRY</div>
+                      <div class="d-flex span overflowed-table text-right">
+                        Kullanılabilir: -- TRY
+                      </div>
                     </div>
                     <div class="col-12">
-                        <div class="input-container">
-                          <div class="input-group">
-                            <input type="number" placeholder="Lütfen 20-2500000 arası giriniz." class="inputs form-control bg-transparent border-0"/>
-                            <div class="input-group-append">
-                              <select name="deneme" id="deneme" class="bg-transparent form-control border-left-1">
-                                <option value="TRY">TRY</option>
-                                <option value="USDT">USDT</option>
-                              </select>
-                            </div>
+                      <div class="input-container">
+                        <div class="input-group">
+                          <input type="text" placeholder="Lütfen 20-2500000 arası giriniz." class="inputs form-control bg-transparent border-0" />
+                          <div class="input-group-append">
+                            <select name="deneme" id="deneme" class="bg-transparent form-control border-left-1" >
+                              <option value="TRY">TRY</option>
+                              <option value="USDT">USDT</option>
+                            </select>
                           </div>
                         </div>
                       </div>
+                    </div>
                   </b-col>
                   <b-col cols="12" class="mb-4 text-center">
-                    <b-button variant="primary" style="background:#f5f5f5 !important; color:black !important; border:none !important;"><i class="fas fa-exchange-alt" style="transform:rotate(90deg);"></i></b-button>
+                    <b-button variant="primary" style=" background: #f5f5f5 !important; color: black !important; border: none !important; " ><i class="fas fa-exchange-alt" style="transform: rotate(90deg)" ></i ></b-button>
                   </b-col>
                   <b-col cols="12" class="mb-4">
                     <div class="label d-flex justify-content-between">
                       <div class="span overflowed-table">Alınacak VARLIK</div>
-                      <div class="d-flex span overflowed-table text-right">Kullanılabilir: -- BRS</div>
+                      <div class="d-flex span overflowed-table text-right">
+                        Kullanılabilir: -- BRS
+                      </div>
                     </div>
                     <div class="col-12">
-                        <div class="input-container">
-                          <div class="input-group">
-                            <input type="number" placeholder="Lütfen 10-2500000 arası giriniz." class="inputs form-control bg-transparent border-0"/>
-                            <div class="input-group-append">
-                              <select name="test" id="test" class="bg-transparent form-control border-left-1">
-                                <option value="BRS">BRS</option>
-                                <option value="TRX">TRX</option>
-                                <option value="BTC">BTC</option>
-                                <option value="ETH">ETH</option>
-                              </select>
-                            </div>
+                      <div class="input-container">
+                        <div class="input-group">
+                          <input type="text" placeholder="Lütfen 10-2500000 arası giriniz." class="inputs form-control bg-transparent border-0" />
+                          <div class="input-group-append">
+                            <select name="test" id="test" class="bg-transparent form-control border-left-1" >
+                              <option value="BRS">BRS</option>
+                              <option value="TRX">TRX</option>
+                              <option value="BTC">BTC</option>
+                              <option value="ETH">ETH</option>
+                            </select>
                           </div>
                         </div>
                       </div>
+                    </div>
                   </b-col>
                   <b-col cols="12" class="mb-4">
-                    <b-button variant="primary" class="btn btn-block w-100">AL / SAT</b-button>
+                    <b-button variant="primary" class="btn btn-block w-100" >AL / SAT</b-button >
                   </b-col>
                 </b-row>
               </b-card-text>
             </b-card>
-            
           </b-col>
         </b-row>
       </b-container>

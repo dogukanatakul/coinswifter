@@ -11,11 +11,11 @@
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>{{ $t("İşlem Çifti") }}</th>
-                          <th>{{ $t("Fiyat") }}</th>
-                          <th class="td1">{{ $t("Değişim 1 Saat") }}</th>
-                          <th class="td2">{{ $t("Değişim 24 Saat") }}</th>
-                          <th>{{ $t("Piyasa Değeri") }}</th>
+                          <th class="overflowed-table">{{ $t("İşlem Çifti") }}</th>
+                          <th class="overflowed-table">{{ $t("Fiyat") }}</th>
+                          <th class="td1 overflowed-table">{{ $t("Değişim 1 Saat") }}</th>
+                          <th class="td2 overflowed-table">{{ $t("Değişim 24 Saat") }}</th>
+                          <th class="overflowed-table">{{ $t("Piyasa Değeri") }}</th>
                         </tr>
                       </thead>
                       <tbody>

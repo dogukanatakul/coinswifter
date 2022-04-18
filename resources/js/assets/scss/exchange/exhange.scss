@@ -3,6 +3,11 @@
     src: url('../../fonts/Ubuntu/Ubuntu-Bold.ttf');
 }
 
+@font-face {
+    font-family: Lustra;
+    src: url('../../fonts/Lustra/Lustra-Bold.otf');
+}
+
 :root {
     --fontSize: 12px;
     --titleSize: 16px;
@@ -27,6 +32,7 @@
         sans-serif;
     --headingFont:
         Ubuntu sans-serif !important;
+    --lustraFont: Lustra !important;
     --white: white;
     --bodyBg: #f6f7f9;
 }
@@ -675,9 +681,618 @@ span.badge.bg-secondary {
     padding-left: 12px !important;
     padding-right: 12px !important;
 }
-.border-left-1{
+
+.border-left-1 {
     border: none !important;
-    border-left:solid 1px rgba(0, 0, 0, 0.1) !important;
+    border-left: solid 1px rgba(0, 0, 0, 0.1) !important;
     border-radius: 0 !important;
     outline: none;
+}
+
+#carouselExampleIndicators {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .slideDetail {
+        font-family: var(--lustraFont) !important;
+    }
+}
+
+.service-container {
+    .headings {
+        font-family: var(--lustraFont) !important;
+    }
+}
+
+#section0 {
+    h2 {
+        font-family: var(--lustraFont) !important;
+    }
+}
+
+.crp-inventment-container {
+
+    h2,
+    h4 {
+        font-family: var(--lustraFont) !important;
+    }
+}
+
+.footer-container {
+    .headings {
+        font-family: var(--lustraFont) !important;
+    }
+}
+
+.wallet {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--lustraFont) !important;
+    }
+}
+
+.dropbtn {
+    background-color: var(--bgTransparent) !important;
+    color: white;
+    // padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    // left: -30px;
+    background-color: #1c2b36;
+    min-width: 160px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.3),
+        0 6px 16px 0 rgba(0, 0, 0, 0.2),
+        0 9px 28px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 4px;
+    transform: translateX(-80px) scaleX(0.9);
+    margin-top: 6px !important;
+}
+
+.dropdown-content .nav-menu {
+    padding: 6px 0;
+    margin-bottom: 0;
+    color: #fff;
+    background-color: #1c2b36;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.3),
+        0 6px 16px 0 rgba(0, 0, 0, 0.2),
+        0 9px 28px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    list-style-type: none;
+    min-width: 100px !important;
+    text-align: center !important;
+    font-size: var(--mySize) !important;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 0;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--up) !important;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.dropdown-content2 {
+    display: none;
+    position: absolute;
+    // left: -30px;
+    background-color: #1c2b36;
+    width: 250px !important;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.3),
+        0 6px 16px 0 rgba(0, 0, 0, 0.2),
+        0 9px 28px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 4px;
+    transform: translateX(-180px) scaleX(0.9);
+    margin-top: 6px !important;
+}
+
+.dropdown-content2 .nav-menu {
+    padding: 6px 0;
+    margin-bottom: 0;
+    color: #fff;
+    background-color: #1c2b36;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.3),
+        0 6px 16px 0 rgba(0, 0, 0, 0.2),
+        0 9px 28px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    list-style-type: none;
+    min-width: 100px !important;
+    text-align: left !important;
+    font-size: var(--mySize) !important;
+}
+
+.dropdown-content2 a {
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+.dropdown-content2 a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--up) !important;
+}
+
+.dropdown:hover .dropdown-content2 {
+    display: block;
+}
+
+.dropdown-content2 .user-top {
+    margin-bottom: 4px;
+    padding: 10px 20px !important;
+    font-size: var(--titleSize) !important;
+    line-height: 20px;
+    color: #fff !important;
+    text-align: left !important;
+}
+
+.dropdown-content2 .user-uid {
+    margin-bottom: 4px;
+    text-align: left !important;
+    padding: 10px 20px !important;
+    font-size: var(--titleSize) !important;
+    line-height: 20px;
+    color: #ccc !important;
+}
+
+header .nav-link {
+    font-size: var(--mySize) !important;
+}
+
+@media screen and (max-width:1080px) {
+    header .nav-link {
+        font-size: var(--fontSize) !important;
+    }
+}
+
+.banners {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 268px;
+    text-align: center;
+    background: url('../../../assets/img/icon_banner/banner-bg.png') no-repeat top/1440px 284px;
+}
+
+.btn-call {
+    min-width: 181px !important;
+    height: 48px !important;
+    font-size: var(--titleSize) !important;
+}
+
+.corporative-section {
+    .btn-call {
+        background-color: rgba($color: #0ECB81, $alpha: 0.8) !important;
+        border-color: rgba($color: #0ECB81, $alpha: 0.8) !important;
+    }
+
+    .corporative-content {
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+
+    .equities {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        grid-gap: 48px 108px;
+        padding: 84px 0;
+    }
+
+    .corporative-row {
+        row-gap: 0px !important;
+        align-items: center !important;
+        display: flex !important;
+        flex-flow: row wrap !important;
+        box-sizing: border-box !important;
+    }
+
+    .corporative-icon {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 94px !important;
+        height: 94px !important;
+        margin-inline-end: 24px !important;
+        border-radius: 50% !important;
+        background-color: #f7f8f9 !important;
+
+        img {
+            transform: scale(.5) !important;
+        }
+    }
+
+    .institution-equity {
+        max-width: 210px !important;
+    }
+
+    .institution_equity-paragraph {
+        margin-bottom: 0;
+        line-height: 18px !important;
+        font-size: var(--mySize) !important;
+        color: var(--headerBg) !important;
+        max-width: 200px !important;
+    }
+
+    .institution_equity-title {
+        margin-bottom: 11px !important;
+        line-height: 20px !important;
+        font-size: var(--mySize) !important;
+        color: var(--headerBg) !important;
+        max-width: 200px !important;
+        overflow: hidden;
+        // white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .marketMakerInfo {
+        min-height: 600px !important;
+        padding-top: 30px !important;
+        margin-bottom: 48px !important;
+        border: solid 1px #cddffa !important;
+        background: url('../../../assets/img/icon_banner/market-maker-tip.png') no-repeat 100% 0/78px 78px,
+            linear-gradient(180deg, #eaf2ff, #f9fbff);
+    }
+
+    .institution_marketMakerTitle {
+        padding: 0 77px !important;
+        margin-bottom: 46px !important;
+        line-height: 30px !important;
+        text-align: center;
+        font-size: 24px !important;
+        color: var(--headerBg) !important;
+    }
+
+    .institution_row_middle {
+        align-items: center !important;
+    }
+
+    .institution_space_between {
+        justify-content: space-between !important;
+        row-gap: 0 !important;
+    }
+
+    .institution_row {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .institution_marketLevel1 {
+        width: 416px;
+        height: 426px;
+        padding: 25px 25px 0;
+        border: 1px solid #e5edfc;
+        border-radius: 8px;
+        background: url('../../../assets/img/icon_banner/market-maker-level1.png') no-repeat right 57px bottom/76.5px 132px,
+            linear-gradient(180deg, #e1ebff, #fff);
+    }
+
+    .institution_marketLevel2 {
+        width: 416px;
+        height: 426px;
+        padding: 25px 25px 0;
+        border: 1px solid #d3f1fd;
+        border-radius: 8px;
+        background: url('../../../assets/img/icon_banner/market-maker-level2.png') no-repeat right 57px bottom/76.5px 132px,
+            linear-gradient(180deg, #e1f7ff, #fff 100%, #fff 0);
+    }
+
+    .institution_col {
+        position: relative;
+        max-width: 100%;
+        min-height: 1px;
+    }
+
+    .institution_marketMaker1_tip {
+        margin-bottom: 9px !important;
+        line-height: 18px !important;
+        font-size: var(--mySize) !important;
+        color: var(--headerBg) !important;
+    }
+
+    .institution_marketMaker1_title {
+        margin-bottom: 46px !important;
+        line-height: 44px !important;
+        font-size: 36px !important;
+        color: var(--up) !important;
+    }
+
+    .institution_marketMaker1_textTitle {
+        margin-bottom: 10px !important;
+        line-height: 18px !important;
+        font-size: var(--mySize) !important;
+        color: var(--headerBg) !important;
+
+        span {
+            color: #97a1a9 !important;
+        }
+    }
+
+    .institution_marketMaker1_text {
+        margin-bottom: 18px !important;
+        line-height: 20px !important;
+        font-size: var(--titleSize) !important;
+        color: var(--headerBg) !important;
+    }
+
+    .fundingInfo {
+        min-height: 456px;
+        padding: 48px;
+        border: 1px solid #faf3cd;
+        border-radius: 18px;
+        background: url('../../../assets/img/icon_banner/funding-tip.png') no-repeat 100% 0/78px 78px,
+            url('../../../assets/img/icon_banner/funding-info-bg.png') no-repeat right 135px bottom 48px/279px 259.5px,
+            linear-gradient(180deg, #fff9ea, #fffcf9);
+    }
+
+    .institution_fundingTitle {
+        padding-right: 35px;
+        margin-bottom: 24px;
+        line-height: 38px;
+        font-size: 32px;
+        color: var(--headerBg) !important;
+    }
+
+    .institution_fundingDesc {
+        max-width: 680px;
+        margin-bottom: 15px;
+        line-height: 30px;
+        font-size: 24px;
+        color: var(--headerBg) !important;
+    }
+
+    .btn-success {
+        border-color: var(--up) !important;
+        border-radius: 1px !important;
+    }
+
+    .instutional_info {
+        padding: 36px 48px 65px;
+        margin-bottom: 48px;
+        border: 1px solid #cddffa;
+        border-radius: 18px;
+        background: url('../../../assets/img/icon_banner/market-maker-tip.png') no-repeat 100% 0/78px 78px,
+            url('../../../assets/img/icon_banner/institutional-info-bg.png') no-repeat right 48px bottom/243px 245px,
+            linear-gradient(180deg, #eaf2ff, #f9fbff);
+    }
+
+    .instutional_info_title {
+        margin-bottom: 16px;
+        line-height: 38px;
+        font-size: 32px;
+        color: var(--headerBg) !important;
+    }
+
+    .instutional_info_text {
+        max-width: 948px;
+        margin-bottom: 0;
+        line-height: 22px;
+        font-size: 18px;
+        color: var(--headerBg) !important;
+    }
+
+    .instutional_info_tip {
+        margin: 16px 0;
+        line-height: 22px;
+        font-size: 18px;
+        color: #97a1a9 !important;
+    }
+
+    .instutional_apiInfo {
+        min-height: 456px;
+        padding: 83px 48px 65px;
+        border: 1px solid #d3f1fd;
+        border-radius: 18px;
+        background: url('../../../assets/img/icon_banner/market-maker-tip.png') no-repeat 100% 0/78px 78px,
+            url('../../../assets/img/icon_banner/api-info-bg.png') no-repeat right 86px bottom/355px 232px,
+            linear-gradient(180deg, #e1f7ff, #f4fbfc);
+    }
+
+    .instutional_apiInfo {
+        margin-bottom: 36px !important;
+        line-height: 38px !important;
+        font-size: 32px !important;
+        color: var(--headerBg) !important;
+    }
+
+    .instutional_championBanner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 412px;
+        margin-bottom: 40px;
+        background: url('../../../assets/img/icon_banner/champion-banner.png') no-repeat bottom/1440px 405px,
+            linear-gradient(180deg, #fff9ea, #fffcf9);
+    }
+
+    .instutional_championTitle {
+        max-width: 780px !important;
+        margin-bottom: 32px !important;
+        line-height: 58px !important;
+        font-size: 48px !important;
+        color: var(--headerBg) !important;
+    }
+
+    .instutional_championDesc {
+        max-width: 780px !important;
+        margin-bottom: 0 !important;
+        line-height: 20px !important;
+        font-size: 16px !important;
+        color: #555b63 !important;
+    }
+
+    .instutional_championBannerInner {
+        width: 100% !important;
+        max-width: 1200px !important;
+    }
+
+    @media screen and (max-width:576px) {
+        .instutional_championTitle {
+            font-size: 24px !important;
+        }
+    }
+
+    .instution_activityDate {
+        margin-bottom: 48px !important;
+    }
+
+    .instution_dateItem {
+        flex: 1 1;
+        padding: 13px 18px;
+        border-radius: 8px;
+    }
+
+    .instution_registrationItem {
+        -webkit-margin-end: 73px !important;
+        margin-inline-end: 73px !important;
+        background: url('../../../assets/img/icon_banner/champion-date-registration-bg.png') no-repeat 100%/295px 73.5px,
+            linear-gradient(180deg, #e1f7ff, #f4fbfc);
+    }
+
+    .instution_competitionItem {
+        background: url('../../../assets/img/icon_banner/champion-date-competition-bg.png') no-repeat 100%/295px 73.5px,
+            linear-gradient(180deg, #eaf2ff, #f9fbff);
+    }
+
+    .instution_dateTitle {
+        margin-bottom: 12px !important;
+        line-height: 18px !important;
+        font-size: 14px !important;
+        color: #555b63 !important;
+    }
+
+    .instution_dateDesc {
+        margin-bottom: 0 !important;
+        line-height: 20px !important;
+        font-size: 16px !important;
+        color: var(--headerBg) !important;
+    }
+
+    .instution_countdown {
+        display: flex !important;
+        flex-flow: column nowrap !important;
+        align-items: center !important;
+        margin-bottom: 24px !important;
+    }
+
+    .instution_countdownTitle {
+        margin-bottom: 4px !important;
+        line-height: 18px !important;
+        font-size: 14px !important;
+        color: #97a1a9 !important;
+    }
+
+    .instution_countdownTime {
+        display: flex !important;
+        // align-items: center !important;
+        line-height: 60px !important;
+        font-size: 48px !important;
+        color: var(--headerBg) !important;
+    }
+
+    @media screen and(max-width:576px) {
+        .instution_countdownTime {
+            display: flex !important;
+            // align-items: center !important;
+            line-height: 60px !important;
+            font-size: 36px !important;
+            color: var(--headerBg) !important;
+        }
+    }
+
+    .instution_countdownTime span {
+        position: relative !important;
+        width: 25px !important;
+        height: 28px !important;
+        // margin-top: 3px !important;
+    }
+    .instution_championHandler{
+        margin-bottom: 48px !important;
+        text-align: center !important;
+    }
+    .instution_championButton{
+        // min-width: 350px !important;
+        height: 48px !important;
+        font-size: 16px !important;
+    }
+    .instution_championDescItem{
+        margin-bottom: 48px !important;
+    }
+    .instution_championSubtitle{
+        margin-bottom: 24px !important;
+        line-height: 24px !important;
+        font-size: 20px !important;
+        color: var(--headerBg) !important;
+    }
+    .instution_championSubdesc{
+        margin-bottom: 20px !important;
+        line-height: 20px !important;
+        font-size: 16px !important;
+        color: var(--headerBg) !important;
+    }
+    .down{
+        color: var(--down) !important;
+    }
+    .up{
+        color: var(--up) !important;
+    }
+}
+
+
+@media screen and (max-width:1080px) {
+    .corporative-section {
+        .equities {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            grid-gap: 48px 108px;
+            padding: 84px 0;
+        }
+    }
+
+}
+
+@media screen and (max-width:576px) {
+    .corporative-section {
+        .equities {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            grid-gap: 48px 108px;
+            padding: 84px 0;
+        }
+    }
 }
