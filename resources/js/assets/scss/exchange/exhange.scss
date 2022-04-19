@@ -1296,6 +1296,26 @@ header .nav-link {
         font-size: 24px !important;
         color: var(--headerBg) !important;
     }
+    .nav-link.active{
+        background:var(--bgTransparent) !important;
+        color: var(--up) !important;
+        border:none !important;
+        font-weight: 700 !important;
+    }
+    .nav-link{
+        border: none !important;
+        color: var(--headerBg) !important;
+    }
+    .no-underline{
+        text-decoration: none !important;
+        color: white !important;
+        align-items: center !important;
+        padding-top:-2px !important;
+    }
+    .btn{
+        padding:0.625rem 0.75rem !important;
+    }
+
 }
 
 
@@ -1337,3 +1357,23 @@ header .nav-link {
         flex-wrap: nowrap !important;
     }
 }
+
+.margin-bottom-400{
+    margin-bottom:100px !important;
+}
+.wh-64{
+    width: 256px !important;
+    height: 256px !important;
+}
+
+ #carouselExampleIndicators{
+    @media screen and (max-width:900px) {
+      h1 {
+        font-size: 24px !important;
+      }
+      .wh-64{
+        width: 128px !important;
+        height: 128px !important;
+      }
+    } 
+ }

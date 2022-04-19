@@ -47,7 +47,7 @@
                 {{ $t("Cüzdan") }}
               </router-link>
             </li>
-            <li v-if="user" class="nav-item">
+            <li class="nav-item">
               <router-link :to="{ name: 'corporative-services' }" class="nav-link">
                 <i class="fas fa-wallet up"></i>
                 {{ $t("Kurumsal Hizmetler") }}
@@ -97,7 +97,7 @@
                 {{ $t("Coin Listeleme") }}
               </a>
             </li>
-            <li v-if="user" class="nav-item">
+            <li class="nav-item">
               <router-link :to="{ name: 'corporative-services' }" class="nav-link">
                 <i class="fas fa-wallet up"></i>
                 {{ $t("Kurumsal Hizmetler") }}
@@ -150,7 +150,7 @@
               {{ $t("Coin Listeleme") }}
             </a>
           </li>
-          <li v-if="user" class="nav-item">
+          <li class="nav-item">
               <router-link :to="{ name: 'corporative-services' }" class="nav-link">
                 <i class="fas fa-wallet up"></i>
                 {{ $t("Kurumsal Hizmetler") }}

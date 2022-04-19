@@ -5,7 +5,7 @@
         <div class="banners">
           <div>
             <h1>Piyasa Yapıcı Başvurusu</h1>
-            <b-button variant="success" class="btn-call">Başvur</b-button>
+            <a href="https://forms.gle/s79sx4paYyWHBALM6" target="_blank" class="no-underline btn btn-success btn-call">Başvur</a>
           </div>
         </div>
         <div class="corporative-content">
@@ -95,7 +95,7 @@
                   1. Son 30 gündeki işlem hacmi ≥ 2.000 BTC olmalı veya negatif Yapıcı
                 </p>
                 <p class="institution_marketMaker1_text">
-                  2. MEXC spot pozisyonu gerekliliği 200.000 USDT'den fazla olmalı
+                  2. Coin<span class="up">Swifter</span> spot pozisyonu gerekliliği 200.000 USDT'den fazla olmalı
                 </p>
               </div>
               <div class="institution_col institution_marketLevel2 mx-auto my-2" >
@@ -109,7 +109,7 @@
                   1. 1.000 BTC ≤ Son 30 gündeki işlem hacmi {{ $t("<") }} 2.000 BTC
                 </p>
                 <p class="institution_marketMaker1_text">
-                  2. MEXC spot hesabı varlıkları 200.000 USDT'den fazla olmalı
+                  2. Coin<span class="up">Swifter</span> spot hesabı varlıkları 200.000 USDT'den fazla olmalı
                 </p>
                 <p class="institution_marketMaker1_text">
                   3. Diğer borsa yapıcı 0 piyasa yapıcı
@@ -128,7 +128,7 @@
         <div class="banners">
           <div>
             <h1>Fonlama Hizmetleri</h1>
-            <b-button variant="success" class="btn-call">Başvur</b-button>
+            <a href="https://forms.gle/XaLmXg4EchYWgeo56" target="_blank" class="no-underline btn btn-success btn-call">Başvur</a>
           </div>
         </div>
         <div class="corporative-content">
@@ -173,7 +173,7 @@
           </div>
           <div class="fundingInfo table-responsive">
             <h4 class="institution_fundingTitle">
-              MEXC, seçkin kurumsal müşteriler adına yüksek tutarlı dağıtım hizmetleri sağlamaktadır
+              Coin<span class="up">Swifter</span>, seçkin kurumsal müşteriler adına yüksek tutarlı dağıtım hizmetleri sağlamaktadır
             </h4>
             <div class="institution_fundingDesc">
               İhtiyaçlarınızla ilgili, lütfen müşteri yöneticinizle iletişime geçin ya da aşağıdaki adrese e-posta gönderebilirsiniz
@@ -186,7 +186,7 @@
         <div class="banners">
           <div>
             <h1>Kurumsal Kullanıcı Olun</h1>
-            <b-button variant="success" class="btn-call">Başvur</b-button>
+            <a href="https://forms.gle/dw3xT7rE1MPnJEDf8" target="_blank" class="no-underline btn btn-success btn-call">Başvur</a>
           </div>
         </div>
         <div class="corporative-content">
@@ -230,7 +230,7 @@
             <p class="instutional_info_text">1. Yönetim Kurulu Kararı</p>
             <p class="instutional_info_text">2. Mutabakat ve Esas Sözleşme</p>
             <p class="instutional_info_text">3. Kuruluş Belgesi</p>
-            <p class="instutional_info_text">4.Şirket Pay Defterinin Kopyası</p>
+            <p class="instutional_info_text">4. Şirket Pay Defterinin Kopyası</p>
             <p class="instutional_info_text">
               5. Yönetim Kurulu Üye Defterinin Kopyası
             </p>
@@ -259,7 +259,7 @@
         <div class="banners">
           <div>
             <h1>API Hizmetleri</h1>
-            <b-button variant="success" class="btn-call">Başvur</b-button>
+            <a href="https://forms.gle/BZp16mDBVQqzeBDd9" target="_blank" class="no-underline btn btn-success btn-call">Başvur</a>
           </div>
         </div>
         <div class="corporative-content">
@@ -344,7 +344,7 @@
           <div class="instution_countdownTime">00<span>:</span>00<span>:</span>00<span>:</span>00</div>
         </div>
         <div class="instution_championHandler">
-          <button type="button" class="instution_championButton btn btn-success btn-lg">Telegrama Katılın</button>
+          <a href="https://t.me/coinswifter" target="_blank" class="no-underline instution_championButton btn btn-success btn-lg btn-call">Telegrama Katılın</a>
         </div>
         <div class="instution_championDescItem">
           <h5 class="instution_championSubtitle">Yarışma Kuralları ve İlkeleri</h5>
@@ -352,7 +352,7 @@
           <p class="instution_championSubdesc">2. Yarışma Başlangıç Tarihi: 15 Şubat 2022 (11.00 TSİ) ile 15 Nisan 2022 (11.00 TSİ) arasındadır ve sonuçlar bu tarihten itibaren hesaplanacaktır. Son kayıt tarihi olan 25 Şubattan önce kaydolan  geçerli hesapların sonuçları, düzenleyici tarafından belirtilen tarihten itibaren hesaplanacaktır.</p>
           <p class="instution_championSubdesc">3. Yarışmanın genel sıralaması "günlük" olarak hesaplanır. Yarışma süresi boyunca, 11.00'dan ertesi gün 11.00'a (TSİ, 24 saat) kadar günde yalnız bir kez hesaplanır. Her gösterge, aynı gün güncellenecektir;</p>
           <p class="instution_championSubdesc">4. Her takım, yarışma sırasında aynı anda 4 hesaba erişim sağlayabilir. 4 hesabın toplam ilk giriş sermayesi en az 50.000 USDT'den az olmamalıdır, 4 hesabın net varlık değeri toplanıp 1 sıralamaya dönüştürülebilir. Tüm katılımcıların, organizasyon komitesi personelinin API testi için 10 gün önceden test hesaplarını göndermeleri gerekir. Böylece, yarışmanın ilk gününde verilerin zamanında yayınlanması sağlanacaktır. API testinde başarılı olamayan takımlar sonuçların duyurulmasında yer alamayacaktır.</p>
-          <p class="instution_championSubdesc">5. İşlem hesabı, belirli MEXC hesabında alım satım yapmalıdır;</p>
+          <p class="instution_championSubdesc">5. İşlem hesabı, belirli Coin<span class="up">Swifter</span> hesabında alım satım yapmalıdır;</p>
           <p class="instution_championSubdesc">6. Yarışma boyunca alım satımı yapılan tokenler: SOL, UNI, AVAX, DOT, DOG, BNB, MATIC, FIL; (piyasa yapıcı alım satım kategorisi çoğunlukla popüler tokenlerle işlem yaparken, diğer kategoriler yukarıdaki tokenlerle işlem yapar)</p>
           <p class="instution_championSubdesc">7. Bu yarışma, Vadeli ve Spot alım satımları kabul eder;</p>
           <p class="instution_championSubdesc">8. Sıralama, katılan her takımın toplam puanlarına göre hesaplanır. Tüm sonuçlar, yarışmanın resmi Twitter duyurusuna tabidir. Ulusal resmi tatillerde verilerin yayınlanması askıya alınacaktır fakat sonuçlar aynı şekilde kaydedilmeye devam edecektir;</p>
@@ -374,9 +374,9 @@
         </div>
         <div class="instution_championDescItem">
           <h5 class="instution_championSubtitle">Ödül tutarı ve yarışma sonrası yatırım fonu</h5>
-          <p class="instution_championSubdesc">1. MEXC kazanan ekibe varlık yönetimi için 200 BTC sağlayacaktır;</p>
+          <p class="instution_championSubdesc">1. Coin<span class="up">Swifter</span> kazanan ekibe varlık yönetimi için 200 BTC sağlayacaktır;</p>
           <p class="instution_championSubdesc">2. APY'nin %30'undan fazla kazançla yarışmaya katılan mükemmel nicel ekipler, varlık yönetimi için minimum 10 BTC alabilir;</p>
-          <p class="instution_championSubdesc">3. MEXC, performans denetim raporlarını yayınlayacak ve kaynak yaratma hizmetleri sağlayacaktır.</p>
+          <p class="instution_championSubdesc">3. Coin<span class="up">Swifter</span>, performans denetim raporlarını yayınlayacak ve kaynak yaratma hizmetleri sağlayacaktır.</p>
           <p class="instution_championSubdesc">4. Piyasa Yapıcı Miktara Dayalı Alım Satım Kategorisi Özel Ödülü: 10.000 USDT Değerinde MX Platform Puanı</p>
           <p class="instution_championSubdesc">Kayıtlar resmi <a href="https://t.me/coinswifter" target="_blank" class="up">Telegram</a> ya da <a href="mailto:info@coinswifter.com" class="up">info@coinswifter.com</a> adresinden yapılabilir.</p>
         </div>

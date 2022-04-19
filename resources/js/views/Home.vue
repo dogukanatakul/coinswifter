@@ -7,31 +7,32 @@
       <b-row>
         <b-col cols="12" class="justify-content-between float-left" style="padding: inherit !important" >
           <div id="carouselExampleIndicators" class="carousel slide mh-700" data-bs-ride="carousel" >
-            <div class="carousel-indicators">
+            <!-- <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" ></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" ></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" ></button>
-            </div>
+            </div> -->
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img src="assets/img/bg/bg-5.png" class="d-block contain narrow" alt="assets/img/bg/bg-5.png" />
                 <div class="carousel-caption">
                   <b-col cols="12">
                     <div>
-                      <!-- <h1>
-                        Coin<span class="up">Swifter</span> Borsasına Hoş geldiniz.
-                      </h1> -->
                       <h1>
-                        Coin<span class="up">Swifter</span> Borsasına Hoşgeldiniz.
+                        Türkiye'nin kendi Blokchain'i olan ilk ve tek
+                      </h1>
+                      <h1>
+                        Borsası Coin<span class="up">Swifter'a</span> Hoşgeldiniz.
                       </h1>
                     </div>
                     <div class="slideDetail">
-                      Coin<span class="up">Swifter</span>, Kriptopara Alım - Satımın Tek Merkezi.
+                      <img src="../assets/img/coinicon/xray.png" class="img-thumbnail bg-transparent border-0 wh-64"/>
+                      <!-- Coin<span class="up">Swifter</span>, Kriptopara Alım - Satımın Tek Merkezi. -->
                     </div>
                   </b-col>
                 </div>
               </div>
-              <div class="carousel-item">
+              <!-- <div class="carousel-item">
                 <img src="assets/img/bg/bg-5.png" class="d-block contain narrow" alt="assets/img/bg/bg-5.png" />
                 <div class="carousel-caption">
                   <b-col cols="12">
@@ -60,7 +61,7 @@
                     </div>
                   </b-col>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </b-col>
