@@ -387,6 +387,15 @@
             <h1>Daha Fazla Kurumsal Hizmet</h1>
           </div>
         </div>
+        <div class="corporative-content">
+          <div class="instution_moreContent mb-4">
+            <div class="instution_moreIcon">
+              <img src="../../assets/img/icon_banner/more-icon.png" />
+            </div>
+            <p class="instution_moreDesc">Miktara dayalı varlık yönetimi, broker, blok alım satımlar</p>
+            <p class="instution_moreTip">Çok Yakında</p>
+          </div>
+        </div>
       </b-tab>
     </b-tabs>
   </div>
