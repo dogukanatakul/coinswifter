@@ -880,6 +880,7 @@ header .nav-link {
         font-size: var(--fontSize) !important;
     }
 }
+
 @media screen and(max-width:991px) {
     header .nav-link {
         font-size: var(--mySize) !important;
@@ -1246,79 +1247,95 @@ header .nav-link {
         height: 28px !important;
         // margin-top: 3px !important;
     }
-    .instution_championHandler{
+
+    .instution_championHandler {
         margin-bottom: 48px !important;
         text-align: center !important;
     }
-    .instution_championButton{
+
+    .instution_championButton {
         // min-width: 350px !important;
         height: 48px !important;
         font-size: 16px !important;
     }
-    .instution_championDescItem{
+
+    .instution_championDescItem {
         margin-bottom: 48px !important;
     }
-    .instution_championSubtitle{
+
+    .instution_championSubtitle {
         margin-bottom: 24px !important;
         line-height: 24px !important;
         font-size: 20px !important;
         color: var(--headerBg) !important;
     }
-    .instution_championSubdesc{
+
+    .instution_championSubdesc {
         margin-bottom: 20px !important;
         line-height: 20px !important;
         font-size: 16px !important;
         color: var(--headerBg) !important;
     }
-    .down{
+
+    .down {
         color: var(--down) !important;
     }
-    .up{
+
+    .up {
         color: var(--up) !important;
     }
-    .instution_moreContent{
+
+    .instution_moreContent {
         padding-top: 132px !important;
         text-align: center !important;
     }
-    .instution_moreIcon{
+
+    .instution_moreIcon {
         width: 56px !important;
         height: 56px !important;
         margin: 0 auto 38px !important;
-        img{
+
+        img {
             width: 100% !important;
             height: 100% !important;
         }
     }
-    .instution_moreDesc{
+
+    .instution_moreDesc {
         margin-bottom: 18px !important;
         line-height: 30px !important;
         font-size: 24px !important;
         color: var(--up) !important;
     }
-    .instution_moreTip{
+
+    .instution_moreTip {
         margin-bottom: 0 !important;
         line-height: 30px !important;
         font-size: 24px !important;
         color: var(--headerBg) !important;
     }
-    .nav-link.active{
-        background:var(--bgTransparent) !important;
+
+    .nav-link.active {
+        background: var(--bgTransparent) !important;
         color: var(--up) !important;
-        border:none !important;
+        border: none !important;
         font-weight: 700 !important;
     }
-    .nav-link{
+
+    .nav-link {
         border: none !important;
         color: var(--headerBg) !important;
     }
-    .no-underline{
+
+    .no-underline {
         text-decoration: none !important;
         color: white !important;
         align-items: center !important;
-        padding-top:-2px !important;
+        padding-top: -2px !important;
     }
-    .btn{
-        padding:0.625rem 0.75rem !important;
+
+    .btn {
+        padding: 0.625rem 0.75rem !important;
     }
 
 }
@@ -1347,38 +1364,67 @@ header .nav-link {
     }
 }
 
-.tabs{
-    .nav-fill{
+.tabs {
+    .nav-fill {
         overflow-x: auto !important;
         white-space: nowrap !important;
-        .nav-item{
+
+        .nav-item {
             overflow: hidden !important;
             white-space: nowrap !important;
             text-overflow: ellipsis;
             min-width: 200px !important;
         }
     }
-    .nav{
+
+    .nav {
         flex-wrap: nowrap !important;
     }
 }
 
-.margin-bottom-400{
-    margin-bottom:100px !important;
-}
-.wh-64{
-    width: 256px !important;
-    height: 256px !important;
+.margin-bottom-400 {
+    margin-bottom: 100px !important;
 }
 
- #carouselExampleIndicators{
+.wh-64 {
+    width: 256px !important;
+    height: 256px !important;
+    -webkit-animation: spin 4s linear infinite;
+    -moz-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
+}
+
+#carouselExampleIndicators {
     @media screen and (max-width:900px) {
-      h1 {
-        font-size: 24px !important;
-      }
-      .wh-64{
-        width: 128px !important;
-        height: 128px !important;
-      }
-    } 
- }
+        h1 {
+            font-size: 24px !important;
+        }
+
+        .wh-64 {
+            width: 128px !important;
+            height: 128px !important;
+            -webkit-animation: spin 4s linear infinite;
+            -moz-animation: spin 4s linear infinite;
+            animation: spin 4s linear infinite;
+        }
+    }
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
