@@ -880,6 +880,11 @@ header .nav-link {
         font-size: var(--fontSize) !important;
     }
 }
+@media screen and(max-width:991px) {
+    header .nav-link {
+        font-size: var(--mySize) !important;
+    }
+}
 
 .banners {
     display: flex;
