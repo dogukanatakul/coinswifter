@@ -74,7 +74,7 @@
       <b-row class="my-1">
         <b-col cols="12">
           <div class="d-grid gap-2">
-            <b-button type="sumit" block variant="primary">{{ $t("Talep Oluştur") }}</b-button>
+            <b-button type="submit" block variant="primary">{{ $t("Talep Oluştur") }}</b-button>
           </div>
         </b-col>
       </b-row>
@@ -167,14 +167,14 @@ export default {
         });
     },
     onChange(event) {
+
       this.form.file = event.target.files[0];
+
     },
     degisim(event, index) {
-      console.log(event.target.files[0]);
       this.enable[index + 1] = true;
     },
     onaylama(event, index) {
-      console.log(event.target.checked);
       if (event.target.checked == true) {
         this.enable[index + 1] = true;
       } else {

@@ -119,6 +119,16 @@ export default [
                     ]
                 },
             },
+            {
+                path: '/profile/ticket/ticket-messages',
+                name: 'profile.ticketmessages',
+                component: import ("../views/profile/Profile/Ticket_Messages.vue"),
+                meta: {
+                    middleware: [
+                        auth
+                    ]
+                },
+            },
         ]
     },
     {

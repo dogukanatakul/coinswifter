@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTicketIssuesTable extends Migration
+class CreateTicketSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTicketIssuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ticket_issues', function (Blueprint $table) {
+        Schema::create('ticket_subjects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->softDeletes();
@@ -28,6 +28,6 @@ class CreateTicketIssuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ticket_issues');
+        Schema::dropIfExists('ticket_subjects');
     }
 }

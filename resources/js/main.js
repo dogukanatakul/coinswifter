@@ -15,6 +15,7 @@ import SocketIO from 'socket.io-client'
 // import VueLoading from 'vue-loading-overlay';
 // import 'vue-loading-overlay/dist/vue-loading.css';
 
+import CKEditor from '@ckeditor/ckeditor5-vue';
 
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
@@ -120,8 +121,7 @@ app.component('v-select', vSelect);
 app.use(ConfirmationService)
 app.use(VueViewer)
 
-
-
+app.use(CKEditor)
 
 app.use(new VueSocketIO({
         debug: true,

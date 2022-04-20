@@ -56,7 +56,7 @@ return [
     'denied' => 'Denied.',
     'waiting' => 'Waiting.',
     'processing' => 'Processing.',
-    'withdrawal_request_success_message' => 'Your withdrawal request has been successfully created',
+    'withdrawal_request_success_message' => 'Your withdrawal request has been successfully created.',
     'withdrawal_cancel_success_message' => 'Your withdrawal request has been successfully canceled.',
     'withdrawal_cancel_fail_message' => 'Your cancellation period has expired.',
     'withdrawal_request_kyc_fail_message' => 'You must verify KYC before requesting a withdrawal!',
@@ -64,4 +64,7 @@ return [
     'withdrawal_request_amount_fail_message' => 'Please enter valid balance!',
     'invalid_file_fail_message' => 'This file structure is not supported!',
     'max_file_size_fail_message' => 'The size of the file you uploaded is too big! You can upload files with a maximum size of 2 megabytes.',
+    'ticket_create_success_message' => 'Your ticket request has been successfully created.',
+    'ticket_create_message_success_message' => 'Your ticket message has been successfully created.',
+    'ticket_create_fail_parameter_message' => 'Please fill in all required fields.If you are going to upload a picture, it must be larger than 2MB and it should be png,jpg,jpeg|image format.'
 ];

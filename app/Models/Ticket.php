@@ -11,21 +11,25 @@ class Ticket extends Model
     use HasFactory,SoftDeletes;
     protected $primaryKey = 'id';
     protected $fillable = [
+        'ticket_key',
         'users_id',
         'category_id',
-        'issue_id',
+        'subject_id',
         'user_answered_id',
-        'detail',
         'file_name',
         'file_extension',
+        'file_size',
         'status',
+    ];
+    protected $hidden = [
+        'id',
     ];
     public function category(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(TicketCategory::class, 'id', 'category_id');
     }
-    public function issue(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function subject(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(TicketIssue::class, 'id', 'issue_id');
+        return $this->hasMany(TicketSubject::class, 'id', 'subject_id');
     }
 }

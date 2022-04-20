@@ -15,17 +15,18 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('ticket_key');
             $table->bigInteger('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
             $table->bigInteger('user_answered_id')->nullable()->unsigned();
             $table->foreign('user_answered_id')->references('id')->on('users');
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('ticket_categories');
-            $table->bigInteger('issue_id')->unsigned();
-            $table->foreign('issue_id')->references('id')->on('ticket_issues');
-            $table->text('detail');
+            $table->bigInteger('subject_id')->unsigned();
+            $table->foreign('subject_id')->references('id')->on('ticket_subjects');
             $table->string('file_name')->nullable();
             $table->string('file_extension')->nullable();
+            $table->bigInteger('file_size')->nullable();
             $table->string('status');
             $table->softDeletes();
             $table->timestamps();

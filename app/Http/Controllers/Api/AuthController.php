@@ -14,7 +14,8 @@ use App\Models\LogActivity;
 use App\Models\Province;
 use App\Models\Ticket;
 use App\Models\TicketCategory;
-use App\Models\TicketIssue;
+use App\Models\TicketMessage;
+use App\Models\TicketSubject;
 use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\UserAgreement;
@@ -1223,43 +1224,145 @@ class AuthController extends Controller
             'step' => $step,
         ]);
     }
-    public function getTicket(){
-        $ticket = Ticket::with('category','issue')->where('users_id', $this->user->id)->get();
-//        $ticket = collect($ticket)->map(function ($data,$key){
-//            return [
-//                'created_at' => $data->created_at->format('Y-m-d H:i')
-//            ];
-//        });
+
+    public function getTicket()
+    {
+        $ticket = Ticket::with('category', 'subject')->where('users_id', $this->user->id)->get();
         $ticketCategory = TicketCategory::all();
-        $ticketIssue = TicketIssue::all();
+        $ticketSubject = TicketSubject::all();
         return response()->json([
             'status' => 'success',
             'ticket_categories' => $ticketCategory,
-            'ticket_issues' => $ticketIssue->toArray(),
+            'ticket_subjects' => $ticketSubject->toArray(),
             'ticket' => $ticket->toArray()
         ]);
     }
 
     public function setTicket(Request $request)
     {
-//        $validator = validator()->make(request()->all(), [
-//            'type' => 'required|filled|string|in:' . implode(",", array_keys(kyc_keys())),
-//            'file' => 'required|mimes:png,jpg,jpeg|image|max:2048',
-//        ]);
-//        if ($validator->fails()) {
-//            return response()->json([
-//                'status' => 'fail',
-//                'message' => __('api_messages.form_parameter_fail_message')
-//            ]);
-//
-//        Ticket::create([
-//
-//            'users_id' => $request->session()->get('user')->id,
-//            'category_id'=>$request->category,
-//            'issue_id' => $request->issue,
-//            'detail' => $request->detail,
-//            'status'=>0,
-//        ]);
+        $validator = validator()->make(request()->all(), [
+            'category' => 'required|filled|numeric',
+            'subject' => 'required|filled|numeric',
+            'detail' => 'required|filled|string',
+            'file' => 'nullable|image|max:2048|mimes:png,jpg,jpeg',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.ticket_create_fail_parameter_message')
+            ]);
+        }
+        $rand = rand(1111111, 9999999);
+        if (empty(Ticket::where('ticket_key',$rand)->first())){
+
+            if (!empty($request->file('file')))
+            {
+                $uid = Uuid::uuid4();
+                $extension = strtolower($request->file('file')->getClientOriginalExtension());
+                $fileName = $uid . '.' .$extension;
+                $path = date("Y-m-d", $request->file('file')->getATime());
+                $request->file('file')->storeAs($path, $fileName, 'ticket');
+                $size = $request->file('file')->getSize();
+                Ticket::create([
+                    'users_id' => $request->session()->get('user')->id,
+                    'ticket_key' => $rand,
+                    'file_name' => $fileName,
+                    'file_extension' => $extension,
+                    'file_size' => $size,
+                    'category_id' => $request->category,
+                    'subject_id' => $request->subject,
+                    'status' => 0,
+                ]);
+            }
+            else{
+                Ticket::create([
+                    'users_id' => $request->session()->get('user')->id,
+                    'ticket_key' => $rand,
+                    'category_id' => $request->category,
+                    'subject_id' => $request->subject,
+                    'status' => 0,
+                ]);
+            }
+
+            if (!empty($ticketId = Ticket::where('ticket_key', $rand)->first()->makeVisible('id')))
+            {
+                TicketMessage::create([
+                    'ticket_id' => $ticketId['id'],
+                    'message' => $request->detail,
+                    'users_answered_id' => $request->session()->get('user')->id
+                ]);
+            }
+            else{
+                return response()->json([
+                    'status' => 'fail',
+                    'message' => __('api_messages.form_parameter_fail_message')
+                ]);
+            }
+            return response()->json([
+                'status' => 'success',
+                'message' => __('api_messages.ticket_create_success_message')
+            ]);
+        }
+        else{
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.form_parameter_fail_message')
+            ]);
+        }
+
     }
 
+    public function getTicketMessage(Request $request)
+    {
+        $validator = validator()->make(request()->all(), [
+            'ticket' => 'required|filled|numeric',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.form_parameter_fail_message')
+            ]);
+        }
+        $ticketMessage = TicketMessage::with('ticket','user')
+            ->whereRelation('ticket', 'ticket_key', '=', $request->ticket)
+            ->orderBy('created_at', 'ASC')
+            ->get()->makeVisible('ticket_id');
+        return response()->json([
+            'status' => 'success',
+            'ticket_messages' => $ticketMessage,
+        ]);
+    }
+
+    public function setTicketMessage(Request $request)
+    {
+        $validator = validator()->make(request()->all(), [
+            'editorData' => 'required|filled|string',
+            'ticketId' => 'required|filled|numeric',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.form_parameter_fail_message'),
+            ]);
+        }
+        if (!empty($request->session()->get('user')->id))
+        {
+            TicketMessage::create([
+                'ticket_id' => $request->ticketId,
+                'message' => $request->editorData,
+                'users_answered_id' => $request->session()->get('user')->id
+            ]);
+        }
+        else{
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.form_parameter_fail_message')
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => __('api_messages.ticket_create_message_success_message')
+        ]);
+    }
 }

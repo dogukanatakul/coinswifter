@@ -15,10 +15,6 @@ try {
 
 } catch (\Exception $e) {
 }
-Route::get('/fire', function () {
-    event(new \App\Events\MessagePushed());
-    return 'ok';
-});
 
 Route::get('/{any?}', function () {
     if (env('CARE_MODE') && request()->ip() !== env('CARE_IP')) {

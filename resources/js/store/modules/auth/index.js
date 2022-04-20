@@ -21,6 +21,9 @@ const getters = {
     forgot: state => {
         return state.forgot
     },
+    ticket:state =>{
+        return state.ticket
+    }
 }
 
 
@@ -34,6 +37,9 @@ const mutations = {
     FORGOT(state, payload) {
         state.forgot = payload
     },
+    TICKET(state,payload){
+        state.ticket = payload
+    }
 }
 
 const actions = {

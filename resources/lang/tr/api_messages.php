@@ -64,4 +64,8 @@ return [
     'withdrawal_request_amount_fail_message' => 'Lütfen geçerli bakiye girişi yapınız!',
     'invalid_file_fail_message' => 'Bu dosya yapısı desteklenmiyor!',
     'max_file_size_fail_message' => 'Yüklediğiniz dosyanın boyutu çok büyük! Maximum 2 megabayt büyüklüğünde dosya yükleyebilirsiniz.',
+    'ticket_create_success_message' => 'Ticket talebiniz başarıyla oluşturuldu.',
+    'ticket_create_message_success_message' => 'Ticket mesajınız başarıyla oluşturuldu.',
+    'ticket_create_fail_parameter_message' => 'Lütfen gerekli alanları eksiksiz bir şekilde doldurunuz.Eğer resim yükleyecekseniz 2MBdan büyük olmamalı ve png,jpg,jpeg|image formatlarında olmalıdır.'
+
 ];
