@@ -49,7 +49,7 @@
             </li>
             <li class="nav-item">
               <router-link :to="{ name: 'corporative-services' }" class="nav-link">
-                <i class="fas fa-wallet up"></i>
+                <i class="fas fa-users up"></i>
                 {{ $t("Kurumsal Hizmetler") }}
               </router-link>
             </li>
@@ -99,7 +99,7 @@
             </li>
             <li class="nav-item">
               <router-link :to="{ name: 'corporative-services' }" class="nav-link">
-                <i class="fas fa-wallet up"></i>
+                <i class="fas fa-users up"></i>
                 {{ $t("Kurumsal Hizmetler") }}
               </router-link>
             </li>
@@ -152,7 +152,7 @@
           </li>
           <li class="nav-item">
               <router-link :to="{ name: 'corporative-services' }" class="nav-link">
-                <i class="fas fa-wallet up"></i>
+                <i class="fas fa-users up"></i>
                 {{ $t("Kurumsal Hizmetler") }}
               </router-link>
             </li>
