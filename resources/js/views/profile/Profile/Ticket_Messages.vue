@@ -14,7 +14,7 @@
           </template>
           <div v-if="message.file_name !== null">
             <photo-provider>
-              <photo-consumer :intro="ticket" :key="ticket" :src="ticket">
+              <photo-consumer :intro="ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name" :key="ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name" :src="ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name">
                 <img :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " class="view-box cursor-pointer" style="max-height: 50px" />
               </photo-consumer>
             </photo-provider>
@@ -147,7 +147,7 @@ export default {
       this.form2.ticketId = id;
     },
     formatDate(date) {
-      return moment(date).format("MM/DD/YYYY H:m:s");
+      return moment(date).format("MM/DD/YYYY HH:mm:ss");
     },
     formatDate2(date) {
       return moment(date).format("Y-MM-DD");

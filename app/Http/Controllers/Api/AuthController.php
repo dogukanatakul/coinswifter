@@ -1259,7 +1259,7 @@ class AuthController extends Controller
             if (!empty($request->file('file'))) {
                 $uid = Uuid::uuid4();
                 $extension = strtolower($request->file('file')->getClientOriginalExtension());
-                $fileName = $uid . '.' . $extension;
+                $fileName = $uid . '.' .$extension;
                 $path = date("Y-m-d", $request->file('file')->getATime());
                 $request->file('file')->storeAs($path, $fileName, 'ticket');
                 $size = $request->file('file')->getSize();
