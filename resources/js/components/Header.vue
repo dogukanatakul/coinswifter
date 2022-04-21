@@ -2,7 +2,7 @@
   <header class="light-bb">
     <nav class="navbar navbar-expand-lg fixed-top bg-dark-custom my-border" role="navigation" >
       <router-link class="navbar-brand" to="/">
-        <img v-bind:src="'../assets/img/logos/logo.png'" alt="CoinSwifter" />
+        <img v-bind:src="'/assets/img/logos/logo.png'" alt="CoinSwifter" />
       </router-link>
       <div class="navbar-header">
         <div id="menuToggle" class="hamburger navbar-toggler collapsed d-lg-none" >

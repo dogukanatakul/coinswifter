@@ -12,7 +12,7 @@
           <div class="equities">
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/api-increase-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">Yüksek API Hız Limiti</h5>
@@ -23,7 +23,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/api-exclusive-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">
@@ -36,7 +36,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/withdraw-limit-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">Çekim Limiti Artırıldı</h5>
@@ -47,7 +47,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/interest-free-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">Faizsiz Borç</h5>
@@ -58,7 +58,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/special-interface-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">
@@ -71,7 +71,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/vip-benefits-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">VIP Avantajları</h5>
@@ -135,7 +135,7 @@
           <div class="equities">
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/maximize-capital-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">
@@ -148,7 +148,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/flexible-cycle-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">Esnek Döngü</h5>
@@ -159,7 +159,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/customizable-margin-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">
@@ -193,7 +193,7 @@
           <div class="equities">
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon w-100">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/rate-discount-icon.png" />
               </div>
               <div style="clear: none"></div>
               <div class="corporative-col institution-equity w-100">
@@ -202,7 +202,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon w-100">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/account-manager-icon.png" />
               </div>
               <div style="clear: none"></div>
               <div class="corporative-col institution-equity w-100">
@@ -213,7 +213,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon w-100">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/withdraw-quota-icon.png" />
               </div>
               <div style="clear: none"></div>
               <div class="corporative-col institution-equity w-100">
@@ -266,7 +266,7 @@
           <div class="equities">
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/multi-line-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">
@@ -276,7 +276,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/ultra-high-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">
@@ -286,7 +286,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/safe-secure-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">Güvenli ve Emniyetli</h5>
@@ -294,7 +294,7 @@
             </div>
             <div class="corporative-row overflowed-corporotive">
               <div class="corporative-col corporative-icon">
-                <img src="../../assets/img/coinicon/BRS.png" />
+                <img src="../../assets/img/coinicon/feature-rich-icon.png" />
               </div>
               <div class="corporative-col institution-equity">
                 <h5 class="institution_equity-title">
