@@ -1333,7 +1333,7 @@ class AuthController extends Controller
         $ticket = Ticket::where('ticket_key', $request->ticket)->first();
         $status = $ticket['status'];
 //        $url = Storage::disk('ticket')->url($ticket['created_at']->format('Y-m-d') . '/' . $ticket['file_name']);
-        $url = env('APP_URL').'/'.'storage/ticket';
+        $url = env('APP_URL').'/'.'storage/public/ticket';
         $ticketMessage = TicketMessage::with('ticket', 'user')
             ->whereRelation('ticket', 'ticket_key', '=', $request->ticket)
             ->orderBy('created_at', 'ASC')

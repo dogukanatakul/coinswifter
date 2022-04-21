@@ -144,7 +144,7 @@ export default {
             this.form.file = event.target.files[0];
         },
         formatDate(date) {
-            return moment(date).format('MM/DD/YYYY H:m:s');
+            return moment(date).format('MM/DD/YYYY HH:mm:ss');
         },
         selectTicket(ticket){
             this.$store.commit('TICKET',ticket)
