@@ -20,6 +20,9 @@ class CreateTicketMessagesTable extends Migration
             $table->bigInteger('users_answered_id')->unsigned();
             $table->foreign('users_answered_id')->references('id')->on('users');
             $table->text('message');
+            $table->string('file_name')->nullable();
+            $table->string('file_extension')->nullable();
+            $table->bigInteger('file_size')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -16,9 +16,6 @@ class Ticket extends Model
         'category_id',
         'subject_id',
         'user_answered_id',
-        'file_name',
-        'file_extension',
-        'file_size',
         'status',
     ];
     protected $hidden = [

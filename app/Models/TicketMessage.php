@@ -15,6 +15,9 @@ class TicketMessage extends Model
         'ticket_id',
         'users_answered_id',
         'message',
+        'file_name',
+        'file_extension',
+        'file_size',
     ];
     protected $hidden = [
         'id',

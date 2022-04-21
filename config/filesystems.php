@@ -44,14 +44,14 @@ return [
 
         'kyc' => [
             'driver' => 'local',
-            'root' => storage_path('app/kyc'),
+            'root' => storage_path('app/public/kyc'),
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
         'ticket' => [
             'driver' => 'local',
-            'root' => storage_path('app/ticket'),
-            'url' => env('APP_URL') . '/storage',
+            'root' => storage_path('app/public/ticket'),
+            'url' => env('APP_URL') . '/storage/ticket',
             'visibility' => 'public',
         ],
 

@@ -134,7 +134,6 @@ export default {
                         this.getTicket();
                         this.form = {
                             file: null,
-                            type: null,
                         };
                     } else if (response.status === "fail") {
                         this.$notify({text: response.message, type: "error"});

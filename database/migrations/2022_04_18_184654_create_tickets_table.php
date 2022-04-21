@@ -24,9 +24,6 @@ class CreateTicketsTable extends Migration
             $table->foreign('category_id')->references('id')->on('ticket_categories');
             $table->bigInteger('subject_id')->unsigned();
             $table->foreign('subject_id')->references('id')->on('ticket_subjects');
-            $table->string('file_name')->nullable();
-            $table->string('file_extension')->nullable();
-            $table->bigInteger('file_size')->nullable();
             $table->string('status');
             $table->softDeletes();
             $table->timestamps();

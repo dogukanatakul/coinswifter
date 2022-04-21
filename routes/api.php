@@ -51,6 +51,7 @@ Route::group([
         Route::post('/ticket-set',[\App\Http\Controllers\Api\AuthController::class,'setTicket']);
         Route::post('/ticket-messages',[\App\Http\Controllers\Api\AuthController::class,'getTicketMessage']);
         Route::post('/ticket-set-messages',[\App\Http\Controllers\Api\AuthController::class,'setTicketMessage']);
+        Route::post('/ticket-close-messages',[\App\Http\Controllers\Api\AuthController::class,'closeTicketMessage']);
         Route::post('/sessions', [\App\Http\Controllers\Api\AuthController::class, 'sessions']);
         Route::post('/bank-set', [\App\Http\Controllers\Api\AuthController::class, 'bankSet']);
         Route::post('/bank-set-primary', [\App\Http\Controllers\Api\AuthController::class, 'bankSetPrimary']);
