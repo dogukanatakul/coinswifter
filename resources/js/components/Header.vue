@@ -197,6 +197,7 @@
                         </div>
                     </li>
                 </ul> -->
+        
         <div class="dropdown mx-2" v-if="user">
           <button class="dropbtn">Cüzdan</button>
           <div class="dropdown-content">
