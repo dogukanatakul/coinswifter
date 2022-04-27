@@ -1,25 +1,109 @@
 <template>
   <div>
     <b-form enctype="multipart/form-data" @submit="setTicketMessage">
-      <b-card-group deck v-for="(message, message_table) in messages" :key="message_table" >
+      <b-card-group deck v-for="(message, message_table) in messages" :key="message_table" class="mb-2" >
         <b-card header-tag="header" footer-tag="footer">
           <template #header>
             <div class="mb-0 d-flex justify-content-between">
-              <h6 class="mb-0" v-if=" message['user']['username'] === this.$store.getters.user.username " >
+              <h6 class="mb-0 overflowed-table" v-if=" message['user']['username'] === this.$store.getters.user.username " >
                 {{ message["user"]["username"] }}
               </h6>
-              <h6 class="mb-0" v-else>Müşteri Temsilcisi</h6>
-              <h6 class="mb-0">{{ formatDate(message.created_at) }}</h6>
+              <h6 class="mb-0 overflowed-table">
+                {{ formatDate(message.created_at) }}
+              </h6>
+              <h6 class="mb-0 overflowed-table" v-if=" message['user']['username'] !== this.$store.getters.user.username " >
+                Müşteri Temsilcisi
+              </h6>
             </div>
           </template>
-          <div v-if="message.file_name !== null">
-            <photo-provider>
-              <photo-consumer :intro="ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name" :key="ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name" :src="ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name">
-                <img :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " class="view-box cursor-pointer" style="max-height: 50px" />
-              </photo-consumer>
-            </photo-provider>
+          <div v-if=" message['user']['username'] === this.$store.getters.user.username " class="d-576-none" >
+            <b-row class="align-items-center">
+              <b-col cols="2" lg="2" class="float-left text-center">
+                <img class="img-thumbnail rounded-circle view-box" src="/assets/img/logos/ticket_sender.png" style=" width: 100px; max-height: 100px; min-width: 60px !important; " />
+              </b-col>
+              <b-col cols="10" lg="10" class="float:left">
+                <b-row>
+                  <b-col cols="12" v-if="message.file_name !== null">
+                    <div class="text-center">
+                      <photo-provider>
+                        <photo-consumer :key=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " >
+                          <img :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " class="view-box cursor-pointer" style="max-height: 100px" />
+                        </photo-consumer>
+                      </photo-provider>
+                    </div>
+                  </b-col>
+                  <b-col cols="12" class="text-justify">
+                    <b-card-text v-html="message.message"></b-card-text>
+                  </b-col>
+                </b-row>
+              </b-col>
+            </b-row>
           </div>
-          <b-card-text v-html="message.message"></b-card-text>
+          <div v-else class="d-576-none">
+            <b-row class="align-items-center">
+              <b-col cols="10" lg="10" class="float:left">
+                <b-row>
+                  <b-col cols="12" v-if="message.file_name !== null">
+                    <div class="text-center">
+                      <photo-provider>
+                        <photo-consumer :key=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " >
+                          <img :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " class="view-box cursor-pointer" style="max-height: 100px" />
+                        </photo-consumer>
+                      </photo-provider>
+                    </div>
+                  </b-col>
+                  <b-col cols="12" class="text-justify">
+                    <b-card-text v-html="message.message"></b-card-text>
+                  </b-col>
+                </b-row>
+              </b-col>
+              <b-col cols="2" lg="2" class="float-left text-center">
+                <img class="img-thumbnail rounded-circle view-box" src="/assets/img/logos/call_center.png" style=" width: 100px; max-height: 100px; min-width: 60px !important; " />
+              </b-col>
+            </b-row>
+          </div>
+          <div v-if=" message['user']['username'] === this.$store.getters.user.username " class="d-576-block text-center" >
+            <b-col cols="12" class="mb-2">
+              <img class="img-thumbnail rounded-circle view-box" src="/assets/img/logos/ticket_sender.png" style=" width: 100px; max-height: 100px; min-width: 60px !important; " />
+            </b-col>
+            <b-col cols="12">
+              <b-row>
+                <b-col cols="12" v-if="message.file_name !== null">
+                  <div>
+                    <photo-provider>
+                      <photo-consumer :key=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " >
+                        <img :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " class="view-box cursor-pointer" style="max-height: 150px" />
+                      </photo-consumer>
+                    </photo-provider>
+                  </div>
+                </b-col>
+                <b-col cols="12">
+                  <b-card-text v-html="message.message"></b-card-text>
+                </b-col>
+              </b-row>
+            </b-col>
+          </div>
+          <div v-else class="d-576-block text-center">
+            <b-col cols="12" class="mb-2">
+              <img class="img-thumbnail rounded-circle view-box" src="/assets/img/logos/call_center.png" style=" width: 100px; max-height: 100px; min-width: 60px !important; " />
+            </b-col>
+            <b-col cols="12">
+              <b-row>
+                <b-col cols="12" v-if="message.file_name !== null">
+                  <div>
+                    <photo-provider>
+                      <photo-consumer :key=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " >
+                        <img :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " class="view-box cursor-pointer" style="max-height: 150px" />
+                      </photo-consumer>
+                    </photo-provider>
+                  </div>
+                </b-col>
+                <b-col cols="12">
+                  <b-card-text v-html="message.message"></b-card-text>
+                </b-col>
+              </b-row>
+            </b-col>
+          </div>
           <!--                <template #footer>-->
           <!--                    <em>Footer Slot</em>-->
           <!--                </template>-->

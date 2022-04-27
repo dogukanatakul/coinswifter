@@ -1428,3 +1428,30 @@ header .nav-link {
         transform: rotate(360deg);
     }
 }
+
+@media screen and (max-width:576px) {
+ .d-576-block {
+     display: block !important;
+ }
+ .d-576-none{
+     display: none !important;
+ }
+}
+
+@media screen and (min-width:576px) {
+    .d-576-block {
+        display: none !important;
+    }
+
+    .d-576-none {
+        display: block !important;
+    }
+}
+
+.text-right{
+    text-align: right !important;
+}
+
+.text-justify{
+    text-align: justify !important;
+}
