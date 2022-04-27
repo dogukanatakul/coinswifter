@@ -72,7 +72,7 @@
                   <div>
                     <photo-provider>
                       <photo-consumer :key=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " >
-                        <img :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " class="view-box cursor-pointer" style="max-height: 150px" />
+                        <img :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " class="view-box cursor-pointer img-thumbnail border-0" style="max-height: 150px" />
                       </photo-consumer>
                     </photo-provider>
                   </div>
@@ -93,7 +93,7 @@
                   <div>
                     <photo-provider>
                       <photo-consumer :key=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " >
-                        <img :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " class="view-box cursor-pointer" style="max-height: 150px" />
+                        <img :src=" ticket + '/' + formatDate2(message.created_at) + '/' + message.file_name " class="view-box cursor-pointer img-thumbnail border-0" style="max-height: 150px" />
                       </photo-consumer>
                     </photo-provider>
                   </div>
