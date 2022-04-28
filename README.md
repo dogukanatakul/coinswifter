@@ -88,3 +88,6 @@ sudo /etc/init.d/nginx restart
 ## Local Job Start
 
 php artisan queue:listen --queue=pricecalc,transfer,checkamount,exchange,pricecalc,chart,createwallet
+## Ticket storage 
+cmd Yönetici
+mklink /J D:\Repo\coinswifter\public\storage D:\Repo\coinswifter\storage\app

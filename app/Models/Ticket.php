@@ -16,7 +16,8 @@ class Ticket extends Model
         'category_id',
         'subject_id',
         'user_answered_id',
-        'status',
+        'user_created_id',
+        'status', //0 yeni, 1 açık, 2 kapalı
     ];
     protected $hidden = [
         'id',

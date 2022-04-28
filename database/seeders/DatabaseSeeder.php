@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TestWallet::class);
         $this->call(Bank::class);
         $this->call(ContractedBank::class);
+        $this->call(TicketCategoriesSubjects::class);
 
     }
 }

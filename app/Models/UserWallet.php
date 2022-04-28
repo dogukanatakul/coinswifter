@@ -17,6 +17,16 @@ class UserWallet extends Model
         'wallet_hex',
         'password',
     ];
+    protected static function boot()
+    {
+        parent::boot();
+        // auto-sets values on creation
+        static::creating(function ($query) {
+            $query->wallet = encData(encWllt($query->wallet));
+            $query->wallet_hex = encData(encWllt($query->wallet_hex));
+            $query->password = encData(encWllt($query->password));
+        });
+    }
 
     public function user_coin(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

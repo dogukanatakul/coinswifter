@@ -368,7 +368,7 @@ class WalletController extends Controller
                     'name' => $data->network->name,
                     'short_name' => $data->network->short_name
                 ];
-                $newData['wallet_code'] = $data->user_coin->user_wallet->wallet ?? null;
+                $newData['wallet_code'] = dcdWllt(json_decode(dcdData($data->user_coin->user_wallet->wallet))) ?? null;
                 $newData['total_balance'] = priceFormat($newData['balance']);
 
                 $newData['prices'] = [];

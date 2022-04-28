@@ -24,6 +24,7 @@ use App\Models\UserContact;
 use App\Models\UserKyc;
 use App\Models\UserReference;
 use App\Models\UserVerification;
+use App\Models\UserWallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
@@ -1255,7 +1256,6 @@ class AuthController extends Controller
         }
         $rand = rand(1111111, 9999999);
         if (empty(Ticket::where('ticket_key', $rand)->first())) {
-
             if (!empty($request->file('file'))) {
                 $uid = Uuid::uuid4();
                 $extension = strtolower($request->file('file')->getClientOriginalExtension());
@@ -1269,6 +1269,7 @@ class AuthController extends Controller
                     'category_id' => $request->category,
                     'subject_id' => $request->subject,
                     'status' => 0,
+                    'user_created_id' => $request->session()->get('user')->id
                 ]);
                 if (!empty($ticketId = Ticket::where('ticket_key', $rand)->first()->makeVisible('id'))) {
                     TicketMessage::create([

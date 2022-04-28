@@ -20,6 +20,8 @@ class CreateTicketsTable extends Migration
             $table->foreign('users_id')->references('id')->on('users');
             $table->bigInteger('user_answered_id')->nullable()->unsigned();
             $table->foreign('user_answered_id')->references('id')->on('users');
+            $table->bigInteger('user_created_id')->nullable()->unsigned();
+            $table->foreign('user_created_id')->references('id')->on('users');
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('ticket_categories');
             $table->bigInteger('subject_id')->unsigned();

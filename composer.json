@@ -26,7 +26,8 @@
         "predis/predis": "^1.1",
         "rap2hpoutre/laravel-log-viewer": "^2.0",
         "romanzipp/laravel-queue-monitor": "^2.2",
-        "wisembly/elephant.io": "^3.3"
+        "wisembly/elephant.io": "^3.3",
+      "ext-openssl": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
