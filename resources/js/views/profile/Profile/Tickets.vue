@@ -85,15 +85,13 @@ export default {
                     'heading',
                     '|',
                     'bold',
+                    '|',
                     'italic',
                     '|',
                     'bulletedList',
+                    '|',
                     'numberedList',
                     '|',
-                    '|',
-                    '|',
-                    'undo',
-                    'redo'
                 ]
             },
         },
