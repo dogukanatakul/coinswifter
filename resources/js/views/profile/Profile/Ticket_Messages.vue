@@ -175,7 +175,11 @@ export default {
   },
   async created() {
     await this.getTicketMessage();
+      this.interval = setInterval( () =>  this.getTicketMessage(),10000);
   },
+    beforeUnmount() {
+        clearInterval(this.interval)
+    },
   methods: {
     async getTicketMessage() {
       await restAPI
