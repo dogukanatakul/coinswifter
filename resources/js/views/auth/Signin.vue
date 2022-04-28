@@ -58,7 +58,8 @@
                             </div>
                             <div class="col-12 col-md-6 text-md-end d-grid gap-2 py-2 py-md-0">
                                 <b-button squared block variant="outline-secondary"
-                                          class="overflowed-table" :to="{ name: 'signup' }">{{ $t("Yeni hesap oluştur!")
+                                          class="overflowed-table" :to="{ name: 'signup' }">{{
+                                        $t("Yeni hesap oluştur!")
                                     }}
                                 </b-button>
                             </div>
@@ -76,6 +77,7 @@ import useVuelidate from "@vuelidate/core";
 import {required, email, minLength} from "@vuelidate/validators";
 import {computed, defineComponent} from 'vue';
 import {VueRecaptcha} from 'vue-recaptcha';
+import moment from "moment";
 
 export default {
     name: "Signin",
@@ -90,15 +92,17 @@ export default {
         recaptchaVerified: null,
     }),
     setup() {
-
         const siteKey = computed(() => {
             return '6LeXCqsfAAAAACb108osRotNrg32PCpD80pXZR7J';
         });
-
         return {
             v$: useVuelidate(),
             siteKey,
         };
+    },
+    mounted() {
+        this.accessGranted()
+        this.check()
     },
     validations: () => ({
         form: {
@@ -115,31 +119,66 @@ export default {
         }
     }),
     methods: {
-        handleError () {
-            window.location.reload();
-            this.$router.push({ name: "signin" });
+        check() {
+            if (this.$store.getters.bannedTime === null) {
+                this.$store.commit('LOGINTRY', 0)
+            }
         },
-        handleSuccess (response) {
+        handleError() {
+            window.location.reload();
+            this.$router.push({name: "signin"});
+        },
+        handleSuccess(response) {
             if (!this.recaptchaVerified) {
                 this.recaptchaVerified = true
             }
         },
         async signin() {
-            const isFormCorrect = await this.v$.$validate();
-            if (!isFormCorrect) return;
-            await restAPI
-              .getData({ Action: "signin" }, this.form)
-              .then((response) => {
-                if (response.status === "success") {
-                  this.$notify({ text: response.message, type: "success" });
-                  this.$store.commit("USER", response.user);
-                  window.location.reload();
-                  this.$router.push({ name: "signin" });
-                } else if (response.status === "fail") {
-                  this.$notify({ text: response.message, type: "error" });
-                }
-              });
+            if (this.$store.getters.loginTry <3) {
+                const isFormCorrect = await this.v$.$validate();
+                if (!isFormCorrect) return;
+                await restAPI
+                    .getData({Action: "signin"}, this.form)
+                    .then((response) => {
+                        if (response.status === "success") {
+                            this.$notify({text: response.message, type: "success"});
+                            this.$store.commit("USER", response.user);
+                            window.location.reload();
+                            this.$router.push({name: "signin"});
+                        } else if (response.status === "fail") {
+                            this.$store.commit('LOGINTRY', this.$store.getters.loginTry + 1)
+                            if (this.$store.getters.loginTry >= 3) {
+                                if (this.$store.getters.bannedTime === null) {
+                                    this.$store.commit('BANNEDTIME', moment().add(30, 'seconds').format('MM/DD/YYYY HH:mm:ss'))
+                                }
+                            }
+                            console.log(this.$store.getters.loginTry)
+                            this.$notify({text: response.message, type: "error"});
+                        }
+                    });
+            } else {
+                this.accessGranted()
+            }
         },
+        accessGranted() {
+            var dateTime = moment().format('MM/DD/YYYY HH:mm:ss')
+            if (this.$store.getters.bannedTime != null && dateTime < this.$store.getters.bannedTime) {
+                if (dateTime > this.$store.getters.bannedTime) {
+                    window.location.reload()
+                    this.$store.commit('LOGINTRY', 0)
+                    this.$store.commit('BANNEDTIME', null)
+                } else {
+                    var x = moment.utc(moment(this.$store.getters.bannedTime, "MM/DD/YYYY HH:mm:ss").diff(moment(dateTime, "MM/DD/YYYY HH:mm:ss"))).format("HH:mm:ss")
+                    this.$notify({
+                        text: "Yanlış giriş denemelerinizden dolayı " + x + " süre sonra tekrar deneyiniz",
+                        type: "error"
+                    });
+                }
+            } else {
+                this.$store.commit('LOGINTRY', 0)
+                this.$store.commit('BANNEDTIME', null)
+            }
+        }
     },
 };
 </script>

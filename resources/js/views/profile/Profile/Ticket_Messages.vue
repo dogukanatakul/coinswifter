@@ -149,6 +149,7 @@ export default {
       formGet: {
         ticket: this.$store.getters.ticket,
       },
+        interval : null,
       ticket: null,
       editor: ClassicEditor,
       editorConfig: {

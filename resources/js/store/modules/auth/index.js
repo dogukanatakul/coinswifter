@@ -9,6 +9,8 @@ const state = {
         info: {},
         step: 0
     },
+    loginTry:0,
+    bannedTime:null
 }
 
 const getters = {
@@ -23,6 +25,12 @@ const getters = {
     },
     ticket:state =>{
         return state.ticket
+    },
+    loginTry:state =>{
+      return state.loginTry
+    },
+    bannedTime:state =>{
+      return state.bannedTime
     }
 }
 
@@ -39,6 +47,12 @@ const mutations = {
     },
     TICKET(state,payload){
         state.ticket = payload
+    },
+    LOGINTRY(state,payload){
+        state.loginTry = payload
+    },
+    BANNEDTIME(state,payload){
+        state.bannedTime = payload
     }
 }
 

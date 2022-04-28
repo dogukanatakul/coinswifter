@@ -14,7 +14,6 @@ import VueSocketIO from 'vue-3-socket.io'
 import SocketIO from 'socket.io-client'
 // import VueLoading from 'vue-loading-overlay';
 // import 'vue-loading-overlay/dist/vue-loading.css';
-
 import CKEditor from '@ckeditor/ckeditor5-vue';
 
 import vSelect from 'vue-select'
@@ -120,9 +119,7 @@ app.component("font-awesome-icon", FontAwesomeIcon)
 app.component('v-select', vSelect);
 app.use(ConfirmationService)
 app.use(VueViewer)
-
 app.use(CKEditor)
-
 app.use(new VueSocketIO({
         debug: true,
         connection: SocketIO('http://127.0.0.1:5000', {
