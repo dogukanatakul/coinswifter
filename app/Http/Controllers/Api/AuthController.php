@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\MarketMaker;
 use App\Jobs\VerificationEmail;
 use App\Jobs\VerificationPhone;
 use App\Jobs\WalletCreate;
@@ -522,6 +523,7 @@ class AuthController extends Controller
 
     public function adress(Request $request): \Illuminate\Http\JsonResponse
     {
+        MarketMaker::dispatch()->onQueue('marketmaker');
         $validator = validator()->make(request()->all(), [
             'countries_id' => 'nullable|numeric|exists:App\Models\Country,id',
             'provinces_id' => 'nullable|numeric|exists:App\Models\Province,id',
