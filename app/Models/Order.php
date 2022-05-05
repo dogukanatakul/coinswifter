@@ -21,6 +21,7 @@ class Order extends Model
         'total',
         'type',
         'process',
+        'primary',
         'microtime',
     ];
 

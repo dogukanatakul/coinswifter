@@ -28,6 +28,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('total', 38, 22);
             $table->string('type');
             $table->string('process'); // buy - Alış | sell - Satış
+            $table->boolean('primary')->default(false);
             $table->bigInteger('microtime')->unique(); // round(microtime(true) * 1000) / microtime cinsinden emir verme zamanı
             $table->softDeletes();
             $table->timestamps();
