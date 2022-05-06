@@ -88,9 +88,9 @@ class MarketMaker implements ShouldQueue
                             $parity_price = $parities->where('parities_id', $btc_parities_id)->where('type', 'price')->where('source', 'local')->orderBy('id', 'DESC')->limit(2)->get();
                             $old_price = $parity_price->last()['value'];
                             $new_price = $parity_price->first()['value'];
-                             if ($old_price == 0 || $new_price == 0) {
-                                 throw new \Exception("Son fiyatlar 0 dan farklı olmalıdır.");
-                             }
+                            if ($old_price == 0 || $new_price == 0) {
+                                throw new \Exception("Son fiyatlar 0 dan farklı olmalıdır.");
+                            }
                             $parity_diff = (100 / $old_price) * $new_price;
                             if (($old_price - $new_price) > 0) {
                                 $percent = 100 - $parity_diff;
@@ -296,7 +296,7 @@ class MarketMaker implements ShouldQueue
                                 } catch (\Exception $e) {
                                     report($e);
                                 }
-                            } else {
+                            } else if (($old_price - $new_price) < 0) {
                                 $percent = abs(100 - $parity_diff);
                                 // dd($percent . " artıyor");
 
@@ -505,191 +505,202 @@ class MarketMaker implements ShouldQueue
                             dd('boş');
                         }
                     } else {
-                        try {
-                            $randomDecimal = $current_price;
-                            // dd($randomDecimal,$up_current_price,$down_current_price);
-                            $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
-                            if (!empty($is_parity_orders_sell->toArray())) {
+                        if (($parities = ParityPrice::where('parities_id', $parities_id)) && $parities->get()->count() > 0) {
+                            $parity_price = $parities->where('parities_id', $parities_id)->where('type', 'price')->where('source', 'local')->orderBy('id', 'DESC')->limit(2)->get();
+                            $old_price = $parity_price->last()['value'];
+                            $new_price = $parity_price->first()['value'];
+                            if ($old_price == 0 || $new_price == 0) {
+                                throw new \Exception("Son fiyatlar 0 dan farklı olmalıdır.");
+                            }
+                            if($old_price != $new_price)
+                            {
+                                try {
+                                    $randomDecimal = $current_price;
+                                    // dd($randomDecimal,$up_current_price,$down_current_price);
+                                    $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                    if (!empty($is_parity_orders_sell->toArray())) {
 
-                                $parity_orders_sell_count = $is_parity_orders_sell->count();
-                                if ($parity_orders_sell_count == $sell_order_count) {
-                                    for ($i = 0; $i < $parity_orders_sell_count; $i++) {
-                                        if (is_int($min_token) === true && is_int($max_token) === true) {
-                                            $orderAmount = rand($min_token, $max_token);
+                                        $parity_orders_sell_count = $is_parity_orders_sell->count();
+                                        if ($parity_orders_sell_count == $sell_order_count) {
+                                            for ($i = 0; $i < $parity_orders_sell_count; $i++) {
+                                                if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                    $orderAmount = rand($min_token, $max_token);
+                                                } else {
+                                                    $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
+                                                }
+                                                $randomDecimal = rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+
+                                                $is_parity_orders_sell[$i]->update([
+                                                    'price' => $randomDecimal,
+                                                    'amount' => $orderAmount,
+                                                    'total' => $randomDecimal * $orderAmount
+                                                ]);
+                                            }
                                         } else {
-                                            $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
-                                        }
-                                        $randomDecimal = rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+                                            for ($i = 0; $i < $parity_orders_sell_count; $i++) {
+                                                if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                    $orderAmount = rand($min_token, $max_token);
+                                                } else {
+                                                    $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
+                                                }
+                                                $randomDecimal = rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
 
-                                        $is_parity_orders_sell[$i]->update([
-                                            'price' => $randomDecimal,
-                                            'amount' => $orderAmount,
-                                            'total' => $randomDecimal * $orderAmount
-                                        ]);
-                                    }
-                                } else {
-                                    for ($i = 0; $i < $parity_orders_sell_count; $i++) {
-                                        if (is_int($min_token) === true && is_int($max_token) === true) {
-                                            $orderAmount = rand($min_token, $max_token);
-                                        } else {
-                                            $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
-                                        }
-                                        $randomDecimal = rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+                                                $is_parity_orders_sell[$i]->update([
+                                                    'price' => $randomDecimal,
+                                                    'amount' => $orderAmount,
+                                                    'total' => $randomDecimal * $orderAmount
+                                                ]);
+                                            }
 
-                                        $is_parity_orders_sell[$i]->update([
-                                            'price' => $randomDecimal,
-                                            'amount' => $orderAmount,
-                                            'total' => $randomDecimal * $orderAmount
-                                        ]);
-                                    }
-
-                                    for ($i = 0; $i < abs($sell_order_count - $parity_orders_sell_count); $i++) {
-                                        if (is_int($min_token) === true && is_int($max_token) === true) {
-                                            $orderAmount = rand($min_token, $max_token);
-                                        } else {
-                                            $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
+                                            for ($i = 0; $i < abs($sell_order_count - $parity_orders_sell_count); $i++) {
+                                                if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                    $orderAmount = rand($min_token, $max_token);
+                                                } else {
+                                                    $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
+                                                }
+                                                $randomDecimal = rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+                                                $amount = $orderAmount;
+                                                $price = $randomDecimal;
+                                                $total = $price * $amount;
+                                                $type = "limit";
+                                                $process = "sell";
+                                                Order::create([
+                                                    'uuid' => Uuid::uuid4(),
+                                                    'parities_id' => $parities_id,
+                                                    'users_id' => $users_id,
+                                                    'price' => $price,
+                                                    'amount' => $amount,
+                                                    'total' => $total,
+                                                    'type' => $type,
+                                                    'process' => $process,
+                                                    'primary' => true,
+                                                    'microtime' => str_replace(".", "", microtime(true))
+                                                ]);
+                                            }
                                         }
-                                        $randomDecimal = rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                        $amount = $orderAmount;
-                                        $price = $randomDecimal;
-                                        $total = $price * $amount;
-                                        $type = "limit";
-                                        $process = "sell";
-                                        Order::create([
-                                            'uuid' => Uuid::uuid4(),
-                                            'parities_id' => $parities_id,
-                                            'users_id' => $users_id,
-                                            'price' => $price,
-                                            'amount' => $amount,
-                                            'total' => $total,
-                                            'type' => $type,
-                                            'process' => $process,
-                                            'primary' => true,
-                                            'microtime' => str_replace(".", "", microtime(true))
-                                        ]);
-                                    }
-                                }
-                            } else {
-                                for ($i = 0; $i < $sell_order_count; $i++) { //Satış For Döngüsü
-                                    if (is_int($min_token) === true && is_int($max_token) === true) {
-                                        $orderAmount = rand($min_token, $max_token);
                                     } else {
-                                        $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
+                                        for ($i = 0; $i < $sell_order_count; $i++) { //Satış For Döngüsü
+                                            if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                $orderAmount = rand($min_token, $max_token);
+                                            } else {
+                                                $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
+                                            }
+                                            $randomDecimal = rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+                                            $amount = $orderAmount;
+                                            $price = $randomDecimal;
+                                            $total = $price * $amount;
+                                            $type = "limit";
+                                            $process = "sell";
+                                            Order::create([
+                                                'uuid' => Uuid::uuid4(),
+                                                'parities_id' => $parities_id,
+                                                'users_id' => $users_id,
+                                                'price' => $price,
+                                                'amount' => $amount,
+                                                'total' => $total,
+                                                'type' => $type,
+                                                'process' => $process,
+                                                'primary' => true,
+                                                'microtime' => str_replace(".", "", microtime(true))
+                                            ]);
+                                        }
                                     }
-                                    $randomDecimal = rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                    $amount = $orderAmount;
-                                    $price = $randomDecimal;
-                                    $total = $price * $amount;
-                                    $type = "limit";
-                                    $process = "sell";
-                                    Order::create([
-                                        'uuid' => Uuid::uuid4(),
-                                        'parities_id' => $parities_id,
-                                        'users_id' => $users_id,
-                                        'price' => $price,
-                                        'amount' => $amount,
-                                        'total' => $total,
-                                        'type' => $type,
-                                        'process' => $process,
-                                        'primary' => true,
-                                        'microtime' => str_replace(".", "", microtime(true))
-                                    ]);
+
+                                    $current_price = $market['TRY-USDJ']['parity_price']['price']['value'];
+                                    // $orderAmount = rand($min_token, $max_token);
+                                    $randomDecimal = $current_price;
+                                    $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                    // dd($is_parity_orders_buy);
+                                    if (!empty($is_parity_orders_buy->toArray())) {
+                                        $parity_orders_buy_count = $is_parity_orders_buy->count();
+                                        if ($parity_orders_buy_count == $buy_order_count) {
+                                            for ($i = 0; $i < $parity_orders_buy_count; $i++) {
+                                                if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                    $orderAmount = rand($min_token, $max_token);
+                                                } else {
+                                                    $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
+                                                }
+                                                $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+
+                                                $is_parity_orders_buy[$i]->update([
+                                                    'price' => $randomDecimal,
+                                                    'amount' => $orderAmount,
+                                                    'total' => $randomDecimal * $orderAmount
+                                                ]);
+                                            }
+                                        } else {
+                                            for ($i = 0; $i < $parity_orders_buy_count; $i++) {
+                                                if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                    $orderAmount = rand($min_token, $max_token);
+                                                } else {
+                                                    $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
+                                                }
+                                                $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+
+                                                $is_parity_orders_buy[$i]->update([
+                                                    'price' => $randomDecimal,
+                                                    'amount' => $orderAmount,
+                                                    'total' => $randomDecimal * $orderAmount
+                                                ]);
+                                            }
+
+                                            for ($i = 0; $i < abs($buy_order_count - $parity_orders_buy_count); $i++) {
+                                                if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                    $orderAmount = rand($min_token, $max_token);
+                                                } else {
+                                                    $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
+                                                }
+                                                $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+                                                $amount = $orderAmount;
+                                                $price = $randomDecimal;
+                                                $total = $price * $amount;
+                                                $type = "limit";
+                                                $process = "buy";
+                                                Order::create([
+                                                    'uuid' => Uuid::uuid4(),
+                                                    'parities_id' => $parities_id,
+                                                    'users_id' => $users_id,
+                                                    'price' => $price,
+                                                    'amount' => $amount,
+                                                    'total' => $total,
+                                                    'type' => $type,
+                                                    'process' => $process,
+                                                    'primary' => true,
+                                                    'microtime' => str_replace(".", "", microtime(true))
+                                                ]);
+                                            }
+                                        }
+                                    } else {
+                                        for ($i = 0; $i < $buy_order_count; $i++) { //Alış For Döngüsü
+                                            if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                $orderAmount = rand($min_token, $max_token);
+                                            } else {
+                                                $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
+                                            }
+                                            $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+                                            $amount = $orderAmount;
+                                            $price = $randomDecimal;
+                                            $total = $price * $amount;
+                                            $type = "limit";
+                                            $process = "buy";
+                                            Order::create([
+                                                'uuid' => Uuid::uuid4(),
+                                                'parities_id' => $parities_id,
+                                                'users_id' => $users_id,
+                                                'price' => $price,
+                                                'amount' => $amount,
+                                                'total' => $total,
+                                                'type' => $type,
+                                                'process' => $process,
+                                                'primary' => true,
+                                                'microtime' => str_replace(".", "", microtime(true))
+                                            ]);
+                                        }
+                                    }
+                                } catch (\Exception $e) {
+                                    report($e);
                                 }
                             }
-
-                            $current_price = $market['TRY-USDJ']['parity_price']['price']['value'];
-                            // $orderAmount = rand($min_token, $max_token);
-                            $randomDecimal = $current_price;
-                            $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
-                            // dd($is_parity_orders_buy);
-                            if (!empty($is_parity_orders_buy->toArray())) {
-                                $parity_orders_buy_count = $is_parity_orders_buy->count();
-                                if ($parity_orders_buy_count == $buy_order_count) {
-                                    for ($i = 0; $i < $parity_orders_buy_count; $i++) {
-                                        if (is_int($min_token) === true && is_int($max_token) === true) {
-                                            $orderAmount = rand($min_token, $max_token);
-                                        } else {
-                                            $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
-                                        }
-                                        $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-
-                                        $is_parity_orders_buy[$i]->update([
-                                            'price' => $randomDecimal,
-                                            'amount' => $orderAmount,
-                                            'total' => $randomDecimal * $orderAmount
-                                        ]);
-                                    }
-                                } else {
-                                    for ($i = 0; $i < $parity_orders_buy_count; $i++) {
-                                        if (is_int($min_token) === true && is_int($max_token) === true) {
-                                            $orderAmount = rand($min_token, $max_token);
-                                        } else {
-                                            $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
-                                        }
-                                        $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-
-                                        $is_parity_orders_buy[$i]->update([
-                                            'price' => $randomDecimal,
-                                            'amount' => $orderAmount,
-                                            'total' => $randomDecimal * $orderAmount
-                                        ]);
-                                    }
-
-                                    for ($i = 0; $i < abs($buy_order_count - $parity_orders_buy_count); $i++) {
-                                        if (is_int($min_token) === true && is_int($max_token) === true) {
-                                            $orderAmount = rand($min_token, $max_token);
-                                        } else {
-                                            $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
-                                        }
-                                        $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                        $amount = $orderAmount;
-                                        $price = $randomDecimal;
-                                        $total = $price * $amount;
-                                        $type = "limit";
-                                        $process = "buy";
-                                        Order::create([
-                                            'uuid' => Uuid::uuid4(),
-                                            'parities_id' => $parities_id,
-                                            'users_id' => $users_id,
-                                            'price' => $price,
-                                            'amount' => $amount,
-                                            'total' => $total,
-                                            'type' => $type,
-                                            'process' => $process,
-                                            'primary' => true,
-                                            'microtime' => str_replace(".", "", microtime(true))
-                                        ]);
-                                    }
-                                }
-                            } else {
-                                for ($i = 0; $i < $buy_order_count; $i++) { //Alış For Döngüsü
-                                    if (is_int($min_token) === true && is_int($max_token) === true) {
-                                        $orderAmount = rand($min_token, $max_token);
-                                    } else {
-                                        $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
-                                    }
-                                    $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                    $amount = $orderAmount;
-                                    $price = $randomDecimal;
-                                    $total = $price * $amount;
-                                    $type = "limit";
-                                    $process = "buy";
-                                    Order::create([
-                                        'uuid' => Uuid::uuid4(),
-                                        'parities_id' => $parities_id,
-                                        'users_id' => $users_id,
-                                        'price' => $price,
-                                        'amount' => $amount,
-                                        'total' => $total,
-                                        'type' => $type,
-                                        'process' => $process,
-                                        'primary' => true,
-                                        'microtime' => str_replace(".", "", microtime(true))
-                                    ]);
-                                }
-                            }
-                        } catch (\Exception $e) {
-                            report($e);
                         }
                     }
                 }
