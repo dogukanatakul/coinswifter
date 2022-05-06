@@ -3,9 +3,6 @@
 namespace App\Jobs;
 
 use App\Models\Order;
-use App\Models\Parity;
-use App\Models\ParityPrice;
-use Hamcrest\Number\OrderingComparison;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -13,8 +10,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Ramsey\Uuid\Uuid;
-
-use function PHPSTORM_META\type;
+use App\Models\Parity;
+use App\Models\ParityPrice;
 
 class MarketMaker implements ShouldQueue
 {
@@ -46,7 +43,6 @@ class MarketMaker implements ShouldQueue
 
             $market = collect($market)->mapWithKeys(function ($item, $key) {
                 $newItem = $item->toArray();
-
                 if (count($newItem['parity_price']) === 0) {
                     $newItem['parity_price'] = collect(parityExchanges())->mapWithKeys(function ($item, $key) {
                         return [$key => ["value" => $item, "status" => '']];
@@ -67,6 +63,9 @@ class MarketMaker implements ShouldQueue
             if (!empty($market['TRY-USDJ'])) {
                 $is_btc_base = true; //BTC bazında emir oluşturulsun mu ?
                 $current_price = $market['TRY-USDJ']['parity_price']['price']['value'];
+                $users_id = 1;
+                $btc_parities_id = 1;
+                $parities_id = 7;
                 $buy_spread = 20; //%'lik aralık olacak
                 $sell_spread = 10; //%'lik aralık olacak
                 $buy_order_count = 10; //Buy emir sayısı
@@ -81,25 +80,20 @@ class MarketMaker implements ShouldQueue
                 $max_token = 10;
                 $scale_count = 5;
                 $price_scale_count = 10;
-                // dd($current_price);
-                //Bitcoin endexli emir girişi isteğe bağlı olacak (Seç ya da seçme) parities_id'ye göre order var mı ? yok mu diye sorgu at. Eğer yoksa create at, varsa update at.
                 if ($current_price !== 0) {
 
                     if ($is_btc_base === true) {
 
-                        //Bu id'deki coin paritesi var mı yok mu kontrolü yapılacak
-                        if (($parities = ParityPrice::where('parities_id', 1)) && $parities->get()->count() > 0) {
-                            $parity_price = $parities->where('parities_id', 1)->where('type', 'price')->where('source', 'local')->orderBy('id', 'DESC')->limit(2)->get();
+                        if (($parities = ParityPrice::where('parities_id', $btc_parities_id)) && $parities->get()->count() > 0) {
+                            $parity_price = $parities->where('parities_id', $btc_parities_id)->where('type', 'price')->where('source', 'local')->orderBy('id', 'DESC')->limit(2)->get();
                             $old_price = $parity_price->last()['value'];
                             $new_price = $parity_price->first()['value'];
-                            // dd($old_price,$new_price);
-                            // if ($old_price == 0 || $new_price == 0) {
-                            //     throw new \Exception("Fiyat Gir Babuj");
-                            //     // dd("Fiyat gir babuj");
-                            // }
-                            $parity_fark = (100 / $old_price) * $new_price;
+                             if ($old_price == 0 || $new_price == 0) {
+                                 throw new \Exception("Son fiyatlar 0 dan farklı olmalıdır.");
+                             }
+                            $parity_diff = (100 / $old_price) * $new_price;
                             if (($old_price - $new_price) > 0) {
-                                $percent = 100 - $parity_fark;
+                                $percent = 100 - $parity_diff;
                                 // dd($percent . " lan sat gidiyor  a q qq");
 
                                 //Emir Girişleri Komutu
@@ -109,11 +103,11 @@ class MarketMaker implements ShouldQueue
                                     $buy_decimal = $randomDecimal - (($randomDecimal * $percent) / 100);
                                     $down_current_btc_price = $buy_decimal - (($buy_decimal * $btc_buy_spread) / 100);
 
-                                    $is_parity_orders_buy = Order::where('parities_id', 7)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                    $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
                                     if (!empty($is_parity_orders_buy->toArray())) {
 
                                         $parity_orders_buy_count = $is_parity_orders_buy->count();
-                                        if ($parity_orders_buy_count ==  $btc_buy_order_count) {
+                                        if ($parity_orders_buy_count == $btc_buy_order_count) {
                                             for ($i = 0; $i < $parity_orders_buy_count; $i++) {
                                                 if (is_int($min_token) === true && is_int($max_token) === true) {
                                                     $orderAmount = rand($min_token, $max_token);
@@ -153,11 +147,8 @@ class MarketMaker implements ShouldQueue
                                                     $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                                 }
                                                 $randomDecimal = rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                                $parities_id = 3;
-                                                $users_id = 1;
                                                 $amount = $orderAmount;
                                                 $price = $randomDecimal;
-                                                $amount_pure = 100;
                                                 $total = $price * $amount;
                                                 $type = "limit";
                                                 $process = "buy";
@@ -167,7 +158,6 @@ class MarketMaker implements ShouldQueue
                                                     'users_id' => $users_id,
                                                     'price' => $price,
                                                     'amount' => $amount,
-                                                    'amount_pure' => $amount_pure,
                                                     'total' => $total,
                                                     'type' => $type,
                                                     'process' => $process,
@@ -187,11 +177,8 @@ class MarketMaker implements ShouldQueue
                                                 $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                             }
                                             $randomDecimal = rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                            $parities_id = 3;
-                                            $users_id = 1;
                                             $amount = $orderAmount;
                                             $price = $randomDecimal;
-                                            $amount_pure = 100;
                                             $total = $price * $amount;
                                             $type = "limit";
                                             $process = "buy";
@@ -201,7 +188,6 @@ class MarketMaker implements ShouldQueue
                                                 'users_id' => $users_id,
                                                 'price' => $price,
                                                 'amount' => $amount,
-                                                'amount_pure' => $amount_pure,
                                                 'total' => $total,
                                                 'type' => $type,
                                                 'process' => $process,
@@ -217,11 +203,11 @@ class MarketMaker implements ShouldQueue
                                     $sell_decimal = $randomDecimal - (($randomDecimal * $percent) / 100);
 
                                     $up_current_btc_price = $sell_decimal + (($sell_decimal * $btc_sell_spread) / 100);
-                                    $is_parity_orders_sell = Order::where('parities_id', 7)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                    $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
                                     if (!empty($is_parity_orders_sell->toArray())) {
 
                                         $parity_orders_sell_count = $is_parity_orders_sell->count();
-                                        if ($parity_orders_sell_count ==  $btc_sell_order_count) {
+                                        if ($parity_orders_sell_count == $btc_sell_order_count) {
                                             for ($i = 0; $i < $parity_orders_sell_count; $i++) {
                                                 if (is_int($min_token) === true && is_int($max_token) === true) {
                                                     $orderAmount = rand($min_token, $max_token);
@@ -259,12 +245,8 @@ class MarketMaker implements ShouldQueue
                                                     $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                                 }
                                                 $randomDecimal = rand($up_current_btc_price * pow(10, $price_scale_count), $sell_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                                // dd($sell_decimal,$up_current_btc_price);
-                                                $parities_id = 3;
-                                                $users_id = 1;
                                                 $amount = $orderAmount;
                                                 $price = $randomDecimal;
-                                                $amount_pure = 100;
                                                 $total = $price * $amount;
                                                 $type = "limit";
                                                 $process = "sell";
@@ -274,7 +256,6 @@ class MarketMaker implements ShouldQueue
                                                     'users_id' => $users_id,
                                                     'price' => $price,
                                                     'amount' => $amount,
-                                                    'amount_pure' => $amount_pure,
                                                     'total' => $total,
                                                     'type' => $type,
                                                     'process' => $process,
@@ -293,12 +274,8 @@ class MarketMaker implements ShouldQueue
                                                 $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                             }
                                             $randomDecimal = rand($up_current_btc_price * pow(10, $price_scale_count), $sell_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                            // dd($sell_decimal,$up_current_btc_price);
-                                            $parities_id = 3;
-                                            $users_id = 1;
                                             $amount = $orderAmount;
                                             $price = $randomDecimal;
-                                            $amount_pure = 100;
                                             $total = $price * $amount;
                                             $type = "limit";
                                             $process = "sell";
@@ -308,7 +285,6 @@ class MarketMaker implements ShouldQueue
                                                 'users_id' => $users_id,
                                                 'price' => $price,
                                                 'amount' => $amount,
-                                                'amount_pure' => $amount_pure,
                                                 'total' => $total,
                                                 'type' => $type,
                                                 'process' => $process,
@@ -321,7 +297,7 @@ class MarketMaker implements ShouldQueue
                                     report($e);
                                 }
                             } else {
-                                $percent = abs(100 - $parity_fark);
+                                $percent = abs(100 - $parity_diff);
                                 // dd($percent . " artıyor");
 
                                 //Emir Girişleri Komutu
@@ -332,10 +308,10 @@ class MarketMaker implements ShouldQueue
 
                                     $up_current_btc_price = $sell_decimal + (($sell_decimal * $btc_sell_spread) / 100);
 
-                                    $is_parity_orders_sell = Order::where('parities_id', 7)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                    $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
                                     if (!empty($is_parity_orders_sell->toArray())) {
                                         $parity_orders_sell_count = $is_parity_orders_sell->count();
-                                        if ($parity_orders_sell_count ==  $btc_sell_order_count) {
+                                        if ($parity_orders_sell_count == $btc_sell_order_count) {
                                             for ($i = 0; $i < $parity_orders_sell_count; $i++) {
                                                 if (is_int($min_token) === true && is_int($max_token) === true) {
                                                     $orderAmount = rand($min_token, $max_token);
@@ -375,12 +351,8 @@ class MarketMaker implements ShouldQueue
                                                     $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                                 }
                                                 $randomDecimal = rand($sell_decimal * pow(10, $price_scale_count), $up_current_btc_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                                // dd($sell_decimal,$up_current_btc_price);
-                                                $parities_id = 3;
-                                                $users_id = 1;
                                                 $amount = $orderAmount;
                                                 $price = $randomDecimal;
-                                                $amount_pure = 100;
                                                 $total = $price * $amount;
                                                 $type = "limit";
                                                 $process = "sell";
@@ -390,7 +362,6 @@ class MarketMaker implements ShouldQueue
                                                     'users_id' => $users_id,
                                                     'price' => $price,
                                                     'amount' => $amount,
-                                                    'amount_pure' => $amount_pure,
                                                     'total' => $total,
                                                     'type' => $type,
                                                     'process' => $process,
@@ -411,12 +382,8 @@ class MarketMaker implements ShouldQueue
                                                 $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                             }
                                             $randomDecimal = rand($sell_decimal * pow(10, $price_scale_count), $up_current_btc_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                            // dd($sell_decimal,$up_current_btc_price);
-                                            $parities_id = 3;
-                                            $users_id = 1;
                                             $amount = $orderAmount;
                                             $price = $randomDecimal;
-                                            $amount_pure = 100;
                                             $total = $price * $amount;
                                             $type = "limit";
                                             $process = "sell";
@@ -426,7 +393,6 @@ class MarketMaker implements ShouldQueue
                                                 'users_id' => $users_id,
                                                 'price' => $price,
                                                 'amount' => $amount,
-                                                'amount_pure' => $amount_pure,
                                                 'total' => $total,
                                                 'type' => $type,
                                                 'process' => $process,
@@ -442,11 +408,11 @@ class MarketMaker implements ShouldQueue
                                     $buy_decimal = $randomDecimal + (($randomDecimal * $percent) / 100);
                                     $down_current_btc_price = $buy_decimal - (($buy_decimal * $btc_buy_spread) / 100);
 
-                                    $is_parity_orders_buy = Order::where('parities_id', 7)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                    $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
                                     if (!empty($is_parity_orders_buy->toArray())) {
 
                                         $parity_orders_buy_count = $is_parity_orders_buy->count();
-                                        if ($parity_orders_buy_count ==  $btc_buy_order_count) {
+                                        if ($parity_orders_buy_count == $btc_buy_order_count) {
                                             for ($i = 0; $i < $parity_orders_buy_count; $i++) {
                                                 if (is_int($min_token) === true && is_int($max_token) === true) {
                                                     $orderAmount = rand($min_token, $max_token);
@@ -484,11 +450,8 @@ class MarketMaker implements ShouldQueue
                                                     $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                                 }
                                                 $randomDecimal = rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                                $parities_id = 3;
-                                                $users_id = 1;
                                                 $amount = $orderAmount;
                                                 $price = $randomDecimal;
-                                                $amount_pure = 100;
                                                 $total = $price * $amount;
                                                 $type = "limit";
                                                 $process = "buy";
@@ -498,7 +461,6 @@ class MarketMaker implements ShouldQueue
                                                     'users_id' => $users_id,
                                                     'price' => $price,
                                                     'amount' => $amount,
-                                                    'amount_pure' => $amount_pure,
                                                     'total' => $total,
                                                     'type' => $type,
                                                     'process' => $process,
@@ -516,11 +478,8 @@ class MarketMaker implements ShouldQueue
                                                 $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                             }
                                             $randomDecimal = rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                            $parities_id = 3;
-                                            $users_id = 1;
                                             $amount = $orderAmount;
                                             $price = $randomDecimal;
-                                            $amount_pure = 100;
                                             $total = $price * $amount;
                                             $type = "limit";
                                             $process = "buy";
@@ -530,7 +489,6 @@ class MarketMaker implements ShouldQueue
                                                 'users_id' => $users_id,
                                                 'price' => $price,
                                                 'amount' => $amount,
-                                                'amount_pure' => $amount_pure,
                                                 'total' => $total,
                                                 'type' => $type,
                                                 'process' => $process,
@@ -550,11 +508,11 @@ class MarketMaker implements ShouldQueue
                         try {
                             $randomDecimal = $current_price;
                             // dd($randomDecimal,$up_current_price,$down_current_price);
-                            $is_parity_orders_sell = Order::where('parities_id', 7)->where('process', 'sell')->whereNull('deleted_at')->get();
+                            $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
                             if (!empty($is_parity_orders_sell->toArray())) {
 
                                 $parity_orders_sell_count = $is_parity_orders_sell->count();
-                                if ($parity_orders_sell_count ==  $sell_order_count) {
+                                if ($parity_orders_sell_count == $sell_order_count) {
                                     for ($i = 0; $i < $parity_orders_sell_count; $i++) {
                                         if (is_int($min_token) === true && is_int($max_token) === true) {
                                             $orderAmount = rand($min_token, $max_token);
@@ -592,11 +550,8 @@ class MarketMaker implements ShouldQueue
                                             $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                         }
                                         $randomDecimal = rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                        $parities_id = 3;
-                                        $users_id = 1;
                                         $amount = $orderAmount;
                                         $price = $randomDecimal;
-                                        $amount_pure = 100;
                                         $total = $price * $amount;
                                         $type = "limit";
                                         $process = "sell";
@@ -606,7 +561,6 @@ class MarketMaker implements ShouldQueue
                                             'users_id' => $users_id,
                                             'price' => $price,
                                             'amount' => $amount,
-                                            'amount_pure' => $amount_pure,
                                             'total' => $total,
                                             'type' => $type,
                                             'process' => $process,
@@ -623,11 +577,8 @@ class MarketMaker implements ShouldQueue
                                         $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                     }
                                     $randomDecimal = rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                    $parities_id = 3;
-                                    $users_id = 1;
                                     $amount = $orderAmount;
                                     $price = $randomDecimal;
-                                    $amount_pure = 100;
                                     $total = $price * $amount;
                                     $type = "limit";
                                     $process = "sell";
@@ -637,7 +588,6 @@ class MarketMaker implements ShouldQueue
                                         'users_id' => $users_id,
                                         'price' => $price,
                                         'amount' => $amount,
-                                        'amount_pure' => $amount_pure,
                                         'total' => $total,
                                         'type' => $type,
                                         'process' => $process,
@@ -650,18 +600,18 @@ class MarketMaker implements ShouldQueue
                             $current_price = $market['TRY-USDJ']['parity_price']['price']['value'];
                             // $orderAmount = rand($min_token, $max_token);
                             $randomDecimal = $current_price;
-                            $is_parity_orders_buy = Order::where('parities_id', 7)->where('process', 'buy')->whereNull('deleted_at')->get();
+                            $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
                             // dd($is_parity_orders_buy);
                             if (!empty($is_parity_orders_buy->toArray())) {
                                 $parity_orders_buy_count = $is_parity_orders_buy->count();
-                                if ($parity_orders_buy_count ==  $buy_order_count) {
+                                if ($parity_orders_buy_count == $buy_order_count) {
                                     for ($i = 0; $i < $parity_orders_buy_count; $i++) {
                                         if (is_int($min_token) === true && is_int($max_token) === true) {
                                             $orderAmount = rand($min_token, $max_token);
                                         } else {
                                             $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                         }
-                                        $randomDecimal = rand($down_current_price *  pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+                                        $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
 
                                         $is_parity_orders_buy[$i]->update([
                                             'price' => $randomDecimal,
@@ -676,7 +626,7 @@ class MarketMaker implements ShouldQueue
                                         } else {
                                             $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                         }
-                                        $randomDecimal = rand($down_current_price *  pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
+                                        $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
 
                                         $is_parity_orders_buy[$i]->update([
                                             'price' => $randomDecimal,
@@ -691,12 +641,9 @@ class MarketMaker implements ShouldQueue
                                         } else {
                                             $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                         }
-                                        $randomDecimal = rand($down_current_price *  pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                        $parities_id = 3;
-                                        $users_id = 1;
+                                        $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
                                         $amount = $orderAmount;
                                         $price = $randomDecimal;
-                                        $amount_pure = 100;
                                         $total = $price * $amount;
                                         $type = "limit";
                                         $process = "buy";
@@ -706,7 +653,6 @@ class MarketMaker implements ShouldQueue
                                             'users_id' => $users_id,
                                             'price' => $price,
                                             'amount' => $amount,
-                                            'amount_pure' => $amount_pure,
                                             'total' => $total,
                                             'type' => $type,
                                             'process' => $process,
@@ -722,12 +668,9 @@ class MarketMaker implements ShouldQueue
                                     } else {
                                         $orderAmount = rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count);
                                     }
-                                    $randomDecimal = rand($down_current_price *  pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
-                                    $parities_id = 3;
-                                    $users_id = 1;
+                                    $randomDecimal = rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count);
                                     $amount = $orderAmount;
                                     $price = $randomDecimal;
-                                    $amount_pure = 100;
                                     $total = $price * $amount;
                                     $type = "limit";
                                     $process = "buy";
@@ -737,7 +680,6 @@ class MarketMaker implements ShouldQueue
                                         'users_id' => $users_id,
                                         'price' => $price,
                                         'amount' => $amount,
-                                        'amount_pure' => $amount_pure,
                                         'total' => $total,
                                         'type' => $type,
                                         'process' => $process,
@@ -755,10 +697,7 @@ class MarketMaker implements ShouldQueue
                 dd('no');
             }
         } catch (\Exception $e) {
-            printf("MarketMaker ---" . "Fiyat Gir babuj" . "\n\r");
-            // $this->queueData(['status' => 'fail', 'message' => $e->getMessage()]);
-            // throw new \Exception($e);
+            printf("MarketMaker ---" . $e->getMessage() . "\n\r");
         }
-        
     }
 }

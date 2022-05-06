@@ -523,7 +523,6 @@ class AuthController extends Controller
 
     public function adress(Request $request): \Illuminate\Http\JsonResponse
     {
-        MarketMaker::dispatch()->onQueue('marketmaker');
         $validator = validator()->make(request()->all(), [
             'countries_id' => 'nullable|numeric|exists:App\Models\Country,id',
             'provinces_id' => 'nullable|numeric|exists:App\Models\Province,id',

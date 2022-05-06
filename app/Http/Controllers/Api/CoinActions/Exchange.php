@@ -317,87 +317,88 @@ class Exchange extends Controller
     public function test()
     {
         $bot = new \App\Jobs\MarketMaker();
-       dd($bot->handle());
-//         event(new ActionEvent("message", array("team1_score" => 46)));
+        dd($bot->handle());
 
-
-//         dd("ok");
-// //        dd(ParityChart::where('type', '1month')->first()->data);
-
-
-// //        $transactions = UserWithdrawalWallet::with(['user_withdrawal_wallet_child', 'coin.network'])->where('status', 0)->get();
-// //        dd($transactions->toArray());
-// //        $bot = new \App\Jobs\ChartData();
-// //        dd($bot->handle());
-// //        foreach ($bot->intervalCalc("1month")['periods'] as $item) {
-// //            echo $item->format('Y-m-d H:i:s') . "<br>";
-// //        }
-// //        dd("ok");
-
-// //        ParityChart::truncate();
-// //        dd("ok");
-// ////        LogActivity::where('path', 'like', '%TCZBTR2A%')->limit(100)->orderBy('id', 'DESC')->delete();
-//         dd(LogActivity::where('path', 'like', '%network/set-blocks%')->limit(100)->orderBy('id', 'DESC')->get()->toArray());
-
-// //        dd("ok");
-// //        $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();
-// //        $bot = new \App\Jobs\WalletCreate($user, 0);
-
-
-// //        dd(NodeTransaction::where('txh', '796e8bfabd256ff31ffa4c0d49b960066e383f9d672a9599e5c7c2450ea3d118')->orderBy('block_number', 'ASC')->get()->toArray());
-
-// //        $txh = NodeTransaction::where('txh', '0x536fbf1134583aa75967f6941c3d5138418df9fb5e56fe9872e2ed35f7e6cb51')->first();
-// //        dd($txh->toArray());
-
-
-// //        dd(Decimal::fromString("2.19994364799943648", null)->innerValue());
-
-// //        dd(\Litipk\BigNumbers\Decimal::fromString('0')->comp(\Litipk\BigNumbers\Decimal::fromInteger(0), null));
-// //        dd(\Litipk\BigNumbers\Decimal::fromInteger(5)->comp(\Litipk\BigNumbers\Decimal::fromInteger(1)));
-// //
-// //
-// //        $randWalletControl = UserWallet::with([
-// //            'user_coin' => function ($q) {
-// //                $q->with([
-// //                    'coin'
-// //                ]);
-// //            }
-// //        ])
-// //            ->inRandomOrder()
-// //            ->first();
-// //        dd($randWalletControl->toArray());
-
-
-// //        dd(User::with(['wallet'])->whereHas('wallet', function ($q) {
-// //            $q->whereIn('wallet', ['TTG8u8fUKqJwMtB59ppaWqgFVGDb5ojWPU', 'TPxkSGA64S7SgDpU48RtnehHRRQn7hxXso']);
-// //        })->first()->toArray());
-
-//         UserCoin::where('coins_id', '!=', 1)->update([
-//             'balance' => 0,
-//             'balance_pure' => 0,
-//         ]);
-
-//         UserCoin::where('coins_id', 1)->update([
-//             'balance' => 10000000,
-//             'balance_pure' => 0,
-//         ]);
-//         NodeTransaction::where('value', '>', 0)->update([
-//             'processed' => 0,
-//         ]);
-// //        NodeTransaction::truncate();
-//         Commission::truncate();
-//         OrderTransaction::truncate();
-//         Order::truncate();
-//         UserWithdrawalWalletFee::truncate();
-//         UserWithdrawalWalletChild::truncate();
-//         UserWithdrawalWallet::truncate();
-//         LogActivity::truncate();
-//         dd("ok");
-// //        dd("ok");
-// //        $wallets = NodeTransaction::get()->toArray();
-// //        dd(json_encode($wallets));
-
-
+//        event(new ActionEvent("message", array("team1_score" => 46)));
+//
+//
+//        dd("ok");
+////        dd(ParityChart::where('type', '1month')->first()->data);
+//
+//
+////        $transactions = UserWithdrawalWallet::with(['user_withdrawal_wallet_child', 'coin.network'])->where('status', 0)->get();
+////        dd($transactions->toArray());
+////        $bot = new \App\Jobs\ChartData();
+////        dd($bot->handle());
+////        foreach ($bot->intervalCalc("1month")['periods'] as $item) {
+////            echo $item->format('Y-m-d H:i:s') . "<br>";
+////        }
+////        dd("ok");
+//
+////        ParityChart::truncate();
+////        dd("ok");
+//////        LogActivity::where('path', 'like', '%TCZBTR2A%')->limit(100)->orderBy('id', 'DESC')->delete();
+//        dd(LogActivity::where('path', 'like', '%network/set-blocks%')->limit(100)->orderBy('id', 'DESC')->get()->toArray());
+//
+////        dd("ok");
+////        $user = User::where('username', 'dogukanatakul')->first()->makeVisible(['id'])->toArray();
+////        $bot = new \App\Jobs\WalletCreate($user, 0);
+//
+//
+////        dd(NodeTransaction::where('txh', '796e8bfabd256ff31ffa4c0d49b960066e383f9d672a9599e5c7c2450ea3d118')->orderBy('block_number', 'ASC')->get()->toArray());
+//
+////        $txh = NodeTransaction::where('txh', '0x536fbf1134583aa75967f6941c3d5138418df9fb5e56fe9872e2ed35f7e6cb51')->first();
+////        dd($txh->toArray());
+//
+//
+////        dd(Decimal::fromString("2.19994364799943648", null)->innerValue());
+//
+////        dd(\Litipk\BigNumbers\Decimal::fromString('0')->comp(\Litipk\BigNumbers\Decimal::fromInteger(0), null));
+////        dd(\Litipk\BigNumbers\Decimal::fromInteger(5)->comp(\Litipk\BigNumbers\Decimal::fromInteger(1)));
+////
+////
+////        $randWalletControl = UserWallet::with([
+////            'user_coin' => function ($q) {
+////                $q->with([
+////                    'coin'
+////                ]);
+////            }
+////        ])
+////            ->inRandomOrder()
+////            ->first();
+////        dd($randWalletControl->toArray());
+//
+//
+////        dd(User::with(['wallet'])->whereHas('wallet', function ($q) {
+////            $q->whereIn('wallet', ['TTG8u8fUKqJwMtB59ppaWqgFVGDb5ojWPU', 'TPxkSGA64S7SgDpU48RtnehHRRQn7hxXso']);
+////        })->first()->toArray());
+//
+//        UserCoin::where('coins_id', '!=', 1)->update([
+//            'balance' => 0,
+//            'balance_pure' => 0,
+//        ]);
+//
+//        UserCoin::where('coins_id', 1)->update([
+//            'balance' => 10000000,
+//            'balance_pure' => 0,
+//        ]);
+//        NodeTransaction::where('value', '>', 0)->update([
+//            'processed' => 0,
+//        ]);
+////        NodeTransaction::truncate();
+//        Commission::truncate();
+//        OrderTransaction::truncate();
+//        Order::truncate();
+//        UserWithdrawalWalletFee::truncate();
+//        UserWithdrawalWalletChild::truncate();
+//        UserWithdrawalWallet::truncate();
+//        LogActivity::truncate();
+//        dd("ok");
+////        dd("ok");
+////        $wallets = NodeTransaction::get()->toArray();
+////        dd(json_encode($wallets));
+//
+//
     }
 
 }
