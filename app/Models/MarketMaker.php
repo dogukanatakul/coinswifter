@@ -36,4 +36,8 @@ class MarketMaker extends Model
         'users_id',
         'id',
     ];
+    public function parities(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Parity::class, 'id', 'parities_id')->withTrashed();
+    }
 }
