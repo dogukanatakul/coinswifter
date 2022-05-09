@@ -49,9 +49,11 @@ class CurrentPrices implements ShouldQueue, ShouldBeUniqueUntilProcessing
             ->with(['orders' => function ($q) {
                 $q->where('price', '!=', 0)->orderBy('price', 'ASC');
             }, 'trades' => function ($q) {
-                $q->where('created_at', '>', now()->tz('Europe/Istanbul')->subDays(1))
+                $q->where('created_at', '>=', now()->tz('Europe/Istanbul')->subDays(1))
                     ->orderBy('created_at', 'DESC');
-            }, 'trade'])
+            }, 'trade' => function ($q){
+                $q->orderBy('id','DESC');
+            }])
             ->get();
         DB::beginTransaction();
         foreach ($parities as $parity) {
@@ -66,7 +68,7 @@ class CurrentPrices implements ShouldQueue, ShouldBeUniqueUntilProcessing
             }
             $parityExchanges = parityExchanges($params);
 
-            ParityPrice::where('source', 'local')->where('parities_id', $parity->id)->forceDelete();
+            // ParityPrice::where('source', 'local')->where('parities_id', $parity->id)->forceDelete();
             foreach ($parityExchanges as $key => $value) {
                 ParityPrice::create([
                     'parities_id' => $parity->id,
