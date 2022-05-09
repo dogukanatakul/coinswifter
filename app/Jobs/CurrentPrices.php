@@ -67,6 +67,7 @@ class CurrentPrices implements ShouldQueue, ShouldBeUniqueUntilProcessing
                 $params['percent_last_24_hours'] = ((1 - ($parity->trades->first()->price ?? 0 / $parity->trades->last()->price ?? 0)) * 100);
             }
             $parityExchanges = parityExchanges($params);
+            //TODO: Güncel fiyat çekilirken php artisan upgrade:project ile tetiklendiğinde bir önceki fiyat eğer değişmediyse aynı kayıt insert ediliyor. Bunun kontrolünün sağlanması ve gerekirse aynı olduğu zaman eklenmemesi gerek.
 
             // ParityPrice::where('source', 'local')->where('parities_id', $parity->id)->forceDelete();
             foreach ($parityExchanges as $key => $value) {
