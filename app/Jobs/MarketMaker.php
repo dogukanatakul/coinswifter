@@ -66,7 +66,7 @@ class MarketMaker implements ShouldQueue
 
                 //MarketMaker alış - satış emirlerini girme (Parametreler baz alınacak)
                 if (!empty($market[$bot_parities[$c]['parities']['source']['symbol'] . "-" . $bot_parities[$c]['parities']['coin']['symbol']])) {
-                    
+
                     $is_btc_base = $bot_parities[$c]['btc_primary']; //BTC bazında emir oluşturulsun mu ?
                     $current_price = $market[$bot_parities[$c]['parities']['source']['symbol'] . "-" . $bot_parities[$c]['parities']['coin']['symbol']]['parity_price']['price']['value'];
                     $users_id = $bot_parities[$c]['users_id'];
@@ -89,12 +89,13 @@ class MarketMaker implements ShouldQueue
 
                     if ($current_price !== 0) {
                         if ($is_btc_base === true) {
-                            
+
                             if (($parities = ParityPrice::where('parities_id', $btc_parities_id)) && $parities->get()->count() > 0) {
                                 $parity_price = $parities->where('parities_id', $btc_parities_id)->where('type', 'price')->where('source', 'local')->orderBy('id', 'DESC')->limit(2)->get();
                                 $old_price = $parity_price->last()['value'];
                                 $new_price = $parity_price->first()['value'];
-                                // dd($old_price,$new_price);
+
+//                                 dd($old_price,$new_price);
                                 if ($old_price == 0 || $new_price == 0) {
                                     throw new \Exception("Son fiyatlar 0 dan farklı olmalıdır.");
                                 }
@@ -114,27 +115,13 @@ class MarketMaker implements ShouldQueue
                                         if (!empty($is_parity_orders_buy->toArray())) {
 
                                             $parity_orders_buy_count = $is_parity_orders_buy->count();
-                                            if ($parity_orders_buy_count == $btc_buy_order_count) {
-                                                for ($i = 0; $i < $parity_orders_buy_count; $i++) {
-                                                    if (is_int($min_token) === true && is_int($max_token) === true) {
-                                                        $orderAmount = rand($min_token, $max_token);
-                                                    } else {
-                                                        $decimals = 10;
-                                                        $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
-                                                        // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
-                                                    }
+                                            if ($parity_orders_buy_count > $btc_buy_order_count) {
+                                                for ($i = 0; $i < abs($parity_orders_buy_count - $btc_buy_order_count); $i++) {
+                                                    $is_parity_orders_buy = collect($is_parity_orders_buy)->map(function ($item){
+                                                        return $item;
+                                                    })->sortBy('price')->first();
+                                                    Order::where('id',$is_parity_orders_buy->id)->delete();
 
-                                                    $decimals = 10;
-                                                    $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.'.$price_scale_count.'f',(mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$buy_decimal * $div)) / $div));
-                                                    // $randomDecimal = (mt_rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
-
-                                                    $is_parity_orders_buy[$i]->update([
-                                                        'price' => $randomDecimal,
-                                                        'amount' => $orderAmount,
-                                                        'total' => $randomDecimal * $orderAmount
-                                                    ]);
                                                 }
                                             } else {
                                                 //Eski fiyatları güncelleme komutu
@@ -144,11 +131,11 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$buy_decimal * $div)) / $div));
+                                                        $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_btc_price * $div), sprintf('%.' . $price_scale_count . 'f', $buy_decimal * $div)) / $div));
                                                     }
                                                     // $randomDecimal = (mt_rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
 
@@ -167,13 +154,13 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                     }
 
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$buy_decimal * $div)) / $div));
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_btc_price * $div), sprintf('%.' . $price_scale_count . 'f', $buy_decimal * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
                                                     $amount = $orderAmount;
                                                     $price = $randomDecimal;
@@ -204,13 +191,13 @@ class MarketMaker implements ShouldQueue
                                                 } else {
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                    $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                     // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                 }
 
                                                 $decimals = 10;
                                                 $div = pow(10, $decimals);
-                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$buy_decimal * $div)) / $div));
+                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_btc_price * $div), sprintf('%.' . $price_scale_count . 'f', $buy_decimal * $div)) / $div));
                                                 // $randomDecimal = (mt_rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
                                                 $amount = $orderAmount;
                                                 $price = $randomDecimal;
@@ -236,34 +223,19 @@ class MarketMaker implements ShouldQueue
                                         // $orderAmount = rand($min_token, $max_token);
                                         $randomDecimal = $current_price;
                                         $sell_decimal = $randomDecimal - (($randomDecimal * $percent) / 100);
-                                        
+
                                         $up_current_btc_price = $sell_decimal + (($sell_decimal * $btc_sell_spread) / 100);
                                         $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
                                         if (!empty($is_parity_orders_sell->toArray())) {
 
                                             $parity_orders_sell_count = $is_parity_orders_sell->count();
-                                            if ($parity_orders_sell_count == $btc_sell_order_count) {
-                                                for ($i = 0; $i < $parity_orders_sell_count; $i++) {
-                                                    if (is_int($min_token) === true && is_int($max_token) === true) {
-                                                        $orderAmount = rand($min_token, $max_token);
-                                                    } else {
-                                                        $decimals = 10;
-                                                        $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
-                                                        // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
-                                                    }
+                                            if ($parity_orders_sell_count > $btc_sell_order_count) {
+                                                for ($i = 0; $i < abs($parity_orders_sell_count - $btc_sell_order_count); $i++) {
+                                                    $is_parity_orders_sell = collect($is_parity_orders_sell)->map(function ($item){
+                                                        return $item;
+                                                    })->sortBy('price')->first();
+                                                    Order::where('id',$is_parity_orders_sell->id)->delete();
 
-                                                    $decimals = 10;
-                                                    $div = pow(10, $decimals);
-                                                    // $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div)) / $div));
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div), sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div)) / $div));
-                                                    // $randomDecimal = (mt_rand($up_current_btc_price * pow(10, $price_scale_count), $sell_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
-
-                                                    $is_parity_orders_sell[$i]->update([
-                                                        'price' => $randomDecimal,
-                                                        'amount' => $orderAmount,
-                                                        'total' => $randomDecimal * $orderAmount
-                                                    ]);
                                                 }
                                             } else {
                                                 for ($i = 0; $i < $parity_orders_sell_count; $i++) {
@@ -272,16 +244,15 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                     }
 
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
                                                     // $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div)) / $div));
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div), sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div)) / $div));
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $sell_decimal * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_btc_price * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($up_current_btc_price * pow(10, $price_scale_count), $sell_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
-
                                                     $is_parity_orders_sell[$i]->update([
                                                         'price' => $randomDecimal,
                                                         'amount' => $orderAmount,
@@ -295,14 +266,14 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                     }
 
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
                                                     // $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div)) / $div));
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div), sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div)) / $div));
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $sell_decimal * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_btc_price * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($up_current_btc_price * pow(10, $price_scale_count), $sell_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
                                                     $amount = $orderAmount;
                                                     $price = $randomDecimal;
@@ -333,7 +304,7 @@ class MarketMaker implements ShouldQueue
                                                 } else {
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                    $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                     // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                 }
 
@@ -369,7 +340,6 @@ class MarketMaker implements ShouldQueue
                                 } else if (($old_price - $new_price) < 0) {
                                     $percent = abs(100 - $parity_diff);
                                     // dd($percent . " artıyor");
-                                    dd($percent);
                                     //Emir Girişleri Komutu
                                     try {
                                         $randomDecimal = $current_price;
@@ -381,29 +351,13 @@ class MarketMaker implements ShouldQueue
                                         $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
                                         if (!empty($is_parity_orders_sell->toArray())) {
                                             $parity_orders_sell_count = $is_parity_orders_sell->count();
-                                            if ($parity_orders_sell_count == $btc_sell_order_count) {
-                                                for ($i = 0; $i < $parity_orders_sell_count; $i++) {
-                                                    if (is_int($min_token) === true && is_int($max_token) === true) {
-                                                        $orderAmount = rand($min_token, $max_token);
-                                                    } else {
-                                                        $decimals = 10;
-                                                        $div = pow(10, $decimals);
+                                            if ($parity_orders_sell_count > $btc_sell_order_count) {
+                                                for ($i = 0; $i < abs($parity_orders_sell_count - $btc_sell_order_count); $i++) {
+                                                    $is_parity_orders_sell = collect($is_parity_orders_sell)->map(function ($item){
+                                                        return $item;
+                                                    })->sortBy('price')->first();
+                                                    Order::where('id',$is_parity_orders_sell->id)->delete();
 
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
-                                                        
-                                                        // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
-                                                    }
-
-                                                    $decimals = 10;
-                                                    $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div), sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div)) / $div));
-                                                    // $randomDecimal = (mt_rand($sell_decimal * pow(10, $price_scale_count), $up_current_btc_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
-
-                                                    $is_parity_orders_sell[$i]->update([
-                                                        'price' => $randomDecimal,
-                                                        'amount' => $orderAmount,
-                                                        'total' => $randomDecimal * $orderAmount
-                                                    ]);
                                                 }
                                             } else {
                                                 for ($i = 0; $i < $parity_orders_sell_count; $i++) {
@@ -412,13 +366,13 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                     }
 
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div), sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div)) / $div));
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $sell_decimal * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_btc_price * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($sell_decimal * pow(10, $price_scale_count), $up_current_btc_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
 
                                                     $is_parity_orders_sell[$i]->update([
@@ -436,11 +390,11 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div), sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div)) / $div));
+                                                        $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $sell_decimal * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_btc_price * $div)) / $div));
                                                     }
                                                     // $randomDecimal = (mt_rand($sell_decimal * pow(10, $price_scale_count), $up_current_btc_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
                                                     $amount = $orderAmount;
@@ -473,13 +427,13 @@ class MarketMaker implements ShouldQueue
                                                 } else {
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                    $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                     // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                 }
 
                                                 $decimals = 10;
                                                 $div = pow(10, $decimals);
-                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div), sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div)) / $div));
+                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $sell_decimal * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_btc_price * $div)) / $div));
                                                 // $randomDecimal = (mt_rand($sell_decimal * pow(10, $price_scale_count), $up_current_btc_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
                                                 $amount = $orderAmount;
                                                 $price = $randomDecimal;
@@ -511,27 +465,13 @@ class MarketMaker implements ShouldQueue
                                         if (!empty($is_parity_orders_buy->toArray())) {
 
                                             $parity_orders_buy_count = $is_parity_orders_buy->count();
-                                            if ($parity_orders_buy_count == $btc_buy_order_count) {
-                                                for ($i = 0; $i < $parity_orders_buy_count; $i++) {
-                                                    if (is_int($min_token) === true && is_int($max_token) === true) {
-                                                        $orderAmount = rand($min_token, $max_token);
-                                                    } else {
-                                                        $decimals = 10;
-                                                        $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
-                                                        // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
-                                                    }
+                                            if ($parity_orders_buy_count > $btc_buy_order_count) {
+                                                for ($i = 0; $i < abs($parity_orders_buy_count - $btc_buy_order_count); $i++) {
+                                                    $is_parity_orders_buy = collect($is_parity_orders_buy)->map(function ($item){
+                                                        return $item;
+                                                    })->sortBy('price')->first();
+                                                    Order::where('id',$is_parity_orders_buy->id)->delete();
 
-                                                    $decimals = 10;
-                                                    $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$buy_decimal * $div)) / $div));
-                                                    // $randomDecimal = (mt_rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
-
-                                                    $is_parity_orders_buy[$i]->update([
-                                                        'price' => $randomDecimal,
-                                                        'amount' => $orderAmount,
-                                                        'total' => $randomDecimal * $orderAmount
-                                                    ]);
                                                 }
                                             } else {
                                                 for ($i = 0; $i < $parity_orders_buy_count; $i++) {
@@ -540,11 +480,11 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$buy_decimal * $div)) / $div));
+                                                        $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_btc_price * $div), sprintf('%.' . $price_scale_count . 'f', $buy_decimal * $div)) / $div));
                                                     }
                                                     // $randomDecimal = (mt_rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
 
@@ -561,13 +501,13 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                     }
 
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$buy_decimal * $div)) / $div));
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_btc_price * $div), sprintf('%.' . $price_scale_count . 'f', $buy_decimal * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
                                                     $amount = $orderAmount;
                                                     $price = $randomDecimal;
@@ -596,19 +536,210 @@ class MarketMaker implements ShouldQueue
                                                 } else {
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                    $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                     // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                 }
 
                                                 $decimals = 10;
                                                 $div = pow(10, $decimals);
-                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$buy_decimal * $div)) / $div));
+                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_btc_price * $div), sprintf('%.' . $price_scale_count . 'f', $buy_decimal * $div)) / $div));
                                                 // $randomDecimal = (mt_rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
                                                 $amount = $orderAmount;
                                                 $price = $randomDecimal;
                                                 $total = $price * $amount;
                                                 $type = "limit";
                                                 $process = "buy";
+                                                Order::create([
+                                                    'uuid' => Uuid::uuid4(),
+                                                    'parities_id' => $parities_id,
+                                                    'users_id' => $users_id,
+                                                    'price' => $price,
+                                                    'amount' => $amount,
+                                                    'total' => $total,
+                                                    'type' => $type,
+                                                    'process' => $process,
+                                                    'primary' => true,
+                                                    'microtime' => str_replace(".", "", microtime(true))
+                                                ]);
+                                            }
+                                        }
+                                    } catch (\Exception $e) {
+                                        report($e);
+                                    }
+                                }
+                                else{
+                                    try {
+                                        $randomDecimal = $current_price;
+                                        $buy_decimal = $randomDecimal + (($randomDecimal * $btc_buy_spread) / 100);
+                                        $down_current_btc_price = $buy_decimal - (($buy_decimal * $buy_spread) / 100);
+                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                        if (!empty($is_parity_orders_buy->toArray())) {
+
+                                            $parity_orders_buy_count = $is_parity_orders_buy->count();
+                                            if ($parity_orders_buy_count > $btc_buy_order_count) {
+                                                for ($i = 0; $i < abs($parity_orders_buy_count - $btc_buy_order_count); $i++) {
+                                                    $is_parity_orders_buy = collect($is_parity_orders_buy)->map(function ($item){
+                                                        return $item;
+                                                    })->sortBy('price')->first();
+                                                    Order::where('id',$is_parity_orders_buy->id)->delete();
+
+                                                }
+                                            } else {
+                                                //Eski fiyatları güncelleme komutu
+
+
+                                                //Ekleme Komutu
+                                                for ($i = 0; $i < abs($btc_buy_order_count - $parity_orders_buy_count); $i++) {
+                                                    if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                        $orderAmount = rand($min_token, $max_token);
+                                                    } else {
+                                                        $decimals = 10;
+                                                        $div = pow(10, $decimals);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                        // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                    }
+
+                                                    $decimals = 10;
+                                                    $div = pow(10, $decimals);
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_btc_price * $div), sprintf('%.' . $price_scale_count . 'f', $buy_decimal * $div)) / $div));
+                                                    // $randomDecimal = (mt_rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                    $amount = $orderAmount;
+                                                    $price = $randomDecimal;
+                                                    $total = $price * $amount;
+                                                    $type = "limit";
+                                                    $process = "buy";
+                                                    Order::create([
+                                                        'uuid' => Uuid::uuid4(),
+                                                        'parities_id' => $parities_id,
+                                                        'users_id' => $users_id,
+                                                        'price' => $price,
+                                                        'amount' => $amount,
+                                                        'total' => $total,
+                                                        'type' => $type,
+                                                        'process' => $process,
+                                                        'primary' => true,
+                                                        'microtime' => str_replace(".", "", microtime(true))
+                                                    ]);
+                                                }
+                                            }
+                                            // dd($parity_orders_buy_count); //Null Check yapılacak
+
+                                        } else {
+                                            // dd($randomDecimal, $up_current_btc_price);
+                                            for ($i = 0; $i < $btc_buy_order_count; $i++) { //Satış For Döngüsü
+                                                if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                    $orderAmount = rand($min_token, $max_token);
+                                                } else {
+                                                    $decimals = 10;
+                                                    $div = pow(10, $decimals);
+                                                    $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                    // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                }
+
+                                                $decimals = 10;
+                                                $div = pow(10, $decimals);
+                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_btc_price * $div), sprintf('%.' . $price_scale_count . 'f', $buy_decimal * $div)) / $div));
+                                                // $randomDecimal = (mt_rand($down_current_btc_price * pow(10, $price_scale_count), $buy_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                $amount = $orderAmount;
+                                                $price = $randomDecimal;
+                                                $total = $price * $amount;
+                                                $type = "limit";
+                                                $process = "buy";
+                                                Order::create([
+                                                    'uuid' => Uuid::uuid4(),
+                                                    'parities_id' => $parities_id,
+                                                    'users_id' => $users_id,
+                                                    'price' => $price,
+                                                    'amount' => $amount,
+                                                    'total' => $total,
+                                                    'type' => $type,
+                                                    'process' => $process,
+                                                    'primary' => true,
+                                                    'microtime' => str_replace(".", "", microtime(true))
+                                                ]);
+                                            }
+                                        }
+
+                                        $current_price = $market[$bot_parities[$c]['parities']['source']['symbol'] . "-" . $bot_parities[$c]['parities']['coin']['symbol']]['parity_price']['price']['value'];
+                                        // $orderAmount = rand($min_token, $max_token);
+                                        $randomDecimal = $current_price;
+                                        $sell_decimal = $randomDecimal + (($randomDecimal * $btc_buy_spread) / 100);
+                                        $up_current_btc_price = $sell_decimal + (($sell_decimal * $btc_sell_spread) / 100);
+                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                        if (!empty($is_parity_orders_sell->toArray())) {
+
+                                            $parity_orders_sell_count = $is_parity_orders_sell->count();
+                                            if ($parity_orders_sell_count > $btc_sell_order_count) {
+                                                for ($i = 0; $i < abs($parity_orders_sell_count - $btc_sell_order_count); $i++) {
+                                                    $is_parity_orders_sell = collect($is_parity_orders_sell)->map(function ($item){
+                                                        return $item;
+                                                    })->sortBy('price')->first();
+                                                    Order::where('id',$is_parity_orders_sell->id)->delete();
+
+                                                }
+                                            } else {
+
+
+                                                for ($i = 0; $i < abs($btc_sell_order_count - $parity_orders_sell_count); $i++) {
+                                                    if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                        $orderAmount = rand($min_token, $max_token);
+                                                    } else {
+                                                        $decimals = 10;
+                                                        $div = pow(10, $decimals);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                        // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                    }
+
+                                                    $decimals = 10;
+                                                    $div = pow(10, $decimals);
+                                                    // $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div)) / $div));
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $sell_decimal * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_btc_price * $div)) / $div));
+                                                    // $randomDecimal = (mt_rand($up_current_btc_price * pow(10, $price_scale_count), $sell_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                    $amount = $orderAmount;
+                                                    $price = $randomDecimal;
+                                                    $total = $price * $amount;
+                                                    $type = "limit";
+                                                    $process = "sell";
+                                                    Order::create([
+                                                        'uuid' => Uuid::uuid4(),
+                                                        'parities_id' => $parities_id,
+                                                        'users_id' => $users_id,
+                                                        'price' => $price,
+                                                        'amount' => $amount,
+                                                        'total' => $total,
+                                                        'type' => $type,
+                                                        'process' => $process,
+                                                        'primary' => true,
+                                                        'microtime' => str_replace(".", "", microtime(true))
+                                                    ]);
+                                                }
+                                            }
+                                        } else {
+
+                                            // dd($sell_decimal,"down".$up_current_btc_price);
+                                            // dd($randomDecimal, $down_current_btc_price);
+                                            for ($i = 0; $i < $btc_sell_order_count; $i++) { //Alış For Döngüsü
+                                                if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                    $orderAmount = rand($min_token, $max_token);
+                                                } else {
+                                                    $decimals = 10;
+                                                    $div = pow(10, $decimals);
+                                                    $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                    // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                }
+
+                                                $decimals = 10;
+                                                $div = pow(10, $decimals);
+                                                //TODO: Burada Min > Max olduğu için hata veriyor. Diğerleri de kontrol edilecek.
+                                                // dd($up_current_btc_price,$sell_decimal, $old_price, $new_price);
+                                                // $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$up_current_btc_price * $div), sprintf('%.'.$price_scale_count.'f',$sell_decimal * $div)) / $div));
+                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $sell_decimal * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_btc_price * $div)) / $div));
+                                                // $randomDecimal = (mt_rand($up_current_btc_price * pow(10, $price_scale_count), $sell_decimal * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                $amount = $orderAmount;
+                                                $price = $randomDecimal;
+                                                $total = $price * $amount;
+                                                $type = "limit";
+                                                $process = "sell";
                                                 Order::create([
                                                     'uuid' => Uuid::uuid4(),
                                                     'parities_id' => $parities_id,
@@ -643,19 +774,18 @@ class MarketMaker implements ShouldQueue
                                 $parity_price = $parities->where('parities_id', $parities_id)->where('type', 'price')->where('source', 'local')->orderBy('id', 'DESC')->limit(2)->get();
                                 $old_price = $parity_price->last()['value'];
                                 $new_price = $parity_price->first()['value'];
-
                                 if ($old_price == 0 || $new_price == 0) {
 
                                     throw new \Exception("Son fiyatlar 0 dan farklı olmalıdır.");
                                 }
-                                // dd($old_price,$new_price);
+//                                 dd($old_price,$new_price);
                                 if ($old_price != $new_price) {
 
                                     try {
                                         $randomDecimal = $current_price;
                                         // dd($randomDecimal,$up_current_price,$down_current_price);
                                         $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
-                                        
+
                                         // dd("ok");
                                         if (!empty($is_parity_orders_sell->toArray())) {
 
@@ -668,13 +798,13 @@ class MarketMaker implements ShouldQueue
 
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                     }
-                                                    
+
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$current_price * $div), sprintf('%.'.$price_scale_count.'f',$up_current_price * $div)) / $div));
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $current_price * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_price * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
 
                                                     $is_parity_orders_sell[$i]->update([
@@ -690,14 +820,14 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                     }
 
-                                                    
+
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$current_price * $div), sprintf('%.'.$price_scale_count.'f',$up_current_price * $div)) / $div));
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $current_price * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_price * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
 
                                                     $is_parity_orders_sell[$i]->update([
@@ -706,40 +836,51 @@ class MarketMaker implements ShouldQueue
                                                         'total' => $randomDecimal * $orderAmount
                                                     ]);
                                                 }
+                                                //databasedeki order sayısı , market maker tablosundaki (yani istenen) order sayısından büyük ise
+                                                if ($parity_orders_sell_count > $sell_order_count) {
+                                                    for ($i = 0; $i < abs($parity_orders_sell_count - $sell_order_count); $i++) {
+                                                       $is_parity_orders_sell = collect($is_parity_orders_sell)->map(function ($item){
+                                                           return $item;
+                                                       })->sortBy('price')->first();
+                                                       Order::where('id',$is_parity_orders_sell->id)->delete();
 
-                                                for ($i = 0; $i < abs($sell_order_count - $parity_orders_sell_count); $i++) {
-                                                    if (is_int($min_token) === true && is_int($max_token) === true) {
-                                                        $orderAmount = rand($min_token, $max_token);
-                                                    } else {
+                                                    }
+                                                }
+                                                else{
+                                                    for ($i = 0; $i < abs($sell_order_count - $parity_orders_sell_count); $i++) {
+                                                        if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                            $orderAmount = rand($min_token, $max_token);
+                                                        } else {
+                                                            $decimals = 10;
+                                                            $div = pow(10, $decimals);
+                                                            $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                            // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                        }
+
+
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
-                                                        // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                        $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $current_price * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_price * $div)) / $div));
+
+                                                        // $randomDecimal = (mt_rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                        $amount = $orderAmount;
+                                                        $price = $randomDecimal;
+                                                        $total = $price * $amount;
+                                                        $type = "limit";
+                                                        $process = "sell";
+                                                        Order::create([
+                                                            'uuid' => Uuid::uuid4(),
+                                                            'parities_id' => $parities_id,
+                                                            'users_id' => $users_id,
+                                                            'price' => $price,
+                                                            'amount' => $amount,
+                                                            'total' => $total,
+                                                            'type' => $type,
+                                                            'process' => $process,
+                                                            'primary' => true,
+                                                            'microtime' => str_replace(".", "", microtime(true))
+                                                        ]);
                                                     }
-
-
-                                                    $decimals = 10;
-                                                    $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$current_price * $div), sprintf('%.'.$price_scale_count.'f',$up_current_price * $div)) / $div));
-                                                    
-                                                    // $randomDecimal = (mt_rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
-                                                    $amount = $orderAmount;
-                                                    $price = $randomDecimal;
-                                                    $total = $price * $amount;
-                                                    $type = "limit";
-                                                    $process = "sell";
-                                                    Order::create([
-                                                        'uuid' => Uuid::uuid4(),
-                                                        'parities_id' => $parities_id,
-                                                        'users_id' => $users_id,
-                                                        'price' => $price,
-                                                        'amount' => $amount,
-                                                        'total' => $total,
-                                                        'type' => $type,
-                                                        'process' => $process,
-                                                        'primary' => true,
-                                                        'microtime' => str_replace(".", "", microtime(true))
-                                                    ]);
                                                 }
                                             }
                                         } else {
@@ -749,15 +890,15 @@ class MarketMaker implements ShouldQueue
                                                 } else {
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                    $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                     // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                 }
 
-                                                
+
                                                 $decimals = 10;
                                                 $div = pow(10, $decimals);
-                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$current_price * $div), sprintf('%.'.$price_scale_count.'f',$up_current_price * $div)) / $div));
-                                                
+                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $current_price * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_price * $div)) / $div));
+
                                                 // $randomDecimal = (mt_rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
                                                 $amount = $orderAmount;
                                                 $price = $randomDecimal;
@@ -793,16 +934,15 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                     }
 
-                                                    
+
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_price * $div), sprintf('%.'.$price_scale_count.'f',$current_price * $div)) / $div));
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_price * $div), sprintf('%.' . $price_scale_count . 'f', $current_price * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
-
                                                     $is_parity_orders_buy[$i]->update([
                                                         'price' => $randomDecimal,
                                                         'amount' => $orderAmount,
@@ -816,14 +956,14 @@ class MarketMaker implements ShouldQueue
                                                     } else {
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                         // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                     }
 
-                                                    
+
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_price * $div), sprintf('%.'.$price_scale_count.'f',$current_price * $div)) / $div));
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_price * $div), sprintf('%.' . $price_scale_count . 'f', $current_price * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
 
                                                     $is_parity_orders_buy[$i]->update([
@@ -832,39 +972,50 @@ class MarketMaker implements ShouldQueue
                                                         'total' => $randomDecimal * $orderAmount
                                                     ]);
                                                 }
+                                                if ($parity_orders_buy_count > $buy_order_count) {
+                                                    for ($i = 0; $i < abs($parity_orders_buy_count - $buy_order_count); $i++) {
+                                                        $is_parity_orders_buy = collect($is_parity_orders_buy)->map(function ($item){
+                                                            return $item;
+                                                        })->sortBy('price')->first();
+                                                        Order::where('id',$is_parity_orders_buy->id)->delete();
 
-                                                for ($i = 0; $i < abs($buy_order_count - $parity_orders_buy_count); $i++) {
-                                                    if (is_int($min_token) === true && is_int($max_token) === true) {
-                                                        $orderAmount = rand($min_token, $max_token);
-                                                    } else {
+                                                    }
+                                                }
+
+                                                else{
+                                                    for ($i = 0; $i < abs($buy_order_count - $parity_orders_buy_count); $i++) {
+                                                        if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                            $orderAmount = rand($min_token, $max_token);
+                                                        } else {
+                                                            $decimals = 10;
+                                                            $div = pow(10, $decimals);
+                                                            $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                            // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                        }
+
+
                                                         $decimals = 10;
                                                         $div = pow(10, $decimals);
-                                                        $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
-                                                        // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                        $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_price * $div), sprintf('%.' . $price_scale_count . 'f', $current_price * $div)) / $div));
+                                                        // $randomDecimal = (mt_rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                        $amount = $orderAmount;
+                                                        $price = $randomDecimal;
+                                                        $total = $price * $amount;
+                                                        $type = "limit";
+                                                        $process = "buy";
+                                                        Order::create([
+                                                            'uuid' => Uuid::uuid4(),
+                                                            'parities_id' => $parities_id,
+                                                            'users_id' => $users_id,
+                                                            'price' => $price,
+                                                            'amount' => $amount,
+                                                            'total' => $total,
+                                                            'type' => $type,
+                                                            'process' => $process,
+                                                            'primary' => true,
+                                                            'microtime' => str_replace(".", "", microtime(true))
+                                                        ]);
                                                     }
-
-                                                    
-                                                    $decimals = 10;
-                                                    $div = pow(10, $decimals);
-                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_price * $div), sprintf('%.'.$price_scale_count.'f',$current_price * $div)) / $div));
-                                                    // $randomDecimal = (mt_rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
-                                                    $amount = $orderAmount;
-                                                    $price = $randomDecimal;
-                                                    $total = $price * $amount;
-                                                    $type = "limit";
-                                                    $process = "buy";
-                                                    Order::create([
-                                                        'uuid' => Uuid::uuid4(),
-                                                        'parities_id' => $parities_id,
-                                                        'users_id' => $users_id,
-                                                        'price' => $price,
-                                                        'amount' => $amount,
-                                                        'total' => $total,
-                                                        'type' => $type,
-                                                        'process' => $process,
-                                                        'primary' => true,
-                                                        'microtime' => str_replace(".", "", microtime(true))
-                                                    ]);
                                                 }
                                             }
                                         } else {
@@ -874,14 +1025,203 @@ class MarketMaker implements ShouldQueue
                                                 } else {
                                                     $decimals = 10;
                                                     $div = pow(10, $decimals);
-                                                    $orderAmount = sprintf('%.'.$scale_count.'f',mt_rand(sprintf('%.'.$scale_count.'f',$min_token) * $div, sprintf('%.'.$scale_count.'f',$max_token) * $div) / $div);
+                                                    $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
                                                     // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
                                                 }
 
-                                                
+
                                                 $decimals = 10;
                                                 $div = pow(10, $decimals);
-                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.'.$price_scale_count.'f',$down_current_price * $div), sprintf('%.'.$price_scale_count.'f',$current_price * $div)) / $div));
+                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_price * $div), sprintf('%.' . $price_scale_count . 'f', $current_price * $div)) / $div));
+                                                // $randomDecimal = (mt_rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                $amount = $orderAmount;
+                                                $price = $randomDecimal;
+                                                $total = $price * $amount;
+                                                $type = "limit";
+                                                $process = "buy";
+                                                Order::create([
+                                                    'uuid' => Uuid::uuid4(),
+                                                    'parities_id' => $parities_id,
+                                                    'users_id' => $users_id,
+                                                    'price' => $price,
+                                                    'amount' => $amount,
+                                                    'total' => $total,
+                                                    'type' => $type,
+                                                    'process' => $process,
+                                                    'primary' => true,
+                                                    'microtime' => str_replace(".", "", microtime(true))
+                                                ]);
+                                            }
+                                        }
+                                    } catch (\Exception $e) {
+                                        report($e);
+                                    }
+                                }
+                                //old price ve new price eşit değilse yani sabitse
+                                else{
+                                    try {
+                                        $randomDecimal = $current_price;
+                                        // dd($randomDecimal,$up_current_price,$down_current_price);
+                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+
+                                        // dd("ok");
+                                        if (!empty($is_parity_orders_sell->toArray())) {
+
+                                            $parity_orders_sell_count = $is_parity_orders_sell->count();
+                                            if ($parity_orders_sell_count != $sell_order_count) {
+                                                //databasedeki order sayısı , market maker tablosundaki (yani istenen) order sayısından büyük ise
+                                                if ($parity_orders_sell_count > $sell_order_count) {
+                                                    for ($i = 0; $i < abs($parity_orders_sell_count - $sell_order_count); $i++) {
+                                                        $is_parity_orders_sell = collect($is_parity_orders_sell)->map(function ($item){
+                                                            return $item;
+                                                        })->sortBy('price')->first();
+                                                        Order::where('id',$is_parity_orders_sell->id)->delete();
+
+                                                    }
+                                                }
+                                                else{
+                                                    for ($i = 0; $i < abs($sell_order_count - $parity_orders_sell_count); $i++) {
+                                                        if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                            $orderAmount = rand($min_token, $max_token);
+                                                        } else {
+                                                            $decimals = 10;
+                                                            $div = pow(10, $decimals);
+                                                            $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                            // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                        }
+
+
+                                                        $decimals = 10;
+                                                        $div = pow(10, $decimals);
+                                                        $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $current_price * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_price * $div)) / $div));
+
+                                                        // $randomDecimal = (mt_rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                        $amount = $orderAmount;
+                                                        $price = $randomDecimal;
+                                                        $total = $price * $amount;
+                                                        $type = "limit";
+                                                        $process = "sell";
+                                                        Order::create([
+                                                            'uuid' => Uuid::uuid4(),
+                                                            'parities_id' => $parities_id,
+                                                            'users_id' => $users_id,
+                                                            'price' => $price,
+                                                            'amount' => $amount,
+                                                            'total' => $total,
+                                                            'type' => $type,
+                                                            'process' => $process,
+                                                            'primary' => true,
+                                                            'microtime' => str_replace(".", "", microtime(true))
+                                                        ]);
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            for ($i = 0; $i < $sell_order_count; $i++) { //Satış For Döngüsü
+                                                if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                    $orderAmount = rand($min_token, $max_token);
+                                                } else {
+                                                    $decimals = 10;
+                                                    $div = pow(10, $decimals);
+                                                    $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                    // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                }
+
+
+                                                $decimals = 10;
+                                                $div = pow(10, $decimals);
+                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $current_price * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_price * $div)) / $div));
+
+                                                // $randomDecimal = (mt_rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                $amount = $orderAmount;
+                                                $price = $randomDecimal;
+                                                $total = $price * $amount;
+                                                $type = "limit";
+                                                $process = "sell";
+                                                Order::create([
+                                                    'uuid' => Uuid::uuid4(),
+                                                    'parities_id' => $parities_id,
+                                                    'users_id' => $users_id,
+                                                    'price' => $price,
+                                                    'amount' => $amount,
+                                                    'total' => $total,
+                                                    'type' => $type,
+                                                    'process' => $process,
+                                                    'primary' => true,
+                                                    'microtime' => str_replace(".", "", microtime(true))
+                                                ]);
+                                            }
+                                        }
+
+                                        $current_price = $market[$bot_parities[$c]['parities']['source']['symbol'] . "-" . $bot_parities[$c]['parities']['coin']['symbol']]['parity_price']['price']['value'];
+                                        // $orderAmount = rand($min_token, $max_token);
+                                        $randomDecimal = $current_price;
+                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                        // dd($is_parity_orders_buy);
+                                        if (!empty($is_parity_orders_buy->toArray())) {
+                                            $parity_orders_buy_count = $is_parity_orders_buy->count();
+                                            if ($parity_orders_buy_count != $buy_order_count) {
+                                                if ($parity_orders_buy_count > $buy_order_count) {
+                                                    for ($i = 0; $i < abs($parity_orders_buy_count - $buy_order_count); $i++) {
+                                                        $is_parity_orders_buy = collect($is_parity_orders_buy)->map(function ($item){
+                                                            return $item;
+                                                        })->sortBy('price')->first();
+                                                        Order::where('id',$is_parity_orders_buy->id)->delete();
+
+                                                    }
+                                                }
+
+                                                else{
+                                                    for ($i = 0; $i < abs($buy_order_count - $parity_orders_buy_count); $i++) {
+                                                        if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                            $orderAmount = rand($min_token, $max_token);
+                                                        } else {
+                                                            $decimals = 10;
+                                                            $div = pow(10, $decimals);
+                                                            $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                            // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                        }
+
+
+                                                        $decimals = 10;
+                                                        $div = pow(10, $decimals);
+                                                        $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_price * $div), sprintf('%.' . $price_scale_count . 'f', $current_price * $div)) / $div));
+                                                        // $randomDecimal = (mt_rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                        $amount = $orderAmount;
+                                                        $price = $randomDecimal;
+                                                        $total = $price * $amount;
+                                                        $type = "limit";
+                                                        $process = "buy";
+                                                        Order::create([
+                                                            'uuid' => Uuid::uuid4(),
+                                                            'parities_id' => $parities_id,
+                                                            'users_id' => $users_id,
+                                                            'price' => $price,
+                                                            'amount' => $amount,
+                                                            'total' => $total,
+                                                            'type' => $type,
+                                                            'process' => $process,
+                                                            'primary' => true,
+                                                            'microtime' => str_replace(".", "", microtime(true))
+                                                        ]);
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            for ($i = 0; $i < $buy_order_count; $i++) { //Alış For Döngüsü
+                                                if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                    $orderAmount = rand($min_token, $max_token);
+                                                } else {
+                                                    $decimals = 10;
+                                                    $div = pow(10, $decimals);
+                                                    $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                    // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                }
+
+
+                                                $decimals = 10;
+                                                $div = pow(10, $decimals);
+                                                $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_price * $div), sprintf('%.' . $price_scale_count . 'f', $current_price * $div)) / $div));
                                                 // $randomDecimal = (mt_rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
                                                 $amount = $orderAmount;
                                                 $price = $randomDecimal;

@@ -44,13 +44,13 @@ return [
 
         'kyc' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/kyc'),
-            'url' => env('APP_URL') . '/storage',
+            'root' => 'D:\Repo\coinswifter_backup\coinswifter16.04.2022\public\kyc',
+            'url' => env('APP_URL') . '/storage/kyc',
             'visibility' => 'public',
         ],
         'ticket' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/ticket'),
+            'root' => 'D:\Repo\coinswifter_backup\coinswifter16.04.2022\public\storage\public\ticket',
             'url' => env('APP_URL') . '/storage/ticket',
             'visibility' => 'public',
         ],
