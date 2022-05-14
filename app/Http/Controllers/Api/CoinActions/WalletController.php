@@ -296,7 +296,7 @@ class WalletController extends Controller
                 if (!empty($data->user_coin->user_withdrawal_wallet)) {
                     foreach ($data->user_coin->user_withdrawal_wallet as $user_withdrawal_wallet) {
                         if ($user_withdrawal_wallet->status === 0) {
-                            $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal_wallet->amount), null)->innerValue();
+                            $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal_wallet->amount), $data->precision)->innerValue();
                         }
                         $newData['user_withdrawal_wallet'][] = [
                             'uuid' => $user_withdrawal_wallet->uuid,
@@ -316,7 +316,7 @@ class WalletController extends Controller
                 if (!empty($data->user_coin->user_withdrawal)) {
                     foreach ($data->user_coin->user_withdrawal as $user_withdrawal) {
                         if ($user_withdrawal->status === 0) {
-                            $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal->amount), null)->innerValue();
+                            $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString($user_withdrawal->amount), $data->precision)->innerValue();
                         }
                         $newData['user_withdrawal'][] = [
                             'amount' => $user_withdrawal->amount,
@@ -341,7 +341,7 @@ class WalletController extends Controller
                             $newData['is_deleted'] = !empty($item->deleted_at);
                             return $newData;
                         })->toArray());
-                        $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($parity->orders->pluck('amount')->toArray())), null)->innerValue();
+                        $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($parity->orders->pluck('amount')->toArray())), $data->precision)->innerValue();
 
                     }
                 }
@@ -358,7 +358,7 @@ class WalletController extends Controller
                             $newData['is_deleted'] = !empty($item->deleted_at);
                             return $newData;
                         })->toArray());
-                        $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($parity->orders->pluck('total')->toArray())), null)->innerValue();
+                        $newData['locked'] = \Litipk\BigNumbers\Decimal::fromString($newData['locked'])->add(\Litipk\BigNumbers\Decimal::fromString(decimal_sum($parity->orders->pluck('total')->toArray())), $data->precision)->innerValue();
                     }
                 }
 
@@ -379,7 +379,7 @@ class WalletController extends Controller
                         })->first()->value;
                     }
                 }
-                $newData['balance'] = \Litipk\BigNumbers\Decimal::fromString($newData['balance'])->sub(\Litipk\BigNumbers\Decimal::fromString($newData['locked']), null)->innerValue();
+                $newData['balance'] = \Litipk\BigNumbers\Decimal::fromString($newData['balance'])->sub(\Litipk\BigNumbers\Decimal::fromString($newData['locked']), $data->precision)->innerValue();
                 $newData['balance'] = priceFormat($newData['balance']);
                 $newData['locked'] = priceFormat($newData['locked']);
                 return [$data->symbol => $newData];

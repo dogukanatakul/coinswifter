@@ -21,6 +21,11 @@
       </tbody>
     </table>
   </div>
+    <b-row class="mt-3">
+        <div class="d-grid gap-2">
+            <b-button @click="signOut" block variant="primary">{{ $t("Oturumu Kapat") }}</b-button>
+        </div>
+    </b-row>
 </template>
 
 <script>
@@ -42,6 +47,15 @@ export default {
         } else if (response.status === "fail") {
           this.$notify({ text: response.message, type: "error" });
         }
+      });
+    },
+    async signOut() {
+      await restAPI.getData({ Action: "sign-out" }).then((response) => {
+        // if (response.status === "success") {
+        //   // this.sessions = response.sessions;
+        // } else if (response.status === "fail") {
+        //   this.$notify({ text: response.message, type: "error" });
+        // }
       });
     },
   },

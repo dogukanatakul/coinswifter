@@ -191,10 +191,9 @@
                 }
 
                 .p-tabview-title {
-
                     overflow: hidden;
                     white-space: nowrap;
-                    text-overflow: ellipsis;
+                    line-height: 2;
                 }
 
                 .p-highlight {
@@ -209,7 +208,6 @@
             }
         }
     }
-
 
     .coin-prices {
         width: 98%;
@@ -246,7 +244,7 @@
                     font-size: var(--fontSize) !important;
                     overflow: hidden;
                     white-space: nowrap;
-                    text-overflow: ellipsis;
+                    margin-right: -24px;
                 }
 
                 .price {

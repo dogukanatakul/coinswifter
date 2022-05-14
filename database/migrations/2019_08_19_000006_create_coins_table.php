@@ -32,6 +32,7 @@ class CreateCoinsTable extends Migration
             $table->dateTime('start_time')->default(null)->nullable();
             $table->bigInteger('supply_max')->default(0);
             $table->bigInteger('supply_total')->default(0);
+            $table->integer('precision')->default(10);
             $table->timestamps();
             $table->softDeletes();
         });

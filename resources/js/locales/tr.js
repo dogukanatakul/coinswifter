@@ -155,10 +155,10 @@ export default {
     "CoinSwifter Borsası Broovs (BRS) Ekosistemi Projesidir.":
         "CoinSwifter Borsası Broovs (BRS) Ekosistemi Projesidir.",
     "CoinSwifter.com'da!": "CoinSwifter.com'da!",
-    "Değişim (24S)": "Değişim (24S)",
-    "En Yüksek (24S)": "En Yüksek (24S)",
-    "En Düşük (24S)": "En Düşük (24S)",
-    "Hacim (24S)": "Hacim (24S)",
+    "Değişim (24S)": "Değişim(24S)",
+    "En Yüksek (24S)": "En Yüksek(24S)",
+    "En Düşük (24S)": "En Düşük(24S)",
+    "Hacim (24S)": "Hacim(24S)",
     "Grafik verileri getiriliyor..": "Grafik verileri getiriliyor..",
     "Borsa verileri getiriliyor..": "Borsa verileri getiriliyor..",
     "Ödeme Yöntemlerim": "Ödeme Yöntemlerim",
@@ -259,6 +259,7 @@ export default {
     "Platform": "Platform",
     "Cihaz": "Cihaz",
     "Tarayıcı": "Tarayıcı",
+    "Oturumu Kapat": "Oturumu Kapat",
     "Son Oturum Tarihi": "Son Oturum Tarihi",
     "Sözleşmeleri Onaylamanız Gerekli": "Sözleşmeleri Onaylamanız Gerekli",
     "Lütfen kullanıcı sözleşmesini okuyup onaylayınız.":
@@ -391,6 +392,7 @@ export default {
     "Lütfen alanları doğru şekilde doldurun ve bakiyenizin yeterli olduğundan emin olun.":
         "Lütfen alanları doğru şekilde doldurun ve bakiyenizin yeterli olduğundan emin olun.",
     "Emirlerim": "Emirlerim",
+    'Kurumsal Hizmetler': "Kurumsal Hizmetler",
     "Silmek istediğinize emin misiniz?": "Silmek istediğinize emin misiniz?",
     "Emir Silme İşlemi": "Emir Silme İşlemi",
     "Evet": "Evet",

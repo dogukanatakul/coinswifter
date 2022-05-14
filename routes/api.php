@@ -68,6 +68,7 @@ Route::group([
         Route::post('/verification-info', [\App\Http\Controllers\Api\AuthController::class, 'verificationInfo']);
         Route::post('/contact-verify', [\App\Http\Controllers\Api\AuthController::class, 'contractVerify']);
         Route::post('/user', [\App\Http\Controllers\Api\AuthController::class, 'user']);
+        Route::post('/sign-out', [\App\Http\Controllers\Api\AuthController::class, 'signOut']);
 
         Route::post('/order', [\App\Http\Controllers\Api\CoinActions\CoinsController::class, 'order'])
             ->middleware([

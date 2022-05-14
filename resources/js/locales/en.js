@@ -143,6 +143,7 @@ export default {
     "Yapacağınız alım - satım işlemleri ile alakalı günün 24 saati destek talebinde bulunabilirsiniz.":
         "You can request support 24 hours a day for your purchase and sale transactions.",
     "Canlı Döviz Kuru": "Live Exchange Rate",
+    'Kurumsal Hizmetler': "Corporative Services",
     "Alım satım işlemleriniz için canlı döviz kuru bazında işlemleriniz gerçekleştirilmektedir.":
         "For your buying and selling transactions, your transactions are carried out on the basis of the live exchange rate.",
     "SSL Sertifikalı Koruma": "SSL Certified Protection",
@@ -151,10 +152,10 @@ export default {
     "CoinSwifter Borsası Broovs (BRS) Ekosistemi Projesidir.":
         "CoinSwifter Exchange Broovs (BRS) Ecosystem Project.",
     "CoinSwifter.com'da!": "On CoinSwifter.com!",
-    "Değişim (24S)": "Exchange (24H)",
-    "En Yüksek (24S)": "Highest (24H)",
-    "En Düşük (24S)": "Lowest (24H)",
-    "Hacim (24S)": "Volume (24H)",
+    "Değişim (24S)": "Exchange(24H)",
+    "En Yüksek (24S)": "Highest(24H)",
+    "En Düşük (24S)": "Lowest(24H)",
+    "Hacim (24S)": "Volume(24H)",
     "Grafik verileri getiriliyor..": "Graph data is fetched.",
     "Borsa verileri getiriliyor..": "Stock market data is fetched.",
     "Ödeme Yöntemlerim": "My Payment Methods",
@@ -256,6 +257,7 @@ export default {
     "Cihaz": "Device",
     "Tarayıcı": "Scanner",
     "Son Oturum Tarihi": "Last Session Date",
+    "Oturumu Kapat": "Sign Out",
     "Sözleşmeleri Onaylamanız Gerekli": "You Need to Approve Contracts",
     "Lütfen kullanıcı sözleşmesini okuyup onaylayınız.":
         "Please read and confirm the user agreement.",

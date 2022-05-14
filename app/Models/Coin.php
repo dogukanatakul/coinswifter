@@ -33,6 +33,7 @@ class Coin extends Model
         'start_time',
         'supply_max',
         'supply_total',
+        'precision'
     ];
 
     protected $hidden = [

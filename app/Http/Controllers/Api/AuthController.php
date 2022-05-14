@@ -26,8 +26,10 @@ use App\Models\UserKyc;
 use App\Models\UserReference;
 use App\Models\UserVerification;
 use App\Models\UserWallet;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -35,7 +37,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use Ramsey\Uuid\Uuid;
-
 class AuthController extends Controller
 {
 
@@ -148,7 +149,14 @@ class AuthController extends Controller
                 'message' => __('api_messages.user_age_fail_message', ['age' => 18])
             ]);
         }
-
+        $timeDay = new DateTime(now()->subDay(1));
+        $check = LogActivity::where('created_at', '>', $timeDay)->whereNull('users_id')->where('path','api/signup')->where('status','success')->orderBy('id', 'DESC')->get()->groupBy(['ip'])->count();
+        if ($check > 2 ){
+            return response()->json([
+                'status' => 'fail',
+                'message' => __('api_messages.user_signup_times_fail_message')
+            ]);
+        }
         if ($request->nationality == 218) {
             $client = new \SoapClient("https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL");
             try {
@@ -499,6 +507,16 @@ class AuthController extends Controller
     public function logout(): \Illuminate\Http\JsonResponse
     {
         session()->forget('user');
+        return response()->json([
+            'status' => 'success',
+            'message' => __('api_messages.user_logout_success_message')
+        ]);
+    }
+
+    public function signOut(): \Illuminate\Http\JsonResponse
+    {
+        $pass = User::find($this->user->id)->password;
+        Auth::logoutOtherDevices($pass,'password');
         return response()->json([
             'status' => 'success',
             'message' => __('api_messages.user_logout_success_message')

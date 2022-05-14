@@ -152,7 +152,7 @@
                     <td>{{ order.operation }}</td>
                     <td>{{ order.created_at }}</td>
                     <td>
-                        <b-button v-if="!order.is_deleted" squared variant="outline-danger" @click="deleteOrder(order.microtime)" size="sm">
+                        <b-button v-if="!order.is_deleted" squared variant="outline-danger" @click="deleteOrder(order.uuid)" size="sm">
                             <b-icon icon="x-circle" font-scale="0.5"></b-icon>
                         </b-button>
                     </td>

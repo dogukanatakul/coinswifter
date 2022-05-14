@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Coin;
 use App\Models\Order;
 use App\Models\Parity;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +34,18 @@ class CoinsController extends Controller
         DB::beginTransaction();
         try {
             if (!empty($order = Order::where('users_id', $this->user->id)->where('uuid', $uuid)->first())) {
-                $order->delete();
+                $start = strtotime(Carbon::now()->format('Y-m-d H:i:s'));
+                $end = strtotime($order->created_at->format('Y-m-d H:i:s'));
+                $mins = ($start - $end) / 60;
+                if (($mins < 1 ) && ($mins > 0) ){
+                    $order->delete();
+                }
+                else{
+                    return response()->json([
+                        'status' => 'fail',
+                        'message' => __('api_messages.delete_order_fail_time_message')
+                    ]);
+                }
             }
             DB::commit();
             return response()->json([

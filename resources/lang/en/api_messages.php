@@ -32,6 +32,8 @@ return [
     'transfer_fail_is_wallet_message' => 'The wallet code is incorrect!',
     'delete_order_success_message' => 'Your order has been successfully stopped.',
     'delete_order_fail_message' => 'No order to delete found!',
+    'delete_order_fail_time_message' => 'Order cannot be canceled after 1 minute has passed.',
+    'user_signup_times_fail_message' => 'You can create a maximum of 2 new records in 1 day.',
     'update_success_message' => 'Your address information has been successfully updated',
     'adress_req' => 'Citizens of Turkey cannot create a wallet without an address notification!',
     'bank_set_success_message' => 'Your payment method has been successfully added.',
