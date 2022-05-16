@@ -62,6 +62,7 @@ class MarketMaker implements ShouldQueue
                     $newItem['commission'] = priceFormat($item['commission']['commission']);
                     return [$item['source']['symbol'] . "-" . $item['coin']['symbol'] => $newItem];
                 })->toArray();
+                
                 //MarketMaker alış - satış emirlerini girme (Parametreler baz alınacak)
                 if (!empty($market[$bot_parities[$c]['parities']['source']['symbol'] . "-" . $bot_parities[$c]['parities']['coin']['symbol']])) {
 
@@ -108,7 +109,7 @@ class MarketMaker implements ShouldQueue
                                         $randomDecimal = $current_price;
                                         $buy_decimal = $randomDecimal - (($randomDecimal * $percent) / 100);
                                         $down_current_btc_price = $buy_decimal - (($buy_decimal * $btc_buy_spread) / 100);
-                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->where('primary',true)->whereNull('deleted_at')->get();
                                         if (!empty($is_parity_orders_buy->toArray())) {
 
                                             $parity_orders_buy_count = $is_parity_orders_buy->count();
@@ -118,7 +119,7 @@ class MarketMaker implements ShouldQueue
                                                         return $item;
                                                     })->sortBy('price')->first();
                                                     Order::where('id', $is_parity_orders_buy->id)->delete();
-                                                    $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                                    $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->where('primary', true)->whereNull('deleted_at')->get();
                                                 }
                                             } else {
                                                 //Eski fiyatları güncelleme komutu
@@ -225,7 +226,7 @@ class MarketMaker implements ShouldQueue
 
                                         $up_current_btc_price = $sell_decimal + (($sell_decimal * $btc_sell_spread) / 100);
 
-                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->where('primary', true)->whereNull('deleted_at')->get();
                                         if (!empty($is_parity_orders_sell->toArray())) {
 
                                             $parity_orders_sell_count = $is_parity_orders_sell->count();
@@ -235,7 +236,7 @@ class MarketMaker implements ShouldQueue
                                                         return $item;
                                                     })->sortBy('price')->first();
                                                     Order::where('id', $is_parity_orders_sell->id)->delete();
-                                                    $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                                    $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->where('primary', true)->whereNull('deleted_at')->get();
                                                 }
                                             } else {
                                                 for ($i = 0; $i < $parity_orders_sell_count; $i++) {
@@ -344,7 +345,7 @@ class MarketMaker implements ShouldQueue
 
                                         $up_current_btc_price = $sell_decimal + (($sell_decimal * $btc_sell_spread) / 100);
 
-                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->where('primary', true)->whereNull('deleted_at')->get();
                                         if (!empty($is_parity_orders_sell->toArray())) {
                                             $parity_orders_sell_count = $is_parity_orders_sell->count();
                                             if ($parity_orders_sell_count > $btc_sell_order_count) {
@@ -353,7 +354,7 @@ class MarketMaker implements ShouldQueue
                                                         return $item;
                                                     })->sortBy('price')->first();
                                                     Order::where('id', $is_parity_orders_sell->id)->delete();
-                                                    $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                                    $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->where('primary', true)->whereNull('deleted_at')->get();
                                                 }
                                             } else {
                                                 for ($i = 0; $i < $parity_orders_sell_count; $i++) {
@@ -457,7 +458,7 @@ class MarketMaker implements ShouldQueue
                                         $buy_decimal = $randomDecimal + (($randomDecimal * $percent) / 100);
                                         $down_current_btc_price = $buy_decimal - (($buy_decimal * $btc_buy_spread) / 100);
 
-                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->where('primary', true)->whereNull('deleted_at')->get();
                                         if (!empty($is_parity_orders_buy->toArray())) {
 
                                             $parity_orders_buy_count = $is_parity_orders_buy->count();
@@ -467,7 +468,7 @@ class MarketMaker implements ShouldQueue
                                                         return $item;
                                                     })->sortBy('price')->first();
                                                     Order::where('id', $is_parity_orders_buy->id)->delete();
-                                                    $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                                    $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->where('primary', true)->whereNull('deleted_at')->get();
                                                 }
                                             } else {
                                                 for ($i = 0; $i < $parity_orders_buy_count; $i++) {
@@ -568,11 +569,11 @@ class MarketMaker implements ShouldQueue
                                     try {
                                         $percent = abs(100 - $parity_diff);
                                         $randomDecimal = $current_price;
-                                        
+
                                         $buy_decimal = $randomDecimal + (($randomDecimal * $percent) / 100);
                                         $down_current_btc_price = $buy_decimal - (($buy_decimal * $btc_buy_spread) / 100);
 
-                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->where('primary', true)->whereNull('deleted_at')->get();
 
                                         if (!empty($is_parity_orders_buy->toArray())) {
 
@@ -583,7 +584,7 @@ class MarketMaker implements ShouldQueue
                                                         return $item;
                                                     })->sortBy('price')->first();
                                                     Order::where('id', $is_parity_orders_buy->id)->delete();
-                                                    $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                                    $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->where('primary', true)->whereNull('deleted_at')->get();
                                                 }
                                             } else {
                                                 //Eski fiyatları güncelleme komutu
@@ -690,7 +691,7 @@ class MarketMaker implements ShouldQueue
                                         $sell_decimal = $randomDecimal + (($randomDecimal * $percent) / 100);
                                         $up_current_btc_price = $sell_decimal + (($sell_decimal * $btc_sell_spread) / 100);
 
-                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->where('primary', true)->whereNull('deleted_at')->get();
                                         if (!empty($is_parity_orders_sell->toArray())) {
 
                                             $parity_orders_sell_count = $is_parity_orders_sell->count();
@@ -700,7 +701,7 @@ class MarketMaker implements ShouldQueue
                                                         return $item;
                                                     })->sortBy('price')->first();
                                                     Order::where('id', $is_parity_orders_sell->id)->delete();
-                                                    $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                                    $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->where('primary', true)->whereNull('deleted_at')->get();
                                                 }
                                             } else {
                                                 //Eski Fiyatları Güncelleme Komutu
@@ -826,13 +827,14 @@ class MarketMaker implements ShouldQueue
 
                                     throw new \Exception("Son fiyatlar 0 dan farklı olmalıdır.");
                                 }
+                                
                                 // dd($old_price,$new_price);
                                 if ($old_price != $new_price) {
 
                                     try {
                                         $randomDecimal = $current_price;
                                         // dd($randomDecimal,$up_current_price,$down_current_price);
-                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->where('primary', true)->whereNull('deleted_at')->get();
 
                                         // dd("ok");
                                         if (!empty($is_parity_orders_sell->toArray())) {
@@ -854,7 +856,7 @@ class MarketMaker implements ShouldQueue
                                                     $div = pow(10, $decimals);
                                                     $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $current_price * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_price * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
-
+                                                    
                                                     $is_parity_orders_sell[$i]->update([
                                                         'price' => $randomDecimal,
                                                         'amount' => $orderAmount,
@@ -892,7 +894,7 @@ class MarketMaker implements ShouldQueue
                                                             return $item;
                                                         })->sortBy('price')->first();
                                                         Order::where('id', $is_parity_orders_sell->id)->delete();
-                                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->where('primary', true)->whereNull('deleted_at')->get();
                                                     }
                                                 } else {
                                                     for ($i = 0; $i < abs($sell_order_count - $parity_orders_sell_count); $i++) {
@@ -971,7 +973,7 @@ class MarketMaker implements ShouldQueue
                                         $current_price = $market[$bot_parities[$c]['parities']['source']['symbol'] . "-" . $bot_parities[$c]['parities']['coin']['symbol']]['parity_price']['price']['value'];
                                         // $orderAmount = rand($min_token, $max_token);
                                         $randomDecimal = $current_price;
-                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->where('primary', true)->whereNull('deleted_at')->get();
                                         // dd($is_parity_orders_buy);
                                         if (!empty($is_parity_orders_buy->toArray())) {
                                             $parity_orders_buy_count = $is_parity_orders_buy->count();
@@ -1026,7 +1028,7 @@ class MarketMaker implements ShouldQueue
                                                             return $item;
                                                         })->sortBy('price')->first();
                                                         Order::where('id', $is_parity_orders_buy->id)->delete();
-                                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->where('primary', true)->whereNull('deleted_at')->get();
                                                     }
                                                 } else {
                                                     for ($i = 0; $i < abs($buy_order_count - $parity_orders_buy_count); $i++) {
@@ -1103,12 +1105,12 @@ class MarketMaker implements ShouldQueue
                                         report($e);
                                     }
                                 }
-                                //old price ve new price eşit değilse yani sabitse
+                                //old price ve new price eşitse yani sabitse
                                 else {
                                     try {
                                         $randomDecimal = $current_price;
                                         // dd($randomDecimal,$up_current_price,$down_current_price);
-                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->where('primary', true)->whereNull('deleted_at')->get();
 
                                         // dd("ok");
                                         if (!empty($is_parity_orders_sell->toArray())) {
@@ -1122,7 +1124,7 @@ class MarketMaker implements ShouldQueue
                                                             return $item;
                                                         })->sortBy('price')->first();
                                                         Order::where('id', $is_parity_orders_sell->id)->delete();
-                                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->whereNull('deleted_at')->get();
+                                                        $is_parity_orders_sell = Order::where('parities_id', $parities_id)->where('process', 'sell')->where('primary', true)->whereNull('deleted_at')->get();
                                                     }
                                                 } else {
                                                     for ($i = 0; $i < abs($sell_order_count - $parity_orders_sell_count); $i++) {
@@ -1159,6 +1161,31 @@ class MarketMaker implements ShouldQueue
                                                             'microtime' => str_replace(".", "", microtime(true))
                                                         ]);
                                                     }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                for ($i = 0; $i < $parity_orders_sell_count; $i++) {
+                                                    if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                        $orderAmount = rand($min_token, $max_token);
+                                                    } else {
+
+                                                        $decimals = 10;
+                                                        $div = pow(10, $decimals);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                        // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                    }
+
+                                                    $decimals = 10;
+                                                    $div = pow(10, $decimals);
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $current_price * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_price * $div)) / $div));
+                                                    // $randomDecimal = (mt_rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+
+                                                    $is_parity_orders_sell[$i]->update([
+                                                        'price' => $randomDecimal,
+                                                        'amount' => $orderAmount,
+                                                        'total' => $randomDecimal * $orderAmount
+                                                    ]);
                                                 }
                                             }
                                         } else {
@@ -1201,7 +1228,7 @@ class MarketMaker implements ShouldQueue
                                         $current_price = $market[$bot_parities[$c]['parities']['source']['symbol'] . "-" . $bot_parities[$c]['parities']['coin']['symbol']]['parity_price']['price']['value'];
                                         // $orderAmount = rand($min_token, $max_token);
                                         $randomDecimal = $current_price;
-                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->where('primary', true)->whereNull('deleted_at')->get();
                                         // dd($is_parity_orders_buy);
                                         if (!empty($is_parity_orders_buy->toArray())) {
                                             $parity_orders_buy_count = $is_parity_orders_buy->count();
@@ -1212,7 +1239,7 @@ class MarketMaker implements ShouldQueue
                                                             return $item;
                                                         })->sortBy('price')->first();
                                                         Order::where('id', $is_parity_orders_buy->id)->delete();
-                                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->whereNull('deleted_at')->get();
+                                                        $is_parity_orders_buy = Order::where('parities_id', $parities_id)->where('process', 'buy')->where('primary', true)->whereNull('deleted_at')->get();
                                                     }
                                                 } else {
                                                     for ($i = 0; $i < abs($buy_order_count - $parity_orders_buy_count); $i++) {
@@ -1248,6 +1275,30 @@ class MarketMaker implements ShouldQueue
                                                             'microtime' => str_replace(".", "", microtime(true))
                                                         ]);
                                                     }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                for ($i = 0; $i < $parity_orders_buy_count; $i++) {
+                                                    if (is_int($min_token) === true && is_int($max_token) === true) {
+                                                        $orderAmount = rand($min_token, $max_token);
+                                                    } else {
+                                                        $decimals = 10;
+                                                        $div = pow(10, $decimals);
+                                                        $orderAmount = sprintf('%.' . $scale_count . 'f', mt_rand(sprintf('%.' . $scale_count . 'f', $min_token) * $div, sprintf('%.' . $scale_count . 'f', $max_token) * $div) / $div);
+                                                        // $orderAmount = (mt_rand($min_token * pow(10, $scale_count), $max_token * pow(10, $scale_count)) / pow(10, $scale_count));
+                                                    }
+
+
+                                                    $decimals = 10;
+                                                    $div = pow(10, $decimals);
+                                                    $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $down_current_price * $div), sprintf('%.' . $price_scale_count . 'f', $current_price * $div)) / $div));
+                                                    // $randomDecimal = (mt_rand($down_current_price * pow(10, $price_scale_count), $current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
+                                                    $is_parity_orders_buy[$i]->update([
+                                                        'price' => $randomDecimal,
+                                                        'amount' => $orderAmount,
+                                                        'total' => $randomDecimal * $orderAmount
+                                                    ]);
                                                 }
                                             }
                                         } else {
