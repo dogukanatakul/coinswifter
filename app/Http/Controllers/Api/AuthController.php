@@ -28,15 +28,20 @@ use App\Models\UserVerification;
 use App\Models\UserWallet;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use Ramsey\Uuid\Uuid;
+
 class AuthController extends Controller
 {
 
@@ -150,8 +155,8 @@ class AuthController extends Controller
             ]);
         }
         $timeDay = new DateTime(now()->subDay(1));
-        $check = LogActivity::where('created_at', '>', $timeDay)->whereNull('users_id')->where('path','api/signup')->where('status','success')->orderBy('id', 'DESC')->get()->groupBy(['ip'])->count();
-        if ($check > 2 ){
+        $check = LogActivity::where('created_at', '>', $timeDay)->whereNull('users_id')->where('path', 'api/signup')->where('status', 'success')->orderBy('id', 'DESC')->get()->groupBy(['ip'])->count();
+        if ($check > 2) {
             return response()->json([
                 'status' => 'fail',
                 'message' => __('api_messages.user_signup_times_fail_message')
@@ -513,10 +518,12 @@ class AuthController extends Controller
         ]);
     }
 
-    public function signOut(): \Illuminate\Http\JsonResponse
+    public function signOut(Request $request): \Illuminate\Http\JsonResponse
     {
-        $pass = User::find($this->user->id)->password;
-        Auth::logoutOtherDevices($pass,'password');
+        $logActivity = LogActivity::find($request->getContent());
+        $setCookie = [$this->user->id,$logActivity['ip'],$logActivity['agent'],$request->getContent()];
+        $setCookie = implode('|', $setCookie);
+        Cache::forever('signout', $setCookie);
         return response()->json([
             'status' => 'success',
             'message' => __('api_messages.user_logout_success_message')
@@ -931,6 +938,7 @@ class AuthController extends Controller
                 $agent = new Agent();
                 $agent->setUserAgent($data->agent);
                 return [
+                    'id' => $data->id,
                     'ip' => $data->ip,
                     'browser' => $agent->browser() ?: '?',
                     'platform' => $agent->platform() ?: '?',
@@ -1278,7 +1286,7 @@ class AuthController extends Controller
             if (!empty($request->file('file'))) {
                 $uid = Uuid::uuid4();
                 $extension = strtolower($request->file('file')->getClientOriginalExtension());
-                $fileName = $uid . '.' .$extension;
+                $fileName = $uid . '.' . $extension;
                 $path = date("Y-m-d", $request->file('file')->getATime());
                 $request->file('file')->storeAs($path, $fileName, 'ticket');
                 $size = $request->file('file')->getSize();
@@ -1353,7 +1361,7 @@ class AuthController extends Controller
         $ticket = Ticket::where('ticket_key', $request->ticket)->first();
         $status = $ticket['status'];
 //        $url = Storage::disk('ticket')->url($ticket['created_at']->format('Y-m-d') . '/' . $ticket['file_name']);
-        $url = env('APP_URL').'/'.'storage/public/ticket';
+        $url = env('APP_URL') . '/' . 'storage/public/ticket';
         $ticketMessage = TicketMessage::with('ticket', 'user')
             ->whereRelation('ticket', 'ticket_key', '=', $request->ticket)
             ->orderBy('created_at', 'ASC')

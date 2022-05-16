@@ -41,7 +41,7 @@ Route::group([
         Route::post('/test', [\App\Http\Controllers\Api\CoinActions\Exchange::class, 'test']);
     });
 
-    Route::middleware([\App\Http\Middleware\CheckUser::class])->group(function () {
+    Route::middleware([\App\Http\Middleware\CheckUser::class,\App\Http\Middleware\LogoutCookie::class])->group(function () {
         Route::post('/delete-withdrawal-wallet', [\App\Http\Controllers\Api\CoinActions\WalletController::class, 'deleteWithdrawalWallet']);
         Route::post('/withdrawal-wallet', [\App\Http\Controllers\Api\CoinActions\WalletController::class, 'withdrawalWallet']);
         Route::post('/get-adress', [\App\Http\Controllers\Api\AuthController::class, 'adress']);
