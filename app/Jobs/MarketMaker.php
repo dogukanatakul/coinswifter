@@ -55,14 +55,13 @@ class MarketMaker implements ShouldQueue
                     } else {
                         $newItem['parity_price'] = collect($item->parity_price->groupBy('type'))->mapWithKeys(function ($item, $key) {
                             $status = $item->first()->value > $item->last()->value ? "down" : 'up';
-                            $price = priceFormat($item->last()->value);
+                            $price = priceFormat($item->where('source','local')->last()->value);
                             return [$item->last()->type => ["value" => $price, "status" => $status]];
                         });
                     }
                     $newItem['commission'] = priceFormat($item['commission']['commission']);
                     return [$item['source']['symbol'] . "-" . $item['coin']['symbol'] => $newItem];
                 })->toArray();
-                
                 //MarketMaker alış - satış emirlerini girme (Parametreler baz alınacak)
                 if (!empty($market[$bot_parities[$c]['parities']['source']['symbol'] . "-" . $bot_parities[$c]['parities']['coin']['symbol']])) {
 
