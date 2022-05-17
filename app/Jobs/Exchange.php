@@ -133,7 +133,8 @@ class Exchange implements ShouldQueue
                 $this->logs[] = "Aktif son fiyat bulunamadı!";
                 return false; // son fiyat yok
             }
-            $lastPrice = $lastPrice->price;
+//            $lastPrice = $lastPrice->price;
+            $lastPrice = $buy->price;
 
         } else {
             $lastPrice = $sell->price;

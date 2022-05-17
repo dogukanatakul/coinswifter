@@ -826,7 +826,7 @@ class MarketMaker implements ShouldQueue
 
                                     throw new \Exception("Son fiyatlar 0 dan farklı olmalıdır.");
                                 }
-                                
+
                                 // dd($old_price,$new_price);
                                 if ($old_price != $new_price) {
 
@@ -855,7 +855,7 @@ class MarketMaker implements ShouldQueue
                                                     $div = pow(10, $decimals);
                                                     $randomDecimal = sprintf('%.' . $price_scale_count . 'f', (mt_rand(sprintf('%.' . $price_scale_count . 'f', $current_price * $div), sprintf('%.' . $price_scale_count . 'f', $up_current_price * $div)) / $div));
                                                     // $randomDecimal = (mt_rand($current_price * pow(10, $price_scale_count), $up_current_price * pow(10, $price_scale_count)) / pow(10, $price_scale_count));
-                                                    
+
                                                     $is_parity_orders_sell[$i]->update([
                                                         'price' => $randomDecimal,
                                                         'amount' => $orderAmount,
