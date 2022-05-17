@@ -370,18 +370,9 @@ class Exchange extends Controller
 
     public function test()
     {
-//        $bot = new \App\Jobs\MarketMaker();
-//        dd($bot->handle());
-        $order = Order::all();
-        $order = $order->map(function ($d) {
-            $newData = $d->toArray();
-            $newData['amount'] = priceFormat($newData['amount']);
-            $newData['process'] = $d->process;
-            $newData['finished'] = $d->buying_trades->sum('amount') + $d->selling_trades->sum('amount');
-            $newData['percent'] = floatval((1 - (floatval($newData['amount']) / (floatval($newData['finished']) + floatval($newData['amount'])))) * 100);
-            return $newData;
-        });
-        dd($order);
+       $bot = new \App\Jobs\MarketMaker();
+       dd($bot->handle());
+
 //        event(new ActionEvent("message", array("team1_score" => 46)));
 //
 //
