@@ -52,7 +52,6 @@ class Exchange extends Controller
             ->whereHas('commission')
             ->orderBy('order', 'ASC')
             ->get();
-
         $market = collect($market)->mapWithKeys(function ($item, $key) {
             $newItem = $item->toArray();
 
@@ -69,7 +68,7 @@ class Exchange extends Controller
             } else {
                 $newItem['parity_price'] = collect($item->parity_price->groupBy('type'))->mapWithKeys(function ($items, $key) use ($item) {
                     $status = $items->first()->value > $items->last()->value ? "down" : 'up';
-                    $price = \Litipk\BigNumbers\Decimal::fromString($items->last()->value)->add(\Litipk\BigNumbers\Decimal::fromString($items->last()->value), $item->coin->precision)->innerValue();
+                    $price = \Litipk\BigNumbers\Decimal::fromString($items->last()->value, $item->coin->precision)->innerValue();
                     if ($price == 0) {
                         $price = priceFormat($items->last()->value);
                         return [$items->last()->type => ["value" => $price, "status" => $status]];
