@@ -67,10 +67,16 @@ class Exchange extends Controller
                     return [$key => ["value" => $item, "status" => '']];
                 })->toArray();
             } else {
-                $newItem['parity_price'] = collect($item->parity_price->groupBy('type'))->mapWithKeys(function ($item, $key) {
-                    $status = $item->first()->value > $item->last()->value ? "down" : 'up';
-                    $price = priceFormat($item->last()->value);
-                    return [$item->last()->type => ["value" => $price, "status" => $status]];
+                $newItem['parity_price'] = collect($item->parity_price->groupBy('type'))->mapWithKeys(function ($items, $key) use ($item) {
+                    $status = $items->first()->value > $items->last()->value ? "down" : 'up';
+                    $price = \Litipk\BigNumbers\Decimal::fromString($items->last()->value)->add(\Litipk\BigNumbers\Decimal::fromString($items->last()->value), $item->coin->precision)->innerValue();
+                    if ($price == 0) {
+                        $price = priceFormat($items->last()->value);
+                        return [$items->last()->type => ["value" => $price, "status" => $status]];
+                    } else {
+                        return [$items->last()->type => ["value" => $price, "status" => $status]];
+
+                    }
                 });
             }
             $newItem['commission'] = priceFormat($item['commission']['commission']);
@@ -137,11 +143,11 @@ class Exchange extends Controller
                     'coin'
                 ])
                     ->find($checkParite->id);
-                $sellOrders = collect($sellOrders)->map(function ($data, $key) use($myOrders){
+                $sellOrders = collect($sellOrders)->map(function ($data, $key) use ($myOrders) {
                     if (empty($myOrders) || $myOrders->orders->count() == 0) {
                         $myOrders = false;
                     } else {
-                        $myOrders = $myOrders->orders->map(function ($d)  {
+                        $myOrders = $myOrders->orders->map(function ($d) {
                             $newData = $d->toArray();
                             $newData['amount'] = priceFormat($newData['amount']);
                             $newData['process'] = $d->process;
@@ -149,12 +155,12 @@ class Exchange extends Controller
                             $newData['percent'] = intval((1 - (floatval($newData['amount']) / (floatval($newData['finished']) + floatval($newData['amount'])))) * 100);
                             return $newData;
                         });
-                        for ($i = 0; $i < $myOrders->count(); $i++){
-                            if ($myOrders[$i]['price'] == priceFormat($key)){
+                        for ($i = 0; $i < $myOrders->count(); $i++) {
+                            if ($myOrders[$i]['price'] == priceFormat($key)) {
                                 return [
                                     'price' => priceFormat($key),
                                     'amount' => priceFormat(decimal_sum($data->pluck('amount')->toArray())),
-                                    'percent' => abs(100-$myOrders[$i]['percent']),
+                                    'percent' => abs(100 - $myOrders[$i]['percent']),
                                     'process' => $myOrders[$i]['process'],
                                     'total' => priceFormat(\Litipk\BigNumbers\Decimal::fromString(priceFormat($key))->mul(\Litipk\BigNumbers\Decimal::fromString(priceFormat(decimal_sum($data->pluck('amount')->toArray()))), null)->innerValue()),];
                             }
@@ -162,11 +168,11 @@ class Exchange extends Controller
                     }
                 });
 
-                $buyOrders = collect($buyOrders)->map(function ($data, $key) use($myOrders){
+                $buyOrders = collect($buyOrders)->map(function ($data, $key) use ($myOrders) {
                     if (empty($myOrders) || $myOrders->orders->count() == 0) {
                         $myOrders = false;
                     } else {
-                        $myOrders = $myOrders->orders->map(function ($d)  {
+                        $myOrders = $myOrders->orders->map(function ($d) {
                             $newData = $d->toArray();
                             $newData['amount'] = priceFormat($newData['amount']);
                             $newData['process'] = $d->process;
@@ -174,12 +180,12 @@ class Exchange extends Controller
                             $newData['percent'] = intval((1 - (floatval($newData['amount']) / (floatval($newData['finished']) + floatval($newData['amount'])))) * 100);
                             return $newData;
                         });
-                        for ($i = 0; $i < $myOrders->count(); $i++){
-                            if ($myOrders[$i]['price'] == priceFormat($key)){
+                        for ($i = 0; $i < $myOrders->count(); $i++) {
+                            if ($myOrders[$i]['price'] == priceFormat($key)) {
                                 return [
                                     'price' => priceFormat($key),
                                     'amount' => priceFormat(decimal_sum($data->pluck('amount')->toArray())),
-                                    'percent' => abs(100-$myOrders[$i]['percent']),
+                                    'percent' => abs(100 - $myOrders[$i]['percent']),
                                     'process' => $myOrders[$i]['process'],
                                     'total' => priceFormat(\Litipk\BigNumbers\Decimal::fromString(priceFormat($key))->mul(\Litipk\BigNumbers\Decimal::fromString(priceFormat(decimal_sum($data->pluck('amount')->toArray()))), null)->innerValue()),];
                             }
@@ -367,12 +373,12 @@ class Exchange extends Controller
 //        $bot = new \App\Jobs\MarketMaker();
 //        dd($bot->handle());
         $order = Order::all();
-        $order = $order->map(function ($d)  {
+        $order = $order->map(function ($d) {
             $newData = $d->toArray();
             $newData['amount'] = priceFormat($newData['amount']);
             $newData['process'] = $d->process;
             $newData['finished'] = $d->buying_trades->sum('amount') + $d->selling_trades->sum('amount');
-            $newData['percent'] = intval((1 - (floatval($newData['amount']) / (floatval($newData['finished']) + floatval($newData['amount'])))) * 100);
+            $newData['percent'] = floatval((1 - (floatval($newData['amount']) / (floatval($newData['finished']) + floatval($newData['amount'])))) * 100);
             return $newData;
         });
         dd($order);
